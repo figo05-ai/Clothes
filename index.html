@@ -248,28 +248,24 @@
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body p-4 d-flex flex-column">
-      <div class="user-profile-header d-flex align-items-center gap-3 p-3 mb-4 rounded-3" style="background: rgba(140, 144, 126, 0.1); border: 1px solid rgba(140, 144, 126, 0.2);">
-        <div class="user-avatar position-relative">
-          <img src="images/insta-item1.jpg" alt="user avatar" class="rounded-circle object-fit-cover" style="width: 56px; height: 56px; border: 2px solid var(--bs-primary);">
-          <span class="position-absolute bottom-0 end-0 p-1 bg-success border border-white rounded-circle"></span>
+      <a href="#" class="user-profile-header text-decoration-none d-flex align-items-center justify-content-between p-3 mb-4 rounded-3" style="background: rgba(140, 144, 126, 0.1); border: 1px solid rgba(140, 144, 126, 0.2); cursor: pointer;" data-bs-toggle="modal" data-bs-target="#modalProfile" title="View Profile & Settings">
+        <div class="d-flex align-items-center gap-3">
+          <div class="user-avatar position-relative">
+            <img src="images/insta-item1.jpg" alt="user avatar" class="rounded-circle object-fit-cover" style="width: 56px; height: 56px; border: 2px solid var(--bs-primary);">
+            <span class="position-absolute bottom-0 end-0 p-1 bg-success border border-white rounded-circle"></span>
+          </div>
+          <div class="user-info">
+            <h6 class="m-0 fw-bold text-dark">Elena Rostova</h6>
+            <small class="text-primary fw-medium">VIP Member • Verified</small>
+            <div class="text-muted" style="font-size: 0.8rem;">elena.rostova@example.com</div>
+          </div>
         </div>
-        <div class="user-info">
-          <h6 class="m-0 fw-bold text-dark">Elena Rostova</h6>
-          <small class="text-primary fw-medium">VIP Member • Verified</small>
-          <div class="text-muted" style="font-size: 0.8rem;">elena.rostova@example.com</div>
-        </div>
-      </div>
+        <svg width="18" height="18" viewBox="0 0 24 24" class="text-muted"><use xlink:href="#arrow-right"></use></svg>
+      </a>
 
       <div class="account-menu-group mb-4">
         <h6 class="text-uppercase text-muted mb-2 px-2" style="font-size: 0.75rem; letter-spacing: 1px;">Shopping & Orders</h6>
         <div class="list-group list-group-flush border rounded-3 overflow-hidden">
-          <a href="#" class="list-group-item list-group-item-action d-flex align-items-center justify-content-between p-3" data-bs-toggle="modal" data-bs-target="#modalProfile">
-            <span class="d-flex align-items-center gap-3">
-              <svg width="20" height="20" viewBox="0 0 24 24" class="text-primary"><use xlink:href="#user"></use></svg>
-              <span>My Profile</span>
-            </span>
-            <svg width="16" height="16" viewBox="0 0 24 24" class="text-muted"><use xlink:href="#arrow-right"></use></svg>
-          </a>
           <a href="#" class="list-group-item list-group-item-action d-flex align-items-center justify-content-between p-3" data-bs-toggle="modal" data-bs-target="#modalSizing">
             <span class="d-flex align-items-center gap-3">
               <svg width="20" height="20" viewBox="0 0 24 24" class="text-primary"><use xlink:href="#category"></use></svg>
