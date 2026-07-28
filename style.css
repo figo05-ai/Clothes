@@ -1728,3 +1728,370 @@ html {
   transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(140, 144, 126, 0.2);
 }
+
+/* ==========================================================================
+   Profile & Photo Management Custom Styles
+   ========================================================================== */
+.avatar-upload-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.avatar-camera-overlay {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  width: 32px;
+  height: 32px;
+  background-color: var(--bs-primary, #8c907e);
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #fff;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease;
+}
+
+.avatar-camera-overlay:hover {
+  transform: scale(1.1);
+  background-color: #111;
+  color: #fff;
+}
+
+.avatar-dropzone {
+  border: 2px dashed rgba(140, 144, 126, 0.35);
+  border-radius: 12px;
+  padding: 24px;
+  text-align: center;
+  background-color: rgba(140, 144, 126, 0.03);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.avatar-dropzone:hover,
+.avatar-dropzone.drag-active {
+  border-color: var(--bs-primary, #8c907e);
+  background-color: rgba(140, 144, 126, 0.1);
+}
+
+#profileTabNav .nav-link {
+  color: #6c757d;
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 10px 16px;
+  border: none;
+  border-bottom: 2px solid transparent;
+  transition: all 0.25s ease;
+}
+
+#profileTabNav .nav-link:hover {
+  color: #111;
+  border-bottom-color: rgba(0, 0, 0, 0.2);
+}
+
+#profileTabNav .nav-link.active {
+  color: var(--bs-primary, #8c907e);
+  border-bottom-color: var(--bs-primary, #8c907e);
+  background: transparent;
+}
+
+.preset-avatar-btn {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid transparent;
+  padding: 0;
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.preset-avatar-btn:hover {
+  transform: scale(1.1);
+  border-color: var(--bs-primary, #8c907e);
+}
+
+.toast-container-profile {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1100;
+}
+
+/* Luxury Blog Card Component */
+.blog-card {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.blog-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 45px rgba(140, 144, 126, 0.16);
+  border-color: rgba(140, 144, 126, 0.35);
+}
+
+.blog-card .blog-img-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+}
+
+.blog-card .blog-img-wrapper img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.blog-card:hover .blog-img-wrapper img {
+  transform: scale(1.07);
+}
+
+.blog-card .blog-badge {
+  background: rgba(17, 17, 17, 0.82);
+  backdrop-filter: blur(6px);
+  color: #ffffff;
+  font-size: 0.7rem;
+  letter-spacing: 1.5px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 20px;
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 2;
+  text-transform: uppercase;
+}
+
+.blog-card .blog-title-link {
+  color: #111111;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.blog-card .blog-title-link:hover {
+  color: var(--bs-primary, #8c907e);
+}
+
+/* Luxury Footer Component */
+#footer {
+  background-color: #fafafa;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.footer-trust-section {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.footer-trust-badge {
+  transition: transform 0.3s ease;
+}
+
+.footer-trust-badge:hover {
+  transform: translateY(-3px);
+}
+
+.footer-social-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333333;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+  text-decoration: none;
+}
+
+.footer-social-btn:hover {
+  background: var(--bs-primary, #8c907e);
+  color: #ffffff !important;
+  border-color: var(--bs-primary, #8c907e);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(140, 144, 126, 0.3);
+}
+
+.footer-social-btn svg {
+  fill: currentColor;
+}
+
+.footer-link-list li {
+  margin-bottom: 11px;
+}
+
+.footer-link-list a {
+  color: #555555;
+  text-decoration: none;
+  font-size: 0.92rem;
+  transition: all 0.2s ease;
+  display: inline-block;
+}
+
+.footer-link-list a:hover {
+  color: var(--bs-primary, #8c907e);
+  transform: translateX(4px);
+}
+
+/* Instagram Gallery Component */
+.insta-item:hover .insta-img {
+  transform: scale(1.08);
+}
+
+.insta-item:hover .insta-overlay {
+  opacity: 1 !important;
+}
+
+.insta-overlay {
+  transition: opacity 0.3s ease;
+}
+
+/* Product Card & Quick View Modal Styling */
+.product-item {
+  border-radius: 14px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-item:hover {
+  transform: translateY(-5px);
+}
+
+.product-item .image-holder {
+  border-radius: 14px;
+  overflow: hidden;
+  background: #fbfbfb;
+}
+
+.product-item .product-image {
+  border-radius: 14px;
+  transition: transform 0.5s ease;
+}
+
+.product-item:hover .product-image {
+  transform: scale(1.06);
+}
+
+.qv-color-btn.active {
+  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px var(--bs-primary, #8c907e) !important;
+}
+
+.qv-size-btn.active {
+  background-color: #111111 !important;
+  color: #ffffff !important;
+}
+
+/* Luxury Collection Section Styling */
+.collection-card {
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.07);
+}
+
+.collection-img {
+  transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.collection-card:hover .collection-img {
+  transform: scale(1.05);
+}
+
+/* Luxury Category Cards Styling */
+.category-card {
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.category-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.15);
+}
+
+.category-card-img {
+  height: 420px;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.category-card:hover .category-card-img {
+  transform: scale(1.08);
+}
+
+.category-card-overlay {
+  background: linear-gradient(to top, rgba(15, 15, 15, 0.88) 0%, rgba(15, 15, 15, 0.25) 50%, transparent 100%);
+}
+
+/* Luxury Spotlight Cards Styling */
+.spotlight-card {
+  background: #ffffff;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.spotlight-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.12);
+}
+
+.spotlight-img {
+  height: 380px;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.spotlight-card:hover .spotlight-img {
+  transform: scale(1.07);
+}
+
+/* Luxury Feature Concierge Cards Styling */
+.feature-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 36px 24px;
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.1);
+}
+
+.feature-icon-wrapper {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: rgba(140, 144, 126, 0.12);
+  color: var(--bs-primary, #8c907e);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  transition: transform 0.4s ease, background 0.4s ease, color 0.4s ease;
+}
+
+.feature-card:hover .feature-icon-wrapper {
+  transform: scale(1.1) rotate(5deg);
+  background: var(--bs-primary, #8c907e);
+  color: #ffffff;
+}
+
+
