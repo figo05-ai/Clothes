@@ -1,7 +1,25 @@
 <?php
 
-use App\Providers\AppServiceProvider;
-
 return [
-    AppServiceProvider::class,
+    App\Providers\AnalyticsServiceProvider::class,
+    App\Providers\AppServiceProvider::class,
+    App\Providers\CartServiceProvider::class,
+    App\Providers\CatalogServiceProvider::class,
+    App\Providers\ContentServiceProvider::class,
+    App\Providers\DiscountServiceProvider::class,
+    App\Providers\Filament\AdminPanelProvider::class,
+    App\Providers\InventoryServiceProvider::class,
+    App\Providers\LoyaltyServiceProvider::class,
+    App\Providers\MediaServiceProvider::class,
+    App\Providers\NotificationServiceProvider::class,
+    App\Providers\OrderServiceProvider::class,
+    App\Providers\PaymentServiceProvider::class,
+    App\Providers\RecommendationServiceProvider::class,
+    App\Providers\ReturnServiceProvider::class,
+    App\Providers\ReviewServiceProvider::class,
+    App\Providers\SearchServiceProvider::class,
+    App\Providers\ShippingServiceProvider::class,
+    App\Providers\SupportServiceProvider::class,
+    App\Providers\WalletServiceProvider::class,
+    App\Providers\WishlistServiceProvider::class,
 ];

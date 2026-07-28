@@ -1,0 +1,2087 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Clothes E-Commerce API",
+        "description": "Comprehensive API Documentation for the full e-commerce system (Customer & Admin routes).",
+        "contact": {
+            "name": "Figo Team",
+            "email": "admin@clothes.com"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8000",
+            "description": "Local Development Server"
+        }
+    ],
+    "paths": {
+        "/admin/api/analytics/dashboard": {
+            "get": {
+                "tags": [
+                    "Admin - Analytics"
+                ],
+                "summary": "Get list of Analyticss",
+                "operationId": "8300136af96f5889f010631e32dcc5d9",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    }
+                }
+            }
+        },
+        "/admin/api/categories": {
+            "get": {
+                "tags": [
+                    "Admin - Category"
+                ],
+                "summary": "Get list of Categorys",
+                "operationId": "4f443bd9d31392f52ded9aa72ddf7770",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Admin - Category"
+                ],
+                "summary": "Create/Process Category (store)",
+                "operationId": "222ed03b8db4f944c13a3a66cd0bec21",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "slug",
+                                    "icon"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "slug": {
+                                        "type": "string"
+                                    },
+                                    "icon": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created successfully"
+                    },
+                    "422": {
+                        "description": "Validation Error"
+                    }
+                }
+            }
+        },
+        "/admin/api/categories/{id}": {
+            "put": {
+                "tags": [
+                    "Admin - Category"
+                ],
+                "summary": "Update Category (update)",
+                "operationId": "d53768c239c13723bd2dd8434ba49adb",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "slug",
+                                    "icon"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "slug": {
+                                        "type": "string"
+                                    },
+                                    "icon": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Updated successfully"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Admin - Category"
+                ],
+                "summary": "Delete Category",
+                "operationId": "4a34be497794781f260874a99fa51938",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Deleted successfully"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/admin/api/pages": {
+            "post": {
+                "tags": [
+                    "Admin - Content"
+                ],
+                "summary": "Create/Process Content (storePage)",
+                "operationId": "ca4ae69b4704b56165410a97cbf6d51a",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "title",
+                                    "slug",
+                                    "content",
+                                    "is_active"
+                                ],
+                                "properties": {
+                                    "title": {
+                                        "type": "string"
+                                    },
+                                    "slug": {
+                                        "type": "string"
+                                    },
+                                    "content": {
+                                        "type": "string"
+                                    },
+                                    "is_active": {
+                                        "type": "boolean"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created successfully"
+                    },
+                    "422": {
+                        "description": "Validation Error"
+                    }
+                }
+            }
+        },
+        "/admin/api/banners": {
+            "post": {
+                "tags": [
+                    "Admin - Content"
+                ],
+                "summary": "Create/Process Content (storeBanner)",
+                "operationId": "9fbbab84a767d102a2a66f5e0da373e3",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "title",
+                                    "image_url",
+                                    "link_url",
+                                    "order",
+                                    "is_active"
+                                ],
+                                "properties": {
+                                    "title": {
+                                        "type": "string"
+                                    },
+                                    "image_url": {
+                                        "type": "string"
+                                    },
+                                    "link_url": {
+                                        "type": "string"
+                                    },
+                                    "order": {
+                                        "type": "integer"
+                                    },
+                                    "is_active": {
+                                        "type": "boolean"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created successfully"
+                    },
+                    "422": {
+                        "description": "Validation Error"
+                    }
+                }
+            }
+        },
+        "/admin/api/coupons": {
+            "get": {
+                "tags": [
+                    "Admin - Coupon"
+                ],
+                "summary": "Get list of Coupons",
+                "operationId": "3620a5de3a0c505edbbe6cf6c1f0b3b0",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Admin - Coupon"
+                ],
+                "summary": "Create/Process Coupon (store)",
+                "operationId": "082d1fc8aee7d7e9460c2e1c27c86a50",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "code",
+                                    "type",
+                                    "value",
+                                    "usage_limit",
+                                    "valid_until"
+                                ],
+                                "properties": {
+                                    "code": {
+                                        "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "string"
+                                    },
+                                    "value": {
+                                        "type": "integer"
+                                    },
+                                    "usage_limit": {
+                                        "type": "integer"
+                                    },
+                                    "valid_until": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created successfully"
+                    },
+                    "422": {
+                        "description": "Validation Error"
+                    }
+                }
+            }
+        },
+        "/admin/api/coupons/{id}": {
+            "delete": {
+                "tags": [
+                    "Admin - Coupon"
+                ],
+                "summary": "Delete Coupon",
+                "operationId": "0b78f7548dcebb99b74abc518915609b",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Deleted successfully"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/admin/api/inventory/low-stock": {
+            "post": {
+                "tags": [
+                    "Admin - Inventory"
+                ],
+                "summary": "lowStock operation",
+                "operationId": "4ee988e0e562e6eaef2208a921bc1f0f",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        },
+        "/admin/api/inventory/{id}/adjust": {
+            "put": {
+                "tags": [
+                    "Admin - Inventory"
+                ],
+                "summary": "Update Inventory (adjust)",
+                "operationId": "781f7eae022e7ba35c513f1475a88bd0",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "quantity",
+                                    "reason"
+                                ],
+                                "properties": {
+                                    "quantity": {
+                                        "type": "integer"
+                                    },
+                                    "reason": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Updated successfully"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/admin/api/media/upload": {
+            "post": {
+                "tags": [
+                    "Admin - Media"
+                ],
+                "summary": "Create/Process Media (upload)",
+                "operationId": "9f8ac85c1e738c164b6576ccbdce7990",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "file",
+                                    "path"
+                                ],
+                                "properties": {
+                                    "file": {
+                                        "type": "string"
+                                    },
+                                    "path": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created successfully"
+                    },
+                    "422": {
+                        "description": "Validation Error"
+                    }
+                }
+            }
+        },
+        "/admin/api/orders": {
+            "get": {
+                "tags": [
+                    "Admin - Order"
+                ],
+                "summary": "Get list of Orders",
+                "operationId": "3611b1660b68f82da6b186b990bae4d6",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    }
+                }
+            }
+        },
+        "/admin/api/orders/{id}": {
+            "get": {
+                "tags": [
+                    "Admin - Order"
+                ],
+                "summary": "Get specific Order",
+                "operationId": "7f4c1b88917abe76e0fbd238f35ffcc3",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/admin/api/orders/{id}/status": {
+            "put": {
+                "tags": [
+                    "Admin - Order"
+                ],
+                "summary": "Update Order (updateStatus)",
+                "operationId": "0c68029c64b5c9c32264d1398d50836e",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "status"
+                                ],
+                                "properties": {
+                                    "status": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Updated successfully"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/admin/api/products": {
+            "get": {
+                "tags": [
+                    "Admin - Product"
+                ],
+                "summary": "Get list of Products",
+                "operationId": "47b8980a4cb1ba98159cd71ff57bca38",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Admin - Product"
+                ],
+                "summary": "Create/Process Product (store)",
+                "operationId": "20c0fe937ed7549b582c75f935a14373",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "base_price",
+                                    "stock_quantity",
+                                    "subcategory_id",
+                                    "slug",
+                                    "sku",
+                                    "short_description",
+                                    "long_description"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "base_price": {
+                                        "type": "integer"
+                                    },
+                                    "stock_quantity": {
+                                        "type": "integer"
+                                    },
+                                    "subcategory_id": {
+                                        "type": "string"
+                                    },
+                                    "slug": {
+                                        "type": "string"
+                                    },
+                                    "sku": {
+                                        "type": "string"
+                                    },
+                                    "short_description": {
+                                        "type": "string"
+                                    },
+                                    "long_description": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created successfully"
+                    },
+                    "422": {
+                        "description": "Validation Error"
+                    }
+                }
+            }
+        },
+        "/admin/api/products/{id}": {
+            "put": {
+                "tags": [
+                    "Admin - Product"
+                ],
+                "summary": "Update Product (update)",
+                "operationId": "beea5784660f4e70beb94aa258c8001b",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "base_price",
+                                    "stock_quantity",
+                                    "category_id"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "base_price": {
+                                        "type": "integer"
+                                    },
+                                    "stock_quantity": {
+                                        "type": "integer"
+                                    },
+                                    "category_id": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Updated successfully"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Admin - Product"
+                ],
+                "summary": "Delete Product",
+                "operationId": "32dd3d65c953f076a6ed4af43b9dd195",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Deleted successfully"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/admin/api/returns": {
+            "get": {
+                "tags": [
+                    "Admin - Return"
+                ],
+                "summary": "Get list of Returns",
+                "operationId": "4089b038c1b1dd2b65c72dfdda212cac",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    }
+                }
+            }
+        },
+        "/admin/api/returns/{id}/status": {
+            "put": {
+                "tags": [
+                    "Admin - Return"
+                ],
+                "summary": "Update Return (updateStatus)",
+                "operationId": "a65c86cf1962475586fc8838452c7c2f",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "status"
+                                ],
+                                "properties": {
+                                    "status": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Updated successfully"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/admin/api/reviews/pending": {
+            "post": {
+                "tags": [
+                    "Admin - Review"
+                ],
+                "summary": "pending operation",
+                "operationId": "aebd61e0fe2c7a48073fdcc8f92f989a",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        },
+        "/admin/api/reviews/{id}/status": {
+            "put": {
+                "tags": [
+                    "Admin - Review"
+                ],
+                "summary": "Update Review (updateStatus)",
+                "operationId": "6aadf7e30bee2a78aeb5fe966f4bbd7a",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "status"
+                                ],
+                                "properties": {
+                                    "status": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Updated successfully"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/admin/api/shipping": {
+            "post": {
+                "tags": [
+                    "Admin - Shipping"
+                ],
+                "summary": "Create/Process Shipping (store)",
+                "operationId": "cba14140eb79bf6dfaf6815b449ee189",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "order_id",
+                                    "tracking_number",
+                                    "carrier"
+                                ],
+                                "properties": {
+                                    "order_id": {
+                                        "type": "string"
+                                    },
+                                    "tracking_number": {
+                                        "type": "string"
+                                    },
+                                    "carrier": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created successfully"
+                    },
+                    "422": {
+                        "description": "Validation Error"
+                    }
+                }
+            }
+        },
+        "/admin/api/shipping/{id}/status": {
+            "put": {
+                "tags": [
+                    "Admin - Shipping"
+                ],
+                "summary": "Update Shipping (updateStatus)",
+                "operationId": "21f5702f67fb3950c9c49da745f96555",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "status"
+                                ],
+                                "properties": {
+                                    "status": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Updated successfully"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/admin/api/support/tickets": {
+            "get": {
+                "tags": [
+                    "Admin - SupportTicket"
+                ],
+                "summary": "Get list of SupportTickets",
+                "operationId": "13f861f6db8602e75a4d381124dbe147",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    }
+                }
+            }
+        },
+        "/admin/api/support/tickets/{id}/status": {
+            "put": {
+                "tags": [
+                    "Admin - SupportTicket"
+                ],
+                "summary": "Update SupportTicket (updateStatus)",
+                "operationId": "6923d0b32980f020265c8591506947f3",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "status"
+                                ],
+                                "properties": {
+                                    "status": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Updated successfully"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/admin/api/support/tickets/{id}/reply": {
+            "post": {
+                "tags": [
+                    "Admin - SupportTicket"
+                ],
+                "summary": "reply operation",
+                "operationId": "785b4f53a6d07e8da723c061219de259",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "message"
+                                ],
+                                "properties": {
+                                    "message": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        },
+        "/admin/api/wallet/credit": {
+            "post": {
+                "tags": [
+                    "Admin - Wallet"
+                ],
+                "summary": "addCredit operation",
+                "operationId": "5e9211920c69bd67d14790b127237976",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "user_id",
+                                    "amount",
+                                    "description"
+                                ],
+                                "properties": {
+                                    "user_id": {
+                                        "type": "string"
+                                    },
+                                    "amount": {
+                                        "type": "integer"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        },
+        "/api/cart": {
+            "get": {
+                "tags": [
+                    "Customer - Cart"
+                ],
+                "summary": "Get list of Carts",
+                "description": "Display the cart contents.",
+                "operationId": "c01dfdd5a8ae5feb59d6137eb10ae7a0",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Customer - Cart"
+                ],
+                "summary": "Create/Process Cart (store)",
+                "description": "Add a product to the cart.",
+                "operationId": "90577576dd713fbab21e9c1e720c5f8c",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "product_id",
+                                    "quantity"
+                                ],
+                                "properties": {
+                                    "product_id": {
+                                        "type": "string"
+                                    },
+                                    "quantity": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created successfully"
+                    },
+                    "422": {
+                        "description": "Validation Error"
+                    }
+                }
+            }
+        },
+        "/api/categories": {
+            "get": {
+                "tags": [
+                    "Customer - Category"
+                ],
+                "summary": "Get list of Categorys",
+                "operationId": "d93f964f8449a417f80ef092ad5e5113",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    }
+                }
+            }
+        },
+        "/api/categories/{id}": {
+            "get": {
+                "tags": [
+                    "Customer - Category"
+                ],
+                "summary": "Get specific Category",
+                "operationId": "8b97386f71ff6562e4da5593bb6307ec",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/api/banners": {
+            "post": {
+                "tags": [
+                    "Customer - Content"
+                ],
+                "summary": "banners operation",
+                "operationId": "8e0a3e7963c09a977e82e51e65190a5c",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        },
+        "/api/pages/{slug}": {
+            "post": {
+                "tags": [
+                    "Customer - Content"
+                ],
+                "summary": "page operation",
+                "operationId": "0f4de097634e4b727cd1b7aba351a5b7",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        },
+        "/api/coupons/apply": {
+            "post": {
+                "tags": [
+                    "Customer - Coupon"
+                ],
+                "summary": "apply operation",
+                "description": "Apply a coupon code.",
+                "operationId": "fa821e205bbad6e7713c9a4d8b0e30d9",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "code"
+                                ],
+                                "properties": {
+                                    "code": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        },
+        "/api/coupons/remove": {
+            "post": {
+                "tags": [
+                    "Customer - Coupon"
+                ],
+                "summary": "remove operation",
+                "description": "Remove the applied coupon.",
+                "operationId": "8136fdfdddde761bf4c7a28c4e50c223",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        },
+        "/api/loyalty/balance": {
+            "post": {
+                "tags": [
+                    "Customer - Loyalty"
+                ],
+                "summary": "balance operation",
+                "operationId": "4fc9d605c34fe95ea545467b0bfb38df",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        },
+        "/api/loyalty/redeem": {
+            "post": {
+                "tags": [
+                    "Customer - Loyalty"
+                ],
+                "summary": "redeem operation",
+                "operationId": "36cee892ca07fef7eec40189dcce3d6e",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "points"
+                                ],
+                                "properties": {
+                                    "points": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        },
+        "/api/orders": {
+            "get": {
+                "tags": [
+                    "Customer - Order"
+                ],
+                "summary": "Get order history",
+                "description": "Get order history.",
+                "operationId": "22d21713fd1e12635d9297e93c85a1ba",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        },
+        "/api/checkout": {
+            "post": {
+                "tags": [
+                    "Customer - Order"
+                ],
+                "summary": "Create/Process Order (checkout)",
+                "operationId": "11cab24301adfd3f4708712923aeaf50",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "shipping_address",
+                                    "billing_address",
+                                    "payment_method",
+                                    "shipping_cost",
+                                    "tax_amount"
+                                ],
+                                "properties": {
+                                    "shipping_address": {
+                                        "type": "string"
+                                    },
+                                    "billing_address": {
+                                        "type": "string"
+                                    },
+                                    "payment_method": {
+                                        "type": "string"
+                                    },
+                                    "shipping_cost": {
+                                        "type": "integer"
+                                    },
+                                    "tax_amount": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created successfully"
+                    },
+                    "422": {
+                        "description": "Validation Error"
+                    }
+                }
+            }
+        },
+        "/api/orders/{id}": {
+            "get": {
+                "tags": [
+                    "Customer - Order"
+                ],
+                "summary": "Get specific Order",
+                "description": "Get order details.",
+                "operationId": "5372efb35716a5574a7cf40aa8392116",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/api/payments/{orderId}/generate": {
+            "post": {
+                "tags": [
+                    "Customer - Payment"
+                ],
+                "summary": "generate operation",
+                "description": "Generate a payment link for a specific order.",
+                "operationId": "0e1340808d3c69ab00698ba1217a4dd7",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        },
+        "/api/payments/webhook": {
+            "post": {
+                "tags": [
+                    "Customer - Payment"
+                ],
+                "summary": "webhook operation",
+                "description": "Handle incoming webhooks from the payment gateway.",
+                "operationId": "cde6f9395294fb8ebfb081c5845c3d3a",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "type",
+                                    "data",
+                                    "data.object",
+                                    "data.object.id"
+                                ],
+                                "properties": {
+                                    "type": {
+                                        "type": "string"
+                                    },
+                                    "data": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "data.object": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "data.object.id": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        },
+        "/api/products": {
+            "get": {
+                "tags": [
+                    "Customer - Product"
+                ],
+                "summary": "Get list of Products",
+                "description": "Display a listing of filtered products.",
+                "operationId": "5afdc398c410dcbc922743e99c89272b",
+                "parameters": [
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "category_id",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "subcategory_id",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "color",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "size",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "min_price",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "max_price",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sort_direction",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "category_id",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "subcategory_id",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "color",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "size",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "min_price",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "max_price",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sort_direction",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    }
+                }
+            }
+        },
+        "/api/products/{id}": {
+            "get": {
+                "tags": [
+                    "Customer - Product"
+                ],
+                "summary": "Get specific Product",
+                "operationId": "3c30da69438d4618b13c845028340e76",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/api/returns": {
+            "get": {
+                "tags": [
+                    "Customer - Return"
+                ],
+                "summary": "Get list of Returns",
+                "operationId": "24ed8b5f50261c5fa9bc26c5b717d50a",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Customer - Return"
+                ],
+                "summary": "Create/Process Return (store)",
+                "operationId": "d683ea986ae10e217141fba0bf6df468",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "reason"
+                                ],
+                                "properties": {
+                                    "reason": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created successfully"
+                    },
+                    "422": {
+                        "description": "Validation Error"
+                    }
+                }
+            }
+        },
+        "/api/recommendations": {
+            "get": {
+                "tags": [
+                    "Customer - Recommendation"
+                ],
+                "summary": "Get list of Recommendations",
+                "operationId": "c63613eb8711962bae69871f3060a2ac",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    }
+                }
+            }
+        },
+        "/api/products/{id}/reviews": {
+            "get": {
+                "tags": [
+                    "Customer - Review"
+                ],
+                "summary": "Get list of Reviews",
+                "operationId": "a21abec894b2bde38f2771eee6f1f283",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Customer - Review"
+                ],
+                "summary": "Create/Process Review (store)",
+                "operationId": "2bb40452f65625f563631364dd5a98dc",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "rating",
+                                    "review_text"
+                                ],
+                                "properties": {
+                                    "rating": {
+                                        "type": "integer"
+                                    },
+                                    "review_text": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created successfully"
+                    },
+                    "422": {
+                        "description": "Validation Error"
+                    }
+                }
+            }
+        },
+        "/api/search": {
+            "post": {
+                "tags": [
+                    "Customer - Search"
+                ],
+                "summary": "search operation",
+                "operationId": "3e23b5242475fa7d9bd32bd25af90003",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        },
+        "/api/shipping/track/{trackingNumber}": {
+            "post": {
+                "tags": [
+                    "Customer - Shipping"
+                ],
+                "summary": "track operation",
+                "operationId": "a93940ab6a828621bb7e517889bac72f",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        },
+        "/api/support/tickets": {
+            "get": {
+                "tags": [
+                    "Customer - SupportTicket"
+                ],
+                "summary": "Get list of SupportTickets",
+                "operationId": "23d71bba2c924e5f063bac9356f247d6",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Customer - SupportTicket"
+                ],
+                "summary": "Create/Process SupportTicket (store)",
+                "operationId": "df20dbdbe77d588d31ad463f6c477279",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "subject",
+                                    "message"
+                                ],
+                                "properties": {
+                                    "subject": {
+                                        "type": "string"
+                                    },
+                                    "message": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created successfully"
+                    },
+                    "422": {
+                        "description": "Validation Error"
+                    }
+                }
+            }
+        },
+        "/api/support/tickets/{id}/reply": {
+            "post": {
+                "tags": [
+                    "Customer - SupportTicket"
+                ],
+                "summary": "reply operation",
+                "operationId": "a76eab44d533ca6a99ce9ec392f8ab2c",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "message"
+                                ],
+                                "properties": {
+                                    "message": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        },
+        "/api/wallet/balance": {
+            "post": {
+                "tags": [
+                    "Customer - Wallet"
+                ],
+                "summary": "balance operation",
+                "operationId": "f9c74573c12ae60ac87c4cb5515b7ce5",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        },
+        "/api/wallet/transactions": {
+            "post": {
+                "tags": [
+                    "Customer - Wallet"
+                ],
+                "summary": "transactions operation",
+                "operationId": "060a25a0c6d42c5e33abea84c01c1e74",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        },
+        "/api/wishlist": {
+            "get": {
+                "tags": [
+                    "Customer - Wishlist"
+                ],
+                "summary": "Get list of Wishlists",
+                "operationId": "7c34a3a80a77936af42eb9c9553368a9",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    }
+                }
+            }
+        },
+        "/api/wishlist/toggle": {
+            "post": {
+                "tags": [
+                    "Customer - Wishlist"
+                ],
+                "summary": "toggle operation",
+                "operationId": "f3a28098ab30528492a39bf54cc1f700",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "product_id"
+                                ],
+                                "properties": {
+                                    "product_id": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "description": "Enter your Bearer token in the format **Bearer <token>**",
+                "bearerFormat": "Sanctum",
+                "scheme": "bearer"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Admin - Analytics",
+            "description": "Admin - Analytics"
+        },
+        {
+            "name": "Admin - Category",
+            "description": "Admin - Category"
+        },
+        {
+            "name": "Admin - Content",
+            "description": "Admin - Content"
+        },
+        {
+            "name": "Admin - Coupon",
+            "description": "Admin - Coupon"
+        },
+        {
+            "name": "Admin - Inventory",
+            "description": "Admin - Inventory"
+        },
+        {
+            "name": "Admin - Media",
+            "description": "Admin - Media"
+        },
+        {
+            "name": "Admin - Order",
+            "description": "Admin - Order"
+        },
+        {
+            "name": "Admin - Product",
+            "description": "Admin - Product"
+        },
+        {
+            "name": "Admin - Return",
+            "description": "Admin - Return"
+        },
+        {
+            "name": "Admin - Review",
+            "description": "Admin - Review"
+        },
+        {
+            "name": "Admin - Shipping",
+            "description": "Admin - Shipping"
+        },
+        {
+            "name": "Admin - SupportTicket",
+            "description": "Admin - SupportTicket"
+        },
+        {
+            "name": "Admin - Wallet",
+            "description": "Admin - Wallet"
+        },
+        {
+            "name": "Customer - Cart",
+            "description": "Customer - Cart"
+        },
+        {
+            "name": "Customer - Category",
+            "description": "Customer - Category"
+        },
+        {
+            "name": "Customer - Content",
+            "description": "Customer - Content"
+        },
+        {
+            "name": "Customer - Coupon",
+            "description": "Customer - Coupon"
+        },
+        {
+            "name": "Customer - Loyalty",
+            "description": "Customer - Loyalty"
+        },
+        {
+            "name": "Customer - Order",
+            "description": "Customer - Order"
+        },
+        {
+            "name": "Customer - Payment",
+            "description": "Customer - Payment"
+        },
+        {
+            "name": "Customer - Product",
+            "description": "Customer - Product"
+        },
+        {
+            "name": "Customer - Return",
+            "description": "Customer - Return"
+        },
+        {
+            "name": "Customer - Recommendation",
+            "description": "Customer - Recommendation"
+        },
+        {
+            "name": "Customer - Review",
+            "description": "Customer - Review"
+        },
+        {
+            "name": "Customer - Search",
+            "description": "Customer - Search"
+        },
+        {
+            "name": "Customer - Shipping",
+            "description": "Customer - Shipping"
+        },
+        {
+            "name": "Customer - SupportTicket",
+            "description": "Customer - SupportTicket"
+        },
+        {
+            "name": "Customer - Wallet",
+            "description": "Customer - Wallet"
+        },
+        {
+            "name": "Customer - Wishlist",
+            "description": "Customer - Wishlist"
+        }
+    ]
+}

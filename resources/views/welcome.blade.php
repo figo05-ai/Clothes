@@ -1,223 +1,2600 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+<head>
+  <title>Kaira - Bootstrap 5 Fashion Store HTML CSS Template</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="author" content="TemplatesJungle">
+  <meta name="keywords" content="ecommerce,fashion,store">
+  <meta name="description" content="Bootstrap 5 Fashion Store HTML CSS Template">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="{{ asset('css/vendor.css') }}">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+  <link rel="stylesheet" type="text/css" href="{{ asset('style.css') }}">
 
-        @fonts
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Marcellus&display=swap"
+    rel="stylesheet">
+</head>
 
-        <!-- Styles / Scripts -->
-        @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
-            @vite(['resources/css/app.css', 'resources/js/app.js'])
-        @else
-            <style>
-                /*! tailwindcss v4.0.7 | MIT License | https://tailwindcss.com */ @layer properties{@supports (((-webkit-hyphens:none)) and (not (margin-trim:inline))) or ((-moz-orient:inline) and (not (color:rgb(from red r g b)))){*,:before,:after,::backdrop{--tw-translate-x:0;--tw-translate-y:0;--tw-translate-z:0;--tw-rotate-x:initial;--tw-rotate-y:initial;--tw-rotate-z:initial;--tw-skew-x:initial;--tw-skew-y:initial;--tw-space-x-reverse:0;--tw-border-style:solid;--tw-leading:initial;--tw-font-weight:initial;--tw-tracking:initial;--tw-shadow:0 0 #0000;--tw-shadow-color:initial;--tw-shadow-alpha:100%;--tw-inset-shadow:0 0 #0000;--tw-inset-shadow-color:initial;--tw-inset-shadow-alpha:100%;--tw-ring-color:initial;--tw-ring-shadow:0 0 #0000;--tw-inset-ring-color:initial;--tw-inset-ring-shadow:0 0 #0000;--tw-ring-inset:initial;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-offset-shadow:0 0 #0000;--tw-blur:initial;--tw-brightness:initial;--tw-contrast:initial;--tw-grayscale:initial;--tw-hue-rotate:initial;--tw-invert:initial;--tw-opacity:initial;--tw-saturate:initial;--tw-sepia:initial;--tw-drop-shadow:initial;--tw-drop-shadow-color:initial;--tw-drop-shadow-alpha:100%;--tw-drop-shadow-size:initial;--tw-duration:initial;--tw-ease:initial;--tw-content:""}}}@layer theme{:root,:host{--font-sans:"Instrument Sans", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";--font-serif:ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;--font-mono:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;--color-red-50:oklch(97.1% .013 17.38);--color-red-100:oklch(93.6% .032 17.717);--color-red-200:oklch(88.5% .062 18.334);--color-red-300:oklch(80.8% .114 19.571);--color-red-400:oklch(70.4% .191 22.216);--color-red-500:oklch(63.7% .237 25.331);--color-red-600:oklch(57.7% .245 27.325);--color-red-700:oklch(50.5% .213 27.518);--color-red-800:oklch(44.4% .177 26.899);--color-red-900:oklch(39.6% .141 25.723);--color-red-950:oklch(25.8% .092 26.042);--color-orange-50:oklch(98% .016 73.684);--color-orange-100:oklch(95.4% .038 75.164);--color-orange-200:oklch(90.1% .076 70.697);--color-orange-300:oklch(83.7% .128 66.29);--color-orange-400:oklch(75% .183 55.934);--color-orange-500:oklch(70.5% .213 47.604);--color-orange-600:oklch(64.6% .222 41.116);--color-orange-700:oklch(55.3% .195 38.402);--color-orange-800:oklch(47% .157 37.304);--color-orange-900:oklch(40.8% .123 38.172);--color-orange-950:oklch(26.6% .079 36.259);--color-amber-50:oklch(98.7% .022 95.277);--color-amber-100:oklch(96.2% .059 95.617);--color-amber-200:oklch(92.4% .12 95.746);--color-amber-300:oklch(87.9% .169 91.605);--color-amber-400:oklch(82.8% .189 84.429);--color-amber-500:oklch(76.9% .188 70.08);--color-amber-600:oklch(66.6% .179 58.318);--color-amber-700:oklch(55.5% .163 48.998);--color-amber-800:oklch(47.3% .137 46.201);--color-amber-900:oklch(41.4% .112 45.904);--color-amber-950:oklch(27.9% .077 45.635);--color-yellow-50:oklch(98.7% .026 102.212);--color-yellow-100:oklch(97.3% .071 103.193);--color-yellow-200:oklch(94.5% .129 101.54);--color-yellow-300:oklch(90.5% .182 98.111);--color-yellow-400:oklch(85.2% .199 91.936);--color-yellow-500:oklch(79.5% .184 86.047);--color-yellow-600:oklch(68.1% .162 75.834);--color-yellow-700:oklch(55.4% .135 66.442);--color-yellow-800:oklch(47.6% .114 61.907);--color-yellow-900:oklch(42.1% .095 57.708);--color-yellow-950:oklch(28.6% .066 53.813);--color-lime-50:oklch(98.6% .031 120.757);--color-lime-100:oklch(96.7% .067 122.328);--color-lime-200:oklch(93.8% .127 124.321);--color-lime-300:oklch(89.7% .196 126.665);--color-lime-400:oklch(84.1% .238 128.85);--color-lime-500:oklch(76.8% .233 130.85);--color-lime-600:oklch(64.8% .2 131.684);--color-lime-700:oklch(53.2% .157 131.589);--color-lime-800:oklch(45.3% .124 130.933);--color-lime-900:oklch(40.5% .101 131.063);--color-lime-950:oklch(27.4% .072 132.109);--color-green-50:oklch(98.2% .018 155.826);--color-green-100:oklch(96.2% .044 156.743);--color-green-200:oklch(92.5% .084 155.995);--color-green-300:oklch(87.1% .15 154.449);--color-green-400:oklch(79.2% .209 151.711);--color-green-500:oklch(72.3% .219 149.579);--color-green-600:oklch(62.7% .194 149.214);--color-green-700:oklch(52.7% .154 150.069);--color-green-800:oklch(44.8% .119 151.328);--color-green-900:oklch(39.3% .095 152.535);--color-green-950:oklch(26.6% .065 152.934);--color-emerald-50:oklch(97.9% .021 166.113);--color-emerald-100:oklch(95% .052 163.051);--color-emerald-200:oklch(90.5% .093 164.15);--color-emerald-300:oklch(84.5% .143 164.978);--color-emerald-400:oklch(76.5% .177 163.223);--color-emerald-500:oklch(69.6% .17 162.48);--color-emerald-600:oklch(59.6% .145 163.225);--color-emerald-700:oklch(50.8% .118 165.612);--color-emerald-800:oklch(43.2% .095 166.913);--color-emerald-900:oklch(37.8% .077 168.94);--color-emerald-950:oklch(26.2% .051 172.552);--color-teal-50:oklch(98.4% .014 180.72);--color-teal-100:oklch(95.3% .051 180.801);--color-teal-200:oklch(91% .096 180.426);--color-teal-300:oklch(85.5% .138 181.071);--color-teal-400:oklch(77.7% .152 181.912);--color-teal-500:oklch(70.4% .14 182.503);--color-teal-600:oklch(60% .118 184.704);--color-teal-700:oklch(51.1% .096 186.391);--color-teal-800:oklch(43.7% .078 188.216);--color-teal-900:oklch(38.6% .063 188.416);--color-teal-950:oklch(27.7% .046 192.524);--color-cyan-50:oklch(98.4% .019 200.873);--color-cyan-100:oklch(95.6% .045 203.388);--color-cyan-200:oklch(91.7% .08 205.041);--color-cyan-300:oklch(86.5% .127 207.078);--color-cyan-400:oklch(78.9% .154 211.53);--color-cyan-500:oklch(71.5% .143 215.221);--color-cyan-600:oklch(60.9% .126 221.723);--color-cyan-700:oklch(52% .105 223.128);--color-cyan-800:oklch(45% .085 224.283);--color-cyan-900:oklch(39.8% .07 227.392);--color-cyan-950:oklch(30.2% .056 229.695);--color-sky-50:oklch(97.7% .013 236.62);--color-sky-100:oklch(95.1% .026 236.824);--color-sky-200:oklch(90.1% .058 230.902);--color-sky-300:oklch(82.8% .111 230.318);--color-sky-400:oklch(74.6% .16 232.661);--color-sky-500:oklch(68.5% .169 237.323);--color-sky-600:oklch(58.8% .158 241.966);--color-sky-700:oklch(50% .134 242.749);--color-sky-800:oklch(44.3% .11 240.79);--color-sky-900:oklch(39.1% .09 240.876);--color-sky-950:oklch(29.3% .066 243.157);--color-blue-50:oklch(97% .014 254.604);--color-blue-100:oklch(93.2% .032 255.585);--color-blue-200:oklch(88.2% .059 254.128);--color-blue-300:oklch(80.9% .105 251.813);--color-blue-400:oklch(70.7% .165 254.624);--color-blue-500:oklch(62.3% .214 259.815);--color-blue-600:oklch(54.6% .245 262.881);--color-blue-700:oklch(48.8% .243 264.376);--color-blue-800:oklch(42.4% .199 265.638);--color-blue-900:oklch(37.9% .146 265.522);--color-blue-950:oklch(28.2% .091 267.935);--color-indigo-50:oklch(96.2% .018 272.314);--color-indigo-100:oklch(93% .034 272.788);--color-indigo-200:oklch(87% .065 274.039);--color-indigo-300:oklch(78.5% .115 274.713);--color-indigo-400:oklch(67.3% .182 276.935);--color-indigo-500:oklch(58.5% .233 277.117);--color-indigo-600:oklch(51.1% .262 276.966);--color-indigo-700:oklch(45.7% .24 277.023);--color-indigo-800:oklch(39.8% .195 277.366);--color-indigo-900:oklch(35.9% .144 278.697);--color-indigo-950:oklch(25.7% .09 281.288);--color-violet-50:oklch(96.9% .016 293.756);--color-violet-100:oklch(94.3% .029 294.588);--color-violet-200:oklch(89.4% .057 293.283);--color-violet-300:oklch(81.1% .111 293.571);--color-violet-400:oklch(70.2% .183 293.541);--color-violet-500:oklch(60.6% .25 292.717);--color-violet-600:oklch(54.1% .281 293.009);--color-violet-700:oklch(49.1% .27 292.581);--color-violet-800:oklch(43.2% .232 292.759);--color-violet-900:oklch(38% .189 293.745);--color-violet-950:oklch(28.3% .141 291.089);--color-purple-50:oklch(97.7% .014 308.299);--color-purple-100:oklch(94.6% .033 307.174);--color-purple-200:oklch(90.2% .063 306.703);--color-purple-300:oklch(82.7% .119 306.383);--color-purple-400:oklch(71.4% .203 305.504);--color-purple-500:oklch(62.7% .265 303.9);--color-purple-600:oklch(55.8% .288 302.321);--color-purple-700:oklch(49.6% .265 301.924);--color-purple-800:oklch(43.8% .218 303.724);--color-purple-900:oklch(38.1% .176 304.987);--color-purple-950:oklch(29.1% .149 302.717);--color-fuchsia-50:oklch(97.7% .017 320.058);--color-fuchsia-100:oklch(95.2% .037 318.852);--color-fuchsia-200:oklch(90.3% .076 319.62);--color-fuchsia-300:oklch(83.3% .145 321.434);--color-fuchsia-400:oklch(74% .238 322.16);--color-fuchsia-500:oklch(66.7% .295 322.15);--color-fuchsia-600:oklch(59.1% .293 322.896);--color-fuchsia-700:oklch(51.8% .253 323.949);--color-fuchsia-800:oklch(45.2% .211 324.591);--color-fuchsia-900:oklch(40.1% .17 325.612);--color-fuchsia-950:oklch(29.3% .136 325.661);--color-pink-50:oklch(97.1% .014 343.198);--color-pink-100:oklch(94.8% .028 342.258);--color-pink-200:oklch(89.9% .061 343.231);--color-pink-300:oklch(82.3% .12 346.018);--color-pink-400:oklch(71.8% .202 349.761);--color-pink-500:oklch(65.6% .241 354.308);--color-pink-600:oklch(59.2% .249 .584);--color-pink-700:oklch(52.5% .223 3.958);--color-pink-800:oklch(45.9% .187 3.815);--color-pink-900:oklch(40.8% .153 2.432);--color-pink-950:oklch(28.4% .109 3.907);--color-rose-50:oklch(96.9% .015 12.422);--color-rose-100:oklch(94.1% .03 12.58);--color-rose-200:oklch(89.2% .058 10.001);--color-rose-300:oklch(81% .117 11.638);--color-rose-400:oklch(71.2% .194 13.428);--color-rose-500:oklch(64.5% .246 16.439);--color-rose-600:oklch(58.6% .253 17.585);--color-rose-700:oklch(51.4% .222 16.935);--color-rose-800:oklch(45.5% .188 13.697);--color-rose-900:oklch(41% .159 10.272);--color-rose-950:oklch(27.1% .105 12.094);--color-slate-50:oklch(98.4% .003 247.858);--color-slate-100:oklch(96.8% .007 247.896);--color-slate-200:oklch(92.9% .013 255.508);--color-slate-300:oklch(86.9% .022 252.894);--color-slate-400:oklch(70.4% .04 256.788);--color-slate-500:oklch(55.4% .046 257.417);--color-slate-600:oklch(44.6% .043 257.281);--color-slate-700:oklch(37.2% .044 257.287);--color-slate-800:oklch(27.9% .041 260.031);--color-slate-900:oklch(20.8% .042 265.755);--color-slate-950:oklch(12.9% .042 264.695);--color-gray-50:oklch(98.5% .002 247.839);--color-gray-100:oklch(96.7% .003 264.542);--color-gray-200:oklch(92.8% .006 264.531);--color-gray-300:oklch(87.2% .01 258.338);--color-gray-400:oklch(70.7% .022 261.325);--color-gray-500:oklch(55.1% .027 264.364);--color-gray-600:oklch(44.6% .03 256.802);--color-gray-700:oklch(37.3% .034 259.733);--color-gray-800:oklch(27.8% .033 256.848);--color-gray-900:oklch(21% .034 264.665);--color-gray-950:oklch(13% .028 261.692);--color-zinc-50:oklch(98.5% 0 0);--color-zinc-100:oklch(96.7% .001 286.375);--color-zinc-200:oklch(92% .004 286.32);--color-zinc-300:oklch(87.1% .006 286.286);--color-zinc-400:oklch(70.5% .015 286.067);--color-zinc-500:oklch(55.2% .016 285.938);--color-zinc-600:oklch(44.2% .017 285.786);--color-zinc-700:oklch(37% .013 285.805);--color-zinc-800:oklch(27.4% .006 286.033);--color-zinc-900:oklch(21% .006 285.885);--color-zinc-950:oklch(14.1% .005 285.823);--color-neutral-50:oklch(98.5% 0 0);--color-neutral-100:oklch(97% 0 0);--color-neutral-200:oklch(92.2% 0 0);--color-neutral-300:oklch(87% 0 0);--color-neutral-400:oklch(70.8% 0 0);--color-neutral-500:oklch(55.6% 0 0);--color-neutral-600:oklch(43.9% 0 0);--color-neutral-700:oklch(37.1% 0 0);--color-neutral-800:oklch(26.9% 0 0);--color-neutral-900:oklch(20.5% 0 0);--color-neutral-950:oklch(14.5% 0 0);--color-stone-50:oklch(98.5% .001 106.423);--color-stone-100:oklch(97% .001 106.424);--color-stone-200:oklch(92.3% .003 48.717);--color-stone-300:oklch(86.9% .005 56.366);--color-stone-400:oklch(70.9% .01 56.259);--color-stone-500:oklch(55.3% .013 58.071);--color-stone-600:oklch(44.4% .011 73.639);--color-stone-700:oklch(37.4% .01 67.558);--color-stone-800:oklch(26.8% .007 34.298);--color-stone-900:oklch(21.6% .006 56.043);--color-stone-950:oklch(14.7% .004 49.25);--color-black:#000;--color-white:#fff;--spacing:.25rem;--breakpoint-sm:40rem;--breakpoint-md:48rem;--breakpoint-lg:64rem;--breakpoint-xl:80rem;--breakpoint-2xl:96rem;--container-3xs:16rem;--container-2xs:18rem;--container-xs:20rem;--container-sm:24rem;--container-md:28rem;--container-lg:32rem;--container-xl:36rem;--container-2xl:42rem;--container-3xl:48rem;--container-4xl:56rem;--container-5xl:64rem;--container-6xl:72rem;--container-7xl:80rem;--text-xs:.75rem;--text-xs--line-height:calc(1 / .75);--text-sm:.875rem;--text-sm--line-height:calc(1.25 / .875);--text-base:1rem;--text-base--line-height: 1.5 ;--text-lg:1.125rem;--text-lg--line-height:calc(1.75 / 1.125);--text-xl:1.25rem;--text-xl--line-height:calc(1.75 / 1.25);--text-2xl:1.5rem;--text-2xl--line-height:calc(2 / 1.5);--text-3xl:1.875rem;--text-3xl--line-height: 1.2 ;--text-4xl:2.25rem;--text-4xl--line-height:calc(2.5 / 2.25);--text-5xl:3rem;--text-5xl--line-height:1;--text-6xl:3.75rem;--text-6xl--line-height:1;--text-7xl:4.5rem;--text-7xl--line-height:1;--text-8xl:6rem;--text-8xl--line-height:1;--text-9xl:8rem;--text-9xl--line-height:1;--font-weight-thin:100;--font-weight-extralight:200;--font-weight-light:300;--font-weight-normal:400;--font-weight-medium:500;--font-weight-semibold:600;--font-weight-bold:700;--font-weight-extrabold:800;--font-weight-black:900;--tracking-tighter:-.05em;--tracking-tight:-.025em;--tracking-normal:0em;--tracking-wide:.025em;--tracking-wider:.05em;--tracking-widest:.1em;--leading-tight:1.25;--leading-snug:1.375;--leading-normal:1.5;--leading-relaxed:1.625;--leading-loose:2;--radius-xs:.125rem;--radius-sm:.25rem;--radius-md:.375rem;--radius-lg:.5rem;--radius-xl:.75rem;--radius-2xl:1rem;--radius-3xl:1.5rem;--radius-4xl:2rem;--shadow-2xs:0 1px #0000000d;--shadow-xs:0 1px 2px 0 #0000000d;--shadow-sm:0 1px 3px 0 #0000001a, 0 1px 2px -1px #0000001a;--shadow-md:0 4px 6px -1px #0000001a, 0 2px 4px -2px #0000001a;--shadow-lg:0 10px 15px -3px #0000001a, 0 4px 6px -4px #0000001a;--shadow-xl:0 20px 25px -5px #0000001a, 0 8px 10px -6px #0000001a;--shadow-2xl:0 25px 50px -12px #00000040;--inset-shadow-2xs:inset 0 1px #0000000d;--inset-shadow-xs:inset 0 1px 1px #0000000d;--inset-shadow-sm:inset 0 2px 4px #0000000d;--drop-shadow-xs:0 1px 1px #0000000d;--drop-shadow-sm:0 1px 2px #00000026;--drop-shadow-md:0 3px 3px #0000001f;--drop-shadow-lg:0 4px 4px #00000026;--drop-shadow-xl:0 9px 7px #0000001a;--drop-shadow-2xl:0 25px 25px #00000026;--ease-in:cubic-bezier(.4, 0, 1, 1);--ease-out:cubic-bezier(0, 0, .2, 1);--ease-in-out:cubic-bezier(.4, 0, .2, 1);--animate-spin:spin 1s linear infinite;--animate-ping:ping 1s cubic-bezier(0, 0, .2, 1) infinite;--animate-pulse:pulse 2s cubic-bezier(.4, 0, .6, 1) infinite;--animate-bounce:bounce 1s infinite;--blur-xs:4px;--blur-sm:8px;--blur-md:12px;--blur-lg:16px;--blur-xl:24px;--blur-2xl:40px;--blur-3xl:64px;--perspective-dramatic:100px;--perspective-near:300px;--perspective-normal:500px;--perspective-midrange:800px;--perspective-distant:1200px;--aspect-video:16 / 9;--default-transition-duration:.15s;--default-transition-timing-function:cubic-bezier(.4, 0, .2, 1);--default-font-family:var(--font-sans);--default-mono-font-family:var(--font-mono)}}@layer base{*,:after,:before,::backdrop{box-sizing:border-box;border:0 solid;margin:0;padding:0}::file-selector-button{box-sizing:border-box;border:0 solid;margin:0;padding:0}html,:host{-webkit-text-size-adjust:100%;tab-size:4;line-height:1.5;font-family:var(--default-font-family,ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji");font-feature-settings:var(--default-font-feature-settings,normal);font-variation-settings:var(--default-font-variation-settings,normal);-webkit-tap-highlight-color:transparent}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;-webkit-text-decoration:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,samp,pre{font-family:var(--default-mono-font-family,ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace);font-feature-settings:var(--default-mono-font-feature-settings,normal);font-variation-settings:var(--default-mono-font-variation-settings,normal);font-size:1em}small{font-size:80%}sub,sup{vertical-align:baseline;font-size:75%;line-height:0;position:relative}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}:-moz-focusring{outline:auto}progress{vertical-align:baseline}summary{display:list-item}ol,ul,menu{list-style:none}img,svg,video,canvas,audio,iframe,embed,object{vertical-align:middle;display:block}img,video{max-width:100%;height:auto}button,input,select,optgroup,textarea{font:inherit;font-feature-settings:inherit;font-variation-settings:inherit;letter-spacing:inherit;color:inherit;opacity:1;background-color:#0000;border-radius:0}::file-selector-button{font:inherit;font-feature-settings:inherit;font-variation-settings:inherit;letter-spacing:inherit;color:inherit;opacity:1;background-color:#0000;border-radius:0}:where(select:is([multiple],[size])) optgroup{font-weight:bolder}:where(select:is([multiple],[size])) optgroup option{padding-inline-start:20px}::file-selector-button{margin-inline-end:4px}::placeholder{opacity:1}@supports (not ((-webkit-appearance:-apple-pay-button))) or (contain-intrinsic-size:1px){::placeholder{color:currentColor}@supports (color:color-mix(in lab,red,red)){::placeholder{color:color-mix(in oklab,currentcolor 50%,transparent)}}}textarea{resize:vertical}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-date-and-time-value{min-height:1lh;text-align:inherit}::-webkit-datetime-edit{display:inline-flex}::-webkit-datetime-edit-fields-wrapper{padding:0}::-webkit-datetime-edit{padding-block:0}::-webkit-datetime-edit-year-field{padding-block:0}::-webkit-datetime-edit-month-field{padding-block:0}::-webkit-datetime-edit-day-field{padding-block:0}::-webkit-datetime-edit-hour-field{padding-block:0}::-webkit-datetime-edit-minute-field{padding-block:0}::-webkit-datetime-edit-second-field{padding-block:0}::-webkit-datetime-edit-millisecond-field{padding-block:0}::-webkit-datetime-edit-meridiem-field{padding-block:0}::-webkit-calendar-picker-indicator{line-height:1}:-moz-ui-invalid{box-shadow:none}button,input:where([type=button],[type=reset],[type=submit]){appearance:button}::file-selector-button{appearance:button}::-webkit-inner-spin-button{height:auto}::-webkit-outer-spin-button{height:auto}[hidden]:where(:not([hidden=until-found])){display:none!important}}@layer components;@layer utilities{.absolute{position:absolute}.fixed{position:fixed}.relative{position:relative}.static{position:static}.inset-0{inset:calc(var(--spacing) * 0)}.start{inset-inline-start:var(--spacing)}.top-0{top:calc(var(--spacing) * 0)}.right-0{right:calc(var(--spacing) * 0)}.container{width:100%}@media(min-width:40rem){.container{max-width:40rem}}@media(min-width:48rem){.container{max-width:48rem}}@media(min-width:64rem){.container{max-width:64rem}}@media(min-width:80rem){.container{max-width:80rem}}@media(min-width:96rem){.container{max-width:96rem}}.mx-auto{margin-inline:auto}.-mt-\[6\.6rem\]{margin-top:-6.6rem}.-mt-px{margin-top:-1px}.mt-2{margin-top:calc(var(--spacing) * 2)}.mt-4{margin-top:calc(var(--spacing) * 4)}.mt-6{margin-top:calc(var(--spacing) * 6)}.mt-8{margin-top:calc(var(--spacing) * 8)}.mr-2{margin-right:calc(var(--spacing) * 2)}.-mb-px{margin-bottom:-1px}.mb-1{margin-bottom:calc(var(--spacing) * 1)}.mb-2{margin-bottom:calc(var(--spacing) * 2)}.mb-4{margin-bottom:calc(var(--spacing) * 4)}.mb-6{margin-bottom:calc(var(--spacing) * 6)}.-ml-8{margin-left:calc(var(--spacing) * -8)}.-ml-px{margin-left:-1px}.ml-1{margin-left:calc(var(--spacing) * 1)}.ml-2{margin-left:calc(var(--spacing) * 2)}.ml-4{margin-left:calc(var(--spacing) * 4)}.ml-12{margin-left:calc(var(--spacing) * 12)}.contents{display:contents}.flex{display:flex}.grid{display:grid}.hidden{display:none}.inline-block{display:inline-block}.inline-flex{display:inline-flex}.table{display:table}.aspect-\[335\/364\]{aspect-ratio:335/364}.h-1{height:calc(var(--spacing) * 1)}.h-1\.5{height:calc(var(--spacing) * 1.5)}.h-2{height:calc(var(--spacing) * 2)}.h-2\.5{height:calc(var(--spacing) * 2.5)}.h-3{height:calc(var(--spacing) * 3)}.h-3\.5{height:calc(var(--spacing) * 3.5)}.h-5{height:calc(var(--spacing) * 5)}.h-8{height:calc(var(--spacing) * 8)}.h-14{height:calc(var(--spacing) * 14)}.h-14\.5{height:calc(var(--spacing) * 14.5)}.h-16{height:calc(var(--spacing) * 16)}.min-h-screen{min-height:100vh}.w-1{width:calc(var(--spacing) * 1)}.w-1\.5{width:calc(var(--spacing) * 1.5)}.w-2{width:calc(var(--spacing) * 2)}.w-2\.5{width:calc(var(--spacing) * 2.5)}.w-3{width:calc(var(--spacing) * 3)}.w-3\.5{width:calc(var(--spacing) * 3.5)}.w-5{width:calc(var(--spacing) * 5)}.w-8{width:calc(var(--spacing) * 8)}.w-\[438px\]{width:438px}.w-auto{width:auto}.w-full{width:100%}.max-w-6xl{max-width:var(--container-6xl)}.max-w-\[335px\]{max-width:335px}.max-w-none{max-width:none}.max-w-xl{max-width:var(--container-xl)}.flex-1{flex:1}.shrink-0{flex-shrink:0}.translate-y-0{--tw-translate-y:calc(var(--spacing) * 0);translate:var(--tw-translate-x) var(--tw-translate-y)}.transform{transform:var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,)}.cursor-default{cursor:default}.cursor-not-allowed{cursor:not-allowed}.grid-cols-1{grid-template-columns:repeat(1,minmax(0,1fr))}.flex-col{flex-direction:column}.flex-col-reverse{flex-direction:column-reverse}.items-center{align-items:center}.justify-between{justify-content:space-between}.justify-center{justify-content:center}.justify-end{justify-content:flex-end}.justify-items-center{justify-items:center}.gap-2{gap:calc(var(--spacing) * 2)}.gap-3{gap:calc(var(--spacing) * 3)}.gap-4{gap:calc(var(--spacing) * 4)}:where(.space-x-1>:not(:last-child)){--tw-space-x-reverse:0;margin-inline-start:calc(calc(var(--spacing) * 1) * var(--tw-space-x-reverse));margin-inline-end:calc(calc(var(--spacing) * 1) * calc(1 - var(--tw-space-x-reverse)))}.overflow-hidden{overflow:hidden}.rounded-full{border-radius:3.40282e38px}.rounded-md{border-radius:var(--radius-md)}.rounded-sm{border-radius:var(--radius-sm)}.rounded-t-lg{border-top-left-radius:var(--radius-lg);border-top-right-radius:var(--radius-lg)}.rounded-l-md{border-top-left-radius:var(--radius-md);border-bottom-left-radius:var(--radius-md)}.rounded-r-md{border-top-right-radius:var(--radius-md);border-bottom-right-radius:var(--radius-md)}.rounded-br-lg{border-bottom-right-radius:var(--radius-lg)}.rounded-bl-lg{border-bottom-left-radius:var(--radius-lg)}.border{border-style:var(--tw-border-style);border-width:1px}.border-t{border-top-style:var(--tw-border-style);border-top-width:1px}.border-r{border-right-style:var(--tw-border-style);border-right-width:1px}.border-\[\#19140035\]{border-color:#19140035}.border-\[\#e3e3e0\]{border-color:#e3e3e0}.border-black{border-color:var(--color-black)}.border-gray-200{border-color:var(--color-gray-200)}.border-gray-300{border-color:var(--color-gray-300)}.border-gray-400{border-color:var(--color-gray-400)}.border-transparent{border-color:#0000}.bg-\[\#1b1b18\]{background-color:#1b1b18}.bg-\[\#FDFDFC\]{background-color:#fdfdfc}.bg-\[\#dbdbd7\]{background-color:#dbdbd7}.bg-\[\#fff2f2\]{background-color:#fff2f2}.bg-gray-100{background-color:var(--color-gray-100)}.bg-gray-200{background-color:var(--color-gray-200)}.bg-white{background-color:var(--color-white)}.p-6{padding:calc(var(--spacing) * 6)}.px-2{padding-inline:calc(var(--spacing) * 2)}.px-4{padding-inline:calc(var(--spacing) * 4)}.px-5{padding-inline:calc(var(--spacing) * 5)}.px-6{padding-inline:calc(var(--spacing) * 6)}.py-1{padding-block:calc(var(--spacing) * 1)}.py-1\.5{padding-block:calc(var(--spacing) * 1.5)}.py-2{padding-block:calc(var(--spacing) * 2)}.py-4{padding-block:calc(var(--spacing) * 4)}.pt-8{padding-top:calc(var(--spacing) * 8)}.pb-6{padding-bottom:calc(var(--spacing) * 6)}.pb-12{padding-bottom:calc(var(--spacing) * 12)}.text-center{text-align:center}.text-lg{font-size:var(--text-lg);line-height:var(--tw-leading,var(--text-lg--line-height))}.text-sm{font-size:var(--text-sm);line-height:var(--tw-leading,var(--text-sm--line-height))}.text-\[13px\]{font-size:13px}.leading-5{--tw-leading:calc(var(--spacing) * 5);line-height:calc(var(--spacing) * 5)}.leading-7{--tw-leading:calc(var(--spacing) * 7);line-height:calc(var(--spacing) * 7)}.leading-\[20px\]{--tw-leading:20px;line-height:20px}.leading-normal{--tw-leading:var(--leading-normal);line-height:var(--leading-normal)}.font-medium{--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium)}.font-semibold{--tw-font-weight:var(--font-weight-semibold);font-weight:var(--font-weight-semibold)}.tracking-wider{--tw-tracking:var(--tracking-wider);letter-spacing:var(--tracking-wider)}.text-\[\#1B1B18\],.text-\[\#1b1b18\]{color:#1b1b18}.text-\[\#706f6c\]{color:#706f6c}.text-\[\#F3BEC7\]{color:#f3bec7}.text-\[\#F8B803\]{color:#f8b803}.text-\[\#F53003\],.text-\[\#f53003\]{color:#f53003}.text-gray-200{color:var(--color-gray-200)}.text-gray-300{color:var(--color-gray-300)}.text-gray-400{color:var(--color-gray-400)}.text-gray-500{color:var(--color-gray-500)}.text-gray-600{color:var(--color-gray-600)}.text-gray-700{color:var(--color-gray-700)}.text-gray-800{color:var(--color-gray-800)}.text-gray-900{color:var(--color-gray-900)}.text-white{color:var(--color-white)}.uppercase{text-transform:uppercase}.underline{text-decoration-line:underline}.underline-offset-4{text-underline-offset:4px}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.opacity-100{opacity:1}.mix-blend-color{mix-blend-mode:color}.mix-blend-darken{mix-blend-mode:darken}.mix-blend-hard-light{mix-blend-mode:hard-light}.mix-blend-multiply{mix-blend-mode:multiply}.shadow{--tw-shadow:0 1px 3px 0 var(--tw-shadow-color,#0000001a), 0 1px 2px -1px var(--tw-shadow-color,#0000001a);box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}.shadow-\[0px_0px_1px_0px_rgba\(0\,0\,0\,0\.03\)\,0px_1px_2px_0px_rgba\(0\,0\,0\,0\.06\)\]{--tw-shadow:0px 0px 1px 0px var(--tw-shadow-color,#00000008), 0px 1px 2px 0px var(--tw-shadow-color,#0000000f);box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}.shadow-\[inset_0px_0px_0px_1px_rgba\(26\,26\,0\,0\.16\)\]{--tw-shadow:inset 0px 0px 0px 1px var(--tw-shadow-color,#1a1a0029);box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}.shadow-sm{--tw-shadow:0 1px 3px 0 var(--tw-shadow-color,#0000001a), 0 1px 2px -1px var(--tw-shadow-color,#0000001a);box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}.ring-gray-300{--tw-ring-color:var(--color-gray-300)}.filter{filter:var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,)}.transition{transition-property:color,background-color,border-color,outline-color,text-decoration-color,fill,stroke,--tw-gradient-from,--tw-gradient-via,--tw-gradient-to,opacity,box-shadow,transform,translate,scale,rotate,filter,-webkit-backdrop-filter,backdrop-filter,display,content-visibility,overlay,pointer-events;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))}.transition-all{transition-property:all;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))}.transition-opacity{transition-property:opacity;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))}.delay-200{transition-delay:.2s}.delay-300{transition-delay:.3s}.delay-400{transition-delay:.4s}.duration-150{--tw-duration:.15s;transition-duration:.15s}.duration-750{--tw-duration:.75s;transition-duration:.75s}.ease-in-out{--tw-ease:var(--ease-in-out);transition-timing-function:var(--ease-in-out)}.\[--stroke-color\:\#1B1B18\]{--stroke-color:#1b1b18}.not-has-\[nav\]\:hidden:not(:has(:is(nav))){display:none}.before\:absolute:before{content:var(--tw-content);position:absolute}.before\:top-0:before{content:var(--tw-content);top:calc(var(--spacing) * 0)}.before\:top-1\/2:before{content:var(--tw-content);top:50%}.before\:bottom-0:before{content:var(--tw-content);bottom:calc(var(--spacing) * 0)}.before\:bottom-1\/2:before{content:var(--tw-content);bottom:50%}.before\:left-\[0\.4rem\]:before{content:var(--tw-content);left:.4rem}.before\:border-l:before{content:var(--tw-content);border-left-style:var(--tw-border-style);border-left-width:1px}.before\:border-\[\#e3e3e0\]:before{content:var(--tw-content);border-color:#e3e3e0}@media(hover:hover){.hover\:border-\[\#1915014a\]:hover{border-color:#1915014a}.hover\:border-\[\#19140035\]:hover{border-color:#19140035}.hover\:border-black:hover{border-color:var(--color-black)}.hover\:bg-black:hover{background-color:var(--color-black)}.hover\:bg-gray-100:hover{background-color:var(--color-gray-100)}.hover\:text-gray-400:hover{color:var(--color-gray-400)}.hover\:text-gray-700:hover{color:var(--color-gray-700)}}.focus\:border-blue-300:focus{border-color:var(--color-blue-300)}.focus\:ring:focus{--tw-ring-shadow:var(--tw-ring-inset,) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color,currentcolor);box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}.focus\:outline-none:focus{--tw-outline-style:none;outline-style:none}.active\:bg-gray-100:active{background-color:var(--color-gray-100)}.active\:text-gray-500:active{color:var(--color-gray-500)}.active\:text-gray-700:active{color:var(--color-gray-700)}.active\:text-gray-800:active{color:var(--color-gray-800)}@media(min-width:40rem){.sm\:flex{display:flex}.sm\:hidden{display:none}.sm\:flex-1{flex:1}.sm\:items-center{align-items:center}.sm\:justify-between{justify-content:space-between}.sm\:justify-start{justify-content:flex-start}.sm\:gap-2{gap:calc(var(--spacing) * 2)}.sm\:px-6{padding-inline:calc(var(--spacing) * 6)}.sm\:pt-0{padding-top:calc(var(--spacing) * 0)}}@media(min-width:64rem){.lg\:mt-10{margin-top:calc(var(--spacing) * 10)}.lg\:mb-0{margin-bottom:calc(var(--spacing) * 0)}.lg\:mb-6{margin-bottom:calc(var(--spacing) * 6)}.lg\:-ml-px{margin-left:-1px}.lg\:ml-0{margin-left:calc(var(--spacing) * 0)}.lg\:block{display:block}.lg\:aspect-auto{aspect-ratio:auto}.lg\:w-\[438px\]{width:438px}.lg\:max-w-4xl{max-width:var(--container-4xl)}.lg\:grow{flex-grow:1}.lg\:flex-row{flex-direction:row}.lg\:justify-center{justify-content:center}.lg\:rounded-t-none{border-top-left-radius:0;border-top-right-radius:0}.lg\:rounded-tl-lg{border-top-left-radius:var(--radius-lg)}.lg\:rounded-r-lg{border-top-right-radius:var(--radius-lg);border-bottom-right-radius:var(--radius-lg)}.lg\:rounded-br-none{border-bottom-right-radius:0}.lg\:p-8{padding:calc(var(--spacing) * 8)}.lg\:p-20{padding:calc(var(--spacing) * 20)}.lg\:px-8{padding-inline:calc(var(--spacing) * 8)}.lg\:pb-10{padding-bottom:calc(var(--spacing) * 10)}}.rtl\:flex-row-reverse:where(:dir(rtl),[dir=rtl],[dir=rtl] *){flex-direction:row-reverse}@media(prefers-color-scheme:dark){.dark\:border-\[\#3E3E3A\]{border-color:#3e3e3a}.dark\:border-\[\#eeeeec\]{border-color:#eeeeec}.dark\:border-gray-600{border-color:var(--color-gray-600)}.dark\:bg-\[\#0a0a0a\]{background-color:#0a0a0a}.dark\:bg-\[\#1D0002\]{background-color:#1d0002}.dark\:bg-\[\#3E3E3A\]{background-color:#3e3e3a}.dark\:bg-\[\#161615\]{background-color:#161615}.dark\:bg-\[\#eeeeec\]{background-color:#eeeeec}.dark\:bg-gray-700{background-color:var(--color-gray-700)}.dark\:bg-gray-800{background-color:var(--color-gray-800)}.dark\:bg-gray-900{background-color:var(--color-gray-900)}.dark\:text-\[\#1C1C1A\]{color:#1c1c1a}.dark\:text-\[\#4B0600\]{color:#4b0600}.dark\:text-\[\#391800\]{color:#391800}.dark\:text-\[\#733000\]{color:#733000}.dark\:text-\[\#A1A09A\]{color:#a1a09a}.dark\:text-\[\#EDEDEC\]{color:#ededec}.dark\:text-\[\#F61500\]{color:#f61500}.dark\:text-\[\#FF4433\]{color:#f43}.dark\:text-black{color:var(--color-black)}.dark\:text-gray-200{color:var(--color-gray-200)}.dark\:text-gray-300{color:var(--color-gray-300)}.dark\:text-gray-400{color:var(--color-gray-400)}.dark\:text-gray-600{color:var(--color-gray-600)}.dark\:mix-blend-hard-light{mix-blend-mode:hard-light}.dark\:mix-blend-normal{mix-blend-mode:normal}.dark\:shadow-\[inset_0px_0px_0px_1px_\#fffaed2d\]{--tw-shadow:inset 0px 0px 0px 1px var(--tw-shadow-color,#fffaed2d);box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}.dark\:\[--stroke-color\:\#FF750F\]{--stroke-color:#ff750f}.dark\:before\:border-\[\#3E3E3A\]:before{content:var(--tw-content);border-color:#3e3e3a}@media(hover:hover){.dark\:hover\:border-\[\#3E3E3A\]:hover{border-color:#3e3e3a}.dark\:hover\:border-\[\#62605b\]:hover{border-color:#62605b}.dark\:hover\:border-white:hover{border-color:var(--color-white)}.dark\:hover\:bg-gray-900:hover{background-color:var(--color-gray-900)}.dark\:hover\:bg-white:hover{background-color:var(--color-white)}.dark\:hover\:text-gray-200:hover{color:var(--color-gray-200)}.dark\:hover\:text-gray-300:hover{color:var(--color-gray-300)}}.dark\:focus\:border-blue-700:focus{border-color:var(--color-blue-700)}.dark\:focus\:border-blue-800:focus{border-color:var(--color-blue-800)}.dark\:active\:bg-gray-700:active{background-color:var(--color-gray-700)}.dark\:active\:text-gray-300:active{color:var(--color-gray-300)}}@starting-style{.starting\:opacity-0{opacity:0}}@media(prefers-reduced-motion:no-preference){@starting-style{.motion-safe\:starting\:-translate-x-\[26px\]{--tw-translate-x: -26px ;translate:var(--tw-translate-x) var(--tw-translate-y)}}@starting-style{.motion-safe\:starting\:-translate-x-\[51px\]{--tw-translate-x: -51px ;translate:var(--tw-translate-x) var(--tw-translate-y)}}@starting-style{.motion-safe\:starting\:-translate-x-\[78px\]{--tw-translate-x: -78px ;translate:var(--tw-translate-x) var(--tw-translate-y)}}@starting-style{.motion-safe\:starting\:-translate-x-\[102px\]{--tw-translate-x: -102px ;translate:var(--tw-translate-x) var(--tw-translate-y)}}@starting-style{.motion-safe\:starting\:translate-y-6{--tw-translate-y:calc(var(--spacing) * 6);translate:var(--tw-translate-x) var(--tw-translate-y)}}}}@property --tw-translate-x{syntax:"*";inherits:false;initial-value:0}@property --tw-translate-y{syntax:"*";inherits:false;initial-value:0}@property --tw-translate-z{syntax:"*";inherits:false;initial-value:0}@property --tw-rotate-x{syntax:"*";inherits:false}@property --tw-rotate-y{syntax:"*";inherits:false}@property --tw-rotate-z{syntax:"*";inherits:false}@property --tw-skew-x{syntax:"*";inherits:false}@property --tw-skew-y{syntax:"*";inherits:false}@property --tw-space-x-reverse{syntax:"*";inherits:false;initial-value:0}@property --tw-border-style{syntax:"*";inherits:false;initial-value:solid}@property --tw-leading{syntax:"*";inherits:false}@property --tw-font-weight{syntax:"*";inherits:false}@property --tw-tracking{syntax:"*";inherits:false}@property --tw-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-shadow-color{syntax:"*";inherits:false}@property --tw-shadow-alpha{syntax:"<percentage>";inherits:false;initial-value:100%}@property --tw-inset-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-inset-shadow-color{syntax:"*";inherits:false}@property --tw-inset-shadow-alpha{syntax:"<percentage>";inherits:false;initial-value:100%}@property --tw-ring-color{syntax:"*";inherits:false}@property --tw-ring-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-inset-ring-color{syntax:"*";inherits:false}@property --tw-inset-ring-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-ring-inset{syntax:"*";inherits:false}@property --tw-ring-offset-width{syntax:"<length>";inherits:false;initial-value:0}@property --tw-ring-offset-color{syntax:"*";inherits:false;initial-value:#fff}@property --tw-ring-offset-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-blur{syntax:"*";inherits:false}@property --tw-brightness{syntax:"*";inherits:false}@property --tw-contrast{syntax:"*";inherits:false}@property --tw-grayscale{syntax:"*";inherits:false}@property --tw-hue-rotate{syntax:"*";inherits:false}@property --tw-invert{syntax:"*";inherits:false}@property --tw-opacity{syntax:"*";inherits:false}@property --tw-saturate{syntax:"*";inherits:false}@property --tw-sepia{syntax:"*";inherits:false}@property --tw-drop-shadow{syntax:"*";inherits:false}@property --tw-drop-shadow-color{syntax:"*";inherits:false}@property --tw-drop-shadow-alpha{syntax:"<percentage>";inherits:false;initial-value:100%}@property --tw-drop-shadow-size{syntax:"*";inherits:false}@property --tw-duration{syntax:"*";inherits:false}@property --tw-ease{syntax:"*";inherits:false}@property --tw-content{syntax:"*";inherits:false;initial-value:""}@keyframes spin{to{transform:rotate(360deg)}}@keyframes ping{75%,to{opacity:0;transform:scale(2)}}@keyframes pulse{50%{opacity:.5}}@keyframes bounce{0%,to{animation-timing-function:cubic-bezier(.8,0,1,1);transform:translateY(-25%)}50%{animation-timing-function:cubic-bezier(0,0,.2,1);transform:none}}
-            </style>
-        @endif
-    </head>
-    <body class="bg-[#FDFDFC] dark:bg-[#0a0a0a] text-[#1b1b18] flex p-6 lg:p-8 items-center lg:justify-center min-h-screen flex-col">
-        <header class="w-full lg:max-w-4xl max-w-[335px] text-sm mb-6 not-has-[nav]:hidden">
-            @if (Route::has('login'))
-                <nav class="flex items-center justify-end gap-4">
-                    @auth
-                        <a
-                            href="{{ url('/dashboard') }}"
-                            class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] border-[#19140035] hover:border-[#1915014a] border text-[#1b1b18] dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-sm text-sm leading-normal"
-                        >
-                            Dashboard
-                        </a>
-                    @else
-                        <a
-                            href="{{ route('login') }}"
-                            class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] text-[#1b1b18] border border-transparent hover:border-[#19140035] dark:hover:border-[#3E3E3A] rounded-sm text-sm leading-normal"
-                        >
-                            Log in
-                        </a>
+<body class="homepage">
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <defs>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="instagram" viewBox="0 0 15 15">
+        <path fill="none" stroke="currentColor"
+          d="M11 3.5h1M4.5.5h6a4 4 0 0 1 4 4v6a4 4 0 0 1-4 4h-6a4 4 0 0 1-4-4v-6a4 4 0 0 1 4-4Zm3 10a3 3 0 1 1 0-6a3 3 0 0 1 0 6Z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="facebook" viewBox="0 0 15 15">
+        <path fill="none" stroke="currentColor"
+          d="M7.5 14.5a7 7 0 1 1 0-14a7 7 0 0 1 0 14Zm0 0v-8a2 2 0 0 1 2-2h.5m-5 4h5" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="twitter" viewBox="0 0 15 15">
+        <path fill="currentColor"
+          d="m14.478 1.5l.5-.033a.5.5 0 0 0-.871-.301l.371.334Zm-.498 2.959a.5.5 0 1 0-1 0h1Zm-6.49.082h-.5h.5Zm0 .959h.5h-.5Zm-6.99 7V12a.5.5 0 0 0-.278.916L.5 12.5Zm.998-11l.469-.175a.5.5 0 0 0-.916-.048l.447.223Zm3.994 9l.354.353a.5.5 0 0 0-.195-.827l-.159.474Zm7.224-8.027l-.37.336l.18.199l.265-.04l-.075-.495Zm1.264-.94c.051.778.003 1.25-.123 1.606c-.122.345-.336.629-.723 1l.692.722c.438-.42.776-.832.974-1.388c.193-.546.232-1.178.177-2.006l-.998.066Zm0 3.654V4.46h-1v.728h1Zm-6.99-.646V5.5h1v-.959h-1Zm0 .959V6h1v-.5h-1ZM10.525 1a3.539 3.539 0 0 0-3.537 3.541h1A2.539 2.539 0 0 1 10.526 2V1Zm2.454 4.187C12.98 9.503 9.487 13 5.18 13v1c4.86 0 8.8-3.946 8.8-8.813h-1ZM1.03 1.675C1.574 3.127 3.614 6 7.49 6V5C4.174 5 2.421 2.54 1.966 1.325l-.937.35Zm.021-.398C.004 3.373-.157 5.407.604 7.139c.759 1.727 2.392 3.055 4.73 3.835l.317-.948c-2.155-.72-3.518-1.892-4.132-3.29c-.612-1.393-.523-3.11.427-5.013l-.895-.446Zm4.087 8.87C4.536 10.75 2.726 12 .5 12v1c2.566 0 4.617-1.416 5.346-2.147l-.708-.706Zm7.949-8.009A3.445 3.445 0 0 0 10.526 1v1c.721 0 1.37.311 1.82.809l.74-.671Zm-.296.83a3.513 3.513 0 0 0 2.06-1.134l-.744-.668a2.514 2.514 0 0 1-1.466.813l.15.989ZM.222 12.916C1.863 14.01 3.583 14 5.18 14v-1c-1.63 0-3.048-.011-4.402-.916l-.556.832Z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="pinterest" viewBox="0 0 15 15">
+        <path fill="none" stroke="currentColor"
+          d="m4.5 13.5l3-7m-3.236 3a2.989 2.989 0 0 1-.764-2V7A3.5 3.5 0 0 1 7 3.5h1A3.5 3.5 0 0 1 11.5 7v.5a3 3 0 0 1-3 3a2.081 2.081 0 0 1-1.974-1.423L6.5 9m1 5.5a7 7 0 1 1 0-14a7 7 0 0 1 0 14Z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="youtube" viewBox="0 0 15 15">
+        <path fill="currentColor"
+          d="m1.61 12.738l-.104.489l.105-.489Zm11.78 0l.104.489l-.105-.489Zm0-10.476l.104-.489l-.105.489Zm-11.78 0l.106.489l-.105-.489ZM6.5 5.5l.277-.416A.5.5 0 0 0 6 5.5h.5Zm0 4H6a.5.5 0 0 0 .777.416L6.5 9.5Zm3-2l.277.416a.5.5 0 0 0 0-.832L9.5 7.5ZM0 3.636v7.728h1V3.636H0Zm15 7.728V3.636h-1v7.728h1ZM1.506 13.227c3.951.847 8.037.847 11.988 0l-.21-.978a27.605 27.605 0 0 1-11.568 0l-.21.978ZM13.494 1.773a28.606 28.606 0 0 0-11.988 0l.21.978a27.607 27.607 0 0 1 11.568 0l.21-.978ZM15 3.636c0-.898-.628-1.675-1.506-1.863l-.21.978c.418.09.716.458.716.885h1Zm-1 7.728a.905.905 0 0 1-.716.885l.21.978A1.905 1.905 0 0 0 15 11.364h-1Zm-14 0c0 .898.628 1.675 1.506 1.863l.21-.978A.905.905 0 0 1 1 11.364H0Zm1-7.728c0-.427.298-.796.716-.885l-.21-.978A1.905 1.905 0 0 0 0 3.636h1ZM6 5.5v4h1v-4H6Zm.777 4.416l3-2l-.554-.832l-3 2l.554.832Zm3-2.832l-3-2l-.554.832l3 2l.554-.832Z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="dribble" viewBox="0 0 15 15">
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+          d="M4.839 1.024c3.346 4.041 5.096 7.922 5.704 12.782M.533 6.82c5.985-.138 9.402-1.083 11.97-4.216M2.7 12.594c3.221-4.902 7.171-5.65 11.755-4.293M14.5 7.5a7 7 0 1 0-14 0a7 7 0 0 0 14 0Z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="calendar" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+          <rect width="20" height="18" x="2" y="4" rx="4" />
+          <path d="M8 2v4m8-4v4M2 10h20" />
+        </g>
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="shopping-bag" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+          <path
+            d="M3.977 9.84A2 2 0 0 1 5.971 8h12.058a2 2 0 0 1 1.994 1.84l.803 10A2 2 0 0 1 18.833 22H5.167a2 2 0 0 1-1.993-2.16l.803-10Z" />
+          <path d="M16 11V6a4 4 0 0 0-4-4v0a4 4 0 0 0-4 4v5" />
+        </g>
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="gift" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+          <rect width="18" height="14" x="3" y="8" rx="2" />
+          <path d="M12 5a3 3 0 1 0-3 3m6 0a3 3 0 1 0-3-3m0 0v17m9-7H3" />
+        </g>
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="arrow-cycle" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+          <path
+            d="M22 12c0 6-4.39 10-9.806 10C7.792 22 4.24 19.665 3 16m-1-4C2 6 6.39 2 11.806 2C16.209 2 19.76 4.335 21 8" />
+          <path d="m7 17l-4-1l-1 4M17 7l4 1l1-4" />
+        </g>
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="link" viewBox="0 0 24 24">
+        <path fill="currentColor"
+          d="M12 19a1 1 0 1 0-1-1a1 1 0 0 0 1 1Zm5 0a1 1 0 1 0-1-1a1 1 0 0 0 1 1Zm0-4a1 1 0 1 0-1-1a1 1 0 0 0 1 1Zm-5 0a1 1 0 1 0-1-1a1 1 0 0 0 1 1Zm7-12h-1V2a1 1 0 0 0-2 0v1H8V2a1 1 0 0 0-2 0v1H5a3 3 0 0 0-3 3v14a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3V6a3 3 0 0 0-3-3Zm1 17a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-9h16Zm0-11H4V6a1 1 0 0 1 1-1h1v1a1 1 0 0 0 2 0V5h8v1a1 1 0 0 0 2 0V5h1a1 1 0 0 1 1 1ZM7 15a1 1 0 1 0-1-1a1 1 0 0 0 1 1Zm0 4a1 1 0 1 0-1-1a1 1 0 0 0 1 1Z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="arrow-left" viewBox="0 0 24 24">
+        <path fill="currentColor"
+          d="M17 11H9.41l3.3-3.29a1 1 0 1 0-1.42-1.42l-5 5a1 1 0 0 0-.21.33a1 1 0 0 0 0 .76a1 1 0 0 0 .21.33l5 5a1 1 0 0 0 1.42 0a1 1 0 0 0 0-1.42L9.41 13H17a1 1 0 0 0 0-2Z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="arrow-right" viewBox="0 0 24 24">
+        <path fill="currentColor"
+          d="M17.92 11.62a1 1 0 0 0-.21-.33l-5-5a1 1 0 0 0-1.42 1.42l3.3 3.29H7a1 1 0 0 0 0 2h7.59l-3.3 3.29a1 1 0 0 0 0 1.42a1 1 0 0 0 1.42 0l5-5a1 1 0 0 0 .21-.33a1 1 0 0 0 0-.76Z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="play" viewBox="0 0 24 24">
+        <g fill="none" fill-rule="evenodd">
+          <path
+            d="M24 0v24H0V0h24ZM12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035c-.01-.004-.019-.001-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427c-.002-.01-.009-.017-.017-.018Zm.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093c.012.004.023 0 .029-.008l.004-.014l-.034-.614c-.003-.012-.01-.02-.02-.022Zm-.715.002a.023.023 0 0 0-.027.006l-.006.014l-.034.614c0 .012.007.02.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01l-.184-.092Z" />
+          <path fill="currentColor"
+            d="M5.669 4.76a1.469 1.469 0 0 1 2.04-1.177c1.062.454 3.442 1.533 6.462 3.276c3.021 1.744 5.146 3.267 6.069 3.958c.788.591.79 1.763.001 2.356c-.914.687-3.013 2.19-6.07 3.956c-3.06 1.766-5.412 2.832-6.464 3.28c-.906.387-1.92-.2-2.038-1.177c-.138-1.142-.396-3.735-.396-7.237c0-3.5.257-6.092.396-7.235Z" />
+        </g>
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="category" viewBox="0 0 24 24">
+        <path fill="currentColor"
+          d="M19 5.5h-6.28l-.32-1a3 3 0 0 0-2.84-2H5a3 3 0 0 0-3 3v13a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-10a3 3 0 0 0-3-3Zm1 13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-13a1 1 0 0 1 1-1h4.56a1 1 0 0 1 .95.68l.54 1.64a1 1 0 0 0 .95.68h7a1 1 0 0 1 1 1Z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="calendar" viewBox="0 0 24 24">
+        <path fill="currentColor"
+          d="M19 4h-2V3a1 1 0 0 0-2 0v1H9V3a1 1 0 0 0-2 0v1H5a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3Zm1 15a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-7h16Zm0-9H4V7a1 1 0 0 1 1-1h2v1a1 1 0 0 0 2 0V6h6v1a1 1 0 0 0 2 0V6h2a1 1 0 0 1 1 1Z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="heart" viewBox="0 0 24 24">
+        <path fill="currentColor"
+          d="M20.16 4.61A6.27 6.27 0 0 0 12 4a6.27 6.27 0 0 0-8.16 9.48l7.45 7.45a1 1 0 0 0 1.42 0l7.45-7.45a6.27 6.27 0 0 0 0-8.87Zm-1.41 7.46L12 18.81l-6.75-6.74a4.28 4.28 0 0 1 3-7.3a4.25 4.25 0 0 1 3 1.25a1 1 0 0 0 1.42 0a4.27 4.27 0 0 1 6 6.05Z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="plus" viewBox="0 0 24 24">
+        <path fill="currentColor"
+          d="M19 11h-6V5a1 1 0 0 0-2 0v6H5a1 1 0 0 0 0 2h6v6a1 1 0 0 0 2 0v-6h6a1 1 0 0 0 0-2Z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="minus" viewBox="0 0 24 24">
+        <path fill="currentColor" d="M19 11H5a1 1 0 0 0 0 2h14a1 1 0 0 0 0-2Z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="cart" viewBox="0 0 24 24">
+        <path fill="currentColor"
+          d="M8.5 19a1.5 1.5 0 1 0 1.5 1.5A1.5 1.5 0 0 0 8.5 19ZM19 16H7a1 1 0 0 1 0-2h8.491a3.013 3.013 0 0 0 2.885-2.176l1.585-5.55A1 1 0 0 0 19 5H6.74a3.007 3.007 0 0 0-2.82-2H3a1 1 0 0 0 0 2h.921a1.005 1.005 0 0 1 .962.725l.155.545v.005l1.641 5.742A3 3 0 0 0 7 18h12a1 1 0 0 0 0-2Zm-1.326-9l-1.22 4.274a1.005 1.005 0 0 1-.963.726H8.754l-.255-.892L7.326 7ZM16.5 19a1.5 1.5 0 1 0 1.5 1.5a1.5 1.5 0 0 0-1.5-1.5Z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="check" viewBox="0 0 24 24">
+        <path fill="currentColor"
+          d="M18.71 7.21a1 1 0 0 0-1.42 0l-7.45 7.46l-3.13-3.14A1 1 0 1 0 5.29 13l3.84 3.84a1 1 0 0 0 1.42 0l8.16-8.16a1 1 0 0 0 0-1.47Z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="trash" viewBox="0 0 24 24">
+        <path fill="currentColor"
+          d="M10 18a1 1 0 0 0 1-1v-6a1 1 0 0 0-2 0v6a1 1 0 0 0 1 1ZM20 6h-4V5a3 3 0 0 0-3-3h-2a3 3 0 0 0-3 3v1H4a1 1 0 0 0 0 2h1v11a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3V8h1a1 1 0 0 0 0-2ZM10 5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v1h-4Zm7 14a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V8h10Zm-3-1a1 1 0 0 0 1-1v-6a1 1 0 0 0-2 0v6a1 1 0 0 0 1 1Z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="star-outline" viewBox="0 0 15 15">
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+          d="M7.5 9.804L5.337 11l.413-2.533L4 6.674l2.418-.37L7.5 4l1.082 2.304l2.418.37l-1.75 1.793L9.663 11L7.5 9.804Z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="star-solid" viewBox="0 0 15 15">
+        <path fill="currentColor"
+          d="M7.953 3.788a.5.5 0 0 0-.906 0L6.08 5.85l-2.154.33a.5.5 0 0 0-.283.843l1.574 1.613l-.373 2.284a.5.5 0 0 0 .736.518l1.92-1.063l1.921 1.063a.5.5 0 0 0 .736-.519l-.373-2.283l1.574-1.613a.5.5 0 0 0-.283-.844L8.921 5.85l-.968-2.062Z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="search" viewBox="0 0 24 24">
+        <path fill="currentColor"
+          d="M21.71 20.29L18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a1 1 0 0 0 1.42 0a1 1 0 0 0 0-1.39ZM11 18a7 7 0 1 1 7-7a7 7 0 0 1-7 7Z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="user" viewBox="0 0 24 24">
+        <path fill="currentColor"
+          d="M15.71 12.71a6 6 0 1 0-7.42 0a10 10 0 0 0-6.22 8.18a1 1 0 0 0 2 .22a8 8 0 0 1 15.9 0a1 1 0 0 0 1 .89h.11a1 1 0 0 0 .88-1.1a10 10 0 0 0-6.25-8.19ZM12 12a4 4 0 1 1 4-4a4 4 0 0 1-4 4Z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="close" viewBox="0 0 15 15">
+        <path fill="currentColor"
+          d="M7.953 3.788a.5.5 0 0 0-.906 0L6.08 5.85l-2.154.33a.5.5 0 0 0-.283.843l1.574 1.613l-.373 2.284a.5.5 0 0 0 .736.518l1.92-1.063l1.921 1.063a.5.5 0 0 0 .736-.519l-.373-2.283l1.574-1.613a.5.5 0 0 0-.283-.844L8.921 5.85l-.968-2.062Z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="menu-hamburger" viewBox="0 0 24 24">
+        <path fill="currentColor" d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+      </symbol>
+    </defs>
+  </svg>
 
-                        @if (Route::has('register'))
-                            <a
-                                href="{{ route('register') }}"
-                                class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] border-[#19140035] hover:border-[#1915014a] border text-[#1b1b18] dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-sm text-sm leading-normal">
-                                Register
-                            </a>
-                        @endif
-                    @endauth
-                </nav>
-            @endif
-        </header>
-        <div class="flex items-center justify-center w-full transition-opacity opacity-100 duration-750 lg:grow starting:opacity-0">
-            <main class="flex max-w-[335px] w-full flex-col-reverse lg:max-w-4xl lg:flex-row">
-                <div class="text-[13px] leading-[20px] flex-1 p-6 pb-6 lg:p-20 lg:pb-10 bg-white dark:bg-[#161615] dark:text-[#EDEDEC] shadow-[inset_0px_0px_0px_1px_rgba(26,26,0,0.16)] dark:shadow-[inset_0px_0px_0px_1px_#fffaed2d] rounded-bl-lg rounded-br-lg lg:rounded-tl-lg lg:rounded-br-none">
-                    <h1 class="mb-1 font-medium">Let's get started</h1>
-                    <p class="mb-2 text-[#706f6c] dark:text-[#A1A09A]">With so many options available to you,<br /> we suggest you start with the following:</p>
-                    <ul class="flex flex-col mb-4 lg:mb-6">
-                        <li class="flex items-center gap-4 py-2 relative before:border-l before:border-[#e3e3e0] dark:before:border-[#3E3E3A] before:top-1/2 before:bottom-0 before:left-[0.4rem] before:absolute">
-                            <span class="relative py-1 bg-white dark:bg-[#161615]">
-                                <span class="flex items-center justify-center rounded-full bg-[#FDFDFC] dark:bg-[#161615] shadow-[0px_0px_1px_0px_rgba(0,0,0,0.03),0px_1px_2px_0px_rgba(0,0,0,0.06)] w-3.5 h-3.5 border dark:border-[#3E3E3A] border-[#e3e3e0]">
-                                    <span class="rounded-full bg-[#dbdbd7] dark:bg-[#3E3E3A] w-1.5 h-1.5"></span>
-                                </span>
-                            </span>
-                            <span>
-                                Read the
-                                <a href="https://laravel.com/docs" target="_blank" class="inline-flex items-center space-x-1 font-medium underline underline-offset-4 text-[#f53003] dark:text-[#FF4433] ml-1">
-                                    <span>Documentation</span>
-                                    <svg
-                                        width="10"
-                                        height="11"
-                                        viewBox="0 0 10 11"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        class="w-2.5 h-2.5"
-                                    >
-                                        <path
-                                            d="M7.70833 6.95834V2.79167H3.54167M2.5 8L7.5 3.00001"
-                                            stroke="currentColor"
-                                            stroke-linecap="square"
-                                        />
-                                    </svg>
-                                </a>
-                            </span>
-                        </li>
-                        <li class="flex items-center gap-4 py-2 relative before:border-l before:border-[#e3e3e0] dark:before:border-[#3E3E3A] before:bottom-1/2 before:top-0 before:left-[0.4rem] before:absolute">
-                            <span class="relative py-1 bg-white dark:bg-[#161615]">
-                                <span class="flex items-center justify-center rounded-full bg-[#FDFDFC] dark:bg-[#161615] shadow-[0px_0px_1px_0px_rgba(0,0,0,0.03),0px_1px_2px_0px_rgba(0,0,0,0.06)] w-3.5 h-3.5 border dark:border-[#3E3E3A] border-[#e3e3e0]">
-                                    <span class="rounded-full bg-[#dbdbd7] dark:bg-[#3E3E3A] w-1.5 h-1.5"></span>
-                                </span>
-                            </span>
-                            <span>
-                                Watch video tutorials at
-                                <a href="https://laracasts.com" target="_blank" class="inline-flex items-center space-x-1 font-medium underline underline-offset-4 text-[#f53003] dark:text-[#FF4433] ml-1">
-                                    <span>Laracasts</span>
-                                    <svg
-                                        width="10"
-                                        height="11"
-                                        viewBox="0 0 10 11"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        class="w-2.5 h-2.5"
-                                    >
-                                        <path
-                                            d="M7.70833 6.95834V2.79167H3.54167M2.5 8L7.5 3.00001"
-                                            stroke="currentColor"
-                                            stroke-linecap="square"
-                                        />
-                                    </svg>
-                                </a>
-                            </span>
-                        </li>
-                    </ul>
-                    <ul class="flex gap-3 text-sm leading-normal">
-                        <li>
-                            <a href="https://cloud.laravel.com" target="_blank" class="inline-block dark:bg-[#eeeeec] dark:border-[#eeeeec] dark:text-[#1C1C1A] dark:hover:bg-white dark:hover:border-white hover:bg-black hover:border-black px-5 py-1.5 bg-[#1b1b18] rounded-sm border border-black text-white text-sm leading-normal">
-                                Deploy now
-                            </a>
-                        </li>
-                    </ul>
+  <div class="preloader text-white fs-6 text-uppercase overflow-hidden"></div>
 
-                    <p class="mt-6 lg:mt-10 text-[#706f6c] dark:text-[#A1A09A]">
-                        v{{ app()->version() }}
-                        <a href="https://github.com/laravel/framework/blob/13.x/CHANGELOG.md" target="_blank" class="inline-flex items-center space-x-1 font-medium underline underline-offset-4 text-[#f53003] dark:text-[#FF4433] ml-1">
-                            <span>View changelog</span>
-                            <svg
-                                width="10"
-                                height="11"
-                                viewBox="0 0 10 11"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                                class="w-2.5 h-2.5"
-                            >
-                                <path
-                                    d="M7.70833 6.95834V2.79167H3.54167M2.5 8L7.5 3.00001"
-                                    stroke="currentColor"
-                                    stroke-linecap="square"
-                                />
-                            </svg>
-                        </a>
-                    </p>
-                </div>
-                <div class="bg-[#fff2f2] dark:bg-[#1D0002] relative lg:-ml-px -mb-px lg:mb-0 rounded-t-lg lg:rounded-t-none lg:rounded-r-lg aspect-[335/364] lg:aspect-auto w-full lg:w-[438px] shrink-0 overflow-hidden">
-                    {{-- Laravel Logo --}}
-                    <svg class="w-full text-[#F53003] dark:text-[#F61500] transition-all translate-y-0 opacity-100 max-w-none duration-750 starting:opacity-0 motion-safe:starting:translate-y-6" viewBox="0 0 438 104" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M17.2036 -3H0V102.197H49.5189V86.7187H17.2036V-3Z" fill="currentColor" />
-                        <path d="M110.256 41.6337C108.061 38.1275 104.945 35.3731 100.905 33.3681C96.8667 31.3647 92.8016 30.3618 88.7131 30.3618C83.4247 30.3618 78.5885 31.3389 74.201 33.2923C69.8111 35.2456 66.0474 37.928 62.9059 41.3333C59.7643 44.7401 57.3198 48.6726 55.5754 53.1293C53.8287 57.589 52.9572 62.274 52.9572 67.1813C52.9572 72.1925 53.8287 76.8995 55.5754 81.3069C57.3191 85.7173 59.7636 89.6241 62.9059 93.0293C66.0474 96.4361 69.8119 99.1155 74.201 101.069C78.5885 103.022 83.4247 103.999 88.7131 103.999C92.8016 103.999 96.8667 102.997 100.905 100.994C104.945 98.9911 108.061 96.2359 110.256 92.7282V102.195H126.563V32.1642H110.256V41.6337ZM108.76 75.7472C107.762 78.4531 106.366 80.8078 104.572 82.8112C102.776 84.8161 100.606 86.4183 98.0637 87.6206C95.5202 88.823 92.7004 89.4238 89.6103 89.4238C86.5178 89.4238 83.7252 88.823 81.2324 87.6206C78.7388 86.4183 76.5949 84.8161 74.7998 82.8112C73.004 80.8078 71.6319 78.4531 70.6856 75.7472C69.7356 73.0421 69.2644 70.1868 69.2644 67.1821C69.2644 64.1758 69.7356 61.3205 70.6856 58.6154C71.6319 55.9102 73.004 53.5571 74.7998 51.5522C76.5949 49.5495 78.738 47.9451 81.2324 46.7427C83.7252 45.5404 86.5178 44.9396 89.6103 44.9396C92.7012 44.9396 95.5202 45.5404 98.0637 46.7427C100.606 47.9451 102.776 49.5487 104.572 51.5522C106.367 53.5571 107.762 55.9102 108.76 58.6154C109.756 61.3205 110.256 64.1758 110.256 67.1821C110.256 70.1868 109.756 73.0421 108.76 75.7472Z" fill="currentColor" />
-                        <path d="M242.805 41.6337C240.611 38.1275 237.494 35.3731 233.455 33.3681C229.416 31.3647 225.351 30.3618 221.262 30.3618C215.974 30.3618 211.138 31.3389 206.75 33.2923C202.36 35.2456 198.597 37.928 195.455 41.3333C192.314 44.7401 189.869 48.6726 188.125 53.1293C186.378 57.589 185.507 62.274 185.507 67.1813C185.507 72.1925 186.378 76.8995 188.125 81.3069C189.868 85.7173 192.313 89.6241 195.455 93.0293C198.597 96.4361 202.361 99.1155 206.75 101.069C211.138 103.022 215.974 103.999 221.262 103.999C225.351 103.999 229.416 102.997 233.455 100.994C237.494 98.9911 240.611 96.2359 242.805 92.7282V102.195H259.112V32.1642H242.805V41.6337ZM241.31 75.7472C240.312 78.4531 238.916 80.8078 237.122 82.8112C235.326 84.8161 233.156 86.4183 230.614 87.6206C228.07 88.823 225.251 89.4238 222.16 89.4238C219.068 89.4238 216.275 88.823 213.782 87.6206C211.289 86.4183 209.145 84.8161 207.35 82.8112C205.554 80.8078 204.182 78.4531 203.236 75.7472C202.286 73.0421 201.814 70.1868 201.814 67.1821C201.814 64.1758 202.286 61.3205 203.236 58.6154C204.182 55.9102 205.554 53.5571 207.35 51.5522C209.145 49.5495 211.288 47.9451 213.782 46.7427C216.275 45.5404 219.068 44.9396 222.16 44.9396C225.251 44.9396 228.07 45.5404 230.614 46.7427C233.156 47.9451 235.326 49.5487 237.122 51.5522C238.917 53.5571 240.312 55.9102 241.31 58.6154C242.306 61.3205 242.806 64.1758 242.806 67.1821C242.805 70.1868 242.305 73.0421 241.31 75.7472Z" fill="currentColor" />
-                        <path d="M438 -3H421.694V102.197H438V-3Z" fill="currentColor" />
-                        <path d="M139.43 102.197H155.735V48.2834H183.712V32.1665H139.43V102.197Z" fill="currentColor" />
-                        <path d="M324.49 32.1665L303.995 85.794L283.498 32.1665H266.983L293.748 102.197H314.242L341.006 32.1665H324.49Z" fill="currentColor" />
-                        <path d="M376.571 30.3656C356.603 30.3656 340.797 46.8497 340.797 67.1828C340.797 89.6597 356.094 104 378.661 104C391.29 104 399.354 99.1488 409.206 88.5848L398.189 80.0226C398.183 80.031 389.874 90.9895 377.468 90.9895C363.048 90.9895 356.977 79.3111 356.977 73.269H411.075C413.917 50.1328 398.775 30.3656 376.571 30.3656ZM357.02 61.0967C357.145 59.7487 359.023 43.3761 376.442 43.3761C393.861 43.3761 395.978 59.7464 396.099 61.0967H357.02Z" fill="currentColor" />
-                    </svg>
+  <div class="search-popup">
+    <div class="search-popup-container">
 
-                    {{-- 13 --}}
-                    <svg class="w-[438px] max-w-none relative -mt-[6.6rem] -ml-8 lg:ml-0 [--stroke-color:#1B1B18] dark:[--stroke-color:#FF750F]" viewBox="0 0 440 392" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <g class="mix-blend-darken dark:mix-blend-normal transition-all delay-300 opacity-100 duration-750 starting:opacity-0 text-[#1B1B18] dark:text-black">
-                            <mask id="path-1-mask" maskUnits="userSpaceOnUse" x="-0.328613" y="103" width="338" height="299" fill="black">
-                                <rect fill="white" x="-0.328613" y="103" width="338" height="299"/>
-                                <path d="M234.936 400.8C204.136 400.8 178.936 392.4 159.336 375.6C140.136 358.8 130.536 337 130.536 310.2H200.736C200.736 318.2 203.736 324.8 209.736 330C215.736 335.2 223.736 337.8 233.736 337.8C243.336 337.8 251.136 335 257.136 329.4C263.536 323.8 266.736 316.6 266.736 307.8C266.736 299.8 263.936 293.2 258.336 288C252.736 282.8 245.536 280.2 236.736 280.2H199.536V218.4H236.736C243.536 218.4 249.336 216 254.136 211.2C258.936 206.4 261.336 200.4 261.336 193.2C261.336 184.8 258.736 178.2 253.536 173.4C248.336 168.6 241.736 166.2 233.736 166.2C226.536 166.2 220.336 168.4 215.136 172.8C210.336 177.2 207.936 182.8 207.936 189.6H141.336C141.336 164.8 150.136 144.6 167.736 129C185.336 113 207.936 105 235.536 105C263.136 105 285.536 112.2 302.736 126.6C320.336 141 329.136 160 329.136 183.6C329.136 200.8 324.536 214.8 315.336 225.6C306.136 236 294.336 243.2 279.936 247.2C297.136 252 310.736 260.2 320.736 271.8C331.136 283.4 336.336 298 336.336 315.6C336.336 340.4 326.936 360.8 308.136 376.8C289.336 392.8 264.936 400.8 234.936 400.8Z"/>
-                                <path d="M26.8714 167.6H1.67139V105.2H94.6714V400.2H26.8714V167.6Z"/>
-                            </mask>
-                            <path d="M234.936 400.8C204.136 400.8 178.936 392.4 159.336 375.6C140.136 358.8 130.536 337 130.536 310.2H200.736C200.736 318.2 203.736 324.8 209.736 330C215.736 335.2 223.736 337.8 233.736 337.8C243.336 337.8 251.136 335 257.136 329.4C263.536 323.8 266.736 316.6 266.736 307.8C266.736 299.8 263.936 293.2 258.336 288C252.736 282.8 245.536 280.2 236.736 280.2H199.536V218.4H236.736C243.536 218.4 249.336 216 254.136 211.2C258.936 206.4 261.336 200.4 261.336 193.2C261.336 184.8 258.736 178.2 253.536 173.4C248.336 168.6 241.736 166.2 233.736 166.2C226.536 166.2 220.336 168.4 215.136 172.8C210.336 177.2 207.936 182.8 207.936 189.6H141.336C141.336 164.8 150.136 144.6 167.736 129C185.336 113 207.936 105 235.536 105C263.136 105 285.536 112.2 302.736 126.6C320.336 141 329.136 160 329.136 183.6C329.136 200.8 324.536 214.8 315.336 225.6C306.136 236 294.336 243.2 279.936 247.2C297.136 252 310.736 260.2 320.736 271.8C331.136 283.4 336.336 298 336.336 315.6C336.336 340.4 326.936 360.8 308.136 376.8C289.336 392.8 264.936 400.8 234.936 400.8Z" fill="currentColor"/>
-                            <path d="M26.8714 167.6H1.67139V105.2H94.6714V400.2H26.8714V167.6Z" fill="currentColor"/>
-                            <path d="M234.936 400.8C204.136 400.8 178.936 392.4 159.336 375.6C140.136 358.8 130.536 337 130.536 310.2H200.736C200.736 318.2 203.736 324.8 209.736 330C215.736 335.2 223.736 337.8 233.736 337.8C243.336 337.8 251.136 335 257.136 329.4C263.536 323.8 266.736 316.6 266.736 307.8C266.736 299.8 263.936 293.2 258.336 288C252.736 282.8 245.536 280.2 236.736 280.2H199.536V218.4H236.736C243.536 218.4 249.336 216 254.136 211.2C258.936 206.4 261.336 200.4 261.336 193.2C261.336 184.8 258.736 178.2 253.536 173.4C248.336 168.6 241.736 166.2 233.736 166.2C226.536 166.2 220.336 168.4 215.136 172.8C210.336 177.2 207.936 182.8 207.936 189.6H141.336C141.336 164.8 150.136 144.6 167.736 129C185.336 113 207.936 105 235.536 105C263.136 105 285.536 112.2 302.736 126.6C320.336 141 329.136 160 329.136 183.6C329.136 200.8 324.536 214.8 315.336 225.6C306.136 236 294.336 243.2 279.936 247.2C297.136 252 310.736 260.2 320.736 271.8C331.136 283.4 336.336 298 336.336 315.6C336.336 340.4 326.936 360.8 308.136 376.8C289.336 392.8 264.936 400.8 234.936 400.8Z" stroke="var(--stroke-color)" stroke-width="2.4" mask="url(#path-1-mask)"/>
-                            <path d="M26.8714 167.6H1.67139V105.2H94.6714V400.2H26.8714V167.6Z" stroke="var(--stroke-color)" stroke-width="2.4" mask="url(#path-1-mask)"/>
-                        </g>
+      <form role="search" method="get" class="form-group" action="">
+        <input type="search" id="search-form" class="form-control border-0 border-bottom"
+          placeholder="Type and press enter" value="" name="s" />
+        <button type="submit" class="search-submit border-0 position-absolute bg-white"
+          style="top: 15px;right: 15px;"><svg class="search" width="24" height="24">
+            <use xlink:href="#search"></use>
+          </svg></button>
+      </form>
 
-                        <g class="transition-all delay-400 opacity-100 duration-750 starting:opacity-0 motion-safe:starting:-translate-x-[26px] text-[#F3BEC7] dark:text-[#4B0600]">
-                            <mask id="path-2-mask" maskUnits="userSpaceOnUse" x="25.3357" y="103" width="338" height="299" fill="black">
-                                <rect fill="white" x="25.3357" y="103" width="338" height="299"/>
-                                <path d="M260.6 400.8C229.8 400.8 204.6 392.4 185 375.6C165.8 358.8 156.2 337 156.2 310.2H226.4C226.4 318.2 229.4 324.8 235.4 330C241.4 335.2 249.4 337.8 259.4 337.8C269 337.8 276.8 335 282.8 329.4C289.2 323.8 292.4 316.6 292.4 307.8C292.4 299.8 289.6 293.2 284 288C278.4 282.8 271.2 280.2 262.4 280.2H225.2V218.4H262.4C269.2 218.4 275 216 279.8 211.2C284.6 206.4 287 200.4 287 193.2C287 184.8 284.4 178.2 279.2 173.4C274 168.6 267.4 166.2 259.4 166.2C252.2 166.2 246 168.4 240.8 172.8C236 177.2 233.6 182.8 233.6 189.6H167C167 164.8 175.8 144.6 193.4 129C211 113 233.6 105 261.2 105C288.8 105 311.2 112.2 328.4 126.6C346 141 354.8 160 354.8 183.6C354.8 200.8 350.2 214.8 341 225.6C331.8 236 320 243.2 305.6 247.2C322.8 252 336.4 260.2 346.4 271.8C356.8 283.4 362 298 362 315.6C362 340.4 352.6 360.8 333.8 376.8C315 392.8 290.6 400.8 260.6 400.8Z"/>
-                                <path d="M52.5357 167.6H27.3357V105.2H120.336V400.2H52.5357V167.6Z"/>
-                            </mask>
-                            <path d="M260.6 400.8C229.8 400.8 204.6 392.4 185 375.6C165.8 358.8 156.2 337 156.2 310.2H226.4C226.4 318.2 229.4 324.8 235.4 330C241.4 335.2 249.4 337.8 259.4 337.8C269 337.8 276.8 335 282.8 329.4C289.2 323.8 292.4 316.6 292.4 307.8C292.4 299.8 289.6 293.2 284 288C278.4 282.8 271.2 280.2 262.4 280.2H225.2V218.4H262.4C269.2 218.4 275 216 279.8 211.2C284.6 206.4 287 200.4 287 193.2C287 184.8 284.4 178.2 279.2 173.4C274 168.6 267.4 166.2 259.4 166.2C252.2 166.2 246 168.4 240.8 172.8C236 177.2 233.6 182.8 233.6 189.6H167C167 164.8 175.8 144.6 193.4 129C211 113 233.6 105 261.2 105C288.8 105 311.2 112.2 328.4 126.6C346 141 354.8 160 354.8 183.6C354.8 200.8 350.2 214.8 341 225.6C331.8 236 320 243.2 305.6 247.2C322.8 252 336.4 260.2 346.4 271.8C356.8 283.4 362 298 362 315.6C362 340.4 352.6 360.8 333.8 376.8C315 392.8 290.6 400.8 260.6 400.8Z" fill="currentColor"/>
-                            <path d="M52.5357 167.6H27.3357V105.2H120.336V400.2H52.5357V167.6Z" fill="currentColor"/>
-                            <path d="M260.6 400.8C229.8 400.8 204.6 392.4 185 375.6C165.8 358.8 156.2 337 156.2 310.2H226.4C226.4 318.2 229.4 324.8 235.4 330C241.4 335.2 249.4 337.8 259.4 337.8C269 337.8 276.8 335 282.8 329.4C289.2 323.8 292.4 316.6 292.4 307.8C292.4 299.8 289.6 293.2 284 288C278.4 282.8 271.2 280.2 262.4 280.2H225.2V218.4H262.4C269.2 218.4 275 216 279.8 211.2C284.6 206.4 287 200.4 287 193.2C287 184.8 284.4 178.2 279.2 173.4C274 168.6 267.4 166.2 259.4 166.2C252.2 166.2 246 168.4 240.8 172.8C236 177.2 233.6 182.8 233.6 189.6H167C167 164.8 175.8 144.6 193.4 129C211 113 233.6 105 261.2 105C288.8 105 311.2 112.2 328.4 126.6C346 141 354.8 160 354.8 183.6C354.8 200.8 350.2 214.8 341 225.6C331.8 236 320 243.2 305.6 247.2C322.8 252 336.4 260.2 346.4 271.8C356.8 283.4 362 298 362 315.6C362 340.4 352.6 360.8 333.8 376.8C315 392.8 290.6 400.8 260.6 400.8Z" stroke="var(--stroke-color)" stroke-width="2.4" mask="url(#path-2-mask)"/>
-                            <path d="M52.5357 167.6H27.3357V105.2H120.336V400.2H52.5357V167.6Z" stroke="var(--stroke-color)" stroke-width="2.4" mask="url(#path-2-mask)"/>
-                        </g>
-                        
-                        <g class="mix-blend-color dark:mix-blend-hard-light transition-all delay-400 opacity-100 duration-750 starting:opacity-0 motion-safe:starting:-translate-x-[51px] text-[#F8B803] dark:text-[#391800]">
-                            <mask id="path-3-mask" maskUnits="userSpaceOnUse" x="51" y="103" width="338" height="299" fill="black">
-                                <rect fill="white" x="51" y="103" width="338" height="299"/>
-                                <path d="M286.264 400.8C255.464 400.8 230.264 392.4 210.664 375.6C191.464 358.8 181.864 337 181.864 310.2H252.064C252.064 318.2 255.064 324.8 261.064 330C267.064 335.2 275.064 337.8 285.064 337.8C294.664 337.8 302.464 335 308.464 329.4C314.864 323.8 318.064 316.6 318.064 307.8C318.064 299.8 315.264 293.2 309.664 288C304.064 282.8 296.864 280.2 288.064 280.2H250.864V218.4H288.064C294.864 218.4 300.664 216 305.464 211.2C310.264 206.4 312.664 200.4 312.664 193.2C312.664 184.8 310.064 178.2 304.864 173.4C299.664 168.6 293.064 166.2 285.064 166.2C277.864 166.2 271.664 168.4 266.464 172.8C261.664 177.2 259.264 182.8 259.264 189.6H192.664C192.664 164.8 201.464 144.6 219.064 129C236.664 113 259.264 105 286.864 105C314.464 105 336.864 112.2 354.064 126.6C371.664 141 380.464 160 380.464 183.6C380.464 200.8 375.864 214.8 366.664 225.6C357.464 236 345.664 243.2 331.264 247.2C348.464 252 362.064 260.2 372.064 271.8C382.464 283.4 387.664 298 387.664 315.6C387.664 340.4 378.264 360.8 359.464 376.8C340.664 392.8 316.264 400.8 286.264 400.8Z"/>
-                                <path d="M78.2 167.6H53V105.2H146V400.2H78.2V167.6Z"/>
-                            </mask>
-                            <path d="M286.264 400.8C255.464 400.8 230.264 392.4 210.664 375.6C191.464 358.8 181.864 337 181.864 310.2H252.064C252.064 318.2 255.064 324.8 261.064 330C267.064 335.2 275.064 337.8 285.064 337.8C294.664 337.8 302.464 335 308.464 329.4C314.864 323.8 318.064 316.6 318.064 307.8C318.064 299.8 315.264 293.2 309.664 288C304.064 282.8 296.864 280.2 288.064 280.2H250.864V218.4H288.064C294.864 218.4 300.664 216 305.464 211.2C310.264 206.4 312.664 200.4 312.664 193.2C312.664 184.8 310.064 178.2 304.864 173.4C299.664 168.6 293.064 166.2 285.064 166.2C277.864 166.2 271.664 168.4 266.464 172.8C261.664 177.2 259.264 182.8 259.264 189.6H192.664C192.664 164.8 201.464 144.6 219.064 129C236.664 113 259.264 105 286.864 105C314.464 105 336.864 112.2 354.064 126.6C371.664 141 380.464 160 380.464 183.6C380.464 200.8 375.864 214.8 366.664 225.6C357.464 236 345.664 243.2 331.264 247.2C348.464 252 362.064 260.2 372.064 271.8C382.464 283.4 387.664 298 387.664 315.6C387.664 340.4 378.264 360.8 359.464 376.8C340.664 392.8 316.264 400.8 286.264 400.8Z" fill="currentColor"/>
-                            <path d="M78.2 167.6H53V105.2H146V400.2H78.2V167.6Z" fill="currentColor"/>
-                            <path d="M286.264 400.8C255.464 400.8 230.264 392.4 210.664 375.6C191.464 358.8 181.864 337 181.864 310.2H252.064C252.064 318.2 255.064 324.8 261.064 330C267.064 335.2 275.064 337.8 285.064 337.8C294.664 337.8 302.464 335 308.464 329.4C314.864 323.8 318.064 316.6 318.064 307.8C318.064 299.8 315.264 293.2 309.664 288C304.064 282.8 296.864 280.2 288.064 280.2H250.864V218.4H288.064C294.864 218.4 300.664 216 305.464 211.2C310.264 206.4 312.664 200.4 312.664 193.2C312.664 184.8 310.064 178.2 304.864 173.4C299.664 168.6 293.064 166.2 285.064 166.2C277.864 166.2 271.664 168.4 266.464 172.8C261.664 177.2 259.264 182.8 259.264 189.6H192.664C192.664 164.8 201.464 144.6 219.064 129C236.664 113 259.264 105 286.864 105C314.464 105 336.864 112.2 354.064 126.6C371.664 141 380.464 160 380.464 183.6C380.464 200.8 375.864 214.8 366.664 225.6C357.464 236 345.664 243.2 331.264 247.2C348.464 252 362.064 260.2 372.064 271.8C382.464 283.4 387.664 298 387.664 315.6C387.664 340.4 378.264 360.8 359.464 376.8C340.664 392.8 316.264 400.8 286.264 400.8Z" stroke="var(--stroke-color)" stroke-width="2.4" mask="url(#path-3-mask)"/>
-                            <path d="M78.2 167.6H53V105.2H146V400.2H78.2V167.6Z" stroke="var(--stroke-color)" stroke-width="2.4" mask="url(#path-3-mask)"/>
-                        </g>
-                        
-                        <g class="mix-blend-multiply dark:mix-blend-normal transition-all delay-400 opacity-100 duration-750 starting:opacity-0 motion-safe:starting:-translate-x-[78px] text-[#F3BEC7] dark:text-[#733000]">
-                            <mask id="path-4-mask" maskUnits="userSpaceOnUse" x="76.6643" y="103" width="338" height="299" fill="black">
-                                <rect fill="white" x="76.6643" y="103" width="338" height="299"/>
-                                <path d="M311.929 400.8C281.129 400.8 255.929 392.4 236.329 375.6C217.129 358.8 207.529 337 207.529 310.2H277.729C277.729 318.2 280.729 324.8 286.729 330C292.729 335.2 300.729 337.8 310.729 337.8C320.329 337.8 328.129 335 334.129 329.4C340.529 323.8 343.729 316.6 343.729 307.8C343.729 299.8 340.929 293.2 335.329 288C329.729 282.8 322.529 280.2 313.729 280.2H276.529V218.4H313.729C320.529 218.4 326.329 216 331.129 211.2C335.929 206.4 338.329 200.4 338.329 193.2C338.329 184.8 335.729 178.2 330.529 173.4C325.329 168.6 318.729 166.2 310.729 166.2C303.529 166.2 297.329 168.4 292.129 172.8C287.329 177.2 284.929 182.8 284.929 189.6H218.329C218.329 164.8 227.129 144.6 244.729 129C262.329 113 284.929 105 312.529 105C340.129 105 362.529 112.2 379.729 126.6C397.329 141 406.129 160 406.129 183.6C406.129 200.8 401.529 214.8 392.329 225.6C383.129 236 371.329 243.2 356.929 247.2C374.129 252 387.729 260.2 397.729 271.8C408.129 283.4 413.329 298 413.329 315.6C413.329 340.4 403.929 360.8 385.129 376.8C366.329 392.8 341.929 400.8 311.929 400.8Z"/>
-                                <path d="M103.864 167.6H78.6643V105.2H171.664V400.2H103.864V167.6Z"/>
-                            </mask>
-                            <path d="M311.929 400.8C281.129 400.8 255.929 392.4 236.329 375.6C217.129 358.8 207.529 337 207.529 310.2H277.729C277.729 318.2 280.729 324.8 286.729 330C292.729 335.2 300.729 337.8 310.729 337.8C320.329 337.8 328.129 335 334.129 329.4C340.529 323.8 343.729 316.6 343.729 307.8C343.729 299.8 340.929 293.2 335.329 288C329.729 282.8 322.529 280.2 313.729 280.2H276.529V218.4H313.729C320.529 218.4 326.329 216 331.129 211.2C335.929 206.4 338.329 200.4 338.329 193.2C338.329 184.8 335.729 178.2 330.529 173.4C325.329 168.6 318.729 166.2 310.729 166.2C303.529 166.2 297.329 168.4 292.129 172.8C287.329 177.2 284.929 182.8 284.929 189.6H218.329C218.329 164.8 227.129 144.6 244.729 129C262.329 113 284.929 105 312.529 105C340.129 105 362.529 112.2 379.729 126.6C397.329 141 406.129 160 406.129 183.6C406.129 200.8 401.529 214.8 392.329 225.6C383.129 236 371.329 243.2 356.929 247.2C374.129 252 387.729 260.2 397.729 271.8C408.129 283.4 413.329 298 413.329 315.6C413.329 340.4 403.929 360.8 385.129 376.8C366.329 392.8 341.929 400.8 311.929 400.8Z" fill="currentColor"/>
-                            <path d="M103.864 167.6H78.6643V105.2H171.664V400.2H103.864V167.6Z" fill="currentColor"/>
-                            <path d="M311.929 400.8C281.129 400.8 255.929 392.4 236.329 375.6C217.129 358.8 207.529 337 207.529 310.2H277.729C277.729 318.2 280.729 324.8 286.729 330C292.729 335.2 300.729 337.8 310.729 337.8C320.329 337.8 328.129 335 334.129 329.4C340.529 323.8 343.729 316.6 343.729 307.8C343.729 299.8 340.929 293.2 335.329 288C329.729 282.8 322.529 280.2 313.729 280.2H276.529V218.4H313.729C320.529 218.4 326.329 216 331.129 211.2C335.929 206.4 338.329 200.4 338.329 193.2C338.329 184.8 335.729 178.2 330.529 173.4C325.329 168.6 318.729 166.2 310.729 166.2C303.529 166.2 297.329 168.4 292.129 172.8C287.329 177.2 284.929 182.8 284.929 189.6H218.329C218.329 164.8 227.129 144.6 244.729 129C262.329 113 284.929 105 312.529 105C340.129 105 362.529 112.2 379.729 126.6C397.329 141 406.129 160 406.129 183.6C406.129 200.8 401.529 214.8 392.329 225.6C383.129 236 371.329 243.2 356.929 247.2C374.129 252 387.729 260.2 397.729 271.8C408.129 283.4 413.329 298 413.329 315.6C413.329 340.4 403.929 360.8 385.129 376.8C366.329 392.8 341.929 400.8 311.929 400.8Z" stroke="var(--stroke-color)" stroke-width="2.4" mask="url(#path-4-mask)"/>
-                            <path d="M103.864 167.6H78.6643V105.2H171.664V400.2H103.864V167.6Z" stroke="var(--stroke-color)" stroke-width="2.4" mask="url(#path-4-mask)"/>
-                        </g>
-                        
-                        <g class="mix-blend-hard-light transition-all delay-400 opacity-100 duration-750 starting:opacity-0 motion-safe:starting:-translate-x-[102px] text-[#F3BEC7] dark:text-[#4B0600]">
-                            <mask id="path-5-mask" maskUnits="userSpaceOnUse" x="102.329" y="103" width="338" height="299" fill="black">
-                                <rect fill="white" x="102.329" y="103" width="338" height="299"/>
-                                <path d="M337.593 400.8C306.793 400.8 281.593 392.4 261.993 375.6C242.793 358.8 233.193 337 233.193 310.2H303.393C303.393 318.2 306.393 324.8 312.393 330C318.393 335.2 326.393 337.8 336.393 337.8C345.993 337.8 353.793 335 359.793 329.4C366.193 323.8 369.393 316.6 369.393 307.8C369.393 299.8 366.593 293.2 360.993 288C355.393 282.8 348.193 280.2 339.393 280.2H302.193V218.4H339.393C346.193 218.4 351.993 216 356.793 211.2C361.593 206.4 363.993 200.4 363.993 193.2C363.993 184.8 361.393 178.2 356.193 173.4C350.993 168.6 344.393 166.2 336.393 166.2C329.193 166.2 322.993 168.4 317.793 172.8C312.993 177.2 310.593 182.8 310.593 189.6H243.993C243.993 164.8 252.793 144.6 270.393 129C287.993 113 310.593 105 338.193 105C365.793 105 388.193 112.2 405.393 126.6C422.993 141 431.793 160 431.793 183.6C431.793 200.8 427.193 214.8 417.993 225.6C408.793 236 396.993 243.2 382.593 247.2C399.793 252 413.393 260.2 423.393 271.8C433.793 283.4 438.993 298 438.993 315.6C438.993 340.4 429.593 360.8 410.793 376.8C391.993 392.8 367.593 400.8 337.593 400.8Z"/>
-                                <path d="M129.529 167.6H104.329V105.2H197.329V400.2H129.529V167.6Z"/>
-                            </mask>
-                            <path d="M337.593 400.8C306.793 400.8 281.593 392.4 261.993 375.6C242.793 358.8 233.193 337 233.193 310.2H303.393C303.393 318.2 306.393 324.8 312.393 330C318.393 335.2 326.393 337.8 336.393 337.8C345.993 337.8 353.793 335 359.793 329.4C366.193 323.8 369.393 316.6 369.393 307.8C369.393 299.8 366.593 293.2 360.993 288C355.393 282.8 348.193 280.2 339.393 280.2H302.193V218.4H339.393C346.193 218.4 351.993 216 356.793 211.2C361.593 206.4 363.993 200.4 363.993 193.2C363.993 184.8 361.393 178.2 356.193 173.4C350.993 168.6 344.393 166.2 336.393 166.2C329.193 166.2 322.993 168.4 317.793 172.8C312.993 177.2 310.593 182.8 310.593 189.6H243.993C243.993 164.8 252.793 144.6 270.393 129C287.993 113 310.593 105 338.193 105C365.793 105 388.193 112.2 405.393 126.6C422.993 141 431.793 160 431.793 183.6C431.793 200.8 427.193 214.8 417.993 225.6C408.793 236 396.993 243.2 382.593 247.2C399.793 252 413.393 260.2 423.393 271.8C433.793 283.4 438.993 298 438.993 315.6C438.993 340.4 429.593 360.8 410.793 376.8C391.993 392.8 367.593 400.8 337.593 400.8Z" fill="currentColor"/>
-                            <path d="M129.529 167.6H104.329V105.2H197.329V400.2H129.529V167.6Z" fill="currentColor"/>
-                            <path d="M337.593 400.8C306.793 400.8 281.593 392.4 261.993 375.6C242.793 358.8 233.193 337 233.193 310.2H303.393C303.393 318.2 306.393 324.8 312.393 330C318.393 335.2 326.393 337.8 336.393 337.8C345.993 337.8 353.793 335 359.793 329.4C366.193 323.8 369.393 316.6 369.393 307.8C369.393 299.8 366.593 293.2 360.993 288C355.393 282.8 348.193 280.2 339.393 280.2H302.193V218.4H339.393C346.193 218.4 351.993 216 356.793 211.2C361.593 206.4 363.993 200.4 363.993 193.2C363.993 184.8 361.393 178.2 356.193 173.4C350.993 168.6 344.393 166.2 336.393 166.2C329.193 166.2 322.993 168.4 317.793 172.8C312.993 177.2 310.593 182.8 310.593 189.6H243.993C243.993 164.8 252.793 144.6 270.393 129C287.993 113 310.593 105 338.193 105C365.793 105 388.193 112.2 405.393 126.6C422.993 141 431.793 160 431.793 183.6C431.793 200.8 427.193 214.8 417.993 225.6C408.793 236 396.993 243.2 382.593 247.2C399.793 252 413.393 260.2 423.393 271.8C433.793 283.4 438.993 298 438.993 315.6C438.993 340.4 429.593 360.8 410.793 376.8C391.993 392.8 367.593 400.8 337.593 400.8Z" stroke="var(--stroke-color)" stroke-width="2.4" mask="url(#path-5-mask)"/>
-                            <path d="M129.529 167.6H104.329V105.2H197.329V400.2H129.529V167.6Z" stroke="var(--stroke-color)" stroke-width="2.4" mask="url(#path-5-mask)"/>
-                        </g>
-                    </svg>
-                    <div class="absolute inset-0 rounded-t-lg lg:rounded-t-none lg:rounded-r-lg shadow-[inset_0px_0px_0px_1px_rgba(26,26,0,0.16)] dark:shadow-[inset_0px_0px_0px_1px_#fffaed2d]"></div>
-                </div>
-            </main>
+      <h5 class="cat-list-title">Browse Categories</h5>
+
+      <ul class="cat-list">
+        <li class="cat-list-item">
+          <a href="#" title="Jackets">Jackets</a>
+        </li>
+        <li class="cat-list-item">
+          <a href="#" title="T-shirts">T-shirts</a>
+        </li>
+        <li class="cat-list-item">
+          <a href="#" title="Handbags">Handbags</a>
+        </li>
+        <li class="cat-list-item">
+          <a href="#" title="Accessories">Accessories</a>
+        </li>
+        <li class="cat-list-item">
+          <a href="#" title="Cosmetics">Cosmetics</a>
+        </li>
+        <li class="cat-list-item">
+          <a href="#" title="Dresses">Dresses</a>
+        </li>
+        <li class="cat-list-item">
+          <a href="#" title="Jumpsuits">Jumpsuits</a>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+
+  <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasCart" aria-labelledby="My Cart">
+    <div class="offcanvas-header justify-content-center">
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <div class="order-md-last">
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+          <span class="text-primary">Your cart</span>
+          <span class="badge bg-primary rounded-pill">3</span>
+        </h4>
+        <ul class="list-group mb-3">
+          <li class="list-group-item d-flex justify-content-between lh-sm">
+            <div>
+              <h6 class="my-0">Growers cider</h6>
+              <small class="text-body-secondary">Brief description</small>
+            </div>
+            <span class="text-body-secondary">$12</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between lh-sm">
+            <div>
+              <h6 class="my-0">Fresh grapes</h6>
+              <small class="text-body-secondary">Brief description</small>
+            </div>
+            <span class="text-body-secondary">$8</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between lh-sm">
+            <div>
+              <h6 class="my-0">Heinz tomato ketchup</h6>
+              <small class="text-body-secondary">Brief description</small>
+            </div>
+            <span class="text-body-secondary">$5</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between">
+            <span>Total (USD)</span>
+            <strong>$20</strong>
+          </li>
+        </ul>
+
+        <button class="w-100 btn btn-primary btn-lg" type="submit">Continue to Checkout</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasAccount" aria-labelledby="My Account">
+    <div class="offcanvas-header justify-content-between border-bottom p-4">
+      <h5 class="offcanvas-title text-uppercase m-0 d-flex align-items-center gap-2">
+        <svg width="24" height="24" viewBox="0 0 24 24"><use xlink:href="#user"></use></svg> My Account
+      </h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body p-4 d-flex flex-column">
+      <div class="user-profile-header p-3 mb-4 rounded-3" style="background: rgba(140, 144, 126, 0.08); border: 1px solid rgba(140, 144, 126, 0.2);">
+        <div class="d-flex align-items-center justify-content-between mb-3">
+          <div class="d-flex align-items-center gap-3">
+            <div class="avatar-upload-wrapper">
+              <img src="{{ asset('images/insta-item1.jpg') }}" alt="user avatar" class="user-avatar-img rounded-circle object-fit-cover" style="width: 60px; height: 60px; border: 2px solid var(--bs-primary, #8c907e);">
+              <button type="button" class="avatar-camera-overlay" onclick="openProfileTab('#tabPhoto')" title="Change Profile Photo">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+              </button>
+            </div>
+            <div class="user-info">
+              <h6 class="m-0 fw-bold text-dark user-display-name">Elena Rostova</h6>
+              <span class="badge bg-success-subtle text-success border border-success-subtle rounded-pill py-1 px-2 mb-1" style="font-size: 0.7rem;">VIP Member • Verified</span>
+              <div class="text-muted user-display-email" style="font-size: 0.8rem;">elena.rostova@example.com</div>
+            </div>
+          </div>
         </div>
 
-        @if (Route::has('login'))
-            <div class="h-14.5 hidden lg:block"></div>
-        @endif
-    </body>
+        <div class="profile-progress-box bg-white p-2 rounded-2 border mb-3">
+          <div class="d-flex justify-content-between align-items-center mb-1" style="font-size: 0.75rem;">
+            <span class="text-muted fw-medium">Profile Completion</span>
+            <span class="fw-bold text-primary">90%</span>
+          </div>
+          <div class="progress" style="height: 6px;">
+            <div class="progress-bar bg-primary" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+
+        <div class="d-flex gap-2">
+          <button type="button" class="btn btn-sm btn-outline-dark w-50 d-flex align-items-center justify-content-center gap-1 py-1 text-uppercase" style="font-size: 0.75rem;" onclick="openProfileTab('#tabPhoto')">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg> Change Photo
+          </button>
+          <button type="button" class="btn btn-sm btn-primary w-50 d-flex align-items-center justify-content-center gap-1 py-1 text-uppercase" style="font-size: 0.75rem;" onclick="openProfileTab('#tabPersonal')">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg> Edit Info
+          </button>
+        </div>
+      </div>
+
+      <div class="account-menu-group mb-4">
+        <h6 class="text-uppercase text-muted mb-2 px-2" style="font-size: 0.75rem; letter-spacing: 1px;">Shopping & Orders</h6>
+        <div class="list-group list-group-flush border rounded-3 overflow-hidden">
+          <a href="#" class="list-group-item list-group-item-action d-flex align-items-center justify-content-between p-3" data-bs-toggle="modal" data-bs-target="#modalSizing">
+            <span class="d-flex align-items-center gap-3">
+              <svg width="20" height="20" viewBox="0 0 24 24" class="text-primary"><use xlink:href="#category"></use></svg>
+              <span>Sizing & Fit Preferences</span>
+            </span>
+            <svg width="16" height="16" viewBox="0 0 24 24" class="text-muted"><use xlink:href="#arrow-right"></use></svg>
+          </a>
+          <a href="#" class="list-group-item list-group-item-action d-flex align-items-center justify-content-between p-3" data-bs-toggle="modal" data-bs-target="#modalOrderTracking">
+            <span class="d-flex align-items-center gap-3">
+              <svg width="20" height="20" viewBox="0 0 24 24" class="text-primary"><use xlink:href="#shopping-bag"></use></svg>
+              <span>Order Tracking & History</span>
+            </span>
+            <span class="badge bg-primary rounded-pill">2 Active</span>
+          </a>
+          <a href="#" class="list-group-item list-group-item-action d-flex align-items-center justify-content-between p-3" data-bs-toggle="modal" data-bs-target="#modalWishlist">
+            <span class="d-flex align-items-center gap-3">
+              <svg width="20" height="20" viewBox="0 0 24 24" class="text-primary"><use xlink:href="#heart"></use></svg>
+              <span>My Wishlist</span>
+            </span>
+            <span class="badge bg-secondary rounded-pill">3</span>
+          </a>
+          <a href="#" class="list-group-item list-group-item-action d-flex align-items-center justify-content-between p-3" data-bs-toggle="modal" data-bs-target="#modalPayment">
+            <span class="d-flex align-items-center gap-3">
+              <svg width="20" height="20" viewBox="0 0 24 24" class="text-primary"><use xlink:href="#gift"></use></svg>
+              <span>Saved Payment Methods</span>
+            </span>
+            <svg width="16" height="16" viewBox="0 0 24 24" class="text-muted"><use xlink:href="#arrow-right"></use></svg>
+          </a>
+          <a href="#" class="list-group-item list-group-item-action d-flex align-items-center justify-content-between p-3" data-bs-toggle="modal" data-bs-target="#modalAddresses">
+            <span class="d-flex align-items-center gap-3">
+              <svg width="20" height="20" viewBox="0 0 24 24" class="text-primary"><use xlink:href="#calendar"></use></svg>
+              <span>Addresses & Delivery</span>
+            </span>
+            <svg width="16" height="16" viewBox="0 0 24 24" class="text-muted"><use xlink:href="#arrow-right"></use></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="account-menu-group mb-4">
+        <h6 class="text-uppercase text-muted mb-2 px-2" style="font-size: 0.75rem; letter-spacing: 1px;">Support & Assistance</h6>
+        <div class="list-group list-group-flush border rounded-3 overflow-hidden">
+          <a href="#" class="list-group-item list-group-item-action d-flex align-items-center justify-content-between p-3" data-bs-toggle="modal" data-bs-target="#modalSupport">
+            <span class="d-flex align-items-center gap-3">
+              <svg width="20" height="20" viewBox="0 0 24 24" class="text-primary"><use xlink:href="#check"></use></svg>
+              <span>Help & Support / FAQs</span>
+            </span>
+            <svg width="16" height="16" viewBox="0 0 24 24" class="text-muted"><use xlink:href="#arrow-right"></use></svg>
+          </a>
+          <a href="#" class="list-group-item list-group-item-action d-flex align-items-center justify-content-between p-3" data-bs-toggle="modal" data-bs-target="#modalContact">
+            <span class="d-flex align-items-center gap-3">
+              <svg width="20" height="20" viewBox="0 0 24 24" class="text-primary"><use xlink:href="#link"></use></svg>
+              <span>Contact Us / Style Concierge</span>
+            </span>
+            <svg width="16" height="16" viewBox="0 0 24 24" class="text-muted"><use xlink:href="#arrow-right"></use></svg>
+          </a>
+          <a href="#" class="list-group-item list-group-item-action d-flex align-items-center justify-content-between p-3" data-bs-toggle="modal" data-bs-target="#modalReturns">
+            <span class="d-flex align-items-center gap-3">
+              <svg width="20" height="20" viewBox="0 0 24 24" class="text-primary"><use xlink:href="#arrow-cycle"></use></svg>
+              <span>Global Returns Portal</span>
+            </span>
+            <svg width="16" height="16" viewBox="0 0 24 24" class="text-muted"><use xlink:href="#arrow-right"></use></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="account-menu-group mb-4">
+        <h6 class="text-uppercase text-muted mb-2 px-2" style="font-size: 0.75rem; letter-spacing: 1px;">Preferences</h6>
+        <div class="list-group list-group-flush border rounded-3 overflow-hidden">
+          <a href="#" class="list-group-item list-group-item-action d-flex align-items-center justify-content-between p-3 text-danger fw-medium" data-bs-toggle="modal" data-bs-target="#modalLogout">
+            <span class="d-flex align-items-center gap-3">
+              <svg width="20" height="20" viewBox="0 0 24 24" class="text-danger"><use xlink:href="#close"></use></svg>
+              <span>Log Out</span>
+            </span>
+            <svg width="16" height="16" viewBox="0 0 24 24" class="text-danger"><use xlink:href="#arrow-right"></use></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="p-3 bg-light rounded-3 text-center mt-auto border">
+        <small class="text-muted d-block mb-1">Need immediate assistance?</small>
+        <a href="tel:+43720115278" class="text-dark fw-bold text-decoration-none">+43 720 11 52 78</a>
+      </div>
+    </div>
+  </div>
+
+  <nav class="navbar navbar-expand-lg bg-light text-uppercase fs-6 p-3 border-bottom align-items-center sticky-top">
+    <div class="container-fluid">
+      <div class="row justify-content-between align-items-center w-100">
+
+        <div class="col-auto d-flex align-items-center gap-3">
+          <a href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasAccount"
+            aria-controls="offcanvasAccount" title="Side Menu" class="d-flex align-items-center text-dark pe-2">
+            <svg width="26" height="26" viewBox="0 0 24 24">
+              <use xlink:href="#menu-hamburger"></use>
+            </svg>
+          </a>
+          <a class="navbar-brand text-white" href="/">
+            <svg width="112" height="45" viewBox="0 0 112 45" xmlns="http://www.w3.org/2000/svg" fill="#111">
+              <path
+                d="M2.51367 34.9297C2.58398 34.6836 2.64844 34.3789 2.70703 34.0156C2.77734 33.6523 2.83594 33.2012 2.88281 32.6621C2.92969 32.123 2.96484 31.4844 2.98828 30.7461C3.01172 29.9961 3.02344 29.123 3.02344 28.127V16.6836C3.02344 15.6875 3.01172 14.8203 2.98828 14.082C2.96484 13.332 2.92969 12.6875 2.88281 12.1484C2.83594 11.5977 2.77734 11.1406 2.70703 10.7773C2.64844 10.4141 2.58398 10.1094 2.51367 9.86328V9.79297H6.73242V9.86328C6.66211 10.1094 6.5918 10.4141 6.52148 10.7773C6.46289 11.1406 6.41016 11.5977 6.36328 12.1484C6.32812 12.6875 6.29297 13.332 6.25781 14.082C6.23438 14.8203 6.22266 15.6875 6.22266 16.6836V20.6035L16.4883 12.2188C17.6367 11.2813 18.2109 10.4727 18.2109 9.79297H23.1504V9.86328C22.459 10.0273 21.7559 10.3437 21.041 10.8125C20.3379 11.2695 19.5879 11.832 18.791 12.5L9.7207 20.0938L20.6367 32.082C21.0938 32.5508 21.4805 32.9434 21.7969 33.2598C22.125 33.5645 22.4121 33.8223 22.6582 34.0332C22.9043 34.2324 23.127 34.4023 23.3262 34.543C23.5371 34.6719 23.7539 34.8008 23.9766 34.9297V35H18.8262C18.7793 34.8945 18.6973 34.7598 18.5801 34.5957C18.4746 34.4316 18.3457 34.2617 18.1934 34.0859C18.0527 33.9102 17.8945 33.7285 17.7188 33.541C17.5547 33.3535 17.3965 33.1777 17.2441 33.0137L6.22266 20.9199V28.127C6.22266 29.123 6.23438 29.9961 6.25781 30.7461C6.29297 31.4844 6.32812 32.123 6.36328 32.6621C6.41016 33.2012 6.46289 33.6523 6.52148 34.0156C6.5918 34.3789 6.66211 34.6836 6.73242 34.9297V35H2.51367V34.9297ZM45.3846 35V34.9297C45.408 34.8711 45.4256 34.7832 45.4373 34.666C45.4491 34.5488 45.4549 34.4434 45.4549 34.3496C45.4549 33.9863 45.4022 33.5879 45.2967 33.1543C45.203 32.709 45.0155 32.1582 44.7342 31.502L42.6073 26.7207C41.951 26.6973 41.078 26.6855 39.9881 26.6855C38.8983 26.6855 37.7205 26.6855 36.4549 26.6855C35.5291 26.6855 34.6327 26.6855 33.7655 26.6855C32.91 26.6855 32.1366 26.6973 31.4452 26.7207L29.4237 31.3613C29.2479 31.7949 29.0604 32.2695 28.8612 32.7852C28.662 33.3008 28.5623 33.8223 28.5623 34.3496C28.5623 34.502 28.5741 34.6309 28.5975 34.7363C28.6209 34.8301 28.6444 34.8945 28.6678 34.9297V35H25.0819V34.9297C25.2928 34.707 25.5565 34.3145 25.8729 33.752C26.1893 33.1777 26.535 32.4629 26.91 31.6074L36.9823 9.26562H38.3885L47.9334 30.7461C48.1561 31.25 48.3846 31.7422 48.619 32.2227C48.8651 32.6914 49.0936 33.1133 49.3045 33.4883C49.5155 33.8633 49.703 34.1797 49.867 34.4375C50.0311 34.6953 50.1424 34.8594 50.201 34.9297V35H45.3846ZM33.994 25.1738C34.6737 25.1738 35.3709 25.1738 36.0858 25.1738C36.8006 25.1621 37.4979 25.1562 38.1776 25.1562C38.869 25.1445 39.5311 25.1387 40.1639 25.1387C40.7967 25.127 41.3709 25.1152 41.8866 25.1035L36.9471 13.9414L32.0955 25.1738H33.994ZM54.6989 34.9297C54.7692 34.6836 54.8337 34.3789 54.8923 34.0156C54.9509 33.6523 55.0036 33.2012 55.0505 32.6621C55.0973 32.123 55.1325 31.4844 55.1559 30.7461C55.1794 29.9961 55.1911 29.123 55.1911 28.127V16.6836C55.1911 15.6875 55.1794 14.8203 55.1559 14.082C55.1325 13.332 55.0973 12.6875 55.0505 12.1484C55.0036 11.5977 54.9509 11.1406 54.8923 10.7773C54.8337 10.4141 54.7692 10.1094 54.6989 9.86328V9.79297H58.9001V9.86328C58.8298 10.1094 58.7595 10.4141 58.6891 10.7773C58.6305 11.1406 58.5778 11.5977 58.5309 12.1484C58.4958 12.6875 58.4606 13.332 58.4255 14.082C58.402 14.8203 58.3903 15.6875 58.3903 16.6836V28.127C58.3903 29.123 58.402 29.9961 58.4255 30.7461C58.4606 31.4844 58.4958 32.123 58.5309 32.6621C58.5778 33.2012 58.6305 33.6523 58.6891 34.0156C58.7595 34.3789 58.8298 34.6836 58.9001 34.9297V35H54.6989V34.9297ZM69.9722 28.127C69.9722 29.123 69.9839 29.9961 70.0073 30.7461C70.0425 31.4844 70.0777 32.123 70.1128 32.6621C70.1597 33.2012 70.2124 33.6523 70.271 34.0156C70.3413 34.3789 70.4116 34.6836 70.482 34.9297V35H66.2632V34.9297C66.3335 34.6836 66.398 34.3789 66.4566 34.0156C66.5269 33.6523 66.5796 33.2012 66.6148 32.6621C66.6616 32.123 66.6968 31.4844 66.7202 30.7461C66.7554 30.0078 66.773 29.1348 66.773 28.127V16.6836C66.773 15.6875 66.7554 14.8203 66.7202 14.082C66.6968 13.332 66.6616 12.6875 66.6148 12.1484C66.5796 11.6094 66.5269 11.1582 66.4566 10.7949C66.398 10.4199 66.3335 10.1094 66.2632 9.86328V9.79297L67.0015 9.86328C67.2241 9.88672 67.4702 9.9043 67.7398 9.91602C68.021 9.91602 68.3081 9.91602 68.6011 9.91602C69.0581 9.91602 69.6734 9.86328 70.4468 9.75781C71.232 9.64062 72.228 9.58203 73.4351 9.58203C74.5601 9.58203 75.5972 9.73438 76.5464 10.0391C77.5073 10.3437 78.3394 10.7891 79.0425 11.375C79.7456 11.9609 80.2905 12.6816 80.6773 13.5371C81.0757 14.3809 81.2749 15.3418 81.2749 16.4199C81.2749 17.2637 81.1636 18.0488 80.9409 18.7754C80.73 19.4902 80.4253 20.1406 80.0269 20.7266C79.6402 21.3125 79.1714 21.834 78.6206 22.291C78.0698 22.7363 77.4546 23.1113 76.7749 23.416L82.9448 32.082C83.2495 32.5156 83.5308 32.8906 83.7886 33.207C84.0581 33.5234 84.3101 33.7988 84.5445 34.0332C84.7905 34.2559 85.0249 34.4434 85.2476 34.5957C85.4702 34.7363 85.6987 34.8477 85.9331 34.9297V35H80.853C80.8179 34.7773 80.7007 34.4844 80.5015 34.1211C80.314 33.7461 80.0913 33.377 79.8335 33.0137L73.6109 24.2422C73.3413 24.2656 73.0718 24.2891 72.8023 24.3125C72.5327 24.3242 72.2573 24.3301 71.9761 24.3301C71.648 24.3301 71.314 24.3184 70.9741 24.2949C70.646 24.2715 70.312 24.2305 69.9722 24.1719V28.127ZM69.9722 22.8008C70.2886 22.8711 70.6109 22.9238 70.939 22.959C71.2671 22.9824 71.5835 22.9941 71.8882 22.9941C72.7671 22.9941 73.5698 22.8652 74.2964 22.6074C75.023 22.3379 75.6382 21.9336 76.1421 21.3945C76.6577 20.8555 77.0562 20.1875 77.3374 19.3906C77.6187 18.582 77.7593 17.6387 77.7593 16.5605C77.7593 15.6816 77.6597 14.8848 77.4605 14.1699C77.2612 13.4551 76.9624 12.8516 76.564 12.3594C76.1773 11.8555 75.6851 11.4687 75.0874 11.1992C74.4898 10.918 73.7925 10.7773 72.9956 10.7773C72.187 10.7773 71.5425 10.8184 71.062 10.9004C70.5816 10.9824 70.2183 11.0703 69.9722 11.1641V22.8008ZM107.13 35V34.9297C107.154 34.8711 107.171 34.7832 107.183 34.666C107.195 34.5488 107.201 34.4434 107.201 34.3496C107.201 33.9863 107.148 33.5879 107.042 33.1543C106.949 32.709 106.761 32.1582 106.48 31.502L104.353 26.7207C103.697 26.6973 102.824 26.6855 101.734 26.6855C100.644 26.6855 99.4662 26.6855 98.2005 26.6855C97.2748 26.6855 96.3783 26.6855 95.5111 26.6855C94.6556 26.6855 93.8822 26.6973 93.1908 26.7207L91.1693 31.3613C90.9935 31.7949 90.806 32.2695 90.6068 32.7852C90.4076 33.3008 90.308 33.8223 90.308 34.3496C90.308 34.502 90.3197 34.6309 90.3431 34.7363C90.3666 34.8301 90.39 34.8945 90.4134 34.9297V35H86.8275V34.9297C87.0384 34.707 87.3021 34.3145 87.6185 33.752C87.9349 33.1777 88.2806 32.4629 88.6556 31.6074L98.7279 9.26562H100.134L109.679 30.7461C109.902 31.25 110.13 31.7422 110.365 32.2227C110.611 32.6914 110.839 33.1133 111.05 33.4883C111.261 33.8633 111.449 34.1797 111.613 34.4375C111.777 34.6953 111.888 34.8594 111.947 34.9297V35H107.13ZM95.7396 25.1738C96.4193 25.1738 97.1166 25.1738 97.8314 25.1738C98.5462 25.1621 99.2435 25.1562 99.9232 25.1562C100.615 25.1445 101.277 25.1387 101.91 25.1387C102.542 25.127 103.117 25.1152 103.632 25.1035L98.6927 13.9414L93.8412 25.1738H95.7396Z" />
+            </svg>
+          </a>
+        </div>
+
+        <div class="col-auto">
+          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+            aria-controls="offcanvasNavbar">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
+            aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+              <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                aria-label="Close"></button>
+            </div>
+
+            <div class="offcanvas-body">
+              <ul class="navbar-nav justify-content-end flex-grow-1 gap-1 gap-md-5 pe-3">
+                <li class="nav-item">
+                  <a class="nav-link active" href="/">Dashboard</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="dropdownShop" data-bs-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">Shop</a>
+                  <ul class="dropdown-menu list-unstyled shadow-sm border-0" aria-labelledby="dropdownShop">
+                    @foreach($categories as $category)
+                    <li>
+                      <a href="#new-arrival" class="dropdown-item item-anchor">{{ $category->name }}</a>
+                    </li>
+                    @endforeach
+                  </ul>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#blog">Blog</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#modalContact">Contact</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-auto">
+          <ul class="list-unstyled d-flex m-0 align-items-center">
+            <li class="mx-2">
+              <a href="#new-arrival" class="mx-2 d-flex align-items-center" title="Wishlist">
+                <svg width="24" height="24" viewBox="0 0 24 24">
+                  <use xlink:href="#heart"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="mx-2">
+              <a href="#" class="mx-2 d-flex align-items-center" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart"
+                aria-controls="offcanvasCart" title="Cart">
+                <svg width="24" height="24" viewBox="0 0 24 24">
+                  <use xlink:href="#cart"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="search-box mx-2">
+              <a href="#search" class="search-button d-flex align-items-center" title="Search">
+                <svg width="24" height="24" viewBox="0 0 24 24">
+                  <use xlink:href="#search"></use>
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+  </nav>
+
+  <section id="billboard" class="bg-light py-5">
+    <div class="container">
+      <div class="row justify-content-center text-center mb-4">
+        <div class="col-lg-7 col-md-9" data-aos="fade-up">
+          <span class="text-uppercase text-primary fw-bold d-block mb-1" style="font-size: 0.8rem; letter-spacing: 2.5px;">CURATED LOOKBOOK 2026</span>
+          <h2 class="section-title text-uppercase m-0 fw-bold display-6" style="letter-spacing: 1px;">NEW COLLECTIONS</h2>
+          <p class="text-secondary mt-3 mx-auto" style="font-size: 0.95rem; line-height: 1.6; max-width: 620px;">
+            Discover our curated selection of premium apparel and timeless statement pieces, crafted from sustainable fabrics with meticulous attention to detail.
+          </p>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="swiper main-swiper py-2" data-aos="fade-up" data-aos-delay="300">
+          <div class="swiper-wrapper d-flex">
+            
+            <!-- Slide 1 -->
+            <div class="swiper-slide">
+              <div class="spotlight-card h-100 d-flex flex-column">
+                <div class="position-relative overflow-hidden">
+                  <a href="#new-arrival" class="d-block text-decoration-none">
+                    <img src="{{ asset('images/banner-image-6.jpg') }}" alt="Soft Leather Jackets" class="img-fluid w-100 spotlight-img">
+                  </a>
+                  <span class="badge bg-white text-dark rounded-pill position-absolute top-0 start-0 m-3 px-3 py-2 fw-semibold shadow-sm" style="font-size: 0.75rem;">GENUINE LEATHER</span>
+                </div>
+                <div class="p-4 d-flex flex-column flex-grow-1">
+                  <span class="text-uppercase text-primary fw-bold mb-1" style="font-size: 0.75rem; letter-spacing: 1.5px;">HAND-FINISHED</span>
+                  <h5 class="fw-bold text-dark text-uppercase mb-2" style="letter-spacing: 0.5px;">
+                    <a href="#new-arrival" class="text-decoration-none text-dark">Soft Leather Jackets</a>
+                  </h5>
+                  <p class="text-secondary mb-4 flex-grow-1" style="font-size: 0.9rem; line-height: 1.6;">
+                    Experience unmatched warmth and luxury with our supple, hand-finished genuine leather jackets.
+                  </p>
+                  <div>
+                    <a href="#new-arrival" class="btn btn-dark rounded-pill px-4 py-2 text-uppercase fw-semibold fs-7 shadow-sm d-inline-flex align-items-center gap-2">
+                      Discover Now
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="swiper-slide">
+              <div class="spotlight-card h-100 d-flex flex-column">
+                <div class="position-relative overflow-hidden">
+                  <a href="#new-arrival" class="d-block text-decoration-none">
+                    <img src="{{ asset('images/banner-image-1.jpg') }}" alt="Tailored Winter Coats" class="img-fluid w-100 spotlight-img">
+                  </a>
+                  <span class="badge bg-white text-dark rounded-pill position-absolute top-0 start-0 m-3 px-3 py-2 fw-semibold shadow-sm" style="font-size: 0.75rem;">WOOL & CASHMERE</span>
+                </div>
+                <div class="p-4 d-flex flex-column flex-grow-1">
+                  <span class="text-uppercase text-primary fw-bold mb-1" style="font-size: 0.75rem; letter-spacing: 1.5px;">HERITAGE FIT</span>
+                  <h5 class="fw-bold text-dark text-uppercase mb-2" style="letter-spacing: 0.5px;">
+                    <a href="#new-arrival" class="text-decoration-none text-dark">Tailored Winter Coats</a>
+                  </h5>
+                  <p class="text-secondary mb-4 flex-grow-1" style="font-size: 0.9rem; line-height: 1.6;">
+                    Elevate your winter wardrobe with tailored silhouettes designed for supreme comfort and enduring style.
+                  </p>
+                  <div>
+                    <a href="#new-arrival" class="btn btn-dark rounded-pill px-4 py-2 text-uppercase fw-semibold fs-7 shadow-sm d-inline-flex align-items-center gap-2">
+                      Discover Now
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="swiper-slide">
+              <div class="spotlight-card h-100 d-flex flex-column">
+                <div class="position-relative overflow-hidden">
+                  <a href="#new-arrival" class="d-block text-decoration-none">
+                    <img src="{{ asset('images/banner-image-2.jpg') }}" alt="Refined Evening Blazers" class="img-fluid w-100 spotlight-img">
+                  </a>
+                  <span class="badge bg-white text-dark rounded-pill position-absolute top-0 start-0 m-3 px-3 py-2 fw-semibold shadow-sm" style="font-size: 0.75rem;">EVENING EDITION</span>
+                </div>
+                <div class="p-4 d-flex flex-column flex-grow-1">
+                  <span class="text-uppercase text-primary fw-bold mb-1" style="font-size: 0.75rem; letter-spacing: 1.5px;">FINE MERINO</span>
+                  <h5 class="fw-bold text-dark text-uppercase mb-2" style="letter-spacing: 0.5px;">
+                    <a href="#new-arrival" class="text-decoration-none text-dark">Refined Evening Blazers</a>
+                  </h5>
+                  <p class="text-secondary mb-4 flex-grow-1" style="font-size: 0.9rem; line-height: 1.6;">
+                    Refined evening essentials and structured coats crafted from ultra-soft imported merino wool.
+                  </p>
+                  <div>
+                    <a href="#new-arrival" class="btn btn-dark rounded-pill px-4 py-2 text-uppercase fw-semibold fs-7 shadow-sm d-inline-flex align-items-center gap-2">
+                      Discover Now
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 4 -->
+            <div class="swiper-slide">
+              <div class="spotlight-card h-100 d-flex flex-column">
+                <div class="position-relative overflow-hidden">
+                  <a href="#new-arrival" class="d-block text-decoration-none">
+                    <img src="{{ asset('images/banner-image-3.jpg') }}" alt="Modern Trench Coats" class="img-fluid w-100 spotlight-img">
+                  </a>
+                  <span class="badge bg-white text-dark rounded-pill position-absolute top-0 start-0 m-3 px-3 py-2 fw-semibold shadow-sm" style="font-size: 0.75rem;">PARISIAN STYLE</span>
+                </div>
+                <div class="p-4 d-flex flex-column flex-grow-1">
+                  <span class="text-uppercase text-primary fw-bold mb-1" style="font-size: 0.75rem; letter-spacing: 1.5px;">WEATHERPROOF</span>
+                  <h5 class="fw-bold text-dark text-uppercase mb-2" style="letter-spacing: 0.5px;">
+                    <a href="#new-arrival" class="text-decoration-none text-dark">Modern Trench Coats</a>
+                  </h5>
+                  <p class="text-secondary mb-4 flex-grow-1" style="font-size: 0.9rem; line-height: 1.6;">
+                    Versatile and weather-resistant outerwear combining modern functionality with classic Parisian aesthetics.
+                  </p>
+                  <div>
+                    <a href="#new-arrival" class="btn btn-dark rounded-pill px-4 py-2 text-uppercase fw-semibold fs-7 shadow-sm d-inline-flex align-items-center gap-2">
+                      Discover Now
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 5 -->
+            <div class="swiper-slide">
+              <div class="spotlight-card h-100 d-flex flex-column">
+                <div class="position-relative overflow-hidden">
+                  <a href="#new-arrival" class="d-block text-decoration-none">
+                    <img src="{{ asset('images/banner-image-4.jpg') }}" alt="Out Crop Sweater" class="img-fluid w-100 spotlight-img">
+                  </a>
+                  <span class="badge bg-white text-dark rounded-pill position-absolute top-0 start-0 m-3 px-3 py-2 fw-semibold shadow-sm" style="font-size: 0.75rem;">BREATHABLE KNIT</span>
+                </div>
+                <div class="p-4 d-flex flex-column flex-grow-1">
+                  <span class="text-uppercase text-primary fw-bold mb-1" style="font-size: 0.75rem; letter-spacing: 1.5px;">COTTON YARN</span>
+                  <h5 class="fw-bold text-dark text-uppercase mb-2" style="letter-spacing: 0.5px;">
+                    <a href="#new-arrival" class="text-decoration-none text-dark">Out Crop Sweater</a>
+                  </h5>
+                  <p class="text-secondary mb-4 flex-grow-1" style="font-size: 0.9rem; line-height: 1.6;">
+                    Cozy knitwear featuring relaxed cuts and breathable cotton-blend yarn for everyday versatility.
+                  </p>
+                  <div>
+                    <a href="#new-arrival" class="btn btn-dark rounded-pill px-4 py-2 text-uppercase fw-semibold fs-7 shadow-sm d-inline-flex align-items-center gap-2">
+                      Discover Now
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 6 -->
+            <div class="swiper-slide">
+              <div class="spotlight-card h-100 d-flex flex-column">
+                <div class="position-relative overflow-hidden">
+                  <a href="#new-arrival" class="d-block text-decoration-none">
+                    <img src="{{ asset('images/banner-image-5.jpg') }}" alt="Signature Outerwear" class="img-fluid w-100 spotlight-img">
+                  </a>
+                  <span class="badge bg-white text-dark rounded-pill position-absolute top-0 start-0 m-3 px-3 py-2 fw-semibold shadow-sm" style="font-size: 0.75rem;">TIMELESS STAPLES</span>
+                </div>
+                <div class="p-4 d-flex flex-column flex-grow-1">
+                  <span class="text-uppercase text-primary fw-bold mb-1" style="font-size: 0.75rem; letter-spacing: 1.5px;">ESSENTIAL LAYER</span>
+                  <h5 class="fw-bold text-dark text-uppercase mb-2" style="letter-spacing: 0.5px;">
+                    <a href="#new-arrival" class="text-decoration-none text-dark">Signature Outerwear</a>
+                  </h5>
+                  <p class="text-secondary mb-4 flex-grow-1" style="font-size: 0.9rem; line-height: 1.6;">
+                    Timeless outerwear staples engineered for durability, sophisticated layering, and effortless allure.
+                  </p>
+                  <div>
+                    <a href="#new-arrival" class="btn btn-dark rounded-pill px-4 py-2 text-uppercase fw-semibold fs-7 shadow-sm d-inline-flex align-items-center gap-2">
+                      Discover Now
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="swiper-pagination mt-4"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+        <div class="icon-arrow icon-arrow-left"><svg width="50" height="50" viewBox="0 0 24 24">
+            <use xlink:href="#arrow-left"></use>
+          </svg></div>
+        <div class="icon-arrow icon-arrow-right"><svg width="50" height="50" viewBox="0 0 24 24">
+            <use xlink:href="#arrow-right"></use>
+          </svg></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Concierge Guarantee Features Section -->
+  <section class="features py-5 bg-white border-top border-bottom">
+    <div class="container py-3">
+      <div class="row g-4">
+        
+        <!-- Feature 1: Appointment -->
+        <div class="col-lg-3 col-md-6 text-center" data-aos="fade-up" data-aos-delay="0">
+          <div class="feature-card h-100 d-flex flex-column align-items-center justify-content-between">
+            <div>
+              <div class="feature-icon-wrapper shadow-sm">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+              </div>
+              <span class="text-uppercase text-primary fw-bold d-block mb-1" style="font-size: 0.75rem; letter-spacing: 1.5px;">VIP CONSULTATION</span>
+              <h5 class="fw-bold text-dark text-uppercase mb-3" style="letter-spacing: 0.5px;">Book An Appointment</h5>
+              <p class="text-secondary m-0" style="font-size: 0.9rem; line-height: 1.6;">
+                Schedule a complimentary one-on-one private styling consultation with our in-store fashion experts.
+              </p>
+            </div>
+            <div class="pt-4">
+              <a href="#" data-bs-toggle="modal" data-bs-target="#modalContact" class="btn btn-sm btn-outline-dark rounded-pill px-3 py-1-5 fw-semibold text-uppercase" style="font-size: 0.75rem; letter-spacing: 1px;">Reserve Session →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Feature 2: Boutique Pickup -->
+        <div class="col-lg-3 col-md-6 text-center" data-aos="fade-up" data-aos-delay="200">
+          <div class="feature-card h-100 d-flex flex-column align-items-center justify-content-between">
+            <div>
+              <div class="feature-icon-wrapper shadow-sm">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+              </div>
+              <span class="text-uppercase text-primary fw-bold d-block mb-1" style="font-size: 0.75rem; letter-spacing: 1.5px;">EXPRESS BOUTIQUE</span>
+              <h5 class="fw-bold text-dark text-uppercase mb-3" style="letter-spacing: 0.5px;">Pick Up In Store</h5>
+              <p class="text-secondary m-0" style="font-size: 0.9rem; line-height: 1.6;">
+                Enjoy fast, complimentary local pickup at our boutique locations within 2 hours of placing your order.
+              </p>
+            </div>
+            <div class="pt-4">
+              <a href="#footer" class="btn btn-sm btn-outline-dark rounded-pill px-3 py-1-5 fw-semibold text-uppercase" style="font-size: 0.75rem; letter-spacing: 1px;">Find Store →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Feature 3: Signature Gift Box -->
+        <div class="col-lg-3 col-md-6 text-center" data-aos="fade-up" data-aos-delay="400">
+          <div class="feature-card h-100 d-flex flex-column align-items-center justify-content-between">
+            <div>
+              <div class="feature-icon-wrapper shadow-sm">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 12 20 22 4 22 4 12"></polyline><rect x="2" y="7" width="20" height="5"></rect><line x1="12" y1="22" x2="12" y2="7"></line><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path></svg>
+              </div>
+              <span class="text-uppercase text-primary fw-bold d-block mb-1" style="font-size: 0.75rem; letter-spacing: 1.5px;">SIGNATURE BOX</span>
+              <h5 class="fw-bold text-dark text-uppercase mb-3" style="letter-spacing: 0.5px;">Special Packaging</h5>
+              <p class="text-secondary m-0" style="font-size: 0.9rem; line-height: 1.6;">
+                Every purchase is carefully wrapped in our signature eco-friendly gift boxes with personalized care.
+              </p>
+            </div>
+            <div class="pt-4">
+              <span class="badge bg-light text-secondary border px-3 py-2 rounded-pill fw-semibold" style="font-size: 0.75rem;">Included Free</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Feature 4: Global Returns -->
+        <div class="col-lg-3 col-md-6 text-center" data-aos="fade-up" data-aos-delay="600">
+          <div class="feature-card h-100 d-flex flex-column align-items-center justify-content-between">
+            <div>
+              <div class="feature-icon-wrapper shadow-sm">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path></svg>
+              </div>
+              <span class="text-uppercase text-primary fw-bold d-block mb-1" style="font-size: 0.75rem; letter-spacing: 1.5px;">30-DAY GUARANTEE</span>
+              <h5 class="fw-bold text-dark text-uppercase mb-3" style="letter-spacing: 0.5px;">Free Global Returns</h5>
+              <p class="text-secondary m-0" style="font-size: 0.9rem; line-height: 1.6;">
+                Shop with total confidence thanks to our hassle-free 30-day worldwide return and exchange policy.
+              </p>
+            </div>
+            <div class="pt-4">
+              <a href="#" data-bs-toggle="modal" data-bs-target="#modalContact" class="btn btn-sm btn-outline-dark rounded-pill px-3 py-1-5 fw-semibold text-uppercase" style="font-size: 0.75rem; letter-spacing: 1px;">Policy Info →</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories Department Section -->
+  <section class="categories py-5 bg-white overflow-hidden">
+    <div class="container py-3">
+      
+      <!-- Section Header -->
+      <div class="text-center mb-5">
+        <span class="text-uppercase text-primary fw-bold d-block mb-1" style="font-size: 0.8rem; letter-spacing: 2.5px;">CURATED DEPARTMENTS</span>
+        <h3 class="section-title text-uppercase m-0" style="font-weight: 700; letter-spacing: 1px;">DISCOVER OUR COLLECTIONS</h3>
+      </div>
+
+      <div class="row g-4">
+        
+        <!-- Category 1: Men -->
+        <div class="col-md-4">
+          <div class="category-card">
+            <a href="#new-arrival" class="d-block text-decoration-none text-white">
+              <img src="{{ asset('images/cat-item1.jpg') }}" alt="Shop for Men" class="img-fluid w-100 category-card-img">
+              <!-- Item Badge -->
+              <span class="badge bg-white text-dark rounded-pill position-absolute top-0 end-0 m-3 px-3 py-2 fw-semibold shadow-sm" style="font-size: 0.75rem;">38 ITEMS</span>
+              <!-- Gradient Overlay & Content -->
+              <div class="category-card-overlay position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-end p-4">
+                <span class="text-uppercase text-white-50 small fw-medium mb-1" style="letter-spacing: 1.5px;">TAILORED MENSWEAR</span>
+                <h4 class="fw-bold text-white text-uppercase m-0 mb-3 fs-3" style="letter-spacing: 1px;">Shop For Men</h4>
+                <div>
+                  <span class="btn btn-light rounded-pill px-4 py-2 text-uppercase fw-semibold fs-7 shadow-sm d-inline-flex align-items-center gap-2">
+                    Explore Department
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                  </span>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Category 2: Women -->
+        <div class="col-md-4">
+          <div class="category-card">
+            <a href="#new-arrival" class="d-block text-decoration-none text-white">
+              <img src="{{ asset('images/cat-item2.jpg') }}" alt="Shop for Women" class="img-fluid w-100 category-card-img">
+              <!-- Item Badge -->
+              <span class="badge bg-white text-dark rounded-pill position-absolute top-0 end-0 m-3 px-3 py-2 fw-semibold shadow-sm" style="font-size: 0.75rem;">54 ITEMS</span>
+              <!-- Gradient Overlay & Content -->
+              <div class="category-card-overlay position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-end p-4">
+                <span class="text-uppercase text-white-50 small fw-medium mb-1" style="letter-spacing: 1.5px;">ELEGANT WOMENSWEAR</span>
+                <h4 class="fw-bold text-white text-uppercase m-0 mb-3 fs-3" style="letter-spacing: 1px;">Shop For Women</h4>
+                <div>
+                  <span class="btn btn-light rounded-pill px-4 py-2 text-uppercase fw-semibold fs-7 shadow-sm d-inline-flex align-items-center gap-2">
+                    Explore Department
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                  </span>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Category 3: Accessories -->
+        <div class="col-md-4">
+          <div class="category-card">
+            <a href="#new-arrival" class="d-block text-decoration-none text-white">
+              <img src="{{ asset('images/cat-item3.jpg') }}" alt="Shop Accessories" class="img-fluid w-100 category-card-img">
+              <!-- Item Badge -->
+              <span class="badge bg-white text-dark rounded-pill position-absolute top-0 end-0 m-3 px-3 py-2 fw-semibold shadow-sm" style="font-size: 0.75rem;">22 ITEMS</span>
+              <!-- Gradient Overlay & Content -->
+              <div class="category-card-overlay position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-end p-4">
+                <span class="text-uppercase text-white-50 small fw-medium mb-1" style="letter-spacing: 1.5px;">ARTISANAL GOODS</span>
+                <h4 class="fw-bold text-white text-uppercase m-0 mb-3 fs-3" style="letter-spacing: 1px;">Shop Accessories</h4>
+                <div>
+                  <span class="btn btn-light rounded-pill px-4 py-2 text-uppercase fw-semibold fs-7 shadow-sm d-inline-flex align-items-center gap-2">
+                    Explore Department
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                  </span>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="new-arrival" class="new-arrival product-carousel py-5 position-relative overflow-hidden">
+    <div class="container">
+      <div class="d-flex flex-wrap justify-content-between align-items-center mt-5 mb-3">
+        <h4 class="text-uppercase">Our New Arrivals</h4>
+        <a href="/" class="btn-link">View All Products</a>
+      </div>
+      <div class="swiper product-swiper open-up" data-aos="zoom-out">
+        <div class="swiper-wrapper d-flex">
+          @foreach($newArrivals as $product)
+          <div class="swiper-slide">
+            <div class="product-item image-zoom-effect link-effect">
+              <div class="image-holder position-relative">
+                <a href="/">
+                  <img src="{{ asset('images/product-item-1.jpg') }}" alt="categories" class="product-image img-fluid">
+                </a>
+                <a href="/" class="btn-icon btn-wishlist">
+                  <svg width="24" height="24" viewBox="0 0 24 24">
+                    <use xlink:href="#heart"></use>
+                  </svg>
+                </a>
+                <div class="product-content">
+                  <h5 class="element-title text-uppercase fs-5 mt-3">
+                    <a href="/">{{ $product->name }}</a>
+                  </h5>
+                  <a href="#" class="text-decoration-none" data-after="Add to cart"><span>${{ number_format($product->base_price, 2) }}</span></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          @endforeach
+        </div>
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+      <div class="icon-arrow icon-arrow-left"><svg width="50" height="50" viewBox="0 0 24 24">
+          <use xlink:href="#arrow-left"></use>
+        </svg></div>
+      <div class="icon-arrow icon-arrow-right"><svg width="50" height="50" viewBox="0 0 24 24">
+          <use xlink:href="#arrow-right"></use>
+        </svg></div>
+    </div>
+  </section>
+
+  <!-- Classic Winter Collection Section -->
+  <section class="collection py-5 bg-light position-relative overflow-hidden">
+    <div class="container py-3">
+      <div class="row align-items-center g-0 collection-card bg-white border">
+        
+        <!-- Left: High-Res Editorial Campaign Image -->
+        <div class="col-lg-6 col-md-12 p-0 overflow-hidden position-relative" style="min-height: 480px;">
+          <img src="{{ asset('images/single-image-2.jpg') }}" alt="Classic Winter Collection" class="img-fluid w-100 h-100 object-fit-cover collection-img" style="min-height: 480px; max-height: 580px;">
+          <div class="position-absolute top-0 start-0 m-4 z-2">
+            <span class="badge bg-dark text-white px-3 py-2 rounded-pill text-uppercase fw-semibold shadow-sm" style="letter-spacing: 2px; font-size: 0.78rem;">EDITORIAL CAPSULE 2026</span>
+          </div>
+        </div>
+
+        <!-- Right: Luxury Brand Narrative & Call to Action -->
+        <div class="col-lg-6 col-md-12 p-4 p-md-5">
+          <div class="p-lg-3">
+            <span class="text-uppercase text-primary fw-bold d-block mb-2" style="font-size: 0.8rem; letter-spacing: 2.5px;">AUTUMN / WINTER EDITION</span>
+            <h2 class="fw-bold text-dark text-uppercase mb-3 display-6" style="letter-spacing: 1px; line-height: 1.2;">Classic Winter Collection</h2>
+            
+            <p class="text-secondary mb-4" style="font-size: 0.95rem; line-height: 1.7;">
+              Our Classic Winter Collection celebrates the intersection of heritage craftsmanship and contemporary minimalist design. Featuring plush cashmere knits, structured wool overcoats, and versatile leather accents, each piece is engineered to keep you stylishly insulated against the seasonal chill. We source only the finest ethical fabrics from Italian mills.
+            </p>
+
+            <!-- Key Feature Badges -->
+            <div class="row g-3 mb-4 text-dark" style="font-size: 0.85rem;">
+              <div class="col-6 d-flex align-items-center gap-2">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-primary"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span class="fw-semibold">100% Italian Wool & Cashmere</span>
+              </div>
+              <div class="col-6 d-flex align-items-center gap-2">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-primary"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span class="fw-semibold">Ethically Sourced Fabrics</span>
+              </div>
+              <div class="col-6 d-flex align-items-center gap-2">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-primary"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span class="fw-semibold">Tailored Thermal Insulation</span>
+              </div>
+              <div class="col-6 d-flex align-items-center gap-2">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-primary"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span class="fw-semibold">Limited Handcrafted Run</span>
+              </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="d-flex flex-wrap align-items-center gap-3 pt-2">
+              <a href="#best-sellers" class="btn btn-dark btn-lg rounded-pill px-5 py-3 text-uppercase fw-semibold shadow-sm d-inline-flex align-items-center gap-2 fs-6" style="letter-spacing: 1px;">
+                Explore Collection
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </a>
+              <a href="#" data-bs-toggle="modal" data-bs-target="#modalSizing" class="btn btn-outline-secondary btn-lg rounded-pill px-4 py-3 text-uppercase fw-semibold fs-6">
+                Size & Fit Guide
+              </a>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="best-sellers" class="best-sellers product-carousel py-5 position-relative overflow-hidden">
+    <div class="container">
+      <div class="d-flex flex-wrap justify-content-between align-items-center mt-5 mb-3">
+        <h4 class="text-uppercase">Best Selling Items</h4>
+        <a href="/" class="btn-link">View All Products</a>
+      </div>
+      <div class="swiper product-swiper open-up" data-aos="zoom-out">
+        <div class="swiper-wrapper d-flex">
+          @foreach($bestSellers as $product)
+          <div class="swiper-slide">
+            <div class="product-item image-zoom-effect link-effect">
+              <div class="image-holder position-relative">
+                <a href="/">
+                  <img src="{{ asset('images/product-item-2.jpg') }}" alt="categories" class="product-image img-fluid">
+                </a>
+                <a href="/" class="btn-icon btn-wishlist">
+                  <svg width="24" height="24" viewBox="0 0 24 24">
+                    <use xlink:href="#heart"></use>
+                  </svg>
+                </a>
+                <div class="product-content">
+                  <h5 class="element-title text-uppercase fs-5 mt-3">
+                    <a href="/">{{ $product->name }}</a>
+                  </h5>
+                  <a href="#" class="text-decoration-none" data-after="Add to cart"><span>${{ number_format($product->base_price, 2) }}</span></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          @endforeach
+        </div>
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+      <div class="icon-arrow icon-arrow-left"><svg width="50" height="50" viewBox="0 0 24 24">
+          <use xlink:href="#arrow-left"></use>
+        </svg></div>
+      <div class="icon-arrow icon-arrow-right"><svg width="50" height="50" viewBox="0 0 24 24">
+          <use xlink:href="#arrow-right"></use>
+        </svg></div>
+    </div>
+  </section>
+
+  <section class="video py-5 overflow-hidden">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="video-content open-up" data-aos="zoom-out">
+          <div class="video-bg">
+            <img src="{{ asset('images/video-image.jpg') }}" alt="video" class="video-image img-fluid">
+          </div>
+          <div class="video-player">
+            <div class="position-relative d-inline-block">
+              <img src="{{ asset('images/text-pattern.png') }}" alt="pattern" class="text-rotate">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonials py-5 bg-light">
+    <div class="container">
+      <div class="section-header text-center mb-4">
+        <span class="text-uppercase text-primary fw-bold" style="font-size: 0.8rem; letter-spacing: 2px;">Real Customer Reviews</span>
+        <h3 class="section-title text-uppercase m-0 mt-1">WE LOVE GOOD COMPLIMENT</h3>
+        <div class="mx-auto mt-2" style="width: 50px; height: 3px; background: var(--bs-primary, #8c907e);"></div>
+      </div>
+      <div class="swiper testimonial-swiper overflow-hidden py-3">
+        <div class="swiper-wrapper">
+
+          <div class="swiper-slide">
+            <div class="testimonial-card p-4 p-md-5 bg-white rounded-4 shadow-sm border text-center h-100">
+              <div class="star-rating text-warning mb-3" style="font-size: 1.1rem; letter-spacing: 2px;">
+                ★ ★ ★ ★ ★
+              </div>
+              <blockquote class="testimonial-text mb-4" style="font-size: 1.05rem; line-height: 1.7; color: #333; font-style: italic;">
+                “The quality of the tailoring is simply extraordinary. The fabric breathes beautifully, and the fit is flattering without feeling restrictive. Truly my favorite online shopping discovery this year!”
+              </blockquote>
+              <div class="reviewer-profile d-flex align-items-center justify-content-center gap-3 border-top pt-3">
+                <img src="{{ asset('images/insta-item1.jpg') }}" alt="Elena Rostova" class="rounded-circle object-fit-cover shadow-sm" style="width: 48px; height: 48px; border: 2px solid var(--bs-primary, #8c907e);">
+                <div class="text-start">
+                  <h6 class="m-0 fw-bold text-dark" style="font-size: 0.95rem;">Elena Rostova</h6>
+                  <small class="text-success fw-medium" style="font-size: 0.75rem;">Verified Buyer • Austria</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="swiper-slide">
+            <div class="testimonial-card p-4 p-md-5 bg-white rounded-4 shadow-sm border text-center h-100">
+              <div class="star-rating text-warning mb-3" style="font-size: 1.1rem; letter-spacing: 2px;">
+                ★ ★ ★ ★ ★
+              </div>
+              <blockquote class="testimonial-text mb-4" style="font-size: 1.05rem; line-height: 1.7; color: #333; font-style: italic;">
+                “I ordered the winter wool overcoat and was blown away by the luxurious feel and attention to detail. Fast global shipping and the packaging felt like opening a luxury gift.”
+              </blockquote>
+              <div class="reviewer-profile d-flex align-items-center justify-content-center gap-3 border-top pt-3">
+                <img src="{{ asset('images/insta-item2.jpg') }}" alt="Marcus Vance" class="rounded-circle object-fit-cover shadow-sm" style="width: 48px; height: 48px; border: 2px solid var(--bs-primary, #8c907e);">
+                <div class="text-start">
+                  <h6 class="m-0 fw-bold text-dark" style="font-size: 0.95rem;">Marcus Vance</h6>
+                  <small class="text-success fw-medium" style="font-size: 0.75rem;">Verified Buyer • Germany</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="swiper-slide">
+            <div class="testimonial-card p-4 p-md-5 bg-white rounded-4 shadow-sm border text-center h-100">
+              <div class="star-rating text-warning mb-3" style="font-size: 1.1rem; letter-spacing: 2px;">
+                ★ ★ ★ ★ ★
+              </div>
+              <blockquote class="testimonial-text mb-4" style="font-size: 1.05rem; line-height: 1.7; color: #333; font-style: italic;">
+                “Unmatched customer service and effortless returns! The knitwear holds its shape perfectly even after multiple washes. Worth every single penny for such timeless wardrobe staples.”
+              </blockquote>
+              <div class="reviewer-profile d-flex align-items-center justify-content-center gap-3 border-top pt-3">
+                <img src="{{ asset('images/insta-item3.jpg') }}" alt="Sophia Laurent" class="rounded-circle object-fit-cover shadow-sm" style="width: 48px; height: 48px; border: 2px solid var(--bs-primary, #8c907e);">
+                <div class="text-start">
+                  <h6 class="m-0 fw-bold text-dark" style="font-size: 0.95rem;">Sophia Laurent</h6>
+                  <small class="text-success fw-medium" style="font-size: 0.75rem;">Verified Buyer • France</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="swiper-slide">
+            <div class="testimonial-card p-4 p-md-5 bg-white rounded-4 shadow-sm border text-center h-100">
+              <div class="star-rating text-warning mb-3" style="font-size: 1.1rem; letter-spacing: 2px;">
+                ★ ★ ★ ★ ★
+              </div>
+              <blockquote class="testimonial-text mb-4" style="font-size: 1.05rem; line-height: 1.7; color: #333; font-style: italic;">
+                “Kaira has completely transformed my daily aesthetic. Clean silhouettes, premium fabrics, and subtle design nuances make these pieces stand out in any professional setting.”
+              </blockquote>
+              <div class="reviewer-profile d-flex align-items-center justify-content-center gap-3 border-top pt-3">
+                <img src="{{ asset('images/insta-item4.jpg') }}" alt="David K." class="rounded-circle object-fit-cover shadow-sm" style="width: 48px; height: 48px; border: 2px solid var(--bs-primary, #8c907e);">
+                <div class="text-start">
+                  <h6 class="m-0 fw-bold text-dark" style="font-size: 0.95rem;">David K.</h6>
+                  <small class="text-success fw-medium" style="font-size: 0.75rem;">Verified Buyer • USA</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="testimonial-swiper-pagination d-flex justify-content-center mt-4"></div>
+    </div>
+  </section>
+
+  <section id="related-products" class="related-products product-carousel py-5 position-relative overflow-hidden">
+    <div class="container">
+      <div class="d-flex flex-wrap justify-content-between align-items-center mt-5 mb-3">
+        <h4 class="text-uppercase">You May Also Like</h4>
+        <a href="/" class="btn-link">View All Products</a>
+      </div>
+      <div class="swiper product-swiper open-up" data-aos="zoom-out">
+        <div class="swiper-wrapper d-flex">
+          <div class="swiper-slide">
+            <div class="product-item image-zoom-effect link-effect">
+              <div class="image-holder">
+                <a href="/">
+                  <img src="{{ asset('images/product-item-5.jpg') }}" alt="product" class="product-image img-fluid">
+                </a>
+                <a href="/" class="btn-icon btn-wishlist">
+                  <svg width="24" height="24" viewBox="0 0 24 24">
+                    <use xlink:href="#heart"></use>
+                  </svg>
+                </a>
+                <div class="product-content">
+                  <h5 class="text-uppercase fs-5 mt-3">
+                    <a href="/">Dark florish onepiece</a>
+                  </h5>
+                  <a href="/" class="text-decoration-none" data-after="Add to cart"><span>$95.00</span></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="product-item image-zoom-effect link-effect">
+              <div class="image-holder">
+                <a href="/">
+                  <img src="{{ asset('images/product-item-6.jpg') }}" alt="product" class="product-image img-fluid">
+                </a>
+                <a href="/" class="btn-icon btn-wishlist">
+                  <svg width="24" height="24" viewBox="0 0 24 24">
+                    <use xlink:href="#heart"></use>
+                  </svg>
+                </a>
+                <div class="product-content">
+                  <h5 class="text-uppercase fs-5 mt-3">
+                    <a href="/">Baggy Shirt</a>
+                  </h5>
+                  <a href="/" class="text-decoration-none" data-after="Add to cart"><span>$55.00</span></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="product-item image-zoom-effect link-effect">
+              <div class="image-holder">
+                <a href="/">
+                  <img src="{{ asset('images/product-item-7.jpg') }}" alt="product" class="product-image img-fluid">
+                </a>
+                <a href="/" class="btn-icon btn-wishlist">
+                  <svg width="24" height="24" viewBox="0 0 24 24">
+                    <use xlink:href="#heart"></use>
+                  </svg>
+                </a>
+                <div class="product-content">
+                  <h5 class="text-uppercase fs-5 mt-3">
+                    <a href="/">Cotton off-white shirt</a>
+                  </h5>
+                  <a href="/" class="text-decoration-none" data-after="Add to cart"><span>$65.00</span></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="product-item image-zoom-effect link-effect">
+              <div class="image-holder">
+                <a href="/">
+                  <img src="{{ asset('images/product-item-8.jpg') }}" alt="product" class="product-image img-fluid">
+                </a>
+                <a href="/" class="btn-icon btn-wishlist">
+                  <svg width="24" height="24" viewBox="0 0 24 24">
+                    <use xlink:href="#heart"></use>
+                  </svg>
+                </a>
+                <div class="product-content">
+                  <h5 class="text-uppercase fs-5 mt-3">
+                    <a href="/">Handmade crop sweater</a>
+                  </h5>
+                  <a href="/" class="text-decoration-none" data-after="Add to cart"><span>$50.00</span></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="product-item image-zoom-effect link-effect">
+              <div class="image-holder">
+                <a href="/">
+                  <img src="{{ asset('images/product-item-1.jpg') }}" alt="product" class="product-image img-fluid">
+                </a>
+                <a href="/" class="btn-icon btn-wishlist">
+                  <svg width="24" height="24" viewBox="0 0 24 24">
+                    <use xlink:href="#heart"></use>
+                  </svg>
+                </a>
+                <div class="product-content">
+                  <h5 class="text-uppercase fs-5 mt-3">
+                    <a href="/">Handmade crop sweater</a>
+                  </h5>
+                  <a href="/" class="text-decoration-none" data-after="Add to cart"><span>$70.00</span></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product 6 -->
+          <div class="swiper-slide">
+            <div class="product-item image-zoom-effect link-effect">
+              <div class="image-holder position-relative">
+                <a href="#modalQuickView" data-bs-toggle="modal" data-bs-target="#modalQuickView">
+                  <img src="{{ asset('images/cat-large-item1.jpg') }}" alt="Silk Pleated Midi Skirt" class="product-image img-fluid" style="height: 380px; object-fit: cover; width: 100%;">
+                </a>
+                <a href="#" class="btn-icon btn-wishlist" onclick="event.preventDefault(); showToast('Added to Wishlist! ❤️');">
+                  <svg width="24" height="24" viewBox="0 0 24 24"><use xlink:href="#heart"></use></svg>
+                </a>
+                <div class="product-content">
+                  <h5 class="element-title text-uppercase fs-5 mt-3">
+                    <a href="#modalQuickView" data-bs-toggle="modal" data-bs-target="#modalQuickView">Silk Pleated Midi Skirt</a>
+                  </h5>
+                  <a href="#modalQuickView" data-bs-toggle="modal" data-bs-target="#modalQuickView" class="text-decoration-none" data-after="Add to cart"><span>$88.00</span></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product 7 -->
+          <div class="swiper-slide">
+            <div class="product-item image-zoom-effect link-effect">
+              <div class="image-holder position-relative">
+                <a href="#modalQuickView" data-bs-toggle="modal" data-bs-target="#modalQuickView">
+                  <img src="{{ asset('images/post-image1.jpg') }}" alt="Oversized Cashmere Blazer" class="product-image img-fluid" style="height: 380px; object-fit: cover; width: 100%;">
+                </a>
+                <a href="#" class="btn-icon btn-wishlist" onclick="event.preventDefault(); showToast('Added to Wishlist! ❤️');">
+                  <svg width="24" height="24" viewBox="0 0 24 24"><use xlink:href="#heart"></use></svg>
+                </a>
+                <div class="product-content">
+                  <h5 class="element-title text-uppercase fs-5 mt-3">
+                    <a href="#modalQuickView" data-bs-toggle="modal" data-bs-target="#modalQuickView">Oversized Cashmere Blazer</a>
+                  </h5>
+                  <a href="#modalQuickView" data-bs-toggle="modal" data-bs-target="#modalQuickView" class="text-decoration-none" data-after="Add to cart"><span>$145.00</span></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product 8 -->
+          <div class="swiper-slide">
+            <div class="product-item image-zoom-effect link-effect">
+              <div class="image-holder position-relative">
+                <a href="#modalQuickView" data-bs-toggle="modal" data-bs-target="#modalQuickView">
+                  <img src="{{ asset('images/post-image4.jpg') }}" alt="Structured Linen Trench" class="product-image img-fluid" style="height: 380px; object-fit: cover; width: 100%;">
+                </a>
+                <a href="#" class="btn-icon btn-wishlist" onclick="event.preventDefault(); showToast('Added to Wishlist! ❤️');">
+                  <svg width="24" height="24" viewBox="0 0 24 24"><use xlink:href="#heart"></use></svg>
+                </a>
+                <div class="product-content">
+                  <h5 class="element-title text-uppercase fs-5 mt-3">
+                    <a href="#modalQuickView" data-bs-toggle="modal" data-bs-target="#modalQuickView">Structured Linen Trench</a>
+                  </h5>
+                  <a href="#modalQuickView" data-bs-toggle="modal" data-bs-target="#modalQuickView" class="text-decoration-none" data-after="Add to cart"><span>$165.00</span></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product 9 -->
+          <div class="swiper-slide">
+            <div class="product-item image-zoom-effect link-effect">
+              <div class="image-holder position-relative">
+                <a href="#modalQuickView" data-bs-toggle="modal" data-bs-target="#modalQuickView">
+                  <img src="{{ asset('images/product-item-9.jpg') }}" alt="Satin High-Waist Trousers" class="product-image img-fluid" style="height: 380px; object-fit: cover; width: 100%;">
+                </a>
+                <a href="#" class="btn-icon btn-wishlist" onclick="event.preventDefault(); showToast('Added to Wishlist! ❤️');">
+                  <svg width="24" height="24" viewBox="0 0 24 24"><use xlink:href="#heart"></use></svg>
+                </a>
+                <div class="product-content">
+                  <h5 class="element-title text-uppercase fs-5 mt-3">
+                    <a href="#modalQuickView" data-bs-toggle="modal" data-bs-target="#modalQuickView">Satin High-Waist Trousers</a>
+                  </h5>
+                  <a href="#modalQuickView" data-bs-toggle="modal" data-bs-target="#modalQuickView" class="text-decoration-none" data-after="Add to cart"><span>$78.00</span></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product 10 -->
+          <div class="swiper-slide">
+            <div class="product-item image-zoom-effect link-effect">
+              <div class="image-holder position-relative">
+                <a href="#modalQuickView" data-bs-toggle="modal" data-bs-target="#modalQuickView">
+                  <img src="{{ asset('images/single-image-2.jpg') }}" alt="Minimalist Wool Knit Vest" class="product-image img-fluid" style="height: 380px; object-fit: cover; width: 100%;">
+                </a>
+                <a href="#" class="btn-icon btn-wishlist" onclick="event.preventDefault(); showToast('Added to Wishlist! ❤️');">
+                  <svg width="24" height="24" viewBox="0 0 24 24"><use xlink:href="#heart"></use></svg>
+                </a>
+                <div class="product-content">
+                  <h5 class="element-title text-uppercase fs-5 mt-3">
+                    <a href="#modalQuickView" data-bs-toggle="modal" data-bs-target="#modalQuickView">Minimalist Wool Knit Vest</a>
+                  </h5>
+                  <a href="#modalQuickView" data-bs-toggle="modal" data-bs-target="#modalQuickView" class="text-decoration-none" data-after="Add to cart"><span>$62.00</span></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+      <div class="icon-arrow icon-arrow-left"><svg width="50" height="50" viewBox="0 0 24 24">
+          <use xlink:href="#arrow-left"></use>
+        </svg></div>
+      <div class="icon-arrow icon-arrow-right"><svg width="50" height="50" viewBox="0 0 24 24">
+          <use xlink:href="#arrow-right"></use>
+        </svg></div>
+    </div>
+  </section>
+
+  <section id="blog" class="blog py-5 bg-white">
+    <div class="container">
+      <div class="d-flex flex-wrap justify-content-between align-items-end mt-4 mb-4 pb-2 border-bottom">
+        <div>
+          <span class="text-uppercase text-primary fw-bold" style="font-size: 0.8rem; letter-spacing: 2px;">Editorial Insights</span>
+          <h3 class="section-title text-uppercase m-0 mt-1" style="font-weight: 700; letter-spacing: 1px;">READ BLOG POSTS</h3>
+        </div>
+        <a href="#blog" class="btn-link text-uppercase fw-semibold" style="letter-spacing: 1px;">View All Posts →</a>
+      </div>
+      <div class="row g-4">
+
+        <div class="col-md-4">
+          <article class="blog-card h-100 d-flex flex-column">
+            <div class="blog-img-wrapper">
+              <span class="blog-badge">Styling Tips</span>
+              <a href="#blog">
+                <img src="{{ asset('images/post-image1.jpg') }}" alt="How to Look Outstanding in Pastel" class="img-fluid">
+              </a>
+            </div>
+            <div class="blog-content p-4 d-flex flex-column flex-grow-1">
+              <div class="text-uppercase text-muted fw-medium mb-2" style="font-size: 0.78rem; letter-spacing: 1px;">
+                <span>JUL 11, 2022</span> • <span>5 MIN READ</span>
+              </div>
+              <h5 class="fw-bold mb-3" style="font-size: 1.15rem; line-height: 1.4;">
+                <a href="#blog" class="blog-title-link">How to Look Outstanding in Pastel</a>
+              </h5>
+              <p class="text-secondary mb-4 flex-grow-1" style="font-size: 0.92rem; line-height: 1.6;">
+                Master the delicate art of incorporating muted tones into your seasonal wardrobe. Discover how pairing soft lavender, sage green, and blush pink with neutral tailoring creates a sophisticated silhouette.
+              </p>
+              <div class="border-top pt-3 mt-auto d-flex align-items-center justify-content-between">
+                <div class="d-flex align-items-center gap-2">
+                  <img src="{{ asset('images/insta-item1.jpg') }}" alt="Clara Dupont" class="rounded-circle object-fit-cover" style="width: 32px; height: 32px;">
+                  <span class="fw-medium text-dark" style="font-size: 0.85rem;">Clara Dupont</span>
+                </div>
+                <a href="#blog" class="fw-semibold text-primary text-decoration-none" style="font-size: 0.85rem;">Read Article →</a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="col-md-4">
+          <article class="blog-card h-100 d-flex flex-column">
+            <div class="blog-img-wrapper">
+              <span class="blog-badge">Trend Report</span>
+              <a href="#blog">
+                <img src="{{ asset('images/post-image2.jpg') }}" alt="Top 10 Fashion Trend For Summer" class="img-fluid">
+              </a>
+            </div>
+            <div class="blog-content p-4 d-flex flex-column flex-grow-1">
+              <div class="text-uppercase text-muted fw-medium mb-2" style="font-size: 0.78rem; letter-spacing: 1px;">
+                <span>JUL 11, 2022</span> • <span>4 MIN READ</span>
+              </div>
+              <h5 class="fw-bold mb-3" style="font-size: 1.15rem; line-height: 1.4;">
+                <a href="#blog" class="blog-title-link">Top 10 Fashion Trends for Summer</a>
+              </h5>
+              <p class="text-secondary mb-4 flex-grow-1" style="font-size: 0.92rem; line-height: 1.6;">
+                From lightweight linen ensembles and oversized tailoring to breathable open-weave knits, explore the top curated trends dominating runway shows and urban street style this season.
+              </p>
+              <div class="border-top pt-3 mt-auto d-flex align-items-center justify-content-between">
+                <div class="d-flex align-items-center gap-2">
+                  <img src="{{ asset('images/insta-item2.jpg') }}" alt="Julian Vance" class="rounded-circle object-fit-cover" style="width: 32px; height: 32px;">
+                  <span class="fw-medium text-dark" style="font-size: 0.85rem;">Julian Vance</span>
+                </div>
+                <a href="#blog" class="fw-semibold text-primary text-decoration-none" style="font-size: 0.85rem;">Read Article →</a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="col-md-4">
+          <article class="blog-card h-100 d-flex flex-column">
+            <div class="blog-img-wrapper">
+              <span class="blog-badge">Editorial</span>
+              <a href="#blog">
+                <img src="{{ asset('images/post-image3.jpg') }}" alt="Crazy Fashion With Unique Moment" class="img-fluid">
+              </a>
+            </div>
+            <div class="blog-content p-4 d-flex flex-column flex-grow-1">
+              <div class="text-uppercase text-muted fw-medium mb-2" style="font-size: 0.78rem; letter-spacing: 1px;">
+                <span>JUL 11, 2022</span> • <span>6 MIN READ</span>
+              </div>
+              <h5 class="fw-bold mb-3" style="font-size: 1.15rem; line-height: 1.4;">
+                <a href="#blog" class="blog-title-link">Crazy Fashion with Unique Moment</a>
+              </h5>
+              <p class="text-secondary mb-4 flex-grow-1" style="font-size: 0.92rem; line-height: 1.6;">
+                Uncover the inspiration behind our latest limited-edition capsule collection. We explore how bold architectural lines and vintage textures blend to create standout statement garments.
+              </p>
+              <div class="border-top pt-3 mt-auto d-flex align-items-center justify-content-between">
+                <div class="d-flex align-items-center gap-2">
+                  <img src="{{ asset('images/insta-item3.jpg') }}" alt="Sophia Laurent" class="rounded-circle object-fit-cover" style="width: 32px; height: 32px;">
+                  <span class="fw-medium text-dark" style="font-size: 0.85rem;">Sophia Laurent</span>
+                </div>
+                <a href="#blog" class="fw-semibold text-primary text-decoration-none" style="font-size: 0.85rem;">Read Article →</a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Newsletter Section -->
+  <section class="newsletter py-5 bg-white position-relative border-top border-bottom">
+    <div class="container py-4">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10 text-center">
+          <div class="newsletter-card p-4 p-md-5 bg-light rounded-4 border shadow-sm">
+            <span class="text-uppercase text-primary fw-bold d-block mb-2" style="font-size: 0.8rem; letter-spacing: 2px;">Join the Kaira VIP Club</span>
+            <h3 class="section-title text-uppercase m-0 mb-3" style="font-weight: 700; letter-spacing: 1px;">SIGN UP FOR OUR NEWSLETTER</h3>
+            <p class="text-secondary mb-4 mx-auto" style="max-width: 580px; font-size: 0.95rem; line-height: 1.6;">
+              Subscribe to receive 15% off your first luxury order, exclusive access to capsule collection launches, and private editorial invites.
+            </p>
+            <form id="form" class="newsletter-form mx-auto" style="max-width: 540px;" onsubmit="event.preventDefault(); alert('Thank you for subscribing to Kaira VIP!'); this.reset();">
+              <div class="input-group input-group-lg shadow-sm rounded-pill overflow-hidden border">
+                <input type="email" name="email" required placeholder="Enter your email address..." class="form-control border-0 ps-4 fs-6" style="background: #fff;">
+                <button type="submit" class="btn btn-dark px-4 fs-6 text-uppercase fw-semibold" style="letter-spacing: 1px;">Subscribe</button>
+              </div>
+            </form>
+            <div class="mt-3 text-muted" style="font-size: 0.78rem;">
+              <span>🔒 We respect your privacy. Unsubscribe anytime.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Instagram Section -->
+  <section class="instagram py-5 bg-light position-relative overflow-hidden">
+    <div class="container text-center mb-4">
+      <span class="text-uppercase text-primary fw-bold d-block mb-1" style="font-size: 0.8rem; letter-spacing: 2px;">@KAIRAMODE ON INSTAGRAM</span>
+      <h3 class="section-title text-uppercase m-0" style="font-weight: 700; letter-spacing: 1px;">#KAIRACOLLECTIVE</h3>
+    </div>
+    
+    <div class="position-relative">
+      <div class="d-flex justify-content-center w-100 position-absolute top-50 start-50 translate-middle z-3">
+        <a href="https://www.instagram.com" target="_blank" class="btn btn-dark btn-lg rounded-pill px-4 py-3 shadow-lg d-flex align-items-center gap-2 text-uppercase fw-semibold" style="letter-spacing: 1.5px; font-size: 0.85rem; border: 2px solid rgba(255,255,255,0.2);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><use xlink:href="#instagram"></use></svg>
+          Follow Us On Instagram
+        </a>
+      </div>
+
+      <div class="row g-0 position-relative">
+        <div class="col-6 col-sm-4 col-md-2">
+          <div class="insta-item overflow-hidden position-relative">
+            <a href="https://www.instagram.com" target="_blank" class="d-block text-decoration-none">
+              <img src="{{ asset('images/insta-item1.jpg') }}" alt="instagram" class="img-fluid w-100 object-fit-cover insta-img" style="height: 240px; transition: transform 0.4s ease;">
+              <div class="insta-overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center bg-dark bg-opacity-40 opacity-0">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="#ffffff"><use xlink:href="#instagram"></use></svg>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="col-6 col-sm-4 col-md-2">
+          <div class="insta-item overflow-hidden position-relative">
+            <a href="https://www.instagram.com" target="_blank" class="d-block text-decoration-none">
+              <img src="{{ asset('images/insta-item2.jpg') }}" alt="instagram" class="img-fluid w-100 object-fit-cover insta-img" style="height: 240px; transition: transform 0.4s ease;">
+              <div class="insta-overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center bg-dark bg-opacity-40 opacity-0">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="#ffffff"><use xlink:href="#instagram"></use></svg>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="col-6 col-sm-4 col-md-2">
+          <div class="insta-item overflow-hidden position-relative">
+            <a href="https://www.instagram.com" target="_blank" class="d-block text-decoration-none">
+              <img src="{{ asset('images/insta-item3.jpg') }}" alt="instagram" class="img-fluid w-100 object-fit-cover insta-img" style="height: 240px; transition: transform 0.4s ease;">
+              <div class="insta-overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center bg-dark bg-opacity-40 opacity-0">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="#ffffff"><use xlink:href="#instagram"></use></svg>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="col-6 col-sm-4 col-md-2">
+          <div class="insta-item overflow-hidden position-relative">
+            <a href="https://www.instagram.com" target="_blank" class="d-block text-decoration-none">
+              <img src="{{ asset('images/insta-item4.jpg') }}" alt="instagram" class="img-fluid w-100 object-fit-cover insta-img" style="height: 240px; transition: transform 0.4s ease;">
+              <div class="insta-overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center bg-dark bg-opacity-40 opacity-0">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="#ffffff"><use xlink:href="#instagram"></use></svg>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="col-6 col-sm-4 col-md-2">
+          <div class="insta-item overflow-hidden position-relative">
+            <a href="https://www.instagram.com" target="_blank" class="d-block text-decoration-none">
+              <img src="{{ asset('images/insta-item5.jpg') }}" alt="instagram" class="img-fluid w-100 object-fit-cover insta-img" style="height: 240px; transition: transform 0.4s ease;">
+              <div class="insta-overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center bg-dark bg-opacity-40 opacity-0">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="#ffffff"><use xlink:href="#instagram"></use></svg>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="col-6 col-sm-4 col-md-2">
+          <div class="insta-item overflow-hidden position-relative">
+            <a href="https://www.instagram.com" target="_blank" class="d-block text-decoration-none">
+              <img src="{{ asset('images/insta-item6.jpg') }}" alt="instagram" class="img-fluid w-100 object-fit-cover insta-img" style="height: 240px; transition: transform 0.4s ease;">
+              <div class="insta-overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center bg-dark bg-opacity-40 opacity-0">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="#ffffff"><use xlink:href="#instagram"></use></svg>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Quick View Modal -->
+  <div class="modal fade" id="modalQuickView" tabindex="-1" aria-labelledby="modalQuickViewLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
+        <div class="modal-header border-0 pb-0 pe-4 pt-4">
+          <button type="button" class="btn-close ms-auto" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4 p-md-5 pt-0">
+          
+          <!-- Product Title, Brand Subtitle & Ratings Header (Above Picture & Details) -->
+          <div class="mb-4 pb-3 border-bottom">
+            <span class="text-uppercase text-primary fw-bold d-block" style="font-size: 0.78rem; letter-spacing: 2px;">KAIRA LUXURY COLLECTION</span>
+            <h2 class="fw-bold text-dark m-0 mt-1 mb-2" id="qvTitle">Dark Florish Onepiece</h2>
+            <div class="d-flex flex-wrap align-items-center gap-3">
+              <div class="star-rating text-warning" style="font-size: 0.95rem; letter-spacing: 1px;">
+                ★ ★ ★ ★ ★ <span class="text-dark fw-semibold ms-1" style="font-size: 0.85rem;">4.9 (128 Reviews)</span>
+              </div>
+              <span class="badge bg-success-subtle text-success border border-success-subtle px-3 py-1 rounded-pill" style="font-size: 0.78rem;">In Stock</span>
+            </div>
+          </div>
+
+          <div class="row g-4 align-items-start">
+            
+            <!-- Left: Main Product Image & Angle Thumbnails -->
+            <div class="col-md-6 text-center">
+              <div class="qv-img-wrapper p-2 bg-light rounded-4 border mb-3 position-relative">
+                <span class="badge bg-dark text-white text-uppercase px-3 py-2 rounded-pill position-absolute top-0 start-0 m-3 z-2" id="qvBadge">NEW ARRIVAL</span>
+                <img src="{{ asset('images/product-item-5.jpg') }}" id="qvMainImage" alt="Product Image" class="img-fluid rounded-3 object-fit-cover w-100" style="max-height: 400px;">
+              </div>
+              <!-- Thumbnail previews -->
+              <div class="d-flex justify-content-center gap-2">
+                <button type="button" class="btn btn-outline-secondary p-1 rounded-3 active border-2 qv-thumb-btn" onclick="document.getElementById('qvMainImage').src=this.querySelector('img').src;">
+                  <img src="{{ asset('images/product-item-5.jpg') }}" alt="thumb1" style="width: 50px; height: 50px;" class="rounded object-fit-cover">
+                </button>
+                <button type="button" class="btn btn-outline-secondary p-1 rounded-3 border-2 qv-thumb-btn" onclick="document.getElementById('qvMainImage').src=this.querySelector('img').src;">
+                  <img src="{{ asset('images/product-item-6.jpg') }}" alt="thumb2" style="width: 50px; height: 50px;" class="rounded object-fit-cover">
+                </button>
+                <button type="button" class="btn btn-outline-secondary p-1 rounded-3 border-2 qv-thumb-btn" onclick="document.getElementById('qvMainImage').src=this.querySelector('img').src;">
+                  <img src="{{ asset('images/product-item-7.jpg') }}" alt="thumb3" style="width: 50px; height: 50px;" class="rounded object-fit-cover">
+                </button>
+              </div>
+            </div>
+
+            <!-- Right: Product Details, Color & Size Selection -->
+            <div class="col-md-6">
+              <div class="ps-md-2">
+
+                <!-- Price -->
+                <div class="d-flex align-items-baseline gap-2 mb-3">
+                  <h2 class="fw-bold text-dark m-0" id="qvPrice">$95.00</h2>
+                  <span class="text-muted text-decoration-line-through" style="font-size: 1rem;">$120.00</span>
+                  <span class="badge bg-danger text-white ms-2" style="font-size: 0.75rem;">SAVE 20%</span>
+                </div>
+
+                <p class="text-secondary mb-4" style="font-size: 0.9rem; line-height: 1.6;" id="qvDesc">
+                  Crafted from a premium silk-cotton blend, featuring a tailored silhouette, concealed buttons, and elegant finishing. Designed for effortless luxury.
+                </p>
+
+                <!-- Color Selection -->
+                <div class="mb-3">
+                  <div class="d-flex justify-content-between align-items-center mb-2">
+                    <label class="fw-bold text-dark small text-uppercase" style="letter-spacing: 1px;">Select Color: <span class="text-primary fw-semibold" id="qvSelectedColor">Midnight Black</span></label>
+                  </div>
+                  <div class="d-flex gap-2">
+                    <button type="button" class="btn btn-outline-dark rounded-circle p-1 active qv-color-btn" style="width: 32px; height: 32px; background: #111;" data-color="Midnight Black" title="Midnight Black" onclick="document.getElementById('qvSelectedColor').textContent='Midnight Black'; document.querySelectorAll('.qv-color-btn').forEach(b=>b.classList.remove('active', 'border-3')); this.classList.add('active', 'border-3');"></button>
+                    <button type="button" class="btn btn-outline-secondary rounded-circle p-1 qv-color-btn" style="width: 32px; height: 32px; background: #f5f0eb;" data-color="Cream White" title="Cream White" onclick="document.getElementById('qvSelectedColor').textContent='Cream White'; document.querySelectorAll('.qv-color-btn').forEach(b=>b.classList.remove('active', 'border-3')); this.classList.add('active', 'border-3');"></button>
+                    <button type="button" class="btn btn-outline-secondary rounded-circle p-1 qv-color-btn" style="width: 32px; height: 32px; background: #8c907e;" data-color="Sage Green" title="Sage Green" onclick="document.getElementById('qvSelectedColor').textContent='Sage Green'; document.querySelectorAll('.qv-color-btn').forEach(b=>b.classList.remove('active', 'border-3')); this.classList.add('active', 'border-3');"></button>
+                    <button type="button" class="btn btn-outline-secondary rounded-circle p-1 qv-color-btn" style="width: 32px; height: 32px; background: #c2a68c;" data-color="Warm Camel" title="Warm Camel" onclick="document.getElementById('qvSelectedColor').textContent='Warm Camel'; document.querySelectorAll('.qv-color-btn').forEach(b=>b.classList.remove('active', 'border-3')); this.classList.add('active', 'border-3');"></button>
+                  </div>
+                </div>
+
+                <!-- Size Selection & Size Chart Link -->
+                <div class="mb-4">
+                  <div class="d-flex justify-content-between align-items-center mb-2">
+                    <label class="fw-bold text-dark small text-uppercase" style="letter-spacing: 1px;">Select Size: <span class="text-primary fw-semibold" id="qvSelectedSize">M</span></label>
+                  </div>
+                  <div class="d-flex flex-wrap gap-2 mb-2">
+                    <button type="button" class="btn btn-outline-dark rounded-3 px-3 py-2 fw-medium qv-size-btn" onclick="document.getElementById('qvSelectedSize').textContent='XS'; document.querySelectorAll('.qv-size-btn').forEach(b=>b.classList.remove('active', 'btn-dark')); this.classList.add('active', 'btn-dark');">XS</button>
+                    <button type="button" class="btn btn-outline-dark rounded-3 px-3 py-2 fw-medium qv-size-btn" onclick="document.getElementById('qvSelectedSize').textContent='S'; document.querySelectorAll('.qv-size-btn').forEach(b=>b.classList.remove('active', 'btn-dark')); this.classList.add('active', 'btn-dark');">S</button>
+                    <button type="button" class="btn btn-dark active rounded-3 px-3 py-2 fw-medium qv-size-btn" onclick="document.getElementById('qvSelectedSize').textContent='M'; document.querySelectorAll('.qv-size-btn').forEach(b=>b.classList.remove('active', 'btn-dark')); this.classList.add('active', 'btn-dark');">M</button>
+                    <button type="button" class="btn btn-outline-dark rounded-3 px-3 py-2 fw-medium qv-size-btn" onclick="document.getElementById('qvSelectedSize').textContent='L'; document.querySelectorAll('.qv-size-btn').forEach(b=>b.classList.remove('active', 'btn-dark')); this.classList.add('active', 'btn-dark');">L</button>
+                    <button type="button" class="btn btn-outline-dark rounded-3 px-3 py-2 fw-medium qv-size-btn" onclick="document.getElementById('qvSelectedSize').textContent='XL'; document.querySelectorAll('.qv-size-btn').forEach(b=>b.classList.remove('active', 'btn-dark')); this.classList.add('active', 'btn-dark');">XL</button>
+                  </div>
+                  <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mt-3 p-2 px-3 bg-light rounded-3 border">
+                    <button type="button" class="btn btn-sm btn-outline-dark rounded-pill px-3 py-2 fw-semibold d-inline-flex align-items-center gap-2 border-secondary border-opacity-50 text-uppercase" style="font-size: 0.78rem; letter-spacing: 1px;" data-bs-toggle="modal" data-bs-target="#modalSizing" onclick="bootstrap.Modal.getInstance(document.getElementById('modalQuickView'))?.hide();">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-primary"><rect x="2" y="7" width="20" height="10" rx="2"></rect><line x1="6" y1="7" x2="6" y2="12"></line><line x1="10" y1="7" x2="10" y2="10"></line><line x1="14" y1="7" x2="14" y2="12"></line><line x1="18" y1="7" x2="18" y2="10"></line></svg>
+                      Size Chart & Fit Guide
+                    </button>
+                    <span class="text-secondary d-flex align-items-center gap-1" style="font-size: 0.78rem;">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-muted"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                      Model is 175cm (5'9") wearing size S
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Quantity & Actions -->
+                <div class="d-flex flex-wrap align-items-center gap-3 pt-2 border-top">
+                  <div class="input-group rounded-3 border overflow-hidden" style="width: 110px;">
+                    <button type="button" class="btn btn-light border-0 fw-bold px-3" onclick="if(parseInt(document.getElementById('qvQty').value)>1) document.getElementById('qvQty').value=parseInt(document.getElementById('qvQty').value)-1;">-</button>
+                    <input type="text" class="form-control border-0 text-center fw-bold p-0" value="1" readonly id="qvQty">
+                    <button type="button" class="btn btn-light border-0 fw-bold px-3" onclick="document.getElementById('qvQty').value=parseInt(document.getElementById('qvQty').value)+1;">+</button>
+                  </div>
+
+                  <button type="button" class="btn btn-dark btn-lg flex-grow-1 rounded-3 text-uppercase fw-semibold py-3 fs-6 d-flex align-items-center justify-content-center gap-2" onclick="
+                    bootstrap.Modal.getInstance(document.getElementById('modalQuickView'))?.hide();
+                    showToast('Added ' + document.getElementById('qvTitle').textContent + ' to your shopping cart!');
+                    bootstrap.Offcanvas.getOrCreateInstance(document.getElementById('offcanvasCart')).show();
+                  ">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                    Add To Cart
+                  </button>
+
+                  <button type="button" class="btn btn-outline-secondary btn-lg rounded-3 p-3 d-flex align-items-center justify-content-center" title="Save to Wishlist" onclick="showToast('Saved to your VIP Wishlist! ❤️');">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                  </button>
+                </div>
+
+                <!-- Shipping / Returns Micro Note -->
+                <div class="mt-4 p-3 bg-light rounded-3 border d-flex align-items-center gap-3">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-success"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                  <div style="font-size: 0.8rem;">
+                    <span class="d-block fw-bold text-dark">Complimentary Express Shipping</span>
+                    <span class="text-secondary">Free 2-day delivery & 30-day effortless returns.</span>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Account Interactive Modals -->
+  <!-- 1. Profile & Account Settings Modal -->
+  <div class="modal fade" id="modalProfile" tabindex="-1" aria-labelledby="modalProfileLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
+        <div class="modal-header bg-dark text-white p-4">
+          <h5 class="modal-title text-uppercase m-0 d-flex align-items-center gap-2" id="modalProfileLabel">
+            <svg width="22" height="22" viewBox="0 0 24 24"><use xlink:href="#user"></use></svg> My Profile & Account Settings
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="border-bottom bg-light px-4 pt-3">
+          <ul class="nav nav-tabs border-0 gap-2" id="profileTabNav" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active d-flex align-items-center gap-2" id="navPhotoTab" data-bs-toggle="tab" data-bs-target="#tabPhoto" type="button" role="tab" aria-controls="tabPhoto" aria-selected="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+                Photo
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link d-flex align-items-center gap-2" id="navPersonalTab" data-bs-toggle="tab" data-bs-target="#tabPersonal" type="button" role="tab" aria-controls="tabPersonal" aria-selected="false">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                Personal Details
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link d-flex align-items-center gap-2" id="navContactTab" data-bs-toggle="tab" data-bs-target="#tabContact" type="button" role="tab" aria-controls="tabContact" aria-selected="false">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                Contact & Address
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link d-flex align-items-center gap-2" id="navPrefTab" data-bs-toggle="tab" data-bs-target="#tabPreferences" type="button" role="tab" aria-controls="tabPreferences" aria-selected="false">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                Preferences
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link d-flex align-items-center gap-2" id="navSecurityTab" data-bs-toggle="tab" data-bs-target="#tabSecurity" type="button" role="tab" aria-controls="tabSecurity" aria-selected="false">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                Security
+              </button>
+            </li>
+          </ul>
+        </div>
+
+        <div class="modal-body p-4">
+          <form id="formProfileDetails">
+            <div class="tab-content" id="profileTabContent">
+
+              <!-- TAB 1: PROFILE PHOTO -->
+              <div class="tab-pane fade show active" id="tabPhoto" role="tabpanel" aria-labelledby="navPhotoTab">
+                <div class="text-center mb-4">
+                  <div class="avatar-upload-wrapper mb-3">
+                    <img src="{{ asset('images/insta-item1.jpg') }}" alt="Profile avatar preview" class="user-avatar-img rounded-circle object-fit-cover shadow" style="width: 120px; height: 120px; border: 4px solid var(--bs-primary, #8c907e);">
+                    <label for="profilePhotoInput" class="avatar-camera-overlay" style="width: 38px; height: 38px;" title="Upload new photo">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+                    </label>
+                  </div>
+                  <h6 class="fw-bold mb-1 user-display-name">Elena Rostova</h6>
+                  <p class="text-muted small">JPG, PNG or WebP files allowed. Max file size: 5MB.</p>
+                </div>
+
+                <div class="avatar-dropzone mb-4" id="avatarDropzone" onclick="document.getElementById('profilePhotoInput').click()">
+                  <input type="file" id="profilePhotoInput" accept="image/*" class="d-none">
+                  <div class="mb-2">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--bs-primary, #8c907e)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                  </div>
+                  <div class="fw-medium text-dark mb-1">Drag and drop your new photo here</div>
+                  <small class="text-muted d-block mb-2">or <span class="text-primary fw-bold">click to browse computer</span></small>
+                </div>
+
+                <div class="preset-avatar-section mb-4 p-3 bg-light rounded-3 border">
+                  <label class="form-label text-uppercase fs-7 text-muted fw-bold mb-2">Or Choose a Preset Avatar</label>
+                  <div class="d-flex align-items-center gap-3">
+                    <button type="button" class="btn preset-avatar-btn btn-preset-avatar" data-avatar-src="{{ asset('images/insta-item1.jpg') }}">
+                      <img src="{{ asset('images/insta-item1.jpg') }}" alt="Preset 1" class="w-100 h-100 object-fit-cover">
+                    </button>
+                    <button type="button" class="btn preset-avatar-btn btn-preset-avatar" data-avatar-src="{{ asset('images/insta-item2.jpg') }}">
+                      <img src="{{ asset('images/insta-item2.jpg') }}" alt="Preset 2" class="w-100 h-100 object-fit-cover">
+                    </button>
+                    <button type="button" class="btn preset-avatar-btn btn-preset-avatar" data-avatar-src="{{ asset('images/insta-item3.jpg') }}">
+                      <img src="{{ asset('images/insta-item3.jpg') }}" alt="Preset 3" class="w-100 h-100 object-fit-cover">
+                    </button>
+                    <button type="button" class="btn preset-avatar-btn btn-preset-avatar" data-avatar-src="{{ asset('images/insta-item4.jpg') }}">
+                      <img src="{{ asset('images/insta-item4.jpg') }}" alt="Preset 4" class="w-100 h-100 object-fit-cover">
+                    </button>
+                    <button type="button" class="btn preset-avatar-btn btn-preset-avatar" data-avatar-src="{{ asset('images/insta-item5.jpg') }}">
+                      <img src="{{ asset('images/insta-item5.jpg') }}" alt="Preset 5" class="w-100 h-100 object-fit-cover">
+                    </button>
+                  </div>
+                </div>
+
+                <div class="d-flex justify-content-between align-items-center">
+                  <button type="button" class="btn btn-outline-danger btn-sm" id="btnRemovePhoto">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="me-1"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg> Remove Photo
+                  </button>
+                  <label for="profilePhotoInput" class="btn btn-primary px-4">Upload New Photo</label>
+                </div>
+              </div>
+
+              <!-- TAB 2: PERSONAL DETAILS -->
+              <div class="tab-pane fade" id="tabPersonal" role="tabpanel" aria-labelledby="navPersonalTab">
+                <h6 class="text-uppercase text-muted border-bottom pb-2 mb-3" style="font-size: 0.8rem; letter-spacing: 1px;">Personal Information</h6>
+                <div class="row g-3 mb-4">
+                  <div class="col-md-6">
+                    <label class="form-label text-uppercase fs-7 text-muted fw-medium">First Name</label>
+                    <input type="text" name="firstName" class="form-control p-3" value="Elena" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label text-uppercase fs-7 text-muted fw-medium">Last Name</label>
+                    <input type="text" name="lastName" class="form-control p-3" value="Rostova" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label text-uppercase fs-7 text-muted fw-medium">Display Name / Username</label>
+                    <input type="text" name="displayName" class="form-control p-3" value="Elena Rostova">
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label text-uppercase fs-7 text-muted fw-medium">Gender / Title</label>
+                    <select name="gender" class="form-select p-3">
+                      <option value="Female" selected>Female (Ms./Mrs.)</option>
+                      <option value="Male">Male (Mr.)</option>
+                      <option value="Non-binary">Non-binary (Mx.)</option>
+                      <option value="Prefer not to say">Prefer not to say</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label text-uppercase fs-7 text-muted fw-medium">Date of Birth</label>
+                    <input type="date" name="dob" class="form-control p-3" value="1995-06-15">
+                  </div>
+                  <div class="col-12">
+                    <label class="form-label text-uppercase fs-7 text-muted fw-medium">Bio / About Me</label>
+                    <textarea name="bio" class="form-control p-3" rows="3" placeholder="Tell us a little about your fashion style and preferences...">Fashion enthusiast & luxury lifestyle curator based in Vienna.</textarea>
+                  </div>
+                </div>
+              </div>
+
+              <!-- TAB 3: CONTACT & ADDRESS -->
+              <div class="tab-pane fade" id="tabContact" role="tabpanel" aria-labelledby="navContactTab">
+                <h6 class="text-uppercase text-muted border-bottom pb-2 mb-3" style="font-size: 0.8rem; letter-spacing: 1px;">Contact Details & Delivery Address</h6>
+                <div class="row g-3 mb-4">
+                  <div class="col-md-6">
+                    <label class="form-label text-uppercase fs-7 text-muted fw-medium">Primary Email Address</label>
+                    <div class="input-group">
+                      <input type="email" name="email" class="form-control p-3" value="elena.rostova@example.com" required>
+                      <span class="input-group-text bg-success-subtle text-success border-success-subtle px-3 fw-bold" style="font-size: 0.75rem;">Verified ✓</span>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label text-uppercase fs-7 text-muted fw-medium">Secondary / Backup Email</label>
+                    <input type="email" name="secondaryEmail" class="form-control p-3" value="elena.backup@example.com">
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label text-uppercase fs-7 text-muted fw-medium">Phone Number</label>
+                    <input type="tel" name="phone" class="form-control p-3" value="+43 720 11 52 78">
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label text-uppercase fs-7 text-muted fw-medium">Country</label>
+                    <select name="country" class="form-select p-3">
+                      <option value="Austria" selected>Austria</option>
+                      <option value="Germany">Germany</option>
+                      <option value="France">France</option>
+                      <option value="Italy">Italy</option>
+                      <option value="United States">United States</option>
+                      <option value="United Kingdom">United Kingdom</option>
+                      <option value="Egypt">Egypt</option>
+                    </select>
+                  </div>
+                  <div class="col-12">
+                    <label class="form-label text-uppercase fs-7 text-muted fw-medium">Street Address</label>
+                    <input type="text" name="address" class="form-control p-3" value="Kärntner Straße 18">
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label text-uppercase fs-7 text-muted fw-medium">City</label>
+                    <input type="text" name="city" class="form-control p-3" value="Vienna">
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label text-uppercase fs-7 text-muted fw-medium">Postal / ZIP Code</label>
+                    <input type="text" name="postalCode" class="form-control p-3" value="1010">
+                  </div>
+                </div>
+              </div>
+
+              <!-- TAB 4: PREFERENCES -->
+              <div class="tab-pane fade" id="tabPreferences" role="tabpanel" aria-labelledby="navPrefTab">
+                <h6 class="text-uppercase text-muted border-bottom pb-2 mb-3" style="font-size: 0.8rem; letter-spacing: 1px;">Shopping & Account Preferences</h6>
+                <div class="row g-3 mb-4">
+                  <div class="col-md-6">
+                    <label class="form-label text-uppercase fs-7 text-muted fw-medium">Preferred Style Aesthetic</label>
+                    <select name="preferredStyle" class="form-select p-3">
+                      <option value="Contemporary Luxury" selected>Contemporary Luxury</option>
+                      <option value="Minimalist Elegance">Minimalist Elegance</option>
+                      <option value="Evening & Haute Couture">Evening & Haute Couture</option>
+                      <option value="Vintage Chic">Vintage Chic</option>
+                      <option value="Urban Streetwear">Urban Streetwear</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label text-uppercase fs-7 text-muted fw-medium">Preferred Currency</label>
+                    <select name="currency" class="form-select p-3">
+                      <option value="USD ($)" selected>USD ($)</option>
+                      <option value="EUR (€)">EUR (€)</option>
+                      <option value="GBP (£)">GBP (£)</option>
+                      <option value="EGP (EGP)">EGP (EGP)</option>
+                    </select>
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label text-uppercase fs-7 text-muted fw-medium">Tops / Outerwear Size</label>
+                    <select name="topSize" class="form-select p-3">
+                      <option value="XS">XS</option>
+                      <option value="S (EU 36)" selected>S (EU 36)</option>
+                      <option value="M (EU 38)">M (EU 38)</option>
+                      <option value="L (EU 40)">L (EU 40)</option>
+                    </select>
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label text-uppercase fs-7 text-muted fw-medium">Bottoms Size</label>
+                    <select name="bottomSize" class="form-select p-3">
+                      <option value="EU 34">EU 34</option>
+                      <option value="EU 36" selected>EU 36</option>
+                      <option value="EU 38">EU 38</option>
+                      <option value="EU 40">EU 40</option>
+                    </select>
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label text-uppercase fs-7 text-muted fw-medium">Footwear Size</label>
+                    <select name="shoeSize" class="form-select p-3">
+                      <option value="EU 37">EU 37</option>
+                      <option value="EU 38" selected>EU 38</option>
+                      <option value="EU 39">EU 39</option>
+                      <option value="EU 40">EU 40</option>
+                    </select>
+                  </div>
+
+                  <div class="col-12 mt-4 border-top pt-3">
+                    <h6 class="text-uppercase text-muted mb-3" style="font-size: 0.8rem; letter-spacing: 1px;">Notification Settings</h6>
+                    <div class="form-check form-switch mb-2">
+                      <input class="form-check-input" type="checkbox" name="emailNotif" id="emailNotif" checked>
+                      <label class="form-check-label fw-medium" for="emailNotif">Receive Email Newsletters & Exclusive VIP Offers</label>
+                    </div>
+                    <div class="form-check form-switch mb-2">
+                      <input class="form-check-input" type="checkbox" name="smsNotif" id="smsNotif">
+                      <label class="form-check-label fw-medium" for="smsNotif">Receive Instant SMS Shipping Alerts</label>
+                    </div>
+                    <div class="form-check form-switch mb-2">
+                      <input class="form-check-input" type="checkbox" name="orderNotif" id="orderNotif" checked>
+                      <label class="form-check-label fw-medium" for="orderNotif">Real-time Order & Delivery Status Notifications</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- TAB 5: SECURITY & PASSWORD -->
+              <div class="tab-pane fade" id="tabSecurity" role="tabpanel" aria-labelledby="navSecurityTab">
+                <h6 class="text-uppercase text-danger border-bottom pb-2 mb-3" style="font-size: 0.8rem; letter-spacing: 1px;">Reset Password & Account Security</h6>
+                <div class="row g-3 mb-3">
+                  <div class="col-md-4">
+                    <label class="form-label text-muted fw-medium">Current Password</label>
+                    <input type="password" name="currentPassword" class="form-control p-3" placeholder="••••••••">
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label text-muted fw-medium">New Password</label>
+                    <input type="password" name="newPassword" class="form-control p-3" placeholder="••••••••">
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label text-muted fw-medium">Confirm New Password</label>
+                    <input type="password" name="confirmPassword" class="form-control p-3" placeholder="••••••••">
+                  </div>
+                </div>
+                <div class="p-3 bg-light rounded-3 border mb-4">
+                  <div class="d-flex align-items-center justify-content-between">
+                    <div>
+                      <h6 class="m-0 fw-bold">Two-Factor Authentication (2FA)</h6>
+                      <small class="text-muted">Add an extra layer of security to your Kaira account</small>
+                    </div>
+                    <div class="form-check form-switch">
+                      <input class="form-check-input" type="checkbox" id="twoFactorAuth" checked style="width: 40px; height: 20px;">
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="modal-footer border-top pt-3 px-0 justify-content-between">
+              <button type="button" class="btn btn-outline-secondary px-4 p-2" data-bs-dismiss="modal">Cancel</button>
+              <button type="submit" class="btn btn-primary px-4 p-2 fw-medium">Save All Changes</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Size Chart & Fit Guide Modal -->
+  <div class="modal fade" id="modalSizing" tabindex="-1" aria-labelledby="modalSizingLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
+        
+        <div class="modal-header bg-dark text-white p-4">
+          <div>
+            <h5 class="modal-title text-uppercase m-0 d-flex align-items-center gap-2" id="modalSizingLabel">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="10" rx="2"></rect><line x1="6" y1="7" x2="6" y2="12"></line><line x1="10" y1="7" x2="10" y2="10"></line><line x1="14" y1="7" x2="14" y2="12"></line><line x1="18" y1="7" x2="18" y2="10"></line></svg>
+              Size Chart & Fit Guide
+            </h5>
+            <small class="text-white-50">Accurate body & garment measurements for Kaira luxury collections</small>
+          </div>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="border-bottom bg-light px-4 pt-3 d-flex flex-wrap align-items-center justify-content-between gap-3">
+          <ul class="nav nav-tabs border-0 gap-2" id="sizeGuideTabNav" role="tablist">
+            <li class="nav-item">
+              <button class="nav-link active d-flex align-items-center gap-2 fw-semibold" id="tabChart-tab" data-bs-toggle="tab" data-bs-target="#tabChart" type="button" role="tab">
+                📏 Measurement Chart
+              </button>
+            </li>
+            <li class="nav-item">
+              <button class="nav-link d-flex align-items-center gap-2 fw-semibold" id="tabHowTo-tab" data-bs-toggle="tab" data-bs-target="#tabHowTo" type="button" role="tab">
+                📐 How to Measure
+              </button>
+            </li>
+            <li class="nav-item">
+              <button class="nav-link d-flex align-items-center gap-2 fw-semibold" id="tabSavedPref-tab" data-bs-toggle="tab" data-bs-target="#tabSavedPref" type="button" role="tab">
+                ⚙️ My Size Preferences
+              </button>
+            </li>
+          </ul>
+
+          <!-- Unit Switcher -->
+          <div class="btn-group btn-group-sm mb-2" role="group" aria-label="Measurement Unit">
+            <input type="radio" class="btn-check" name="sizeUnit" id="unitInches" checked onclick="toggleSizeUnits('in');">
+            <label class="btn btn-outline-dark px-3 fw-bold" for="unitInches">IN (Inches)</label>
+            <input type="radio" class="btn-check" name="sizeUnit" id="unitCm" onclick="toggleSizeUnits('cm');">
+            <label class="btn btn-outline-dark px-3 fw-bold" for="unitCm">CM (Centimeters)</label>
+          </div>
+        </div>
+
+        <div class="modal-body p-4">
+          <div class="tab-content" id="sizeGuideTabContent">
+            
+            <!-- Tab 1: Detailed Size Chart Table -->
+            <div class="tab-pane fade show active" id="tabChart" role="tabpanel">
+              <div class="table-responsive rounded-3 border">
+                <table class="table table-striped table-hover align-middle m-0 text-center" style="font-size: 0.9rem;">
+                  <thead class="table-dark text-uppercase" style="font-size: 0.8rem; letter-spacing: 1px;">
+                    <tr>
+                      <th class="py-3 text-start ps-4">Size</th>
+                      <th class="py-3">US / EU</th>
+                      <th class="py-3">Bust / Chest</th>
+                      <th class="py-3">Waist</th>
+                      <th class="py-3">Hips</th>
+                      <th class="py-3">Shoulder Width</th>
+                      <th class="py-3">Garment Length</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="fw-bold text-dark text-start ps-4">XS</td>
+                      <td>US 0-2 / EU 34</td>
+                      <td class="size-val" data-in="31.5&quot; - 33.0&quot;" data-cm="80 - 84 cm">31.5" - 33.0"</td>
+                      <td class="size-val" data-in="24.5&quot; - 26.0&quot;" data-cm="62 - 66 cm">24.5" - 26.0"</td>
+                      <td class="size-val" data-in="34.5&quot; - 36.0&quot;" data-cm="88 - 92 cm">34.5" - 36.0"</td>
+                      <td class="size-val" data-in="15.0&quot;" data-cm="38 cm">15.0"</td>
+                      <td class="size-val" data-in="25.5&quot;" data-cm="65 cm">25.5"</td>
+                    </tr>
+                    <tr>
+                      <td class="fw-bold text-dark text-start ps-4">S</td>
+                      <td>US 4-6 / EU 36</td>
+                      <td class="size-val" data-in="33.5&quot; - 35.0&quot;" data-cm="85 - 89 cm">33.5" - 35.0"</td>
+                      <td class="size-val" data-in="26.5&quot; - 28.0&quot;" data-cm="67 - 71 cm">26.5" - 28.0"</td>
+                      <td class="size-val" data-in="36.5&quot; - 38.0&quot;" data-cm="93 - 97 cm">36.5" - 38.0"</td>
+                      <td class="size-val" data-in="15.5&quot;" data-cm="39 cm">15.5"</td>
+                      <td class="size-val" data-in="26.0&quot;" data-cm="66 cm">26.0"</td>
+                    </tr>
+                    <tr class="table-primary table-active">
+                      <td class="fw-bold text-dark text-start ps-4">M <span class="badge bg-primary ms-1" style="font-size: 0.65rem;">POPULAR</span></td>
+                      <td>US 8-10 / EU 38</td>
+                      <td class="size-val" data-in="35.5&quot; - 37.0&quot;" data-cm="90 - 94 cm">35.5" - 37.0"</td>
+                      <td class="size-val" data-in="28.5&quot; - 30.0&quot;" data-cm="72 - 76 cm">28.5" - 30.0"</td>
+                      <td class="size-val" data-in="38.5&quot; - 40.0&quot;" data-cm="98 - 102 cm">38.5" - 40.0"</td>
+                      <td class="size-val" data-in="16.0&quot;" data-cm="41 cm">16.0"</td>
+                      <td class="size-val" data-in="26.5&quot;" data-cm="67 cm">26.5"</td>
+                    </tr>
+                    <tr>
+                      <td class="fw-bold text-dark text-start ps-4">L</td>
+                      <td>US 12-14 / EU 40</td>
+                      <td class="size-val" data-in="37.5&quot; - 39.5&quot;" data-cm="95 - 100 cm">37.5" - 39.5"</td>
+                      <td class="size-val" data-in="30.5&quot; - 32.5&quot;" data-cm="77 - 83 cm">30.5" - 32.5"</td>
+                      <td class="size-val" data-in="40.5&quot; - 42.5&quot;" data-cm="103 - 108 cm">40.5" - 42.5"</td>
+                      <td class="size-val" data-in="16.8&quot;" data-cm="43 cm">16.8"</td>
+                      <td class="size-val" data-in="27.0&quot;" data-cm="69 cm">27.0"</td>
+                    </tr>
+                    <tr>
+                      <td class="fw-bold text-dark text-start ps-4">XL</td>
+                      <td>US 16 / EU 42</td>
+                      <td class="size-val" data-in="40.0&quot; - 42.0&quot;" data-cm="101 - 107 cm">40.0" - 42.0"</td>
+                      <td class="size-val" data-in="33.0&quot; - 35.0&quot;" data-cm="84 - 89 cm">33.0" - 35.0"</td>
+                      <td class="size-val" data-in="43.0&quot; - 45.0&quot;" data-cm="109 - 114 cm">43.0" - 45.0"</td>
+                      <td class="size-val" data-in="17.5&quot;" data-cm="44 cm">17.5"</td>
+                      <td class="size-val" data-in="27.5&quot;" data-cm="70 cm">27.5"</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- Fit Note -->
+              <div class="mt-3 p-3 bg-light rounded-3 border d-flex align-items-center gap-3">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-primary flex-shrink-0"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                <div style="font-size: 0.84rem;" class="text-secondary">
+                  <strong class="text-dark">Between sizes?</strong> If you prefer a tailored fit, we recommend sizing down. For a relaxed, oversized runway silhouette, choose your standard size.
+                </div>
+              </div>
+            </div>
+
+            <!-- Tab 2: How to Measure Instructions -->
+            <div class="tab-pane fade" id="tabHowTo" role="tabpanel">
+              <div class="row g-4 align-items-center">
+                <div class="col-md-6">
+                  <div class="d-flex flex-column gap-3">
+                    <div class="p-3 bg-light rounded-3 border">
+                      <h6 class="fw-bold text-dark mb-1">1. Bust / Chest Width</h6>
+                      <p class="text-secondary m-0 small">Measure around the fullest part of your bust/chest, keeping the measuring tape flat and parallel to the floor.</p>
+                    </div>
+                    <div class="p-3 bg-light rounded-3 border">
+                      <h6 class="fw-bold text-dark mb-1">2. Natural Waist Width</h6>
+                      <p class="text-secondary m-0 small">Measure around your natural waistline (the narrowest part of your torso, usually 1 inch above your belly button).</p>
+                    </div>
+                    <div class="p-3 bg-light rounded-3 border">
+                      <h6 class="fw-bold text-dark mb-1">3. Garment Length</h6>
+                      <p class="text-secondary m-0 small">Measured from the highest point of the shoulder seam straight down to the bottom hemline.</p>
+                    </div>
+                    <div class="p-3 bg-light rounded-3 border">
+                      <h6 class="fw-bold text-dark mb-1">4. Shoulder Width</h6>
+                      <p class="text-secondary m-0 small">Measured straight across the back from the tip of one shoulder seam to the other tip.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 text-center">
+                  <div class="p-4 bg-light rounded-4 border">
+                    <img src="{{ asset('images/post-image1.jpg') }}" alt="Measurement Guide" class="img-fluid rounded-3 mb-3 shadow-sm object-fit-cover" style="max-height: 220px;">
+                    <h6 class="fw-bold text-dark m-0">Need Personalized Sizing Advice?</h6>
+                    <p class="text-muted small mt-1 mb-3">Our VIP Stylists are available 24/7 to help you find your exact fit.</p>
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#modalContact" class="btn btn-dark btn-sm px-4 rounded-pill text-uppercase fw-semibold" onclick="bootstrap.Modal.getInstance(document.getElementById('modalSizing'))?.hide();">Chat With Stylist</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tab 3: Saved Preferences Form -->
+            <div class="tab-pane fade" id="tabSavedPref" role="tabpanel">
+              <form onsubmit="event.preventDefault(); showToast('Saved your size preferences!'); bootstrap.Modal.getInstance(this.closest('.modal'))?.hide();">
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label class="form-label fw-semibold text-dark">Preferred Tops / Coat Size</label>
+                    <select class="form-select p-3"><option>XS (EU 34)</option><option selected>S (EU 36)</option><option>M (EU 38)</option><option>L (EU 40)</option><option>XL (EU 42)</option></select>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label fw-semibold text-dark">Preferred Trousers Size</label>
+                    <select class="form-select p-3"><option>EU 34</option><option selected>EU 36</option><option>EU 38</option><option>EU 40</option><option>EU 42</option></select>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label fw-semibold text-dark">Preferred Shoe Size</label>
+                    <select class="form-select p-3"><option>EU 36 (US 6)</option><option selected>EU 37 (US 6.5)</option><option>EU 38 (US 7.5)</option><option>EU 39 (US 8.5)</option></select>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label fw-semibold text-dark">Silhouette Fit Preference</label>
+                    <select class="form-select p-3">
+                      <option selected>Tailored / Fitted</option>
+                      <option>Regular Standard Fit</option>
+                      <option>Relaxed Oversized Fit</option>
+                    </select>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-dark w-100 p-3 mt-4 text-uppercase fw-semibold" style="letter-spacing: 1px;">Save My Size Preferences</button>
+              </form>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Order Tracking Modal -->
+  <div class="modal fade" id="modalOrderTracking" tabindex="-1" aria-labelledby="modalOrderTrackingLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
+        <div class="modal-header bg-dark text-white p-4">
+          <h5 class="modal-title text-uppercase m-0 d-flex align-items-center gap-2" id="modalOrderTrackingLabel">
+            <svg width="22" height="22" viewBox="0 0 24 24"><use xlink:href="#shopping-bag"></use></svg> Live Shipment Tracking & History
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <div class="card mb-4 border-primary border-opacity-25 bg-light">
+            <div class="card-body p-4">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <div>
+                  <span class="badge bg-primary me-2">In Transit</span>
+                  <strong class="text-dark">Order #K-9482</strong>
+                </div>
+                <span class="text-muted fs-7">Estimated Delivery: Tomorrow, 2:00 PM</span>
+              </div>
+              <div class="d-flex align-items-center gap-3 mb-3">
+                <img src="{{ asset('images/product-item-1.jpg') }}" alt="product" class="rounded object-fit-cover" style="width: 60px; height: 60px;">
+                <div>
+                  <h6 class="m-0 fw-bold">Classic Merino Wool Trench Coat</h6>
+                  <small class="text-muted">Color: Camel • Size: S • Qty: 1</small>
+                </div>
+                <div class="ms-auto fw-bold text-dark">$450.00</div>
+              </div>
+              <div class="tracking-steps d-flex justify-content-between position-relative mt-4 pt-2">
+                <div class="text-center position-relative z-1">
+                  <div class="rounded-circle bg-primary text-white mx-auto d-flex align-items-center justify-content-center" style="width: 32px; height: 32px;">✓</div>
+                  <small class="d-block mt-1 fw-medium">Confirmed</small>
+                </div>
+                <div class="text-center position-relative z-1">
+                  <div class="rounded-circle bg-primary text-white mx-auto d-flex align-items-center justify-content-center" style="width: 32px; height: 32px;">✓</div>
+                  <small class="d-block mt-1 fw-medium">Packed</small>
+                </div>
+                <div class="text-center position-relative z-1">
+                  <div class="rounded-circle bg-primary text-white mx-auto d-flex align-items-center justify-content-center" style="width: 32px; height: 32px;">🚚</div>
+                  <small class="d-block mt-1 fw-bold text-primary">In Transit</small>
+                </div>
+                <div class="text-center position-relative z-1">
+                  <div class="rounded-circle bg-secondary text-white mx-auto d-flex align-items-center justify-content-center" style="width: 32px; height: 32px;">🏠</div>
+                  <small class="d-block mt-1 text-muted">Delivered</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <h6 class="text-uppercase text-muted fs-7 mb-3">Past Orders</h6>
+          <div class="list-group">
+            <div class="list-group-item d-flex justify-content-between align-items-center p-3">
+              <div>
+                <strong class="d-block">Order #K-8120 — $280.00</strong>
+                <small class="text-muted">Delivered on July 14, 2026 • Tailored Evening Blazer</small>
+              </div>
+              <button class="btn btn-sm btn-outline-dark" onclick="alert('Receipt downloaded for Order #K-8120.');">Invoice</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Wishlist Modal -->
+  <div class="modal fade" id="modalWishlist" tabindex="-1" aria-labelledby="modalWishlistLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
+        <div class="modal-header bg-dark text-white p-4">
+          <h5 class="modal-title text-uppercase m-0 d-flex align-items-center gap-2" id="modalWishlistLabel">
+            <svg width="22" height="22" viewBox="0 0 24 24"><use xlink:href="#heart"></use></svg> My Saved Wishlist (3 Items)
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <div class="row g-3">
+            <div class="col-md-4">
+              <div class="card h-100 border-0 shadow-sm">
+                <img src="{{ asset('images/product-item-2.jpg') }}" class="card-img-top" alt="item">
+                <div class="card-body p-3">
+                  <h6 class="card-title fw-bold m-0">Silk Pleated Dress</h6>
+                  <p class="text-primary fw-bold my-1">$320.00</p>
+                  <button class="btn btn-primary btn-sm w-100 mt-2" onclick="alert('Added Silk Pleated Dress to Cart!');">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card h-100 border-0 shadow-sm">
+                <img src="{{ asset('images/product-item-3.jpg') }}" class="card-img-top" alt="item">
+                <div class="card-body p-3">
+                  <h6 class="card-title fw-bold m-0">Genuine Leather Bag</h6>
+                  <p class="text-primary fw-bold my-1">$480.00</p>
+                  <button class="btn btn-primary btn-sm w-100 mt-2" onclick="alert('Added Genuine Leather Bag to Cart!');">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card h-100 border-0 shadow-sm">
+                <img src="{{ asset('images/product-item-4.jpg') }}" class="card-img-top" alt="item">
+                <div class="card-body p-3">
+                  <h6 class="card-title fw-bold m-0">Tailored Blazer</h6>
+                  <p class="text-primary fw-bold my-1">$290.00</p>
+                  <button class="btn btn-primary btn-sm w-100 mt-2" onclick="alert('Added Tailored Blazer to Cart!');">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Payment Modal -->
+  <div class="modal fade" id="modalPayment" tabindex="-1" aria-labelledby="modalPaymentLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
+        <div class="modal-header bg-dark text-white p-4">
+          <h5 class="modal-title text-uppercase m-0 d-flex align-items-center gap-2" id="modalPaymentLabel">
+            <svg width="22" height="22" viewBox="0 0 24 24"><use xlink:href="#gift"></use></svg> Saved Payment Methods
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <div class="card bg-dark text-white p-3 mb-3 rounded-3" style="background: linear-gradient(135deg, #111 0%, #333 100%);">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <img src="{{ asset('images/visa-card.png') }}" alt="Visa" style="height: 24px;">
+              <span class="badge bg-primary">Default Card</span>
+            </div>
+            <div class="fs-5 tracking-wide mb-3">•••• •••• •••• 4242</div>
+            <div class="d-flex justify-content-between fs-7 text-white-50">
+              <span>ELENA ROSTOVA</span>
+              <span>EXPIRES 09/28</span>
+            </div>
+          </div>
+          <div class="card border p-3 mb-4 rounded-3 d-flex flex-row align-items-center justify-content-between">
+            <div class="d-flex align-items-center gap-3">
+              <img src="{{ asset('images/master-card.png') }}" alt="MasterCard" style="height: 24px;">
+              <div>
+                <strong class="d-block">MasterCard ending in 8819</strong>
+                <small class="text-muted">Expires 11/27</small>
+              </div>
+            </div>
+            <button class="btn btn-sm btn-outline-danger" onclick="alert('Card removed.');">Remove</button>
+          </div>
+          <button class="btn btn-outline-dark w-100 p-2" onclick="alert('Opening secure card reader...');">+ Add New Payment Method</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. Addresses Modal -->
+  <div class="modal fade" id="modalAddresses" tabindex="-1" aria-labelledby="modalAddressesLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
+        <div class="modal-header bg-dark text-white p-4">
+          <h5 class="modal-title text-uppercase m-0 d-flex align-items-center gap-2" id="modalAddressesLabel">
+            <svg width="22" height="22" viewBox="0 0 24 24"><use xlink:href="#calendar"></use></svg> Delivery Addresses
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <div class="border rounded-3 p-3 mb-3 bg-light position-relative">
+            <span class="badge bg-primary position-absolute top-0 end-0 m-3">Default</span>
+            <h6 class="fw-bold m-0">Dashboard Address</h6>
+            <p class="text-muted m-0 fs-7 mt-1">104 Kensington High Street<br>Apartment 4B, London W8 4SG, UK</p>
+          </div>
+          <div class="border rounded-3 p-3 mb-4 position-relative">
+            <h6 class="fw-bold m-0">Design Studio / Office</h6>
+            <p class="text-muted m-0 fs-7 mt-1">45 Mayfair Place, Suite 200<br>London W1J 8AJ, UK</p>
+          </div>
+          <button class="btn btn-outline-dark w-100 p-2" onclick="alert('Add address form opened.');">+ Add New Address</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. Support Modal -->
+  <div class="modal fade" id="modalSupport" tabindex="-1" aria-labelledby="modalSupportLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
+        <div class="modal-header bg-dark text-white p-4">
+          <h5 class="modal-title text-uppercase m-0 d-flex align-items-center gap-2" id="modalSupportLabel">
+            <svg width="22" height="22" viewBox="0 0 24 24"><use xlink:href="#check"></use></svg> Help & Support Concierge
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <div class="accordion" id="accordionFAQ">
+            <div class="accordion-item border mb-2 rounded">
+              <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true">
+                  What are Kaira's global shipping rates and delivery times?
+                </button>
+              </h2>
+              <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionFAQ">
+                <div class="accordion-body text-muted">
+                  We offer complimentary DHL Express express shipping on all orders over $250. Standard shipping arrives within 2-4 business days worldwide with live tracking.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item border mb-2 rounded">
+              <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                  What is your return & exchange policy?
+                </button>
+              </h2>
+              <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFAQ">
+                <div class="accordion-body text-muted">
+                  You may return unworn items with original tags within 30 days of delivery. Returns are free using our prepaid DHL return portal.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. Contact Modal -->
+  <div class="modal fade" id="modalContact" tabindex="-1" aria-labelledby="modalContactLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
+        <div class="modal-header bg-dark text-white p-4">
+          <h5 class="modal-title text-uppercase m-0 d-flex align-items-center gap-2" id="modalContactLabel">
+            <svg width="22" height="22" viewBox="0 0 24 24"><use xlink:href="#link"></use></svg> Contact Kaira Stylist Concierge
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <form onsubmit="event.preventDefault(); alert('Message sent to Kaira Concierge! An advisor will reply within 1 hour.'); bootstrap.Modal.getInstance(this.closest('.modal'))?.hide();">
+            <div class="mb-3">
+              <label class="form-label text-muted">Subject</label>
+              <select class="form-select p-2"><option>Private Styling Appointment</option><option>Order Query</option><option>Bespoke Tailoring Request</option></select>
+            </div>
+            <div class="mb-3">
+              <label class="form-label text-muted">Your Message</label>
+              <textarea class="form-control p-3" rows="4" placeholder="How can our stylists assist you today?" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary w-100 p-3">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8. Returns Modal -->
+  <div class="modal fade" id="modalReturns" tabindex="-1" aria-labelledby="modalReturnsLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
+        <div class="modal-header bg-dark text-white p-4">
+          <h5 class="modal-title text-uppercase m-0 d-flex align-items-center gap-2" id="modalReturnsLabel">
+            <svg width="22" height="22" viewBox="0 0 24 24"><use xlink:href="#arrow-cycle"></use></svg> Global Returns & Exchange Portal
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <form onsubmit="event.preventDefault(); alert('Prepaid DHL Return Label generated and sent to your email!'); bootstrap.Modal.getInstance(this.closest('.modal'))?.hide();">
+            <div class="mb-3">
+              <label class="form-label text-muted">Select Eligible Order</label>
+              <select class="form-select p-2"><option>Order #K-8120 — Tailored Evening Blazer ($280)</option></select>
+            </div>
+            <div class="mb-3">
+              <label class="form-label text-muted">Reason for Return</label>
+              <select class="form-select p-2"><option>Size / Fit Adjustment Needed</option><option>Color Difference</option><option>Item Exchange Request</option></select>
+            </div>
+            <button type="submit" class="btn btn-primary w-100 p-3">Generate DHL Return Label</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- 10. Logout Modal -->
+  <div class="modal fade" id="modalLogout" tabindex="-1" aria-labelledby="modalLogoutLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
+        <div class="modal-header bg-danger text-white p-4">
+          <h5 class="modal-title text-uppercase m-0 d-flex align-items-center gap-2" id="modalLogoutLabel">
+            <svg width="22" height="22" viewBox="0 0 24 24"><use xlink:href="#close"></use></svg> Log Out Confirmation
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4 text-center">
+          <p class="fs-5 text-dark fw-medium mb-4">Are you sure you want to log out of your Kaira VIP account?</p>
+          <div class="d-flex justify-content-center gap-3">
+            <button type="button" class="btn btn-outline-secondary px-4 p-2" data-bs-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-danger px-4 p-2" onclick="alert('You have successfully logged out.'); bootstrap.Modal.getInstance(this.closest('.modal'))?.hide();">Confirm Log Out</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer id="footer" class="mt-5">
+    <!-- Footer Top Trust Badges Section -->
+    <div class="footer-trust-section py-4 bg-white border-bottom">
+      <div class="container">
+        <div class="row g-4 text-center">
+          <div class="col-6 col-md-3">
+            <div class="footer-trust-badge p-3 rounded-3 bg-light border h-100 d-flex flex-column align-items-center justify-content-center">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="text-primary mb-2"><rect x="1" y="3" width="15" height="13" rx="2"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+              <h6 class="m-0 fw-bold text-dark" style="font-size: 0.88rem;">Express Global Shipping</h6>
+              <small class="text-muted mt-1" style="font-size: 0.75rem;">Free delivery on orders over $150</small>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="footer-trust-badge p-3 rounded-3 bg-light border h-100 d-flex flex-column align-items-center justify-content-center">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="text-primary mb-2"><polyline points="23 4 23 10 17 10"></polyline><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path></svg>
+              <h6 class="m-0 fw-bold text-dark" style="font-size: 0.88rem;">30-Day Effortless Returns</h6>
+              <small class="text-muted mt-1" style="font-size: 0.75rem;">Hassle-free exchanges worldwide</small>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="footer-trust-badge p-3 rounded-3 bg-light border h-100 d-flex flex-column align-items-center justify-content-center">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="text-primary mb-2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+              <h6 class="m-0 fw-bold text-dark" style="font-size: 0.88rem;">100% Secure Payments</h6>
+              <small class="text-muted mt-1" style="font-size: 0.75rem;">256-bit SSL encrypted checkout</small>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="footer-trust-badge p-3 rounded-3 bg-light border h-100 d-flex flex-column align-items-center justify-content-center">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="text-primary mb-2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+              <h6 class="m-0 fw-bold text-dark" style="font-size: 0.88rem;">24/7 VIP Concierge</h6>
+              <small class="text-muted mt-1" style="font-size: 0.75rem;">Dedicated fashion advisors</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Footer Content -->
+    <div class="container">
+      <div class="row g-4 py-5">
+        
+        <!-- Column 1: Brand & Socials -->
+        <div class="col-lg-4 col-md-6">
+          <div class="pe-lg-4">
+            <div class="footer-intro mb-3">
+              <a href="/">
+                <img src="{{ asset('images/main-logo.png') }}" alt="Kaira Logo" style="height: 38px;">
+              </a>
+            </div>
+            <p class="text-secondary mb-4" style="font-size: 0.92rem; line-height: 1.6;">
+              Kaira is a premier destination for contemporary luxury fashion, dedicated to sustainable manufacturing, timeless design, and unmatched sartorial elegance.
+            </p>
+            <div class="social-links">
+              <div class="d-flex align-items-center gap-2">
+                <a href="#" class="footer-social-btn" title="Facebook">
+                  <svg width="18" height="18" viewBox="0 0 24 24"><use xlink:href="#facebook"></use></svg>
+                </a>
+                <a href="#" class="footer-social-btn" title="Instagram">
+                  <svg width="18" height="18" viewBox="0 0 24 24"><use xlink:href="#instagram"></use></svg>
+                </a>
+                <a href="#" class="footer-social-btn" title="Twitter">
+                  <svg width="18" height="18" viewBox="0 0 24 24"><use xlink:href="#twitter"></use></svg>
+                </a>
+                <a href="#" class="footer-social-btn" title="Pinterest">
+                  <svg width="18" height="18" viewBox="0 0 24 24"><use xlink:href="#pinterest"></use></svg>
+                </a>
+                <a href="#" class="footer-social-btn" title="YouTube">
+                  <svg width="18" height="18" viewBox="0 0 24 24"><use xlink:href="#youtube"></use></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Column 2: Collections & Shop Links -->
+        <div class="col-lg-2 col-md-6 col-6">
+          <h6 class="text-uppercase fw-bold mb-4 text-dark" style="letter-spacing: 1px; font-size: 0.88rem;">Explore Shop</h6>
+          <ul class="list-unstyled footer-link-list">
+            <li><a href="#new-arrival">New Arrivals</a></li>
+            <li><a href="#best-sellers">Best Sellers</a></li>
+            <li><a href="#related-products">Trending Collection</a></li>
+            <li><a href="#blog">Editorial Journal</a></li>
+            <li><a href="#" data-bs-toggle="modal" data-bs-target="#modalSizing">Sizing & Fit Guide</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Customer Service Links -->
+        <div class="col-lg-3 col-md-6 col-6">
+          <h6 class="text-uppercase fw-bold mb-4 text-dark" style="letter-spacing: 1px; font-size: 0.88rem;">Customer Service</h6>
+          <ul class="list-unstyled footer-link-list">
+            <li><a href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasAccount">Track Order Status</a></li>
+            <li><a href="#" data-bs-toggle="modal" data-bs-target="#modalProfile">My VIP Profile</a></li>
+            <li><a href="#" data-bs-toggle="modal" data-bs-target="#modalContact">Returns & Exchanges</a></li>
+            <li><a href="#" data-bs-toggle="modal" data-bs-target="#modalContact">Shipping & Delivery Info</a></li>
+            <li><a href="#" data-bs-toggle="modal" data-bs-target="#modalContact">Help Center & FAQs</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Contact & Office Details -->
+        <div class="col-lg-3 col-md-6">
+          <h6 class="text-uppercase fw-bold mb-4 text-dark" style="letter-spacing: 1px; font-size: 0.88rem;">Contact Concierge</h6>
+          <div class="d-flex flex-column gap-3 text-secondary" style="font-size: 0.9rem;">
+            <div class="d-flex align-items-start gap-3">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-primary mt-1 flex-shrink-0"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              <div>
+                <span class="d-block fw-medium text-dark">Phone Support:</span>
+                <a href="tel:+43720115278" class="text-decoration-none text-secondary">+43 720 11 52 78</a>
+              </div>
+            </div>
+            <div class="d-flex align-items-start gap-3">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-primary mt-1 flex-shrink-0"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              <div>
+                <span class="d-block fw-medium text-dark">Email Support:</span>
+                <a href="mailto:support@kaira-fashion.com" class="text-decoration-none text-secondary">support@kaira-fashion.com</a>
+              </div>
+            </div>
+            <div class="d-flex align-items-start gap-3">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-primary mt-1 flex-shrink-0"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              <div>
+                <span class="d-block fw-medium text-dark">Flagship Showroom:</span>
+                <span>742 Evergreen Terrace, Vienna, Austria</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Footer Bottom Bar -->
+    <div class="border-top py-4 bg-white">
+      <div class="container">
+        <div class="row align-items-center g-3">
+          <div class="col-md-6 d-flex flex-wrap align-items-center gap-4">
+            <div class="shipping d-flex align-items-center gap-2">
+              <span class="text-muted small fw-medium">Shipped by:</span>
+              <img src="{{ asset('images/arct-icon.png') }}" alt="Arct Logistics" style="height: 18px;">
+              <img src="{{ asset('images/dhl-logo.png') }}" alt="DHL Express" style="height: 18px;">
+            </div>
+            <div class="payment-option d-flex align-items-center gap-2">
+              <span class="text-muted small fw-medium">Secured by:</span>
+              <img src="{{ asset('images/visa-card.png') }}" alt="Visa" style="height: 18px;">
+              <img src="{{ asset('images/paypal-card.png') }}" alt="PayPal" style="height: 18px;">
+              <img src="{{ asset('images/master-card.png') }}" alt="Mastercard" style="height: 18px;">
+            </div>
+          </div>
+          <div class="col-md-6 text-md-end text-muted small">
+            <p class="m-0">© 2026 KAIRA Luxury Apparel Inc. All rights reserved.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- Profile Toast Notification -->
+  <div class="toast-container-profile">
+    <div id="profileToast" class="toast align-items-center text-white bg-success border-0 shadow-lg" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body fw-medium p-3">
+          Profile updated successfully!
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
+
+  <script src="{{ asset('js/jquery.min.js') }}"></script>
+  <script src="{{ asset('js/plugins.js') }}"></script>
+  <script src="{{ asset('js/SmoothScroll.js') }}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+  <script src="{{ asset('js/script.min.js') }}"></script>
+  <script src="{{ asset('js/profile.js') }}"></script>
+</body>
+
 </html>
