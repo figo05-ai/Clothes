@@ -47,7 +47,12 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SitemapController;
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/sitemap.xml', [SitemapController::class, 'index']);
-Route::get('/dashboard', function () { return view('dashboard'); })->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', function () { 
+    if (auth()->check() && auth()->user()->roles->contains('name', 'admin')) {
+        return redirect('/admin');
+    }
+    return redirect('/');
+})->middleware(['auth', 'verified'])->name('dashboard');
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -71,7 +76,7 @@ Route::prefix('api')->group(function () {
     Route::post('/coupons/apply', [CustomerCouponController::class, 'apply']);
     Route::post('/coupons/remove', [CustomerCouponController::class, 'remove']);
     Route::post('/checkout', [CustomerOrderController::class, 'checkout']);
-    
+
     // Payments
     Route::post('/payments/{orderId}/generate', [CustomerPaymentController::class, 'generate']);
     Route::post('/payments/webhook', [CustomerPaymentController::class, 'webhook']);
@@ -114,6 +119,9 @@ Route::prefix('api')->group(function () {
 // ADMIN APIs (/admin/api/...)
 // ==========================================
 Route::prefix('admin/api')->group(function () {
+    Route::get('/users', function() {
+        return response()->json(['data' => \App\Models\User::with('roles')->get()]);
+    });
     // 1. Catalog Admin
     Route::apiResource('categories', AdminCategoryController::class);
     Route::apiResource('products', AdminProductController::class);
@@ -148,4 +156,13 @@ Route::prefix('admin/api')->group(function () {
     Route::post('/pages', [AdminContentController::class, 'storePage']);
     Route::post('/banners', [AdminContentController::class, 'storeBanner']);
     Route::get('/analytics/dashboard', [AdminAnalyticsController::class, 'index']);
+});
+
+// ==========================================
+// ADMIN DASHBOARD UI ROUTE
+// ==========================================
+Route::middleware(['auth'])->group(function () {
+    Route::get('/admin/{page?}', function () {
+        return view('admin.app');
+    })->where('page', '.*')->name('admin.dashboard');
 });

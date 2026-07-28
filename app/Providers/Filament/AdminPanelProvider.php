@@ -26,9 +26,21 @@ class AdminPanelProvider extends PanelProvider
             ->default()
             ->id('admin')
             ->path('admin')
+            ->brandName('Kaira Luxury')
+            ->favicon(asset('images/main-logo.png'))
+            ->font('Marcellus')
+            ->sidebarCollapsibleOnDesktop()
+            ->maxContentWidth('full')
             ->login()
+            ->navigationItems([
+                \Filament\Navigation\NavigationItem::make('Back to Main Site')
+                    ->url(url('/'))
+                    ->icon('heroicon-o-arrow-left-on-rectangle')
+                    ->sort(-1),
+            ])
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => \Filament\Support\Colors\Color::hex('#D4AF37'),
+                'gray' => \Filament\Support\Colors\Color::Zinc,
             ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
