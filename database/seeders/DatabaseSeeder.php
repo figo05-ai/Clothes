@@ -3,19 +3,73 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
+use App\Models\User;
+use App\Models\Role;
 use App\Models\Category;
 use App\Models\Subcategory;
 use App\Models\Product;
+use App\Models\ProductImage;
+use App\Models\ProductReview;
 use Illuminate\Support\Str;
+use Faker\Factory as Faker;
 
 class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
+        $faker = Faker::create();
+
+        // 1. Create Roles
+        $adminRole = Role::firstOrCreate(['name' => 'admin']);
+        $customerRole = Role::firstOrCreate(['name' => 'customer']);
+
+        // 2. Create Users
+        $admin = User::firstOrCreate(
+            ['email' => 'admin@example.com'],
+            [
+                'name' => 'Admin User',
+                'password' => Hash::make('password'),
+                'email_verified_at' => now(),
+            ]
+        );
+        if (!$admin->roles()->where('id', $adminRole->id)->exists()) {
+            $admin->roles()->attach($adminRole);
+        }
+
+        $customer = User::firstOrCreate(
+            ['email' => 'customer@example.com'],
+            [
+                'name' => 'Customer User',
+                'password' => Hash::make('password'),
+                'email_verified_at' => now(),
+            ]
+        );
+        if (!$customer->roles()->where('id', $customerRole->id)->exists()) {
+            $customer->roles()->attach($customerRole);
+        }
+
+        // Use factory for extra users if it exists, otherwise just create them manually
+        $users = collect();
+        $users->push($customer);
+        for ($u = 0; $u < 10; $u++) {
+            $extraUser = User::create([
+                'name' => $faker->name,
+                'email' => $faker->unique()->safeEmail,
+                'password' => Hash::make('password'),
+                'email_verified_at' => now(),
+            ]);
+            $extraUser->roles()->attach($customerRole);
+            $users->push($extraUser);
+        }
+
+        // 3. Create Categories and Subcategories
         $categories = [
-            'Men' => ['T-Shirts', 'Jeans', 'Jackets'],
-            'Women' => ['Dresses', 'Tops', 'Skirts'],
-            'Kids' => ['Boys', 'Girls', 'Infants']
+            'Men' => ['T-Shirts', 'Jeans', 'Jackets', 'Suits', 'Activewear'],
+            'Women' => ['Dresses', 'Tops', 'Skirts', 'Activewear', 'Lingerie'],
+            'Kids' => ['Boys Clothing', 'Girls Clothing', 'Infants', 'Toys'],
+            'Accessories' => ['Watches', 'Bags', 'Belts', 'Sunglasses'],
+            'Shoes' => ['Sneakers', 'Boots', 'Formal', 'Sandals']
         ];
 
         foreach ($categories as $catName => $subCats) {
@@ -33,20 +87,43 @@ class DatabaseSeeder extends Seeder
                     'is_active' => true,
                 ]);
 
-                // Create 4 products for each subcategory
-                for ($i = 1; $i <= 4; $i++) {
-                    Product::create([
+                // Create 5 products for each subcategory
+                for ($i = 1; $i <= 5; $i++) {
+                    $productName = $faker->words(3, true) . ' ' . $subCatName;
+                    $product = Product::create([
                         'subcategory_id' => $subcategory->id,
-                        'name' => "Stylish $subCatName Item $i",
-                        'slug' => Str::slug("Stylish $subCatName Item $i") . '-' . uniqid(),
+                        'name' => ucwords($productName),
+                        'slug' => Str::slug($productName) . '-' . uniqid(),
                         'sku' => strtoupper(uniqid('SKU-')),
-                        'short_description' => 'A wonderful item for your collection.',
-                        'long_description' => 'This item is made of high quality materials and designed to last.',
-                        'base_price' => rand(20, 150) + 0.99,
-                        'stock_quantity' => rand(10, 100),
+                        'short_description' => $faker->sentence(10),
+                        'long_description' => $faker->paragraphs(3, true),
+                        'base_price' => $faker->randomFloat(2, 10, 300),
+                        'stock_quantity' => rand(0, 100),
                         'status' => 'published',
-                        'is_featured' => rand(0, 1) == 1,
+                        'is_featured' => rand(0, 10) > 8,
                     ]);
+
+                    // Add Main Image
+                    ProductImage::create([
+                        'product_id' => $product->id,
+                        'image_path' => 'https://via.placeholder.com/800x1200?text=' . urlencode($productName),
+                        'is_primary' => true,
+                        'sort_order' => 1
+                    ]);
+
+                    // Add Reviews randomly
+                    if (rand(0, 1) == 1) {
+                        $numReviews = rand(1, 3);
+                        for ($r = 0; $r < $numReviews; $r++) {
+                            ProductReview::create([
+                                'product_id' => $product->id,
+                                'user_id' => $users->random()->id,
+                                'rating' => rand(3, 5),
+                                'review_text' => $faker->sentence(15),
+                                'status' => 'approved'
+                            ]);
+                        }
+                    }
                 }
             }
         }

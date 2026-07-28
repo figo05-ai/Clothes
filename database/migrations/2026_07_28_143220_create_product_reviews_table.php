@@ -13,7 +13,7 @@ return new class extends Migration
             $table->foreignUlid('product_id')->constrained('products')->cascadeOnDelete();
             $table->foreignUlid('user_id')->constrained('users')->cascadeOnDelete();
             $table->tinyInteger('rating');
-            $table->text('comment')->nullable();
+            $table->text('review_text')->nullable();
             $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
             $table->timestamps();
         });

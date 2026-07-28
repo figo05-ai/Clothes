@@ -44,7 +44,9 @@ use App\Http\Controllers\Admin\ContentController as AdminContentController;
 // DEFAULT BREEZE ROUTES
 // ==========================================
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SitemapController;
 Route::get('/', [HomeController::class, 'index']);
+Route::get('/sitemap.xml', [SitemapController::class, 'index']);
 Route::get('/dashboard', function () { return view('dashboard'); })->middleware(['auth', 'verified'])->name('dashboard');
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
