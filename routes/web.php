@@ -45,14 +45,24 @@ use App\Http\Controllers\Admin\ContentController as AdminContentController;
 // ==========================================
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SitemapController;
+use App\Http\Controllers\FrontendController;
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/sitemap.xml', [SitemapController::class, 'index']);
-Route::get('/dashboard', function () { 
-    if (auth()->check() && auth()->user()->roles->contains('name', 'admin')) {
-        return redirect('/admin');
-    }
-    return redirect('/');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/product/{slug}', [FrontendController::class, 'product'])->name('frontend.product');
+Route::get('/category/{slug}', [FrontendController::class, 'category'])->name('frontend.category');
+Route::get('/search', [FrontendController::class, 'search'])->name('frontend.search');
+Route::get('/checkout', [FrontendController::class, 'checkout'])->name('frontend.checkout');
+Route::get('/order-success', [FrontendController::class, 'orderSuccess'])->name('frontend.order_success');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', [FrontendController::class, 'dashboard'])->name('dashboard');
+    Route::get('/dashboard/orders', [FrontendController::class, 'orders'])->name('dashboard.orders');
+    Route::get('/wishlist', [FrontendController::class, 'wishlist'])->name('wishlist');
+    Route::get('/returns', [FrontendController::class, 'returns'])->name('returns');
+    Route::get('/contact', [FrontendController::class, 'contact'])->name('contact');
+});
+
+// Dynamic Pages Route - should be at the very bottom
+Route::get('/page/{slug}', [FrontendController::class, 'page'])->name('frontend.page');
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -73,6 +83,7 @@ Route::prefix('api')->group(function () {
     // 2. Cart, Coupons & Checkout
     Route::get('/cart', [CustomerCartController::class, 'index']);
     Route::post('/cart', [CustomerCartController::class, 'store']);
+    Route::delete('/cart/{productId}', [CustomerCartController::class, 'destroy']);
     Route::post('/coupons/apply', [CustomerCouponController::class, 'apply']);
     Route::post('/coupons/remove', [CustomerCouponController::class, 'remove']);
     Route::post('/checkout', [CustomerOrderController::class, 'checkout']);

@@ -72,6 +72,24 @@ class DatabaseSeeder extends Seeder
             'Shoes' => ['Sneakers', 'Boots', 'Formal', 'Sandals']
         ];
 
+        $fashionImages = [
+            'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800&q=80',
+            'https://images.unsplash.com/photo-1529139574466-a303027c028b?w=800&q=80',
+            'https://images.unsplash.com/photo-1434389678232-04ce6fc8be28?w=800&q=80',
+            'https://images.unsplash.com/photo-1617137968427-85924c800a22?w=800&q=80',
+            'https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=800&q=80',
+            'https://images.unsplash.com/photo-1539008835657-9e8e9680c956?w=800&q=80',
+            'https://images.unsplash.com/photo-1596755094514-f87e32f85e2c?w=800&q=80',
+            'https://images.unsplash.com/photo-1550614000-4b95d4662247?w=800&q=80',
+            'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&q=80',
+            'https://images.unsplash.com/photo-1618932260643-e65a04ce46cc?w=800&q=80',
+            'https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?w=800&q=80',
+            'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=800&q=80',
+            'https://images.unsplash.com/photo-1550639525-c97d455acf70?w=800&q=80',
+            'https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800&q=80',
+            'https://images.unsplash.com/photo-1485968579580-b6d095142e6e?w=800&q=80'
+        ];
+
         foreach ($categories as $catName => $subCats) {
             $category = Category::create([
                 'name' => $catName,
@@ -106,7 +124,7 @@ class DatabaseSeeder extends Seeder
                     // Add Main Image
                     ProductImage::create([
                         'product_id' => $product->id,
-                        'image_path' => 'https://via.placeholder.com/800x1200?text=' . urlencode($productName),
+                        'image_path' => $fashionImages[array_rand($fashionImages)],
                         'is_primary' => true,
                         'sort_order' => 1
                     ]);

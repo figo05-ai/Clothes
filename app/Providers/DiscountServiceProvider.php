@@ -11,5 +11,6 @@ class DiscountServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->bind(CouponManagementServiceInterface::class, CouponManagementService::class);
+        $this->app->bind(\App\Contracts\Discount\DiscountServiceInterface::class, \App\Services\Discount\CouponService::class);
     }
 }

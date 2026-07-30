@@ -49,9 +49,10 @@ class OrderService implements OrderServiceInterface
 
                 $orderItemsData[] = [
                     'product_id' => $product->id,
+                    'name' => $product->name,
                     'quantity' => $item['quantity'],
                     'unit_price' => $product->base_price,
-                    'subtotal' => $subtotal,
+                    'total_price' => $subtotal,
                 ];
 
                 // Deduct stock
@@ -60,16 +61,25 @@ class OrderService implements OrderServiceInterface
             }
 
             // 2. Create the Order
+            $shippingFee = $checkoutData['shipping_cost'] ?? 0;
+            $taxAmount = $checkoutData['tax_amount'] ?? 0;
+            $discountAmount = $checkoutData['discount_amount'] ?? 0;
+
             $order = Order::create([
                 'user_id' => $userId, // Can be null for guest checkout
-                'total_amount' => $totalAmount,
-                'shipping_cost' => $checkoutData['shipping_cost'] ?? 0,
-                'tax_amount' => $checkoutData['tax_amount'] ?? 0,
-                'grand_total' => $totalAmount + ($checkoutData['shipping_cost'] ?? 0) + ($checkoutData['tax_amount'] ?? 0),
+                'order_number' => strtoupper(uniqid('ORD-')),
+                'subtotal_amount' => $totalAmount,
+                'discount_amount' => $discountAmount,
+                'shipping_fee' => $shippingFee,
+                'tax_amount' => $taxAmount,
+                'grand_total' => max(0, $totalAmount + $shippingFee + $taxAmount - $discountAmount),
                 'status' => 'pending',
-                'shipping_address' => $checkoutData['shipping_address'] ?? 'Pending',
-                'billing_address' => $checkoutData['billing_address'] ?? 'Pending',
-                'payment_method' => $checkoutData['payment_method'] ?? 'cash_on_delivery',
+                // For simplicity, we are ignoring address linking for now or saving as JSON in notes if needed
+                'notes' => json_encode([
+                    'shipping_address' => $checkoutData['shipping_address'] ?? 'Pending',
+                    'billing_address' => $checkoutData['billing_address'] ?? 'Pending',
+                    'payment_method' => $checkoutData['payment_method'] ?? 'cash_on_delivery',
+                ]),
             ]);
 
             // 3. Create Order Items

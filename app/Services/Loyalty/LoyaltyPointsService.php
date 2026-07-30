@@ -23,6 +23,6 @@ class LoyaltyPointsService implements LoyaltyServiceInterface {
         return 0.0;
     }
     public function getBalance(string $userId): int {
-        return $this->getAccount($userId)->points;
+        return (int) $this->getAccount($userId)->points;
     }
 }

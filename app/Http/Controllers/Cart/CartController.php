@@ -67,4 +67,24 @@ class CartController extends Controller
 
         return new CartResource($cart);
     }
+
+    /**
+     * Remove a product from the cart.
+     */
+    #[OA\Delete(
+        path: '/api/cart/{productId}',
+        summary: 'Remove item from Cart',
+        tags: ['Customer - Cart'],
+        parameters: [
+            new OA\Parameter(name: 'productId', in: 'path', required: true, description: 'Product ID')
+        ],
+        responses: [
+            new OA\Response(response: 200, description: 'Removed successfully')
+        ]
+    )]
+    public function destroy(string $productId)
+    {
+        $cart = $this->cartService->remove($productId);
+        return new CartResource($cart);
+    }
 }

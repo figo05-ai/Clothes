@@ -15,6 +15,7 @@ class HomeController extends Controller
 {
     public function index()
     {
+        $banners = \App\Models\Banner::where('is_active', true)->orderBy('order')->get();
         $categories = Category::with('subcategories')->where('is_active', true)->get();
         
         $newArrivals = Product::with('subcategory')
@@ -30,6 +31,6 @@ class HomeController extends Controller
             ->take(10)
             ->get();
             
-        return view('welcome', compact('categories', 'newArrivals', 'bestSellers'));
+        return view('welcome', compact('categories', 'newArrivals', 'bestSellers', 'banners'));
     }
 }
