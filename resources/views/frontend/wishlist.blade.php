@@ -14,16 +14,16 @@
                 <div class="card border-0 shadow-sm rounded-4 mb-4">
                     <div class="card-body p-4 p-md-5">
                         <div class="d-flex align-items-center justify-content-between mb-4 pb-2 border-bottom">
-                            <h4 class="fw-bold m-0" style="letter-spacing: -0.5px;">My Wishlist</h4>
-                            <span class="badge bg-light text-dark border px-3 py-2 rounded-pill">{{ count($wishlist) }} Items</span>
+                            <h4 class="fw-bold m-0" style="letter-spacing: -0.5px;">{{ __('My Wishlist') }}</h4>
+                            <span class="badge bg-light text-dark border px-3 py-2 rounded-pill">{{ count($wishlist) }} {{ __('Items') }}</span>
                         </div>
                         
                         @if(empty($wishlist) || count($wishlist) === 0)
                             <div class="text-center py-5 bg-light rounded-4 border border-light-subtle my-4" style="background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);">
                                 <i class="bi bi-heart text-muted mb-3 d-block" style="font-size: 3.5rem; opacity: 0.5;"></i>
-                                <h5 class="fw-bold text-dark mb-2" style="letter-spacing: -0.5px;">Your wishlist is empty</h5>
-                                <p class="text-muted small mb-4 mx-auto" style="max-width: 300px;">Save items you love to your wishlist so you can easily find them later.</p>
-                                <a href="/" class="btn btn-dark rounded-pill px-5 shadow-sm fw-bold text-uppercase" style="letter-spacing: 1px; font-size: 0.8rem; padding-top: 12px; padding-bottom: 12px;">Explore Products</a>
+                                <h5 class="fw-bold text-dark mb-2" style="letter-spacing: -0.5px;">{{ __('Your wishlist is empty') }}</h5>
+                                <p class="text-muted small mb-4 mx-auto" style="max-width: 300px;">{{ __('Save items you love to your wishlist so you can easily find them later.') }}</p>
+                                <a href="/" class="btn btn-dark rounded-pill px-5 shadow-sm fw-bold text-uppercase" style="letter-spacing: 1px; font-size: 0.8rem; padding-top: 12px; padding-bottom: 12px;">{{ __('Explore Products') }}</a>
                             </div>
                         @else
                             <div class="row g-4 mt-2">
@@ -49,7 +49,7 @@
                                                 </h5>
                                                 <div class="d-flex align-items-center justify-content-between">
                                                     <span class="fw-bold" style="font-size: 0.95rem;">${{ number_format($item->product->base_price, 2) }}</span>
-                                                    <a href="#" class="text-dark d-flex align-items-center justify-content-center bg-light rounded-circle" style="width: 32px; height: 32px; transition: background-color 0.2s ease;" onmouseover="this.classList.replace('bg-light', 'bg-dark'); this.classList.replace('text-dark', 'text-white')" onmouseout="this.classList.replace('bg-dark', 'bg-light'); this.classList.replace('text-white', 'text-dark')" data-product-id="{{ $item->product->id }}" title="Add to cart">
+                                                    <a href="#" class="text-dark d-flex align-items-center justify-content-center bg-light rounded-circle" style="width: 32px; height: 32px; transition: background-color 0.2s ease;" onmouseover="this.classList.replace('bg-light', 'bg-dark'); this.classList.replace('text-dark', 'text-white')" onmouseout="this.classList.replace('bg-dark', 'bg-light'); this.classList.replace('text-white', 'text-dark')" data-product-id="{{ $item->product->id }}" title="{{ __('Add to Cart') }}">
                                                         <i class="bi bi-cart2"></i>
                                                     </a>
                                                 </div>

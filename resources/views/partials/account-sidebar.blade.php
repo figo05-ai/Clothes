@@ -42,24 +42,24 @@
 
     <div class="list-group list-group-flush border-0">
         <a href="{{ route('dashboard') }}" class="list-group-item list-group-item-action p-3 fw-semibold account-sidebar-link {{ request()->routeIs('dashboard') ? 'active' : '' }}">
-            <i class="bi bi-person me-2 account-sidebar-icon"></i> Dashboard
+            <i class="bi bi-person me-2 account-sidebar-icon"></i> {{ __('Dashboard') }}
         </a>
         <a href="{{ route('dashboard.orders') }}" class="list-group-item list-group-item-action p-3 fw-semibold account-sidebar-link {{ request()->routeIs('dashboard.orders') ? 'active' : '' }}">
-            <i class="bi bi-box-seam me-2 account-sidebar-icon"></i> Order History
+            <i class="bi bi-box-seam me-2 account-sidebar-icon"></i> {{ __('Order History') }}
         </a>
         <a href="{{ route('wishlist') }}" class="list-group-item list-group-item-action p-3 fw-semibold account-sidebar-link {{ request()->routeIs('wishlist') ? 'active' : '' }}">
-            <i class="bi bi-heart me-2 account-sidebar-icon text-danger"></i> My Wishlist
+            <i class="bi bi-heart me-2 account-sidebar-icon text-danger"></i> {{ __('My Wishlist') }}
         </a>
         <a href="{{ route('dashboard.preferences') }}" class="list-group-item list-group-item-action p-3 fw-semibold account-sidebar-link {{ request()->routeIs('dashboard.preferences') ? 'active' : '' }}">
-            <i class="bi bi-sliders me-2 account-sidebar-icon"></i> My Preferences
+            <i class="bi bi-sliders me-2 account-sidebar-icon"></i> {{ __('My Preferences') }}
         </a>
         <a href="{{ route('returns') }}" class="list-group-item list-group-item-action p-3 fw-semibold account-sidebar-link {{ request()->routeIs('returns') ? 'active' : '' }}">
-            <i class="bi bi-arrow-return-left me-2 account-sidebar-icon"></i> Returns & Refunds
+            <i class="bi bi-arrow-return-left me-2 account-sidebar-icon"></i> {{ __('Returns & Refunds') }}
         </a>
         <form method="POST" action="{{ route('logout') }}" class="m-0">
             @csrf
             <button type="submit" class="list-group-item list-group-item-action p-3 text-danger fw-semibold w-100 text-start border-0 account-sidebar-link" style="background-color: #fffafb;">
-                <i class="bi bi-box-arrow-right me-2 account-sidebar-icon"></i> Log Out
+                <i class="bi bi-box-arrow-right me-2 account-sidebar-icon"></i> {{ __('Log Out') }}
             </button>
         </form>
     </div>

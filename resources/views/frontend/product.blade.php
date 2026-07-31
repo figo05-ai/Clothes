@@ -5,10 +5,10 @@
     <div class="container">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/">Home</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('frontend.category', $product->subcategory->category->slug) }}">{{ $product->subcategory->category->name }}</a></li>
-                <li class="breadcrumb-item"><a href="#">{{ $product->subcategory->name }}</a></li>
-                <li class="breadcrumb-item active" aria-current="page">{{ $product->name }}</li>
+                <li class="breadcrumb-item"><a href="/">{{ __('Home') }}</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('frontend.category', $product->subcategory->category->slug) }}">{{ __($product->subcategory->category->name) }}</a></li>
+                <li class="breadcrumb-item"><a href="#">{{ __($product->subcategory->name) }}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ __($product->name) }}</li>
             </ol>
         </nav>
 
@@ -18,9 +18,9 @@
                 <div class="product-gallery">
                     <div class="main-image mb-3">
                         @if($product->images->where('is_primary', true)->first())
-                            <img src="{{ $product->images->where('is_primary', true)->first()->image_path }}" class="img-fluid rounded" alt="{{ $product->name }}">
+                            <img src="{{ $product->images->where('is_primary', true)->first()->image_path }}" class="img-fluid rounded" alt="{{ __($product->name) }}">
                         @else
-                            <img src="https://via.placeholder.com/800x1200?text={{ urlencode($product->name) }}" class="img-fluid rounded" alt="{{ $product->name }}">
+                            <img src="https://via.placeholder.com/800x1200?text={{ urlencode($product->name) }}" class="img-fluid rounded" alt="{{ __($product->name) }}">
                         @endif
                     </div>
                     <div class="d-flex gap-2 thumbnail-images">
@@ -33,7 +33,7 @@
 
             <!-- Product Details -->
             <div class="col-md-6">
-                <h1 class="display-5 fw-bold">{{ $product->name }}</h1>
+                <h1 class="display-5 fw-bold">{{ __($product->name) }}</h1>
                 <div class="d-flex align-items-center mb-3">
                     <div class="text-warning me-2">
                         @php
@@ -47,20 +47,20 @@
                             @endif
                         @endfor
                     </div>
-                    <span>({{ $product->reviews->count() }} Reviews)</span>
+                    <span>({{ $product->reviews->count() }} {{ __('Reviews') }})</span>
                 </div>
                 
                 <h2 class="text-primary mb-4">${{ number_format($product->base_price, 2) }}</h2>
-                <p class="lead">{{ $product->short_description }}</p>
+                <p class="lead">{{ __($product->short_description) }}</p>
                 
                 <div class="mb-4">
-                    <p>{{ $product->long_description }}</p>
+                    <p>{{ __($product->long_description) }}</p>
                 </div>
 
                 <div class="d-flex gap-3 mb-4">
                     <input type="number" class="form-control" value="1" min="1" max="{{ $product->stock_quantity }}" style="width: 80px;" id="qty-{{ $product->id }}">
                     <button class="btn btn-dark btn-lg flex-grow-1 add-to-cart-btn" data-product-id="{{ $product->id }}">
-                        Add to Cart
+                        {{ __('Add to Cart') }}
                     </button>
                     <button class="btn btn-outline-danger btn-lg wishlist-btn" data-product-id="{{ $product->id }}" onclick="toggleWishlist(event, '{{ $product->id }}')">
                         <svg width="24" height="24" viewBox="0 0 24 24" style="fill: none; stroke: currentColor; stroke-width: 2;"><use xlink:href="#heart"></use></svg>
@@ -69,12 +69,12 @@
 
                 <div class="product-meta text-muted mt-4">
                     <p class="mb-1"><strong>SKU:</strong> {{ $product->sku }}</p>
-                    <p class="mb-1"><strong>Category:</strong> {{ $product->subcategory->category->name }} > {{ $product->subcategory->name }}</p>
-                    <p class="mb-0"><strong>Availability:</strong> 
+                    <p class="mb-1"><strong>{{ __('Category') }}:</strong> {{ __($product->subcategory->category->name) }} > {{ __($product->subcategory->name) }}</p>
+                    <p class="mb-0"><strong>{{ __('Availability') }}:</strong> 
                         @if($product->stock_quantity > 0)
-                            <span class="text-success">In Stock ({{ $product->stock_quantity }})</span>
+                            <span class="text-success">{{ __('In Stock') }} ({{ $product->stock_quantity }})</span>
                         @else
-                            <span class="text-danger">Out of Stock</span>
+                            <span class="text-danger">{{ __('Out of Stock') }}</span>
                         @endif
                     </p>
                 </div>

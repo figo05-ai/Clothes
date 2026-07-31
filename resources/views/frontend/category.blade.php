@@ -6,8 +6,8 @@
             <!-- Breadcrumb -->
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="/">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">{{ $category->name }}</li>
+                    <li class="breadcrumb-item"><a href="/">{{ __('Home') }}</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ __($category->name) }}</li>
                 </ol>
             </nav>
 
@@ -17,20 +17,20 @@
                     <form action="{{ url()->current() }}" method="GET" id="filter-form">
                         <div class="card border-0 shadow-sm mb-4">
                             <div class="card-body">
-                                <h5 class="card-title mb-3">Subcategories</h5>
+                                <h5 class="card-title mb-3">{{ __('Subcategories') }}</h5>
                                 <ul class="list-unstyled mb-0">
                                     @if (request('subcategory'))
                                         <li class="mb-3">
                                             <a href="{{ request()->fullUrlWithQuery(['subcategory' => null]) }}"
                                                 class="text-decoration-none text-danger small hover-primary"><i
-                                                    class="fas fa-times"></i> Clear Subcategory Filter</a>
+                                                    class="fas fa-times"></i> {{ __('Clear Subcategory Filter') }}</a>
                                         </li>
                                     @endif
                                     @foreach ($category->subcategories as $sub)
                                         <li class="mb-2">
                                             <a href="{{ request()->fullUrlWithQuery(['subcategory' => $sub->slug]) }}"
                                                 class="text-decoration-none hover-primary {{ request('subcategory') == $sub->slug ? 'fw-bold text-primary' : 'text-dark' }}">
-                                                {{ $sub->name }}
+                                                {{ __($sub->name) }}
                                             </a>
                                         </li>
                                     @endforeach
@@ -41,11 +41,11 @@
                         <div class="card border-0 shadow-sm mb-4">
                             <div class="card-body">
                                 <div class="d-flex justify-content-between align-items-center mb-3">
-                                    <h5 class="card-title mb-0">Filter by Price</h5>
+                                    <h5 class="card-title mb-0">{{ __('Filter by Price') }}</h5>
                                     @if (request()->filled('min_price') || request()->filled('max_price'))
                                         <a href="{{ request()->fullUrlWithQuery(['min_price' => null, 'max_price' => null]) }}"
                                             class="text-danger small text-decoration-none hover-primary"><i
-                                                class="fas fa-times"></i> Clear</a>
+                                                class="fas fa-times"></i> {{ __('Clear') }}</a>
                                     @endif
                                 </div>
                                 <div class="d-flex align-items-center gap-2 mb-3">
@@ -58,7 +58,7 @@
                                 @if (request('subcategory'))
                                     <input type="hidden" name="subcategory" value="{{ request('subcategory') }}">
                                 @endif
-                                <button type="submit" class="btn btn-dark btn-sm w-100">Apply Filter</button>
+                                <button type="submit" class="btn btn-dark btn-sm w-100">{{ __('Apply Filter') }}</button>
                             </div>
                         </div>
                     </form>
@@ -67,17 +67,15 @@
                 <!-- Product Grid -->
                 <div class="col-md-9">
                     <div class="d-flex justify-content-between align-items-center mb-4">
-                        <h2 class="mb-0">{{ $category->name }} <span class="text-muted fs-5">({{ $products->total() }}
-                                Products)</span></h2>
+                        <h2 class="mb-0">{{ __($category->name) }} <span class="text-muted fs-5">({{ $products->total() }}
+                                {{ __('Products') }})</span></h2>
 
                         <!-- Sorting -->
                         <select class="form-select w-auto" name="sort"
                             onchange="document.getElementById('sort-hidden').value = this.value; document.getElementById('filter-form').submit();">
-                            <option value="latest" {{ request('sort') == 'latest' ? 'selected' : '' }}>Latest</option>
-                            <option value="price_low" {{ request('sort') == 'price_low' ? 'selected' : '' }}>Price: Low to
-                                High</option>
-                            <option value="price_high" {{ request('sort') == 'price_high' ? 'selected' : '' }}>Price: High
-                                to Low</option>
+                            <option value="latest" {{ request('sort') == 'latest' ? 'selected' : '' }}>{{ __('Latest') }}</option>
+                            <option value="price_low" {{ request('sort') == 'price_low' ? 'selected' : '' }}>{{ __('Price: Low to High') }}</option>
+                            <option value="price_high" {{ request('sort') == 'price_high' ? 'selected' : '' }}>{{ __('Price: High to Low') }}</option>
                         </select>
                         <!-- Hidden input to pass sort value with filters -->
                         <input type="hidden" form="filter-form" name="sort" id="sort-hidden"
@@ -92,11 +90,11 @@
                                         <a href="{{ route('frontend.product', $product->slug) }}">
                                             @if ($product->images->where('is_primary', true)->first())
                                                 <img src="{{ $product->images->where('is_primary', true)->first()->image_path }}"
-                                                    class="product-image img-fluid" alt="{{ $product->name }}"
+                                                    class="product-image img-fluid" alt="{{ __($product->name) }}"
                                                     style="height: 400px; width: 100%; object-fit: cover; border-radius: 8px;">
                                             @else
                                                 <img src="https://via.placeholder.com/800x1200?text={{ urlencode($product->name) }}"
-                                                    class="product-image img-fluid" alt="{{ $product->name }}"
+                                                    class="product-image img-fluid" alt="{{ __($product->name) }}"
                                                     style="height: 400px; width: 100%; object-fit: cover; border-radius: 8px;">
                                             @endif
                                         </a>
@@ -110,10 +108,10 @@
                                         <div class="product-content">
                                             <h5 class="element-title text-uppercase fs-5 mt-3">
                                                 <a
-                                                    href="{{ route('frontend.product', $product->slug) }}">{{ $product->name }}</a>
+                                                    href="{{ route('frontend.product', $product->slug) }}">{{ __($product->name) }}</a>
                                             </h5>
                                             <a href="#" class="text-decoration-none add-to-cart-btn"
-                                                data-product-id="{{ $product->id }}" data-after="Add to cart">
+                                                data-product-id="{{ $product->id }}" data-after="{{ __('Add to cart') }}">
                                                 <span>${{ number_format($product->base_price, 2) }}</span>
                                             </a>
                                         </div>

@@ -10,16 +10,16 @@
                     <!-- Product Title, Brand Subtitle & Ratings Header (Above Picture & Details) -->
                     <div class="mb-4 pb-3 border-bottom">
                         <span class="text-uppercase text-primary fw-bold d-block"
-                            style="font-size: 0.78rem; letter-spacing: 2px;">KAIRA LUXURY COLLECTION</span>
+                            style="font-size: 0.78rem; letter-spacing: 2px;">{{ __('KAIRA LUXURY COLLECTION') }}</span>
                         <h2 class="fw-bold text-dark m-0 mt-1 mb-2" id="qvTitle">Dark Florish Onepiece</h2>
                         <div class="d-flex flex-wrap align-items-center gap-3">
                             <div class="star-rating text-warning" style="font-size: 0.95rem; letter-spacing: 1px;">
                                 ★ ★ ★ ★ ★ <span class="text-dark fw-semibold ms-1" style="font-size: 0.85rem;">4.9
-                                    (128 Reviews)</span>
+                                    ({{ __('128 Reviews') }})</span>
                             </div>
                             <span
                                 class="badge bg-success-subtle text-success border border-success-subtle px-3 py-1 rounded-pill"
-                                style="font-size: 0.78rem;">In Stock</span>
+                                style="font-size: 0.78rem;">{{ __('In Stock') }}</span>
                         </div>
                     </div>
 
@@ -30,7 +30,7 @@
                             <div class="qv-img-wrapper p-2 bg-light rounded-4 border mb-3 position-relative">
                                 <span
                                     class="badge bg-dark text-white text-uppercase px-3 py-2 rounded-pill position-absolute top-0 start-0 m-3 z-2"
-                                    id="qvBadge">NEW ARRIVAL</span>
+                                    id="qvBadge">{{ __('NEW ARRIVAL') }}</span>
                                 <img src="{{ asset('images/product-item-5.jpg') }}" id="qvMainImage" alt="Product Image"
                                     class="img-fluid rounded-3 object-fit-cover w-100" style="max-height: 400px;">
                             </div>
@@ -66,45 +66,42 @@
                                     <h2 class="fw-bold text-dark m-0" id="qvPrice">$95.00</h2>
                                     <span class="text-muted text-decoration-line-through"
                                         style="font-size: 1rem;">$120.00</span>
-                                    <span class="badge bg-danger text-white ms-2" style="font-size: 0.75rem;">SAVE
-                                        20%</span>
+                                    <span class="badge bg-danger text-white ms-2" style="font-size: 0.75rem;">{{ __('SAVE 20%') }}</span>
                                 </div>
 
                                 <p class="text-secondary mb-4" style="font-size: 0.9rem; line-height: 1.6;"
                                     id="qvDesc">
-                                    Crafted from a premium silk-cotton blend, featuring a tailored silhouette, concealed
-                                    buttons, and elegant finishing. Designed for effortless luxury.
+                                    {{ __('Crafted from a premium silk-cotton blend, featuring a tailored silhouette, concealed buttons, and elegant finishing. Designed for effortless luxury.') }}
                                 </p>
 
                                 <!-- Color Selection -->
                                 <div class="mb-3">
                                     <div class="d-flex justify-content-between align-items-center mb-2">
                                         <label class="fw-bold text-dark small text-uppercase"
-                                            style="letter-spacing: 1px;">Select Color: <span
-                                                class="text-primary fw-semibold" id="qvSelectedColor">Midnight
-                                                Black</span></label>
+                                            style="letter-spacing: 1px;">{{ __('Select Color:') }} <span
+                                                class="text-primary fw-semibold" id="qvSelectedColor">{{ __('Midnight Black') }}</span></label>
                                     </div>
                                     <div class="d-flex gap-2">
                                         <button type="button"
                                             class="btn btn-outline-dark rounded-circle p-1 active qv-color-btn"
                                             style="width: 32px; height: 32px; background: #111;"
-                                            data-color="Midnight Black" title="Midnight Black"
-                                            onclick="document.getElementById('qvSelectedColor').textContent='Midnight Black'; document.querySelectorAll('.qv-color-btn').forEach(b=>b.classList.remove('active', 'border-3')); this.classList.add('active', 'border-3');"></button>
+                                            data-color="{{ __('Midnight Black') }}" title="{{ __('Midnight Black') }}"
+                                            onclick="document.getElementById('qvSelectedColor').textContent='{{ __('Midnight Black') }}'; document.querySelectorAll('.qv-color-btn').forEach(b=>b.classList.remove('active', 'border-3')); this.classList.add('active', 'border-3');"></button>
                                         <button type="button"
                                             class="btn btn-outline-secondary rounded-circle p-1 qv-color-btn"
                                             style="width: 32px; height: 32px; background: #f5f0eb;"
-                                            data-color="Cream White" title="Cream White"
-                                            onclick="document.getElementById('qvSelectedColor').textContent='Cream White'; document.querySelectorAll('.qv-color-btn').forEach(b=>b.classList.remove('active', 'border-3')); this.classList.add('active', 'border-3');"></button>
+                                            data-color="{{ __('Cream White') }}" title="{{ __('Cream White') }}"
+                                            onclick="document.getElementById('qvSelectedColor').textContent='{{ __('Cream White') }}'; document.querySelectorAll('.qv-color-btn').forEach(b=>b.classList.remove('active', 'border-3')); this.classList.add('active', 'border-3');"></button>
                                         <button type="button"
                                             class="btn btn-outline-secondary rounded-circle p-1 qv-color-btn"
                                             style="width: 32px; height: 32px; background: #8c907e;"
-                                            data-color="Sage Green" title="Sage Green"
-                                            onclick="document.getElementById('qvSelectedColor').textContent='Sage Green'; document.querySelectorAll('.qv-color-btn').forEach(b=>b.classList.remove('active', 'border-3')); this.classList.add('active', 'border-3');"></button>
+                                            data-color="{{ __('Sage Green') }}" title="{{ __('Sage Green') }}"
+                                            onclick="document.getElementById('qvSelectedColor').textContent='{{ __('Sage Green') }}'; document.querySelectorAll('.qv-color-btn').forEach(b=>b.classList.remove('active', 'border-3')); this.classList.add('active', 'border-3');"></button>
                                         <button type="button"
                                             class="btn btn-outline-secondary rounded-circle p-1 qv-color-btn"
                                             style="width: 32px; height: 32px; background: #c2a68c;"
-                                            data-color="Warm Camel" title="Warm Camel"
-                                            onclick="document.getElementById('qvSelectedColor').textContent='Warm Camel'; document.querySelectorAll('.qv-color-btn').forEach(b=>b.classList.remove('active', 'border-3')); this.classList.add('active', 'border-3');"></button>
+                                            data-color="{{ __('Warm Camel') }}" title="{{ __('Warm Camel') }}"
+                                            onclick="document.getElementById('qvSelectedColor').textContent='{{ __('Warm Camel') }}'; document.querySelectorAll('.qv-color-btn').forEach(b=>b.classList.remove('active', 'border-3')); this.classList.add('active', 'border-3');"></button>
                                     </div>
                                 </div>
 
@@ -112,7 +109,7 @@
                                 <div class="mb-4">
                                     <div class="d-flex justify-content-between align-items-center mb-2">
                                         <label class="fw-bold text-dark small text-uppercase"
-                                            style="letter-spacing: 1px;">Select Size: <span
+                                            style="letter-spacing: 1px;">{{ __('Select Size:') }} <span
                                                 class="text-primary fw-semibold" id="qvSelectedSize">M</span></label>
                                     </div>
                                     <div class="d-flex flex-wrap gap-2 mb-2">
@@ -152,7 +149,7 @@
                                                 <line x1="18" y1="7" x2="18" y2="10">
                                                 </line>
                                             </svg>
-                                            Size Chart & Fit Guide
+                                            {{ __('Size Chart & Fit Guide') }}
                                         </button>
                                         <span class="text-secondary d-flex align-items-center gap-1"
                                             style="font-size: 0.78rem;">
@@ -161,7 +158,7 @@
                                                 <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                                                 <circle cx="12" cy="7" r="4"></circle>
                                             </svg>
-                                            Model is 175cm (5'9") wearing size S
+                                            {{ __('Model is 175cm (5\'9") wearing size S') }}
                                         </span>
                                     </div>
                                 </div>
@@ -191,7 +188,7 @@
                                             <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6">
                                             </path>
                                         </svg>
-                                        Add To Cart
+                                        {{ __('Add to Cart') }}
                                     </button>
 
                                     <button type="button"
@@ -214,9 +211,8 @@
                                         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
                                     </svg>
                                     <div style="font-size: 0.8rem;">
-                                        <span class="d-block fw-bold text-dark">Complimentary Express Shipping</span>
-                                        <span class="text-secondary">Free 2-day delivery & 30-day effortless
-                                            returns.</span>
+                                        <span class="d-block fw-bold text-dark">{{ __('Complimentary Express Shipping') }}</span>
+                                        <span class="text-secondary">{{ __('Free 2-day delivery & 30-day effortless returns.') }}</span>
                                     </div>
                                 </div>
 

@@ -22,8 +22,8 @@
                         @endif
 
                         <div class="mb-2">
-                            <h4 class="fw-bold m-0" style="letter-spacing: -0.5px;">My Preferences & Sizes</h4>
-                            <p class="text-muted mt-2" style="font-size: 0.95rem;">Set your sizing preferences so we can recommend the perfect fit for you across our catalog.</p>
+                            <h4 class="fw-bold m-0" style="letter-spacing: -0.5px;">{{ __('My Preferences & Sizes') }}</h4>
+                            <p class="text-muted mt-2" style="font-size: 0.95rem;">{{ __('Set your sizing preferences so we can recommend the perfect fit for you across our catalog.') }}</p>
                         </div>
                         
                         <form action="{{ route('dashboard.preferences.update') }}" method="POST" class="mt-4">
@@ -32,9 +32,9 @@
                                 <div class="card-body p-4 p-md-5">
                                     <div class="row g-4">
                                         <div class="col-md-6">
-                                            <label class="form-label fw-bold text-uppercase text-muted" style="letter-spacing: 1px; font-size: 0.75rem;">Top Size</label>
+                                            <label class="form-label fw-bold text-uppercase text-muted" style="letter-spacing: 1px; font-size: 0.75rem;">{{ __('Top Size') }}</label>
                                             <select name="preferred_top_size" class="form-select form-select-lg border border-light-subtle bg-light rounded-3 shadow-none focus-ring focus-ring-dark">
-                                                <option value="">Select Size</option>
+                                                <option value="">{{ __('Select Size') }}</option>
                                                 <option value="XS" {{ $preferences->preferred_top_size == 'XS' ? 'selected' : '' }}>XS - Extra Small</option>
                                                 <option value="S" {{ $preferences->preferred_top_size == 'S' ? 'selected' : '' }}>S - Small</option>
                                                 <option value="M" {{ $preferences->preferred_top_size == 'M' ? 'selected' : '' }}>M - Medium</option>
@@ -44,9 +44,9 @@
                                             </select>
                                         </div>
                                         <div class="col-md-6">
-                                            <label class="form-label fw-bold text-uppercase text-muted" style="letter-spacing: 1px; font-size: 0.75rem;">Bottom Size</label>
+                                            <label class="form-label fw-bold text-uppercase text-muted" style="letter-spacing: 1px; font-size: 0.75rem;">{{ __('Bottom Size') }}</label>
                                             <select name="preferred_bottom_size" class="form-select form-select-lg border border-light-subtle bg-light rounded-3 shadow-none focus-ring focus-ring-dark">
-                                                <option value="">Select Size</option>
+                                                <option value="">{{ __('Select Size') }}</option>
                                                 <option value="S" {{ $preferences->preferred_bottom_size == 'S' ? 'selected' : '' }}>28 - 30 (S)</option>
                                                 <option value="M" {{ $preferences->preferred_bottom_size == 'M' ? 'selected' : '' }}>32 - 34 (M)</option>
                                                 <option value="L" {{ $preferences->preferred_bottom_size == 'L' ? 'selected' : '' }}>36 - 38 (L)</option>
@@ -54,9 +54,9 @@
                                             </select>
                                         </div>
                                         <div class="col-md-6">
-                                            <label class="form-label fw-bold text-uppercase text-muted" style="letter-spacing: 1px; font-size: 0.75rem;">Shoe Size (US)</label>
+                                            <label class="form-label fw-bold text-uppercase text-muted" style="letter-spacing: 1px; font-size: 0.75rem;">{{ __('Shoe Size (US)') }}</label>
                                             <select name="shoe_size" class="form-select form-select-lg border border-light-subtle bg-light rounded-3 shadow-none focus-ring focus-ring-dark">
-                                                <option value="">Select Size</option>
+                                                <option value="">{{ __('Select Size') }}</option>
                                                 @for($i = 5; $i <= 14; $i++)
                                                     <option value="{{ $i }}" {{ $preferences->shoe_size == (string)$i ? 'selected' : '' }}>{{ $i }}</option>
                                                 @endfor
@@ -66,15 +66,15 @@
                                     <hr class="my-5 text-light-subtle">
                                     <div class="d-flex align-items-center justify-content-between p-4 rounded-4" style="background-color: #fafafb; border: 1px solid #f1f1f1;">
                                         <div>
-                                            <h6 class="fw-bold mb-1">Personalized Recommendations</h6>
-                                            <p class="text-muted small m-0">Enable personalized size recommendations while shopping based on your profile.</p>
+                                            <h6 class="fw-bold mb-1">{{ __('Personalized Recommendations') }}</h6>
+                                            <p class="text-muted small m-0">{{ __('Enable personalized size recommendations while shopping based on your profile.') }}</p>
                                         </div>
                                         <div class="form-check form-switch fs-4 m-0">
                                             <input name="enable_recommendations" class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" {{ $preferences->enable_recommendations ? 'checked' : '' }}>
                                         </div>
                                     </div>
                                     <div class="mt-5 text-end">
-                                        <button type="submit" class="btn btn-dark btn-lg rounded-pill px-5 fw-bold shadow-sm" style="letter-spacing: 1px; text-transform: uppercase; font-size: 0.85rem;">Save Preferences</button>
+                                        <button type="submit" class="btn btn-dark btn-lg rounded-pill px-5 fw-bold shadow-sm" style="letter-spacing: 1px; text-transform: uppercase; font-size: 0.85rem;">{{ __('Save Preferences') }}</button>
                                     </div>
                                 </div>
                             </div>

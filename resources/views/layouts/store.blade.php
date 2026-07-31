@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ app()->getLocale() }}" dir="{{ app()->getLocale() == 'ar' ? 'rtl' : 'ltr' }}">
 
 <head>
-    <title>Kaira - Bootstrap 5 Fashion Store HTML CSS Template</title>
+    <title>Kaira - Fashion Store</title>
     <meta charset="utf-8">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,7 +12,13 @@
     <meta name="author" content="TemplatesJungle">
     <meta name="keywords" content="ecommerce,fashion,store">
     <meta name="description" content="Bootstrap 5 Fashion Store HTML CSS Template">
-    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    
+    @if(app()->getLocale() == 'ar')
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css">
+    @else
+        <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    @endif
+
     <link rel="stylesheet" type="text/css" href="{{ asset('css/vendor.css') }}">
     <link rel="stylesheet" href="{{ asset('css/swiper-bundle.min.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('style.css') }}">
@@ -161,7 +167,7 @@
 
             <form role="search" method="get" class="form-group" action="/search">
                 <input type="search" id="search-form" class="form-control border-0 border-bottom"
-                    placeholder="Type and press enter" value="" name="q" />
+                    placeholder="{{ __('Type and press enter') }}" value="" name="q" />
                 <button type="submit" class="search-submit border-0 position-absolute bg-white"
                     style="top: 15px;right: 15px;"><svg class="search" width="24" height="24">
                         <use xlink:href="#search"></use>
@@ -185,7 +191,7 @@
         <div class="offcanvas-body">
             <div class="order-md-last">
                 <h4 class="d-flex justify-content-between align-items-center mb-3">
-                    <span class="text-primary">Your cart</span>
+                    <span class="text-primary">{{ __('Your cart') }}</span>
                     <span class="badge bg-primary rounded-pill">3</span>
                 </h4>
                 <ul class="list-group mb-3">
@@ -211,12 +217,12 @@
                         <span class="text-body-secondary">$5</span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between">
-                        <span>Total (USD)</span>
+                        <span>{{ __('Total (USD)') }}</span>
                         <strong>$20</strong>
                     </li>
                 </ul>
 
-                <button class="w-100 btn btn-primary btn-lg" type="button" onclick="window.location.href='/checkout'">Continue to Checkout</button>
+                <button class="w-100 btn btn-primary btn-lg" type="button" onclick="window.location.href='/checkout'">{{ __('Continue to Checkout') }}</button>
             </div>
         </div>
     </div>
@@ -227,17 +233,17 @@
             <h5 class="offcanvas-title text-uppercase m-0 d-flex align-items-center gap-2">
                 <svg width="24" height="24" viewBox="0 0 24 24">
                     <use xlink:href="#user"></use>
-                </svg> My Account
+                </svg> {{ __('My Account') }}
             </h5>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body p-4 d-flex flex-column">
             @guest
                 <div class="text-center py-5">
-                    <h4 class="mb-3">Welcome to Ultras</h4>
-                    <p class="text-muted mb-4">Log in or sign up to view your orders, track your shipments, and manage your account.</p>
-                    <a href="/login" class="btn btn-primary w-100 mb-2">Log In</a>
-                    <a href="/register" class="btn btn-outline-dark w-100">Sign Up</a>
+                    <h4 class="mb-3">{{ __('Welcome to Kaira') }}</h4>
+                    <p class="text-muted mb-4">{{ __('Log in or sign up to view your orders, track your shipments, and manage your account.') }}</p>
+                    <a href="/login" class="btn btn-primary w-100 mb-2">{{ __('Log In') }}</a>
+                    <a href="/register" class="btn btn-outline-dark w-100">{{ __('Sign Up') }}</a>
                 </div>
             @else
                 <div class="user-profile-header p-3 mb-4 rounded-3"
@@ -249,7 +255,7 @@
                                     class="user-avatar-img rounded-circle object-fit-cover"
                                     style="width: 60px; height: 60px; border: 2px solid var(--bs-primary, #8c907e);">
                                 <button type="button" class="avatar-camera-overlay position-absolute bottom-0 end-0 btn btn-sm btn-light rounded-circle p-1 shadow-sm"
-                                    title="Change Profile Photo" style="width: 24px; height: 24px; display: flex; align-items: center; justify-content: center;">
+                                    title="{{ __('Change Photo') }}" style="width: 24px; height: 24px; display: flex; align-items: center; justify-content: center;">
                                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none"
                                         stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
                                         stroke-linejoin="round">
@@ -264,7 +270,7 @@
                                 <h6 class="m-0 fw-bold text-dark user-display-name">{{ auth()->user()->name }}</h6>
                                 <span
                                     class="badge bg-success-subtle text-success border border-success-subtle rounded-pill py-1 px-2 mb-1"
-                                    style="font-size: 0.7rem;">VIP Member • Verified</span>
+                                    style="font-size: 0.7rem;">{{ __('VIP Member') }} • {{ __('Verified') }}</span>
                                 <div class="text-muted user-display-email" style="font-size: 0.8rem;">
                                     {{ auth()->user()->email }}</div>
                             </div>
@@ -273,7 +279,7 @@
 
                     <div class="profile-progress-box bg-white p-2 rounded-2 border mb-3">
                         <div class="d-flex justify-content-between align-items-center mb-1" style="font-size: 0.75rem;">
-                            <span class="text-muted fw-medium">Profile Completion</span>
+                            <span class="text-muted fw-medium">{{ __('Profile Completion') }}</span>
                             <span class="fw-bold text-primary">90%</span>
                         </div>
                         <div class="progress" style="height: 6px;">
@@ -285,34 +291,34 @@
                     <div class="d-flex gap-2">
                         <button type="button"
                             class="btn btn-sm btn-outline-dark w-50 d-flex align-items-center justify-content-center gap-1 py-1 text-uppercase"
-                            style="font-size: 0.75rem;">
+                            style="font-size: 0.75rem;" data-bs-toggle="modal" data-bs-target="#modalProfile">
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2">
                                 <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z">
                                 </path>
                                 <circle cx="12" cy="13" r="4"></circle>
-                            </svg> Change Photo
+                            </svg> {{ __('Change Photo') }}
                         </button>
                         <button type="button"
                             class="btn btn-sm btn-primary w-50 d-flex align-items-center justify-content-center gap-1 py-1 text-uppercase"
-                            style="font-size: 0.75rem;">
+                            style="font-size: 0.75rem;" data-bs-toggle="modal" data-bs-target="#modalProfile">
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2">
                                 <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
                                 <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
-                            </svg> Edit Info
+                            </svg> {{ __('Edit Info') }}
                         </button>
                     </div>
                 </div>
 
                 <div class="account-menu-group mb-4">
                     <h6 class="text-uppercase text-muted mb-2 px-2" style="font-size: 0.75rem; letter-spacing: 1px;">
-                        Shopping & Orders</h6>
+                        {{ __('Shopping & Orders') }}</h6>
                     <div class="list-group list-group-flush border rounded-3 overflow-hidden">
                         <a href="{{ route('dashboard') }}" class="list-group-item list-group-item-action d-flex align-items-center justify-content-between p-3">
                             <span class="d-flex align-items-center gap-3">
                                 <svg width="20" height="20" viewBox="0 0 24 24" class="text-primary"><use xlink:href="#user"></use></svg>
-                                <span>Dashboard</span>
+                                <span>{{ __('Dashboard') }}</span>
                             </span>
                             <svg width="16" height="16" viewBox="0 0 24 24" class="text-muted">
                                 <use xlink:href="#arrow-right"></use>
@@ -321,7 +327,7 @@
                         <a href="{{ route('dashboard.orders') }}" class="list-group-item list-group-item-action d-flex align-items-center justify-content-between p-3">
                             <span class="d-flex align-items-center gap-3">
                                 <svg width="20" height="20" viewBox="0 0 24 24" class="text-primary"><use xlink:href="#shopping-bag"></use></svg>
-                                <span>Order History</span>
+                                <span>{{ __('Order History') }}</span>
                             </span>
                             <svg width="16" height="16" viewBox="0 0 24 24" class="text-muted">
                                 <use xlink:href="#arrow-right"></use>
@@ -330,7 +336,7 @@
                         <a href="{{ route('wishlist') }}" class="list-group-item list-group-item-action d-flex align-items-center justify-content-between p-3">
                             <span class="d-flex align-items-center gap-3">
                                 <svg width="20" height="20" viewBox="0 0 24 24" class="text-primary"><use xlink:href="#heart"></use></svg>
-                                <span>My Wishlist</span>
+                                <span>{{ __('My Wishlist') }}</span>
                             </span>
                             <svg width="16" height="16" viewBox="0 0 24 24" class="text-muted">
                                 <use xlink:href="#arrow-right"></use>
@@ -339,7 +345,7 @@
                         <a href="{{ route('returns') }}" class="list-group-item list-group-item-action d-flex align-items-center justify-content-between p-3">
                             <span class="d-flex align-items-center gap-3">
                                 <svg width="20" height="20" viewBox="0 0 24 24" class="text-primary" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.92-10.26l5.08 5.08"></path></svg>
-                                <span>Returns Portal</span>
+                                <span>{{ __('Returns Portal') }}</span>
                             </span>
                             <svg width="16" height="16" viewBox="0 0 24 24" class="text-muted">
                                 <use xlink:href="#arrow-right"></use>
@@ -355,7 +361,7 @@
                             <button type="submit" class="list-group-item list-group-item-action d-flex align-items-center justify-content-between p-3 text-danger fw-medium w-100 text-start border-0">
                                 <span class="d-flex align-items-center gap-3">
                                     <svg width="20" height="20" viewBox="0 0 24 24" class="text-danger"><use xlink:href="#close"></use></svg>
-                                    <span>Log Out</span>
+                                    <span>{{ __('Log Out') }}</span>
                                 </span>
                             </button>
                         </form>
@@ -404,39 +410,39 @@
                         <div class="offcanvas-body">
                             <ul class="navbar-nav justify-content-end flex-grow-1 gap-1 gap-md-5 pe-3">
                                 <li class="nav-item">
-                                    <a class="nav-link active" href="/">Dashboard</a>
+                                    <a class="nav-link active" href="/">{{ __('Dashboard') }}</a>
                                 </li>
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="dropdownShop"
-                                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Shop</a>
+                                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ __('Shop') }}</a>
                                     <ul class="dropdown-menu list-unstyled shadow-sm border-0"
                                         aria-labelledby="dropdownShop">
                                         @foreach ($categories as $category)
                                             <li>
                                                 <a href="#new-arrival"
-                                                    class="dropdown-item item-anchor">{{ $category->name }}</a>
+                                                    class="dropdown-item item-anchor">{{ __($category->name) }}</a>
                                             </li>
                                         @endforeach
                                     </ul>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#blog">Blog</a>
+                                    <a class="nav-link" href="#blog">{{ __('Blog') }}</a>
                                 </li>
                                 <li class="nav-item">
-                                  <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#modalContact">Contact</a>
+                                  <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#modalContact">{{ __('Contact') }}</a>
                                 </li>
                                 @guest
-                                    <li class="nav-item"><a class="nav-link" href="/login">Log In</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="/register">Sign Up</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="/login">{{ __('Log In') }}</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="/register">{{ __('Sign Up') }}</a></li>
                                 @endguest
                                 @auth
                                     @if(auth()->user()->roles->contains('name', 'admin'))
-                                        <li class="nav-item"><a class="nav-link fw-bold" href="/admin" style="color: #c5a975 !important;">Admin Dashboard</a></li>
+                                        <li class="nav-item"><a class="nav-link fw-bold" href="/admin" style="color: #c5a975 !important;">{{ __('Admin Dashboard') }}</a></li>
                                     @endif
                                     <li class="nav-item">
                                         <form method="POST" action="{{ route('logout') }}" class="d-inline" id="logout-form">
                                             @csrf
-                                            <a class="nav-link" href="javascript:void(0)" onclick="document.getElementById('logout-form').submit();">Log Out</a>
+                                            <a class="nav-link" href="javascript:void(0)" onclick="document.getElementById('logout-form').submit();">{{ __('Log Out') }}</a>
                                         </form>
                                     </li>
                                 @endauth
@@ -448,7 +454,14 @@
                 <div class="col-auto">
                     <ul class="list-unstyled d-flex m-0 align-items-center">
                         <li class="mx-2">
-                            <a href="#new-arrival" class="mx-2 d-flex align-items-center" title="Wishlist">
+                            @if(app()->getLocale() == 'ar')
+                                <a href="{{ route('lang.switch', 'en') }}" class="btn btn-outline-dark btn-sm rounded-pill fw-bold px-3 py-1" style="font-size: 0.75rem; letter-spacing: 1px;">EN</a>
+                            @else
+                                <a href="{{ route('lang.switch', 'ar') }}" class="btn btn-outline-dark btn-sm rounded-pill fw-bold px-3 py-1" style="font-size: 0.75rem; letter-spacing: 1px;">عربي</a>
+                            @endif
+                        </li>
+                        <li class="mx-2">
+                            <a href="#new-arrival" class="mx-2 d-flex align-items-center" title="{{ __('Wishlist') }}">
                                 <svg width="24" height="24" viewBox="0 0 24 24">
                                     <use xlink:href="#heart"></use>
                                 </svg>
@@ -456,14 +469,14 @@
                         </li>
                         <li class="mx-2">
                             <a href="#" class="mx-2 d-flex align-items-center" data-bs-toggle="offcanvas"
-                                data-bs-target="#offcanvasCart" aria-controls="offcanvasCart" title="Cart">
+                                data-bs-target="#offcanvasCart" aria-controls="offcanvasCart" title="{{ __('Cart') }}">
                                 <svg width="24" height="24" viewBox="0 0 24 24">
                                     <use xlink:href="#cart"></use>
                                 </svg>
                             </a>
                         </li>
                         <li class="search-box mx-2">
-                            <a href="#search" class="search-button d-flex align-items-center" title="Search">
+                            <a href="#search" class="search-button d-flex align-items-center" title="{{ __('Search') }}">
                                 <svg width="24" height="24" viewBox="0 0 24 24">
                                     <use xlink:href="#search"></use>
                                 </svg>
@@ -493,10 +506,9 @@
                                 <circle cx="5.5" cy="18.5" r="2.5"></circle>
                                 <circle cx="18.5" cy="18.5" r="2.5"></circle>
                             </svg>
-                            <h6 class="m-0 fw-bold text-dark" style="font-size: 0.88rem;">Express Global Shipping
+                            <h6 class="m-0 fw-bold text-dark" style="font-size: 0.88rem;">{{ __('Express Global Shipping') }}
                             </h6>
-                            <small class="text-muted mt-1" style="font-size: 0.75rem;">Free delivery on orders over
-                                $150</small>
+                            <small class="text-muted mt-1" style="font-size: 0.75rem;">{{ __('Free delivery on orders over $150') }}</small>
                         </div>
                     </div>
                     <div class="col-6 col-md-3">
@@ -507,10 +519,9 @@
                                 <polyline points="23 4 23 10 17 10"></polyline>
                                 <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
                             </svg>
-                            <h6 class="m-0 fw-bold text-dark" style="font-size: 0.88rem;">30-Day Effortless Returns
+                            <h6 class="m-0 fw-bold text-dark" style="font-size: 0.88rem;">{{ __('30-Day Effortless Returns') }}
                             </h6>
-                            <small class="text-muted mt-1" style="font-size: 0.75rem;">Hassle-free exchanges
-                                worldwide</small>
+                            <small class="text-muted mt-1" style="font-size: 0.75rem;">{{ __('Hassle-free exchanges worldwide') }}</small>
                         </div>
                     </div>
                     <div class="col-6 col-md-3">
@@ -522,9 +533,8 @@
                                 </rect>
                                 <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
                             </svg>
-                            <h6 class="m-0 fw-bold text-dark" style="font-size: 0.88rem;">100% Secure Payments</h6>
-                            <small class="text-muted mt-1" style="font-size: 0.75rem;">256-bit SSL encrypted
-                                checkout</small>
+                            <h6 class="m-0 fw-bold text-dark" style="font-size: 0.88rem;">{{ __('100% Secure Payments') }}</h6>
+                            <small class="text-muted mt-1" style="font-size: 0.75rem;">{{ __('256-bit SSL encrypted checkout') }}</small>
                         </div>
                     </div>
                     <div class="col-6 col-md-3">
@@ -534,9 +544,8 @@
                                 stroke="currentColor" stroke-width="1.8" class="text-primary mb-2">
                                 <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
                             </svg>
-                            <h6 class="m-0 fw-bold text-dark" style="font-size: 0.88rem;">24/7 VIP Concierge</h6>
-                            <small class="text-muted mt-1" style="font-size: 0.75rem;">Dedicated fashion
-                                advisors</small>
+                            <h6 class="m-0 fw-bold text-dark" style="font-size: 0.88rem;">{{ __('24/7 VIP Concierge') }}</h6>
+                            <small class="text-muted mt-1" style="font-size: 0.75rem;">{{ __('Dedicated fashion advisors') }}</small>
                         </div>
                     </div>
                 </div>
@@ -557,8 +566,7 @@
                             </a>
                         </div>
                         <p class="text-secondary mb-4" style="font-size: 0.92rem; line-height: 1.6;">
-                            Kaira is a premier destination for contemporary luxury fashion, dedicated to sustainable
-                            manufacturing, timeless design, and unmatched sartorial elegance.
+                            {{ __('Kaira is a premier destination for contemporary luxury fashion, dedicated to sustainable manufacturing, timeless design, and unmatched sartorial elegance.') }}
                         </p>
                         <div class="social-links">
                             <div class="d-flex align-items-center gap-2">
@@ -595,37 +603,33 @@
                 <!-- Column 2: Collections & Shop Links -->
                 <div class="col-lg-2 col-md-6 col-6">
                     <h6 class="text-uppercase fw-bold mb-4 text-dark"
-                        style="letter-spacing: 1px; font-size: 0.88rem;">Explore Shop</h6>
+                        style="letter-spacing: 1px; font-size: 0.88rem;">{{ __('Explore Shop') }}</h6>
                     <ul class="list-unstyled footer-link-list">
-                        <li><a href="#new-arrival">New Arrivals</a></li>
-                        <li><a href="#best-sellers">Best Sellers</a></li>
-                        <li><a href="#related-products">Trending Collection</a></li>
-                        <li><a href="#blog">Editorial Journal</a></li>
-                        <li><a href="#" data-bs-toggle="modal" data-bs-target="#modalSizing">Sizing & Fit
-                                Guide</a></li>
+                        <li><a href="#new-arrival">{{ __('New Arrivals') }}</a></li>
+                        <li><a href="#best-sellers">{{ __('Best Sellers') }}</a></li>
+                        <li><a href="#related-products">{{ __('Trending Collection') }}</a></li>
+                        <li><a href="#blog">{{ __('Editorial Journal') }}</a></li>
+                        <li><a href="#" data-bs-toggle="modal" data-bs-target="#modalSizing">{{ __('Sizing & Fit Guide') }}</a></li>
                     </ul>
                 </div>
 
                 <!-- Column 3: Customer Service Links -->
                 <div class="col-lg-3 col-md-6 col-6">
                     <h6 class="text-uppercase fw-bold mb-4 text-dark"
-                        style="letter-spacing: 1px; font-size: 0.88rem;">Customer Service</h6>
+                        style="letter-spacing: 1px; font-size: 0.88rem;">{{ __('Customer Service') }}</h6>
                     <ul class="list-unstyled footer-link-list">
-                        <li><a href="#" data-bs-toggle="modal" data-bs-target="#modalOrderTracking">Track
-                                Order Status</a></li>
-                        <li><a href="/returns">Returns &
-                                Exchanges</a></li>
-                        <li><a href="/contact">Help Center &
-                                Contact Us</a></li>
-                        <li><a href="/page/privacy-policy">Privacy Policy</a></li>
-                        <li><a href="/page/terms">Terms of Service</a></li>
+                        <li><a href="#" data-bs-toggle="modal" data-bs-target="#modalOrderTracking">{{ __('Track Order Status') }}</a></li>
+                        <li><a href="/returns">{{ __('Returns & Exchanges') }}</a></li>
+                        <li><a href="/contact">{{ __('Help Center & Contact Us') }}</a></li>
+                        <li><a href="/page/privacy-policy">{{ __('Privacy Policy') }}</a></li>
+                        <li><a href="/page/terms">{{ __('Terms of Service') }}</a></li>
                     </ul>
                 </div>
 
                 <!-- Column 4: Contact & Office Details -->
                 <div class="col-lg-3 col-md-6">
                     <h6 class="text-uppercase fw-bold mb-4 text-dark"
-                        style="letter-spacing: 1px; font-size: 0.88rem;">Contact Concierge</h6>
+                        style="letter-spacing: 1px; font-size: 0.88rem;">{{ __('Contact Concierge') }}</h6>
                     <div class="d-flex flex-column gap-3 text-secondary" style="font-size: 0.9rem;">
                         <div class="d-flex align-items-start gap-3">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none"

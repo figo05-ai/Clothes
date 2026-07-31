@@ -47,6 +47,12 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\FrontendController;
 Route::get('/', [HomeController::class, 'index']);
+Route::get('/lang/{locale}', function ($locale) {
+    if (in_array($locale, ['en', 'ar'])) {
+        session(['locale' => $locale]);
+    }
+    return redirect()->back();
+})->name('lang.switch');
 Route::get('/sitemap.xml', [SitemapController::class, 'index']);
 Route::get('/product/{slug}', [FrontendController::class, 'product'])->name('frontend.product');
 Route::get('/category/{slug}', [FrontendController::class, 'category'])->name('frontend.category');
