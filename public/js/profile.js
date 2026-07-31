@@ -131,7 +131,7 @@
       toastBody.textContent = message;
     }
     toastEl.className = `toast align-items-center text-white bg-${type} border-0 show`;
-    
+
     // Auto hide after 3.5s
     setTimeout(() => {
       toastEl.classList.remove('show');
@@ -337,7 +337,7 @@
     const productCard = e.target.closest('.product-item');
     if (productCard && !e.target.closest('.btn-wishlist')) {
       e.preventDefault();
-      
+
       const img = productCard.querySelector('img.product-image') || productCard.querySelector('img');
       const title = productCard.querySelector('h5 a') || productCard.querySelector('h5');
       const price = productCard.querySelector('.text-decoration-none span') || productCard.querySelector('span');

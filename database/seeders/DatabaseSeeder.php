@@ -35,6 +35,7 @@ class DatabaseSeeder extends Seeder
         );
         if (!$admin->roles()->where('id', $adminRole->id)->exists()) {
             $admin->roles()->attach($adminRole);
+            
         }
 
         $customer = User::firstOrCreate(
@@ -65,9 +66,8 @@ class DatabaseSeeder extends Seeder
 
         // 3. Create Categories and Subcategories
         $categories = [
-            'Men' => ['T-Shirts', 'Jeans', 'Jackets', 'Suits', 'Activewear'],
-            'Women' => ['Dresses', 'Tops', 'Skirts', 'Activewear', 'Lingerie'],
-            'Kids' => ['Boys Clothing', 'Girls Clothing', 'Infants', 'Toys'],
+            'Men' => ['T-Shirts', 'Jeans', 'Jackets'],
+            'Women' => ['Dresses', 'Tops', 'Skirts'],
             'Accessories' => ['Watches', 'Bags', 'Belts', 'Sunglasses'],
             'Shoes' => ['Sneakers', 'Boots', 'Formal', 'Sandals']
         ];
@@ -97,49 +97,68 @@ class DatabaseSeeder extends Seeder
                 'is_active' => true,
             ]);
 
+            $subcategoryModels = [];
             foreach ($subCats as $subCatName) {
-                $subcategory = Subcategory::create([
+                $subcategoryModels[$subCatName] = Subcategory::create([
                     'category_id' => $category->id,
                     'name' => $subCatName,
                     'slug' => Str::slug($catName . '-' . $subCatName),
                     'is_active' => true,
                 ]);
+            }
 
-                // Create 5 products for each subcategory
-                for ($i = 1; $i <= 5; $i++) {
-                    $productName = $faker->words(3, true) . ' ' . $subCatName;
-                    $product = Product::create([
-                        'subcategory_id' => $subcategory->id,
-                        'name' => ucwords($productName),
-                        'slug' => Str::slug($productName) . '-' . uniqid(),
-                        'sku' => strtoupper(uniqid('SKU-')),
-                        'short_description' => $faker->sentence(10),
-                        'long_description' => $faker->paragraphs(3, true),
-                        'base_price' => $faker->randomFloat(2, 10, 300),
-                        'stock_quantity' => rand(0, 100),
-                        'status' => 'published',
-                        'is_featured' => rand(0, 10) > 8,
-                    ]);
+            if (strtolower($catName) === 'men' || strtolower($catName) === 'women') {
+                $folder = public_path('images/products/' . strtolower($catName));
+                if (file_exists($folder)) {
+                    $files = glob($folder . '/*.*');
+                    foreach ($files as $file) {
+                        if (is_dir($file)) continue;
 
-                    // Add Main Image
-                    ProductImage::create([
-                        'product_id' => $product->id,
-                        'image_path' => $fashionImages[array_rand($fashionImages)],
-                        'is_primary' => true,
-                        'sort_order' => 1
-                    ]);
+                        $filename = basename($file);
+                        $productName = pathinfo($filename, PATHINFO_FILENAME);
+                        
+                        // determine subcategory
+                        $selectedSubcat = reset($subcategoryModels); // default to first subcategory
+                        foreach ($subcategoryModels as $name => $model) {
+                            if (stripos($productName, $name) !== false) {
+                                $selectedSubcat = $model;
+                                break;
+                            }
+                        }
 
-                    // Add Reviews randomly
-                    if (rand(0, 1) == 1) {
-                        $numReviews = rand(1, 3);
-                        for ($r = 0; $r < $numReviews; $r++) {
-                            ProductReview::create([
-                                'product_id' => $product->id,
-                                'user_id' => $users->random()->id,
-                                'rating' => rand(3, 5),
-                                'review_text' => $faker->sentence(15),
-                                'status' => 'approved'
-                            ]);
+                        $product = Product::create([
+                            'subcategory_id' => $selectedSubcat->id,
+                            'name' => ucwords($productName),
+                            'slug' => Str::slug($productName) . '-' . uniqid(),
+                            'sku' => strtoupper(uniqid('SKU-')),
+                            'short_description' => $faker->sentence(10),
+                            'long_description' => $faker->paragraphs(3, true),
+                            'base_price' => $faker->randomFloat(2, 10, 300),
+                            'stock_quantity' => rand(10, 100),
+                            'status' => 'published',
+                            'is_featured' => true,
+                        ]);
+
+                        // Add Main Image
+                        ProductImage::create([
+                            'product_id' => $product->id,
+                            'image_path' => '/images/products/' . strtolower($catName) . '/' . $filename,
+                            'is_primary' => true,
+                            'sort_order' => 1
+                        ]);
+
+                        // Add Reviews randomly
+                        if (rand(0, 1) == 1) {
+                            $numReviews = rand(1, 3);
+                            for ($r = 0; $r < $numReviews; $r++) {
+                                ProductReview::create([
+                                    'product_id' => $product->id,
+                                    'user_id' => $users->random()->id,
+                                    'rating' => rand(3, 5),
+                                    'review_text' => $faker->sentence(15),
+                                    'status' => 'approved'
+                                ]);
+                            }
                         }
                     }
                 }

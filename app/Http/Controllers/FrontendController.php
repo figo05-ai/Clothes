@@ -38,10 +38,15 @@ class FrontendController extends Controller
         })->where('status', 'published');
 
         // Apply filters
-        if ($request->has('min_price')) {
+        if ($request->has('subcategory')) {
+            $query->whereHas('subcategory', function($q) use ($request) {
+                $q->where('slug', $request->subcategory);
+            });
+        }
+        if ($request->filled('min_price')) {
             $query->where('base_price', '>=', $request->min_price);
         }
-        if ($request->has('max_price')) {
+        if ($request->filled('max_price')) {
             $query->where('base_price', '<=', $request->max_price);
         }
         if ($request->has('size') || $request->has('color')) {

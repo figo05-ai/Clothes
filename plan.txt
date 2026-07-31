@@ -1,0 +1,2 @@
+Modify DatabaseSeeder.php to use arrays of realistic adjectives and colors instead of $faker->words() for product names.
+Modify short_description to use realistic english text instead of Faker sentences.

@@ -1,21 +1,21 @@
 document.addEventListener('DOMContentLoaded', function() {
     const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-    
+
     // Function to render cart in offcanvas
     window.renderCart = function(cart) {
         const cartBody = document.querySelector('#offcanvasCart .list-group');
         const cartBadge = document.querySelectorAll('.badge.bg-primary.rounded-pill, .cart-count');
         const cartTotal = document.querySelector('#offcanvasCart .list-group-item:last-child strong');
         const checkoutBtn = document.querySelector('#offcanvasCart .btn-primary');
-        
+
         if (!cartBody) return;
-        
+
         // Update badges
         let itemCount = 0;
         let total = 0;
-        
+
         cartBody.innerHTML = ''; // clear current except total
-        
+
         if (!cart || !cart.items || cart.items.length === 0) {
             cartBody.innerHTML = '<li class="list-group-item d-flex justify-content-center text-muted py-4">Your cart is empty</li>';
             cartBody.innerHTML += `
@@ -27,13 +27,13 @@ document.addEventListener('DOMContentLoaded', function() {
             if(checkoutBtn) checkoutBtn.disabled = true;
             return;
         }
-        
+
         if(checkoutBtn) checkoutBtn.disabled = false;
-        
+
         cart.items.forEach(item => {
             itemCount += item.quantity;
             total += (item.price * item.quantity);
-            
+
             cartBody.innerHTML += `
             <li class="list-group-item d-flex justify-content-between lh-sm">
                 <div class="d-flex gap-2 align-items-center">
@@ -50,16 +50,16 @@ document.addEventListener('DOMContentLoaded', function() {
             </li>
             `;
         });
-        
+
         // Add total row
         cartBody.innerHTML += `
         <li class="list-group-item d-flex justify-content-between bg-light mt-2">
             <span>Total (USD)</span>
             <strong>$${cart.summary.total_price.toFixed(2)}</strong>
         </li>`;
-        
+
         cartBadge.forEach(b => b.textContent = itemCount);
-        
+
         // Re-attach remove listeners
         document.querySelectorAll('.remove-from-cart').forEach(btn => {
             btn.addEventListener('click', function(e) {
@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .catch(err => console.error(err));
     }
-    
+
     window.removeFromCart = function(productId) {
         fetch(`/api/cart/${productId}`, {
             method: 'DELETE',
@@ -149,7 +149,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Check if there is a quantity input nearby
             const qtyInput = document.querySelector('#product-quantity');
             const quantity = qtyInput ? parseInt(qtyInput.value) : 1;
-            
+
             addToCart(productId, quantity);
         }
     });
@@ -157,7 +157,7 @@ document.addEventListener('DOMContentLoaded', function() {
     window.toggleWishlist = function(e, productId) {
         e.preventDefault();
         const btn = e.currentTarget;
-        
+
         fetch('/api/wishlist/toggle', {
             method: 'POST',
             headers: {
@@ -201,10 +201,10 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
             const alertBox = document.getElementById('review-alert');
             alertBox.classList.add('d-none');
-            
+
             const formData = new FormData(reviewForm);
             const data = Object.fromEntries(formData.entries());
-            
+
             fetch(reviewForm.action, {
                 method: 'POST',
                 headers: {

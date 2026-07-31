@@ -155,7 +155,6 @@
         </defs>
     </svg>
 
-    <div class="preloader text-white fs-6 text-uppercase overflow-hidden"></div>
 
     <div class="search-popup">
         <div class="search-popup-container">
@@ -241,48 +240,112 @@
                     <a href="/register" class="btn btn-outline-dark w-100">Sign Up</a>
                 </div>
             @else
-                <div class="user-profile-header p-3 mb-4 rounded-3"
-                    style="background: rgba(140, 144, 126, 0.08); border: 1px solid rgba(140, 144, 126, 0.2);">
-                    <div class="d-flex align-items-center mb-3">
+                <style>
+                    .cozy-menu-item {
+                        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+                        border: none;
+                        border-bottom: 1px solid #f6f6f6;
+                    }
+                    .cozy-menu-item:last-child {
+                        border-bottom: none;
+                    }
+                    .cozy-menu-item:hover {
+                        background-color: #fafafb;
+                        padding-left: 1.5rem !important;
+                        color: #000;
+                    }
+                    .cozy-menu-icon {
+                        opacity: 0.6;
+                        transition: all 0.25s ease;
+                    }
+                    .cozy-menu-item:hover .cozy-menu-icon {
+                        opacity: 1;
+                        transform: scale(1.15) rotate(3deg);
+                    }
+                    .user-avatar-wrap {
+                        width: 56px;
+                        height: 56px;
+                        background: linear-gradient(135deg, #111 0%, #333 100%);
+                        color: white;
+                        border-radius: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 1.4rem;
+                        font-weight: 700;
+                        box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+                    }
+                </style>
+
+                <div class="user-profile-header p-4 mb-4 rounded-4 shadow-sm position-relative overflow-hidden"
+                    style="background: linear-gradient(145deg, #ffffff, #f8f9fa); border: 1px solid #eaeaec;">
+                    <div class="position-absolute" style="top: -20px; right: -20px; width: 100px; height: 100px; background: radial-gradient(circle, rgba(0,0,0,0.03) 0%, transparent 70%); border-radius: 50%;"></div>
+                    <div class="d-flex align-items-center position-relative z-1">
+                        <div class="user-avatar-wrap me-3">
+                            {{ substr(auth()->user()->name ?? 'U', 0, 1) }}
+                        </div>
                         <div class="user-info">
-                            <h6 class="m-0 fw-bold text-dark user-display-name">{{ auth()->user()->name }}</h6>
-                            <div class="text-muted user-display-email" style="font-size: 0.8rem;">
+                            <h6 class="m-0 fw-bold text-dark user-display-name" style="font-size: 1.15rem; letter-spacing: 0.3px;">{{ auth()->user()->name }}</h6>
+                            <div class="text-muted user-display-email mt-1 mb-2" style="font-size: 0.85rem;">
                                 {{ auth()->user()->email }}</div>
+                            <span class="badge bg-dark text-white fw-semibold px-3 py-2 rounded-pill shadow-sm" style="font-size: 0.65rem; letter-spacing: 1px;">VIP MEMBER</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="account-menu-group mb-4">
-                    <h6 class="text-uppercase text-muted mb-2 px-2" style="font-size: 0.75rem; letter-spacing: 1px;">
+                    <h6 class="text-uppercase text-muted mb-3 px-2 fw-bold" style="font-size: 0.7rem; letter-spacing: 1.5px;">
                         Shopping & Orders</h6>
-                    <div class="list-group list-group-flush border rounded-3 overflow-hidden">
-                        <a href="{{ route('dashboard') }}" class="list-group-item list-group-item-action d-flex align-items-center gap-3 p-3">
-                            <svg width="20" height="20" viewBox="0 0 24 24" class="text-primary"><use xlink:href="#user"></use></svg>
-                            <span>Dashboard</span>
+                    <div class="list-group list-group-flush border rounded-4 shadow-sm bg-white overflow-hidden">
+                        <a href="{{ route('dashboard') }}" class="list-group-item list-group-item-action d-flex align-items-center gap-3 p-3 cozy-menu-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-dark cozy-menu-icon"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                            <span class="fw-semibold text-dark">Dashboard</span>
                         </a>
-                        <a href="{{ route('dashboard.orders') }}" class="list-group-item list-group-item-action d-flex align-items-center justify-content-between p-3">
+                        <a href="{{ route('dashboard.orders') }}" class="list-group-item list-group-item-action d-flex align-items-center justify-content-between p-3 cozy-menu-item">
                             <span class="d-flex align-items-center gap-3">
-                                <svg width="20" height="20" viewBox="0 0 24 24" class="text-primary"><use xlink:href="#shopping-bag"></use></svg>
-                                <span>Order History</span>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-dark cozy-menu-icon"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+                                <span class="fw-semibold text-dark">Order History</span>
+                            </span>
+                            <span class="badge bg-danger rounded-pill shadow-sm">2</span>
+                        </a>
+                        <a href="{{ route('wishlist') }}" class="list-group-item list-group-item-action d-flex align-items-center justify-content-between p-3 cozy-menu-item">
+                            <span class="d-flex align-items-center gap-3">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-dark cozy-menu-icon"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                                <span class="fw-semibold text-dark">My Wishlist</span>
                             </span>
                         </a>
-                        <a href="{{ route('wishlist') }}" class="list-group-item list-group-item-action d-flex align-items-center justify-content-between p-3">
+                        <a href="{{ route('returns') }}" class="list-group-item list-group-item-action d-flex align-items-center gap-3 p-3 cozy-menu-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-dark cozy-menu-icon"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.92-10.26l5.08 5.08"></path></svg>
+                            <span class="fw-semibold text-dark">Returns & Refunds</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="account-menu-group mb-4">
+                    <h6 class="text-uppercase text-muted mb-3 px-2 fw-bold" style="font-size: 0.7rem; letter-spacing: 1.5px;">
+                        Settings & Support</h6>
+                    <div class="list-group list-group-flush border rounded-4 shadow-sm bg-white overflow-hidden">
+                        <a href="#" class="list-group-item list-group-item-action d-flex align-items-center gap-3 p-3 cozy-menu-item">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-dark cozy-menu-icon"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                            <span class="fw-semibold text-dark">Account Settings</span>
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action d-flex align-items-center justify-content-between p-3 cozy-menu-item">
                             <span class="d-flex align-items-center gap-3">
-                                <svg width="20" height="20" viewBox="0 0 24 24" class="text-primary"><use xlink:href="#heart"></use></svg>
-                                <span>My Wishlist</span>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-dark cozy-menu-icon"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                                <span class="fw-semibold text-dark">Help & Support</span>
                             </span>
                         </a>
                     </div>
                 </div>
 
                 <div class="account-menu-group mb-4 mt-auto">
-                    <div class="list-group list-group-flush border rounded-3 overflow-hidden">
+                    <div class="list-group list-group-flush border rounded-4 shadow-sm bg-white overflow-hidden">
                         <form method="POST" action="{{ route('logout') }}" id="offcanvas-logout-form" class="m-0">
                             @csrf
-                            <button type="submit" class="list-group-item list-group-item-action d-flex align-items-center justify-content-between p-3 text-danger fw-medium w-100 text-start border-0">
+                            <button type="submit" class="list-group-item list-group-item-action d-flex align-items-center justify-content-between p-3 text-danger fw-bold w-100 text-start border-0 cozy-menu-item" style="background-color: #fffafb;">
                                 <span class="d-flex align-items-center gap-3">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" class="text-danger"><use xlink:href="#close"></use></svg>
-                                    <span>Log Out</span>
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="cozy-menu-icon"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                                    <span style="letter-spacing: 0.5px;">Log Out</span>
                                 </span>
                             </button>
                         </form>
@@ -765,6 +828,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 </script>
+@include('partials.modals')
 </body>
 
 

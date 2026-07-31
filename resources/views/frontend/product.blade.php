@@ -160,9 +160,9 @@
                 <div class="card h-100 border-0 shadow-sm">
                     <a href="{{ route('frontend.product', $related->slug) }}">
                         @if($related->images->where('is_primary', true)->first())
-                            <img src="{{ $related->images->where('is_primary', true)->first()->image_path }}" class="card-img-top" alt="{{ $related->name }}">
+                            <img src="{{ $related->images->where('is_primary', true)->first()->image_path }}" class="card-img-top" alt="{{ $related->name }}" style="height: 400px; width: 100%; object-fit: cover; border-radius: 8px;">
                         @else
-                            <img src="https://via.placeholder.com/800x1200?text={{ urlencode($related->name) }}" class="card-img-top" alt="{{ $related->name }}">
+                            <img src="https://via.placeholder.com/800x1200?text={{ urlencode($related->name) }}" class="card-img-top" alt="{{ $related->name }}" style="height: 400px; width: 100%; object-fit: cover; border-radius: 8px;">
                         @endif
                     </a>
                     <div class="card-body text-center">
