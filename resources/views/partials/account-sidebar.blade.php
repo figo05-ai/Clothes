@@ -50,7 +50,7 @@
         <a href="{{ route('wishlist') }}" class="list-group-item list-group-item-action p-3 fw-semibold account-sidebar-link {{ request()->routeIs('wishlist') ? 'active' : '' }}">
             <i class="bi bi-heart me-2 account-sidebar-icon text-danger"></i> My Wishlist
         </a>
-        <a href="#" class="list-group-item list-group-item-action p-3 fw-semibold account-sidebar-link" onclick="alert('My Preferences modal or page coming soon!');">
+        <a href="{{ route('dashboard.preferences') }}" class="list-group-item list-group-item-action p-3 fw-semibold account-sidebar-link {{ request()->routeIs('dashboard.preferences') ? 'active' : '' }}">
             <i class="bi bi-sliders me-2 account-sidebar-icon"></i> My Preferences
         </a>
         <a href="{{ route('returns') }}" class="list-group-item list-group-item-action p-3 fw-semibold account-sidebar-link {{ request()->routeIs('returns') ? 'active' : '' }}">

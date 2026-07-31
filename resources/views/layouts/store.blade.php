@@ -240,112 +240,122 @@
                     <a href="/register" class="btn btn-outline-dark w-100">Sign Up</a>
                 </div>
             @else
-                <style>
-                    .cozy-menu-item {
-                        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-                        border: none;
-                        border-bottom: 1px solid #f6f6f6;
-                    }
-                    .cozy-menu-item:last-child {
-                        border-bottom: none;
-                    }
-                    .cozy-menu-item:hover {
-                        background-color: #fafafb;
-                        padding-left: 1.5rem !important;
-                        color: #000;
-                    }
-                    .cozy-menu-icon {
-                        opacity: 0.6;
-                        transition: all 0.25s ease;
-                    }
-                    .cozy-menu-item:hover .cozy-menu-icon {
-                        opacity: 1;
-                        transform: scale(1.15) rotate(3deg);
-                    }
-                    .user-avatar-wrap {
-                        width: 56px;
-                        height: 56px;
-                        background: linear-gradient(135deg, #111 0%, #333 100%);
-                        color: white;
-                        border-radius: 50%;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        font-size: 1.4rem;
-                        font-weight: 700;
-                        box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-                    }
-                </style>
+                <div class="user-profile-header p-3 mb-4 rounded-3"
+                    style="background: rgba(140, 144, 126, 0.08); border: 1px solid rgba(140, 144, 126, 0.2);">
+                    <div class="d-flex align-items-center justify-content-between mb-3">
+                        <div class="d-flex align-items-center gap-3">
+                            <div class="avatar-upload-wrapper position-relative">
+                                <img src="{{ asset('images/insta-item1.jpg') }}" alt="user avatar"
+                                    class="user-avatar-img rounded-circle object-fit-cover"
+                                    style="width: 60px; height: 60px; border: 2px solid var(--bs-primary, #8c907e);">
+                                <button type="button" class="avatar-camera-overlay position-absolute bottom-0 end-0 btn btn-sm btn-light rounded-circle p-1 shadow-sm"
+                                    title="Change Profile Photo" style="width: 24px; height: 24px; display: flex; align-items: center; justify-content: center;">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path
+                                            d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z">
+                                        </path>
+                                        <circle cx="12" cy="13" r="4"></circle>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="user-info">
+                                <h6 class="m-0 fw-bold text-dark user-display-name">{{ auth()->user()->name }}</h6>
+                                <span
+                                    class="badge bg-success-subtle text-success border border-success-subtle rounded-pill py-1 px-2 mb-1"
+                                    style="font-size: 0.7rem;">VIP Member • Verified</span>
+                                <div class="text-muted user-display-email" style="font-size: 0.8rem;">
+                                    {{ auth()->user()->email }}</div>
+                            </div>
+                        </div>
+                    </div>
 
-                <div class="user-profile-header p-4 mb-4 rounded-4 shadow-sm position-relative overflow-hidden"
-                    style="background: linear-gradient(145deg, #ffffff, #f8f9fa); border: 1px solid #eaeaec;">
-                    <div class="position-absolute" style="top: -20px; right: -20px; width: 100px; height: 100px; background: radial-gradient(circle, rgba(0,0,0,0.03) 0%, transparent 70%); border-radius: 50%;"></div>
-                    <div class="d-flex align-items-center position-relative z-1">
-                        <div class="user-avatar-wrap me-3">
-                            {{ substr(auth()->user()->name ?? 'U', 0, 1) }}
+                    <div class="profile-progress-box bg-white p-2 rounded-2 border mb-3">
+                        <div class="d-flex justify-content-between align-items-center mb-1" style="font-size: 0.75rem;">
+                            <span class="text-muted fw-medium">Profile Completion</span>
+                            <span class="fw-bold text-primary">90%</span>
                         </div>
-                        <div class="user-info">
-                            <h6 class="m-0 fw-bold text-dark user-display-name" style="font-size: 1.15rem; letter-spacing: 0.3px;">{{ auth()->user()->name }}</h6>
-                            <div class="text-muted user-display-email mt-1 mb-2" style="font-size: 0.85rem;">
-                                {{ auth()->user()->email }}</div>
-                            <span class="badge bg-dark text-white fw-semibold px-3 py-2 rounded-pill shadow-sm" style="font-size: 0.65rem; letter-spacing: 1px;">VIP MEMBER</span>
+                        <div class="progress" style="height: 6px;">
+                            <div class="progress-bar bg-primary" role="progressbar" style="width: 90%"
+                                aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
+                    </div>
+
+                    <div class="d-flex gap-2">
+                        <button type="button"
+                            class="btn btn-sm btn-outline-dark w-50 d-flex align-items-center justify-content-center gap-1 py-1 text-uppercase"
+                            style="font-size: 0.75rem;">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z">
+                                </path>
+                                <circle cx="12" cy="13" r="4"></circle>
+                            </svg> Change Photo
+                        </button>
+                        <button type="button"
+                            class="btn btn-sm btn-primary w-50 d-flex align-items-center justify-content-center gap-1 py-1 text-uppercase"
+                            style="font-size: 0.75rem;">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                            </svg> Edit Info
+                        </button>
                     </div>
                 </div>
 
                 <div class="account-menu-group mb-4">
-                    <h6 class="text-uppercase text-muted mb-3 px-2 fw-bold" style="font-size: 0.7rem; letter-spacing: 1.5px;">
+                    <h6 class="text-uppercase text-muted mb-2 px-2" style="font-size: 0.75rem; letter-spacing: 1px;">
                         Shopping & Orders</h6>
-                    <div class="list-group list-group-flush border rounded-4 shadow-sm bg-white overflow-hidden">
-                        <a href="{{ route('dashboard') }}" class="list-group-item list-group-item-action d-flex align-items-center gap-3 p-3 cozy-menu-item">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-dark cozy-menu-icon"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-                            <span class="fw-semibold text-dark">Dashboard</span>
-                        </a>
-                        <a href="{{ route('dashboard.orders') }}" class="list-group-item list-group-item-action d-flex align-items-center justify-content-between p-3 cozy-menu-item">
+                    <div class="list-group list-group-flush border rounded-3 overflow-hidden">
+                        <a href="{{ route('dashboard') }}" class="list-group-item list-group-item-action d-flex align-items-center justify-content-between p-3">
                             <span class="d-flex align-items-center gap-3">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-dark cozy-menu-icon"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
-                                <span class="fw-semibold text-dark">Order History</span>
+                                <svg width="20" height="20" viewBox="0 0 24 24" class="text-primary"><use xlink:href="#user"></use></svg>
+                                <span>Dashboard</span>
                             </span>
-                            <span class="badge bg-danger rounded-pill shadow-sm">2</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" class="text-muted">
+                                <use xlink:href="#arrow-right"></use>
+                            </svg>
                         </a>
-                        <a href="{{ route('wishlist') }}" class="list-group-item list-group-item-action d-flex align-items-center justify-content-between p-3 cozy-menu-item">
+                        <a href="{{ route('dashboard.orders') }}" class="list-group-item list-group-item-action d-flex align-items-center justify-content-between p-3">
                             <span class="d-flex align-items-center gap-3">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-dark cozy-menu-icon"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-                                <span class="fw-semibold text-dark">My Wishlist</span>
+                                <svg width="20" height="20" viewBox="0 0 24 24" class="text-primary"><use xlink:href="#shopping-bag"></use></svg>
+                                <span>Order History</span>
                             </span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" class="text-muted">
+                                <use xlink:href="#arrow-right"></use>
+                            </svg>
                         </a>
-                        <a href="{{ route('returns') }}" class="list-group-item list-group-item-action d-flex align-items-center gap-3 p-3 cozy-menu-item">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-dark cozy-menu-icon"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.92-10.26l5.08 5.08"></path></svg>
-                            <span class="fw-semibold text-dark">Returns & Refunds</span>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="account-menu-group mb-4">
-                    <h6 class="text-uppercase text-muted mb-3 px-2 fw-bold" style="font-size: 0.7rem; letter-spacing: 1.5px;">
-                        Settings & Support</h6>
-                    <div class="list-group list-group-flush border rounded-4 shadow-sm bg-white overflow-hidden">
-                        <a href="#" class="list-group-item list-group-item-action d-flex align-items-center gap-3 p-3 cozy-menu-item">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-dark cozy-menu-icon"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
-                            <span class="fw-semibold text-dark">Account Settings</span>
-                        </a>
-                        <a href="#" class="list-group-item list-group-item-action d-flex align-items-center justify-content-between p-3 cozy-menu-item">
+                        <a href="{{ route('wishlist') }}" class="list-group-item list-group-item-action d-flex align-items-center justify-content-between p-3">
                             <span class="d-flex align-items-center gap-3">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-dark cozy-menu-icon"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
-                                <span class="fw-semibold text-dark">Help & Support</span>
+                                <svg width="20" height="20" viewBox="0 0 24 24" class="text-primary"><use xlink:href="#heart"></use></svg>
+                                <span>My Wishlist</span>
                             </span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" class="text-muted">
+                                <use xlink:href="#arrow-right"></use>
+                            </svg>
+                        </a>
+                        <a href="{{ route('returns') }}" class="list-group-item list-group-item-action d-flex align-items-center justify-content-between p-3">
+                            <span class="d-flex align-items-center gap-3">
+                                <svg width="20" height="20" viewBox="0 0 24 24" class="text-primary" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.92-10.26l5.08 5.08"></path></svg>
+                                <span>Returns Portal</span>
+                            </span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" class="text-muted">
+                                <use xlink:href="#arrow-right"></use>
+                            </svg>
                         </a>
                     </div>
                 </div>
 
                 <div class="account-menu-group mb-4 mt-auto">
-                    <div class="list-group list-group-flush border rounded-4 shadow-sm bg-white overflow-hidden">
+                    <div class="list-group list-group-flush border rounded-3 overflow-hidden">
                         <form method="POST" action="{{ route('logout') }}" id="offcanvas-logout-form" class="m-0">
                             @csrf
-                            <button type="submit" class="list-group-item list-group-item-action d-flex align-items-center justify-content-between p-3 text-danger fw-bold w-100 text-start border-0 cozy-menu-item" style="background-color: #fffafb;">
+                            <button type="submit" class="list-group-item list-group-item-action d-flex align-items-center justify-content-between p-3 text-danger fw-medium w-100 text-start border-0">
                                 <span class="d-flex align-items-center gap-3">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="cozy-menu-icon"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
-                                    <span style="letter-spacing: 0.5px;">Log Out</span>
+                                    <svg width="20" height="20" viewBox="0 0 24 24" class="text-danger"><use xlink:href="#close"></use></svg>
+                                    <span>Log Out</span>
                                 </span>
                             </button>
                         </form>

@@ -10,5 +10,5 @@ class UserPreference extends Model
 {
     use HasFactory, HasUlids;
 
-    protected $fillable = ['user_id', 'preferred_top_size', 'preferred_bottom_size', 'style_preference'];
+    protected $fillable = ['user_id', 'preferred_top_size', 'preferred_bottom_size', 'style_preference', 'shoe_size', 'enable_recommendations'];
 }

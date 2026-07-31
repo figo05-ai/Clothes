@@ -56,6 +56,8 @@ Route::get('/order-success', [FrontendController::class, 'orderSuccess'])->name(
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [FrontendController::class, 'dashboard'])->name('dashboard');
     Route::get('/dashboard/orders', [FrontendController::class, 'orders'])->name('dashboard.orders');
+    Route::get('/dashboard/preferences', [FrontendController::class, 'preferences'])->name('dashboard.preferences');
+    Route::post('/dashboard/preferences', [FrontendController::class, 'updatePreferences'])->name('dashboard.preferences.update');
     Route::get('/wishlist', [FrontendController::class, 'wishlist'])->name('wishlist');
     Route::get('/returns', [FrontendController::class, 'returns'])->name('returns');
     Route::get('/contact', [FrontendController::class, 'contact'])->name('contact');

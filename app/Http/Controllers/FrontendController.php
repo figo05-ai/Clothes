@@ -140,6 +140,39 @@ class FrontendController extends Controller
         return view('frontend.orders', compact('orders'));
     }
 
+    public function preferences()
+    {
+        $user = auth()->user();
+        $preferences = \App\Models\UserPreference::firstOrCreate(
+            ['user_id' => $user->id],
+            [
+                'enable_recommendations' => true
+            ]
+        );
+        return view('frontend.preferences', compact('user', 'preferences'));
+    }
+
+    public function updatePreferences(Request $request)
+    {
+        $request->validate([
+            'preferred_top_size' => 'nullable|string|max:10',
+            'preferred_bottom_size' => 'nullable|string|max:10',
+            'shoe_size' => 'nullable|string|max:10',
+            'enable_recommendations' => 'nullable|boolean'
+        ]);
+
+        $preferences = \App\Models\UserPreference::firstOrCreate(['user_id' => auth()->id()]);
+        
+        $preferences->update([
+            'preferred_top_size' => $request->preferred_top_size,
+            'preferred_bottom_size' => $request->preferred_bottom_size,
+            'shoe_size' => $request->shoe_size,
+            'enable_recommendations' => $request->has('enable_recommendations') ? true : false,
+        ]);
+
+        return redirect()->route('dashboard.preferences')->with('success', 'Your preferences have been updated successfully.');
+    }
+
     public function wishlist()
     {
         $wishlistService = app(\App\Contracts\Wishlist\WishlistServiceInterface::class);
