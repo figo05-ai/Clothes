@@ -23,12 +23,16 @@ class ProductReviewResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('product_id')
-                    ->required()
-                    ->maxLength(26),
-                Forms\Components\TextInput::make('user_id')
-                    ->required()
-                    ->maxLength(26),
+                Forms\Components\Select::make('product_id')
+                    ->relationship('product', 'name')
+                    ->searchable()
+                    ->preload()
+                    ->required(),
+                Forms\Components\Select::make('user_id')
+                    ->relationship('user', 'name')
+                    ->searchable()
+                    ->preload()
+                    ->required(),
                 Forms\Components\TextInput::make('rating')
                     ->required()
                     ->numeric(),
@@ -46,10 +50,14 @@ class ProductReviewResource extends Resource
                 Tables\Columns\TextColumn::make('id')
                     ->label('ID')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('product_id')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('user_id')
-                    ->searchable(),
+                Tables\Columns\TextColumn::make('product.name')
+                    ->label('Product')
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('user.name')
+                    ->label('User')
+                    ->searchable()
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('rating')
                     ->numeric()
                     ->sortable(),

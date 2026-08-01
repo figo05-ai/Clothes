@@ -10,8 +10,8 @@ class StatsOverviewWidget extends BaseWidget
     protected function getStats(): array
     {
         return [
-            Stat::make('Total Revenue', '$' . number_format(\App\Models\Order::where('status', 'completed')->sum('grand_total'), 2))
-                ->description('Completed orders revenue')
+            Stat::make('Total Revenue', '$' . number_format(\App\Models\Order::where('status', 'delivered')->sum('grand_total'), 2))
+                ->description('Delivered orders revenue')
                 ->descriptionIcon('heroicon-m-arrow-trending-up')
                 ->color('success'),
             Stat::make('Total Orders', \App\Models\Order::count())

@@ -191,7 +191,7 @@ class FrontendController extends Controller
     public function returns()
     {
         if (auth()->check() && auth()->user()->hasRole('admin')) {
-            return redirect()->route('admin.dashboard');
+            return redirect('/admin');
         }
         $orders = \App\Models\Order::where('user_id', auth()->id())->orderBy('created_at', 'desc')->get();
         return view('frontend.returns', compact('orders'));
@@ -200,7 +200,7 @@ class FrontendController extends Controller
     public function contact()
     {
         if (auth()->check() && auth()->user()->hasRole('admin')) {
-            return redirect()->route('admin.dashboard');
+            return redirect('/admin');
         }
         return view('frontend.contact');
     }

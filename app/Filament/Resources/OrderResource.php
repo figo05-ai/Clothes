@@ -28,7 +28,15 @@ class OrderResource extends Resource
                 Forms\Components\TextInput::make('order_number')
                     ->required()
                     ->maxLength(100),
-                Forms\Components\TextInput::make('status')
+                Forms\Components\Select::make('status')
+                    ->options([
+                        'pending' => 'Pending',
+                        'processing' => 'Processing',
+                        'shipped' => 'Shipped',
+                        'delivered' => 'Delivered',
+                        'refunded' => 'Refunded',
+                        'cancelled' => 'Cancelled',
+                    ])
                     ->required(),
                 Forms\Components\TextInput::make('coupon_id')
                     ->maxLength(26),
