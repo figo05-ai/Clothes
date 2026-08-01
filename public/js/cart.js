@@ -171,64 +171,151 @@ document.addEventListener('DOMContentLoaded', function() {
 
     window.toggleWishlist = function(e, productId) {
         e.preventDefault();
-        const btn = e.target.closest('.btn-wishlist') || e.currentTarget;
-
+        
         fetch('/api/wishlist/toggle', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Accept': 'application/json',
-                'X-CSRF-TOKEN': csrfToken
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                'Accept': 'application/json'
             },
             body: JSON.stringify({ product_id: productId })
         })
-        .then(res => {
-            if (res.status === 401) {
+        .then(response => {
+            if (response.status === 401) {
                 window.location.href = '/login';
-                return;
+                throw new Error('Unauthorized');
             }
-            return res.json();
+            return response.json();
         })
         .then(data => {
-            if (data && data.success) {
-                // Toggle active state visually (e.g. fill red heart)
-                if (btn && btn.classList) {
-                    btn.classList.toggle('active');
-                }
-                const actionText = data.message || data.action || '';
-                if (btn) {
-                    const svg = btn.querySelector('svg');
-                    if (svg) {
-                        if (btn.classList.contains('active') || actionText.includes('added')) {
-                            svg.style.fill = 'red';
+            if (data.message) {
+                const toast = document.getElementById('wishlistToast');
+                const toastBody = document.getElementById('wishlistToastBody');
+                
+                if (toastBody) toastBody.innerText = data.message;
+                
+                if (data.action === 'added') {
+                    if (toast) {
+                        toast.classList.replace('bg-danger', 'bg-success');
+                        toast.classList.replace('bg-dark', 'bg-success');
+                        toast.classList.add('bg-success');
+                    }
+                    
+                    document.querySelectorAll(`.btn-wishlist[data-product-id="${productId}"], .wishlist-btn[data-product-id="${productId}"]`).forEach(el => {
+                        // Change state to added
+                        if (el.tagName.toLowerCase() === 'button') {
+                            el.innerHTML = '<i class="bi bi-heart-fill me-2"></i> Added to Wishlist';
+                            el.classList.replace('btn-outline-danger', 'btn-danger');
                         } else {
-                            svg.style.fill = 'none';
+                            const svg = el.querySelector('svg');
+                            if (svg) {
+                                svg.style.color = 'red';
+                                svg.style.fill = 'red';
+                            } else {
+                                el.innerHTML = '<i class="bi bi-heart-fill text-danger fs-5"></i>';
+                            }
+                        }
+                    });
+                    
+                    // Add item to modal dynamically
+                    if (data.product) {
+                        const modalBody = document.querySelector('#modalWishlist .modal-body');
+                        let row = modalBody ? modalBody.querySelector('.row') : null;
+                        
+                        if (modalBody && !row) {
+                            modalBody.innerHTML = '<div class="row g-4"></div>';
+                            row = modalBody.querySelector('.row');
+                        }
+                        
+                        if (row && !row.querySelector(`.wishlist-btn[data-product-id="${data.product.id}"]`)) {
+                            const newCard = document.createElement('div');
+                            newCard.className = 'col-md-6 col-lg-4 wishlist-item-wrapper';
+                            newCard.innerHTML = `
+                                <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden position-relative">
+                                    <img src="${data.product.image}" class="card-img-top object-fit-cover" style="height: 200px;" alt="${data.product.name}">
+                                    <div class="card-body p-3">
+                                        <h6 class="fw-bold mb-1 text-truncate">${data.product.name}</h6>
+                                        <p class="text-primary fw-bold my-1">$${data.product.price}</p>
+                                        <button class="btn btn-primary btn-sm w-100 mt-2 add-to-cart-btn" data-product-id="${data.product.id}">Add to Cart</button>
+                                    </div>
+                                    <button class="btn btn-light wishlist-btn btn-sm position-absolute top-0 end-0 m-2 rounded-circle shadow-sm d-flex align-items-center justify-content-center p-0" data-product-id="${data.product.id}" onclick="toggleWishlist(event, '${data.product.id}')" title="Remove from Wishlist" style="width: 32px; height: 32px;">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                                    </button>
+                                </div>
+                            `;
+                            row.appendChild(newCard);
+                            
+                            // Update counts
+                            document.querySelectorAll('.badge.bg-light, .wishlist-count, .modal-title .badge').forEach(badge => {
+                                const currentText = badge.innerText;
+                                const match = currentText.match(/(\d+)/);
+                                if (match) {
+                                    const currentCount = parseInt(match[1]);
+                                    badge.innerText = badge.innerText.replace(match[1], currentCount + 1);
+                                }
+                            });
                         }
                     }
-                }
-
-                // If we are on the wishlist page and removed an item, we could reload
-                if (window.location.pathname === '/wishlist' && actionText.includes('removed')) {
-                    window.location.reload();
-                }
-
-                // If we removed it from the modal, hide the card
-                if (btn && btn.closest && btn.closest('#modalWishlist') && actionText.includes('removed')) {
-                    const card = btn.closest('.col-md-6, .wishlist-item-wrapper');
-                    if (card) {
-                        card.remove();
+                    
+                    
+                } else if (data.action === 'removed') {
+                    if (toast) {
+                        toast.classList.replace('bg-success', 'bg-dark');
+                        toast.classList.replace('bg-danger', 'bg-dark');
+                        toast.classList.add('bg-dark');
                     }
-                    // Optional: update count in modal header
-                    const countSpan = document.querySelector('#modalWishlist .modal-title .wishlist-count');
-                    if (countSpan) {
-                        let count = parseInt(countSpan.textContent);
-                        if (!isNaN(count) && count > 0) countSpan.textContent = count - 1;
+                    
+                    document.querySelectorAll(`.btn-wishlist[data-product-id="${productId}"], .wishlist-btn[data-product-id="${productId}"]`).forEach(el => {
+                        // Change state to removed
+                        if (el.tagName.toLowerCase() === 'button' && !el.classList.contains('rounded-circle')) {
+                            el.innerHTML = '<i class="bi bi-heart me-2"></i> Add to Wishlist';
+                            el.classList.replace('btn-danger', 'btn-outline-danger');
+                        } else if (!el.classList.contains('rounded-circle')) {
+                            const svg = el.querySelector('svg');
+                            if (svg) {
+                                svg.style.color = '';
+                                svg.style.fill = 'none';
+                            } else {
+                                el.innerHTML = '<i class="bi bi-heart fs-5"></i>';
+                            }
+                        }
+                        
+                        const productCard = el.closest('.col-6, .wishlist-item-wrapper, .col-md-6');
+                        if (productCard && (window.location.pathname === '/wishlist' || el.closest('#modalWishlist'))) {
+                            productCard.style.transition = 'opacity 0.3s ease';
+                            productCard.style.opacity = '0';
+                            setTimeout(() => {
+                                productCard.remove();
+                                document.querySelectorAll('.badge.bg-light, .wishlist-count, .modal-title .badge').forEach(badge => {
+                                    const currentText = badge.innerText;
+                                    const match = currentText.match(/(\d+)/);
+                                    if (match) {
+                                        const currentCount = parseInt(match[1]);
+                                        badge.innerText = badge.innerText.replace(match[1], Math.max(0, currentCount - 1));
+                                    }
+                                });
+                            }, 300);
+                        }
+                    });
+                }
+                
+                if (toast && typeof bootstrap !== 'undefined') {
+                    try {
+                        const bsToast = new bootstrap.Toast(toast);
+                        bsToast.show();
+                    } catch (e) {
+                        console.error('Toast error:', e);
                     }
                 }
             }
         })
-        .catch(err => console.error(err));
-    }
+        .catch(error => {
+            if (error.message !== 'Unauthorized') {
+                console.error('Error:', error);
+            }
+        });
+    };
 
     // Handle Review Form Submission
     const reviewForm = document.getElementById('review-form');

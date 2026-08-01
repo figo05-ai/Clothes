@@ -16,7 +16,7 @@ class CheckoutRequest extends FormRequest
         return [
             'shipping_address' => 'required|string|max:255',
             'billing_address' => 'nullable|string|max:255',
-            'payment_method' => 'required|string|in:cash_on_delivery,credit_card,paypal',
+            'payment_method' => 'required|string|in:cash_on_delivery,credit_card,paypal,wallet',
             'shipping_cost' => 'nullable|numeric|min:0',
             'tax_amount' => 'nullable|numeric|min:0',
         ];

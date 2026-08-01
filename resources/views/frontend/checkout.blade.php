@@ -58,6 +58,19 @@
                                             Credit / Debit Card
                                         </label>
                                     </div>
+                                    @auth
+                                    @if($walletIsActive)
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="payment_method" id="payment_wallet" value="wallet" @if($walletBalance < $total) disabled @endif>
+                                        <label class="form-check-label" for="payment_wallet">
+                                            Wallet Balance <span class="badge bg-dark ms-2">${{ number_format($walletBalance, 2) }}</span>
+                                            @if($walletBalance < $total)
+                                                <small class="text-danger d-block mt-1">Insufficient balance for this order.</small>
+                                            @endif
+                                        </label>
+                                    </div>
+                                    @endif
+                                    @endauth
                                 </div>
                             </div>
                         </form>

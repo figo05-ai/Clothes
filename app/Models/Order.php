@@ -11,4 +11,14 @@ class Order extends Model
     use HasFactory, HasUlids;
 
     protected $fillable = ['user_id', 'order_number', 'status', 'coupon_id', 'subtotal_amount', 'discount_amount', 'shipping_fee', 'tax_amount', 'grand_total', 'shipping_address_id', 'billing_address_id', 'notes'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function items()
+    {
+        return $this->hasMany(OrderItem::class);
+    }
 }

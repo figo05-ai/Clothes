@@ -1325,7 +1325,7 @@
                                             <p class="text-primary fw-bold my-1">${{ number_format($item->product->base_price, 2) }}</p>
                                             <button class="btn btn-primary btn-sm w-100 mt-2 add-to-cart-btn" data-product-id="{{ $item->product_id }}">Add to Cart</button>
                                         </div>
-                                        <button class="btn btn-light btn-sm position-absolute top-0 end-0 m-2 rounded-circle shadow-sm d-flex align-items-center justify-content-center p-0" onclick="toggleWishlist(event, '{{ $item->product_id }}')" title="Remove from Wishlist" style="width: 32px; height: 32px;">
+                                        <button class="btn btn-light wishlist-btn btn-sm position-absolute top-0 end-0 m-2 rounded-circle shadow-sm d-flex align-items-center justify-content-center p-0" data-product-id="{{ $item->product_id }}" onclick="toggleWishlist(event, '{{ $item->product_id }}')" title="Remove from Wishlist" style="width: 32px; height: 32px;">
                                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
                                         </button>
                                     </div>

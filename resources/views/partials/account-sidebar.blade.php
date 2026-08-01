@@ -47,6 +47,9 @@
         <a href="{{ route('dashboard.orders') }}" class="list-group-item list-group-item-action p-3 fw-semibold account-sidebar-link {{ request()->routeIs('dashboard.orders') ? 'active' : '' }}">
             <i class="bi bi-box-seam me-2 account-sidebar-icon"></i> {{ __('Order History') }}
         </a>
+        <a href="{{ route('frontend.wallet') }}" class="list-group-item list-group-item-action p-3 fw-semibold account-sidebar-link {{ request()->routeIs('frontend.wallet') ? 'active' : '' }}">
+            <i class="bi bi-wallet2 me-2 account-sidebar-icon"></i> {{ __('My Wallet') }}
+        </a>
         <a href="{{ route('wishlist') }}" class="list-group-item list-group-item-action p-3 fw-semibold account-sidebar-link {{ request()->routeIs('wishlist') ? 'active' : '' }}">
             <i class="bi bi-heart me-2 account-sidebar-icon text-danger"></i> {{ __('My Wishlist') }}
         </a>

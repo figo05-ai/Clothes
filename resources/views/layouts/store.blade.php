@@ -22,6 +22,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/vendor.css') }}">
     <link rel="stylesheet" href="{{ asset('css/swiper-bundle.min.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('style.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -335,6 +336,18 @@
                                 <use xlink:href="#arrow-right"></use>
                             </svg>
                         </a>
+                        <a href="{{ route('frontend.wallet') }}"
+                            class="list-group-item list-group-item-action d-flex align-items-center justify-content-between p-3 text-muted"
+                            style="transition: all 0.2s;" onmouseover="this.classList.add('bg-light', 'text-dark');"
+                            onmouseout="this.classList.remove('bg-light', 'text-dark');">
+                            <span class="d-flex align-items-center gap-3">
+                                <i class="bi bi-wallet2 fs-5 text-secondary"></i>
+                                <span>{{ __('My Wallet') }}</span>
+                            </span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" class="text-light-subtle">
+                                <use xlink:href="#arrow-right"></use>
+                            </svg>
+                        </a>
                         <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#modalWishlist"
                             class="list-group-item list-group-item-action d-flex align-items-center justify-content-between p-3 text-muted"
                             style="transition: all 0.2s;" onmouseover="this.classList.add('bg-light', 'text-dark');"
@@ -522,6 +535,11 @@
                                     </li>
                                 @endguest
                                 @auth
+                                    <li class="nav-item">
+                                        <a class="nav-link text-uppercase fw-medium px-3 text-dark" href="{{ route('dashboard') }}">
+                                            {{ __('My Dashboard') }}
+                                        </a>
+                                    </li>
                                     @if (auth()->user()->roles->contains('name', 'admin'))
                                         <li class="nav-item"><a class="nav-link text-uppercase fw-bold px-3"
                                                 href="/admin"
@@ -566,7 +584,7 @@
                             @endif
                         </li>
                         <li class="mx-2">
-                            <a href="#new-arrival" class="mx-2 d-flex align-items-center"
+                            <a href="{{ route('wishlist') }}" class="mx-2 d-flex align-items-center"
                                 title="{{ __('Wishlist') }}">
                                 <svg width="24" height="24" viewBox="0 0 24 24">
                                     <use xlink:href="#heart"></use>
@@ -972,6 +990,21 @@
             }
         });
     </script>
+
+    <!-- Toast Notification Container -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 9999;">
+        <div id="wishlistToast" class="toast align-items-center text-white border-0" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body fw-medium" id="wishlistToastBody">
+                    <!-- Message goes here -->
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+
+
+    
     @include('partials.modals')
 </body>
 

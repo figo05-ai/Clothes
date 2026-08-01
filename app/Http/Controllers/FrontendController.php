@@ -108,8 +108,16 @@ class FrontendController extends Controller
         $total = $discountService->calculateTotal($subtotal);
         $discount = $subtotal - $total;
         $coupon = session('applied_coupon');
+        
+        $walletBalance = 0;
+        $walletIsActive = false;
+        if (auth()->check()) {
+            $walletService = app(\App\Contracts\Wallet\WalletServiceInterface::class);
+            $walletBalance = $walletService->getBalance(auth()->id());
+            $walletIsActive = $walletService->isActive(auth()->id());
+        }
 
-        return view('frontend.checkout', compact('cart', 'subtotal', 'total', 'discount', 'coupon'));
+        return view('frontend.checkout', compact('cart', 'subtotal', 'total', 'discount', 'coupon', 'walletBalance', 'walletIsActive'));
     }
 
     public function orderSuccess(\Illuminate\Http\Request $request)

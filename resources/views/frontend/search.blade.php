@@ -23,7 +23,7 @@
                                     <div class="image-holder position-relative">
                                         <a href="{{ route('frontend.product', $product->slug) }}">
                                             @if ($product->images->where('is_primary', true)->first())
-                                                <img src="{{ $product->images->where('is_primary', true)->first()->image_path }}"
+                                                <img src="{{ $product->images->where('is_primary', true)->first()->image_url }}"
                                                     class="product-image img-fluid" alt="{{ $product->name }}"
                                                     style="height: 400px; width: 100%; object-fit: cover; border-radius: 8px;">
                                             @else
@@ -32,10 +32,16 @@
                                                     style="height: 400px; width: 100%; object-fit: cover; border-radius: 8px;">
                                             @endif
                                         </a>
-                                        <a href="javascript:void(0)" class="btn-icon btn-wishlist" onclick="toggleWishlist(event, '{{ $product->id }}')">
-                                            <svg width="24" height="24" viewBox="0 0 24 24">
-                                                <use xlink:href="#heart"></use>
-                                            </svg>
+                                        <a href="javascript:void(0)" class="btn-icon btn-wishlist" data-product-id="{{ $product->id }}" onclick="toggleWishlist(event, '{{ $product->id }}')">
+                                            @if(isset($wishlistProductIds) && in_array($product->id, $wishlistProductIds))
+                                                <svg width="24" height="24" viewBox="0 0 24 24" style="color: red; fill: red;">
+                                                    <use xlink:href="#heart"></use>
+                                                </svg>
+                                            @else
+                                                <svg width="24" height="24" viewBox="0 0 24 24" style="color: inherit; fill: none;">
+                                                    <use xlink:href="#heart"></use>
+                                                </svg>
+                                            @endif
                                         </a>
                                         <div class="product-content">
                                             <h5 class="element-title text-uppercase fs-5 mt-3">

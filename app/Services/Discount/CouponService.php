@@ -19,24 +19,16 @@ class CouponService implements DiscountServiceInterface
             return ['success' => false, 'message' => 'Invalid coupon code.'];
         }
 
-        if (!$coupon->is_active) {
-            return ['success' => false, 'message' => 'This coupon is no longer active.'];
-        }
-
-        if ($coupon->expires_at && Carbon::now()->greaterThan($coupon->expires_at)) {
-            return ['success' => false, 'message' => 'This coupon has expired.'];
-        }
-
-        if ($coupon->usage_limit && $coupon->usage_count >= $coupon->usage_limit) {
-            return ['success' => false, 'message' => 'This coupon usage limit has been reached.'];
+        if (!$coupon->isValid()) {
+            return ['success' => false, 'message' => 'This coupon is invalid, expired, or usage limit reached.'];
         }
 
         // Store coupon in session
         Session::put($this->sessionKey, [
             'id' => $coupon->id,
             'code' => $coupon->code,
-            'discount_type' => $coupon->discount_type, // 'percentage' or 'fixed'
-            'discount_value' => $coupon->discount_value,
+            'discount_type' => $coupon->type, // 'percentage' or 'fixed_amount'
+            'discount_value' => $coupon->value,
         ]);
 
         return ['success' => true, 'message' => 'Coupon applied successfully.'];
@@ -61,7 +53,7 @@ class CouponService implements DiscountServiceInterface
             return max(0, $subtotal - $discountAmount);
         }
 
-        if ($coupon['discount_type'] === 'fixed') {
+        if ($coupon['discount_type'] === 'fixed_amount') {
             return max(0, $subtotal - $coupon['discount_value']);
         }
 

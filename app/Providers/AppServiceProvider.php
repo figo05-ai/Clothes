@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Pagination\Paginator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,6 +20,17 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        \Illuminate\Support\Facades\View::share('categories', \App\Models\Category::all());
+        Paginator::useBootstrapFive();
+        
+        \Illuminate\Support\Facades\View::composer('*', function ($view) {
+            if (\Illuminate\Support\Facades\Schema::hasTable('categories')) {
+                $view->with('categories', \App\Models\Category::all());
+            }
+            if (auth()->check()) {
+                $view->with('wishlistProductIds', auth()->user()->wishlist()->pluck('product_id')->toArray());
+            } else {
+                $view->with('wishlistProductIds', []);
+            }
+        });
     }
 }

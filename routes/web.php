@@ -110,6 +110,11 @@ Route::prefix('api')->group(function () {
 
     Route::get('/wallet/balance', [CustomerWalletController::class, 'balance']);
     Route::get('/wallet/transactions', [CustomerWalletController::class, 'transactions']);
+    
+    // Wallet UI Page
+    Route::get('/my-wallet', [\App\Http\Controllers\Web\WalletPageController::class, 'index'])->name('frontend.wallet');
+    Route::post('/my-wallet/top-up', [\App\Http\Controllers\Web\WalletPageController::class, 'topUp'])->name('frontend.wallet.topup');
+    Route::post('/my-wallet/toggle', [\App\Http\Controllers\Web\WalletPageController::class, 'toggleStatus'])->name('frontend.wallet.toggle');
 
     Route::get('/loyalty/balance', [CustomerLoyaltyController::class, 'balance']);
     Route::post('/loyalty/redeem', [CustomerLoyaltyController::class, 'redeem']);
@@ -178,10 +183,6 @@ Route::prefix('admin/api')->group(function () {
 });
 
 // ==========================================
-// ADMIN DASHBOARD UI ROUTE
+// ADMIN DASHBOARD UI ROUTE (Removed to allow Filament to take over /admin)
 // ==========================================
-Route::middleware(['auth'])->group(function () {
-    Route::get('/admin/{page?}', function () {
-        return view('admin.app');
-    })->where('page', '.*')->name('admin.dashboard');
-});
+

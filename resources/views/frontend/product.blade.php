@@ -18,14 +18,14 @@
                 <div class="product-gallery">
                     <div class="main-image mb-3">
                         @if($product->images->where('is_primary', true)->first())
-                            <img src="{{ $product->images->where('is_primary', true)->first()->image_path }}" class="img-fluid rounded" alt="{{ __($product->name) }}">
+                            <img src="{{ $product->images->where('is_primary', true)->first()->image_url }}" class="img-fluid rounded" alt="{{ __($product->name) }}">
                         @else
                             <img src="https://via.placeholder.com/800x1200?text={{ urlencode($product->name) }}" class="img-fluid rounded" alt="{{ __($product->name) }}">
                         @endif
                     </div>
                     <div class="d-flex gap-2 thumbnail-images">
                         @foreach($product->images as $image)
-                            <img src="{{ $image->image_path }}" class="img-thumbnail" style="width: 100px; height: 150px; object-fit: cover; cursor: pointer;" alt="">
+                            <img src="{{ $image->image_url }}" class="img-thumbnail" style="width: 100px; height: 150px; object-fit: cover; cursor: pointer;" alt="">
                         @endforeach
                     </div>
                 </div>
@@ -160,7 +160,7 @@
                 <div class="card h-100 border-0 shadow-sm">
                     <a href="{{ route('frontend.product', $related->slug) }}">
                         @if($related->images->where('is_primary', true)->first())
-                            <img src="{{ $related->images->where('is_primary', true)->first()->image_path }}" class="card-img-top" alt="{{ $related->name }}" style="height: 400px; width: 100%; object-fit: cover; border-radius: 8px;">
+                            <img src="{{ $related->images->where('is_primary', true)->first()->image_url }}" class="card-img-top" alt="{{ $related->name }}" style="height: 400px; width: 100%; object-fit: cover; border-radius: 8px;">
                         @else
                             <img src="https://via.placeholder.com/800x1200?text={{ urlencode($related->name) }}" class="card-img-top" alt="{{ $related->name }}" style="height: 400px; width: 100%; object-fit: cover; border-radius: 8px;">
                         @endif

@@ -47,6 +47,27 @@ class WishlistController extends Controller {
     )]
     public function toggle(ToggleWishlistRequest $request) {
         $result = $this->wishlistService->toggleWishlist(Auth::id() ?? 'guest-id', $request->validated('product_id'));
-        return response()->json(['success' => true, 'action' => $result['status']]);
+        $action = $result['status'];
+        $message = $action === 'added' ? 'Added to Wishlist successfully.' : 'Removed from Wishlist.';
+        
+        $productData = null;
+        if ($action === 'added') {
+            $product = \App\Models\Product::with('images')->find($request->validated('product_id'));
+            if ($product) {
+                $image = $product->images->where('is_primary', true)->first();
+                if (!$image && $product->images->count() > 0) {
+                    $image = $product->images->first();
+                }
+                $imageUrl = $image ? $image->image_url : 'https://placehold.co/400x400?text=No+Image';
+                $productData = [
+                    'id' => $product->id,
+                    'name' => $product->name,
+                    'price' => number_format($product->base_price, 2),
+                    'image' => $imageUrl
+                ];
+            }
+        }
+
+        return response()->json(['success' => true, 'action' => $action, 'message' => $message, 'product' => $productData]);
     }
 }

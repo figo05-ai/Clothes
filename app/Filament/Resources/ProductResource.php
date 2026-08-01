@@ -56,7 +56,8 @@ class ProductResource extends Resource
                                     Forms\Components\FileUpload::make('image_path')
                                         ->label('Image')
                                         ->image()
-                                        ->directory('product-images')
+                                        ->disk('public_html')
+                                        ->directory('images/products')
                                         ->required()
                                         ->columnSpan(2),
                                     Forms\Components\Group::make()->schema([
@@ -132,6 +133,10 @@ class ProductResource extends Resource
             ->columns([
                 Tables\Columns\ImageColumn::make('images.image_path')
                     ->label('Images')
+                    ->getStateUsing(fn ($record) => $record->images->pluck('image_path')->map(function ($path) use ($record) {
+                        $encodedPath = implode('/', array_map('rawurlencode', explode('/', $path)));
+                        return asset($encodedPath) . '?v=' . $record->updated_at->timestamp;
+                    })->toArray())
                     ->circular()
                     ->stacked()
                     ->limit(3),

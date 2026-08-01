@@ -34,7 +34,7 @@
                                             <div class="image-holder position-relative" style="background-color: #f6f6f6; padding-top: 130%;">
                                                 <a href="{{ route('frontend.product', $item->product->slug) }}">
                                                 @if($item->product->images->where('is_primary', true)->first())
-                                                    <img src="{{ $item->product->images->where('is_primary', true)->first()->image_path }}" alt="{{ $item->product->name }}" class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover" style="transition: opacity 0.3s ease;">
+                                                    <img src="{{ $item->product->images->where('is_primary', true)->first()->image_url }}" alt="{{ $item->product->name }}" class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover" style="transition: opacity 0.3s ease;">
                                                 @else
                                                     <img src="https://via.placeholder.com/150x200?text={{ urlencode($item->product->name) }}" alt="{{ $item->product->name }}" class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover">
                                                 @endif

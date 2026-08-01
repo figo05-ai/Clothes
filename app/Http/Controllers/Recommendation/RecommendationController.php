@@ -7,7 +7,7 @@ use OpenApi\Attributes as OA;
 
 use App\Http\Controllers\Controller;
 use App\Contracts\Recommendation\RecommendationServiceInterface;
-use App\Http\Resources\Catalog\ProductResource; // Assuming ProductResource exists
+use App\Http\Resources\Product\ProductResource; // Assuming ProductResource exists
 use Illuminate\Support\Facades\Auth;
 
 class RecommendationController extends Controller {

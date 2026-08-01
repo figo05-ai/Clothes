@@ -7,7 +7,7 @@ use OpenApi\Attributes as OA;
 
 use App\Http\Controllers\Controller;
 use App\Contracts\Search\SearchServiceInterface;
-use App\Http\Resources\Catalog\ProductResource;
+use App\Http\Resources\Product\ProductResource;
 use Illuminate\Http\Request;
 
 class SearchController extends Controller {

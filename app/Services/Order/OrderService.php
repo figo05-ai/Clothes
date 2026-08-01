@@ -64,6 +64,28 @@ class OrderService implements OrderServiceInterface
             $shippingFee = $checkoutData['shipping_cost'] ?? 0;
             $taxAmount = $checkoutData['tax_amount'] ?? 0;
             $discountAmount = $checkoutData['discount_amount'] ?? 0;
+            $grandTotal = max(0, $totalAmount + $shippingFee + $taxAmount - $discountAmount);
+
+            // Check if paying with wallet
+            if (($checkoutData['payment_method'] ?? '') === 'wallet') {
+                if (!$userId) {
+                    throw new Exception("Must be logged in to pay with wallet.");
+                }
+                $walletService = app(\App\Contracts\Wallet\WalletServiceInterface::class);
+                
+                if (!$walletService->isActive($userId)) {
+                    throw new Exception("Your wallet is currently disabled. Please enable it in your account settings to use it for payment.");
+                }
+
+                $balance = $walletService->getBalance($userId);
+                
+                if ($balance < $grandTotal) {
+                    throw new Exception("Insufficient wallet balance. You need $" . number_format($grandTotal, 2) . " but have $" . number_format($balance, 2));
+                }
+                
+                // Deduct from wallet using Admin interface since customer service doesn't have deduct
+                app(\App\Contracts\Wallet\AdminWalletServiceInterface::class)->deductCredit($userId, (float) $grandTotal, "Payment for order");
+            }
 
             $order = Order::create([
                 'user_id' => $userId, // Can be null for guest checkout
@@ -72,7 +94,7 @@ class OrderService implements OrderServiceInterface
                 'discount_amount' => $discountAmount,
                 'shipping_fee' => $shippingFee,
                 'tax_amount' => $taxAmount,
-                'grand_total' => max(0, $totalAmount + $shippingFee + $taxAmount - $discountAmount),
+                'grand_total' => $grandTotal,
                 'status' => 'pending',
                 // For simplicity, we are ignoring address linking for now or saving as JSON in notes if needed
                 'notes' => json_encode([

@@ -20,5 +20,6 @@ class AnalyticsController extends Controller {
         ]
     )]
     public function index() {
+        return response()->json($this->analyticsService->getDashboardMetrics());
     }
 }
