@@ -147,16 +147,31 @@ document.addEventListener('DOMContentLoaded', function() {
             const btn = e.target.closest('.add-to-cart-btn');
             const productId = btn.getAttribute('data-product-id');
             // Check if there is a quantity input nearby
-            const qtyInput = document.querySelector('#product-quantity');
+            let qtyInput = document.querySelector('#product-quantity');
+            if (btn.closest('#modalQuickView')) {
+                qtyInput = document.querySelector('#qvQty');
+            }
             const quantity = qtyInput ? parseInt(qtyInput.value) : 1;
 
-            addToCart(productId, quantity);
+            if (productId) {
+                addToCart(productId, quantity);
+                if (typeof showToast === 'function') {
+                    const title = btn.closest('#modalQuickView') ? document.getElementById('qvTitle').textContent : 'Item';
+                    showToast('Added ' + title + ' to your shopping cart!');
+                }
+                const modalQuickView = document.getElementById('modalQuickView');
+                if (modalQuickView && btn.closest('#modalQuickView')) {
+                    bootstrap.Modal.getInstance(modalQuickView)?.hide();
+                }
+            } else {
+                console.error('No product ID found for add to cart');
+            }
         }
     });
 
     window.toggleWishlist = function(e, productId) {
         e.preventDefault();
-        const btn = e.currentTarget;
+        const btn = e.target.closest('.btn-wishlist') || e.currentTarget;
 
         fetch('/api/wishlist/toggle', {
             method: 'POST',
@@ -177,17 +192,38 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(data => {
             if (data && data.success) {
                 // Toggle active state visually (e.g. fill red heart)
-                btn.classList.toggle('active');
-                const svg = btn.querySelector('svg');
-                if (btn.classList.contains('active') || data.message.includes('added')) {
-                    svg.style.fill = 'red';
-                } else {
-                    svg.style.fill = 'none';
+                if (btn && btn.classList) {
+                    btn.classList.toggle('active');
+                }
+                const actionText = data.message || data.action || '';
+                if (btn) {
+                    const svg = btn.querySelector('svg');
+                    if (svg) {
+                        if (btn.classList.contains('active') || actionText.includes('added')) {
+                            svg.style.fill = 'red';
+                        } else {
+                            svg.style.fill = 'none';
+                        }
+                    }
                 }
 
                 // If we are on the wishlist page and removed an item, we could reload
-                if (window.location.pathname === '/wishlist' && data.message.includes('removed')) {
+                if (window.location.pathname === '/wishlist' && actionText.includes('removed')) {
                     window.location.reload();
+                }
+
+                // If we removed it from the modal, hide the card
+                if (btn && btn.closest && btn.closest('#modalWishlist') && actionText.includes('removed')) {
+                    const card = btn.closest('.col-md-6, .wishlist-item-wrapper');
+                    if (card) {
+                        card.remove();
+                    }
+                    // Optional: update count in modal header
+                    const countSpan = document.querySelector('#modalWishlist .modal-title .wishlist-count');
+                    if (countSpan) {
+                        let count = parseInt(countSpan.textContent);
+                        if (!isNaN(count) && count > 0) countSpan.textContent = count - 1;
+                    }
                 }
             }
         })

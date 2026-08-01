@@ -362,6 +362,12 @@
         const qtyInput = modalEl.querySelector('#qvQty');
         if (qtyInput) qtyInput.value = 1;
 
+        // Set product ID on the add to cart button
+        const addToCartBtn = modalEl.querySelector('.add-to-cart-btn-qv');
+        if (addToCartBtn) {
+            addToCartBtn.dataset.productId = productCard.dataset.productId || '';
+        }
+
         if (window.bootstrap && window.bootstrap.Modal) {
           const bsModal = window.bootstrap.Modal.getOrCreateInstance(modalEl);
           bsModal.show();

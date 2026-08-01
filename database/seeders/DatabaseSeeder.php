@@ -35,7 +35,7 @@ class DatabaseSeeder extends Seeder
         );
         if (!$admin->roles()->where('id', $adminRole->id)->exists()) {
             $admin->roles()->attach($adminRole);
-            
+
         }
 
         $customer = User::firstOrCreate(
@@ -116,7 +116,7 @@ class DatabaseSeeder extends Seeder
 
                         $filename = basename($file);
                         $productName = pathinfo($filename, PATHINFO_FILENAME);
-                        
+
                         // determine subcategory
                         $selectedSubcat = reset($subcategoryModels); // default to first subcategory
                         foreach ($subcategoryModels as $name => $model) {

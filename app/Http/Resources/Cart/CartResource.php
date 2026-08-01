@@ -17,14 +17,28 @@ class CartResource extends JsonResource
         $totalItems = 0;
         $totalPrice = 0;
 
+        $productIds = collect($this->resource)->pluck('id')->toArray();
+        $products = \App\Models\Product::with(['images' => function($q) {
+            $q->where('is_primary', true);
+        }])->whereIn('id', $productIds)->get()->keyBy('id');
+
         $items = [];
         foreach ($this->resource as $item) {
+            $product = $products->get($item['id']);
+            $imageUrl = null;
+            if ($product && $product->images->isNotEmpty()) {
+                $imageUrl = asset($product->images->first()->image_path);
+            } elseif ($product) {
+                $imageUrl = "https://via.placeholder.com/800x1200?text=" . urlencode($product->name);
+            }
+
             $items[] = [
                 'product_id' => $item['id'],
                 'name' => $item['name'],
                 'price' => $item['price'],
                 'quantity' => $item['quantity'],
                 'subtotal' => $item['price'] * $item['quantity'],
+                'image' => $imageUrl,
             ];
             
             $totalItems += $item['quantity'];

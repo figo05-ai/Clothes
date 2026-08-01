@@ -92,7 +92,7 @@
                 <div class="swiper-wrapper d-flex">
                     @foreach ($newArrivals as $product)
                         <div class="swiper-slide">
-                            <div class="product-item image-zoom-effect link-effect">
+                            <div class="product-item image-zoom-effect link-effect" data-product-id="{{ $product->id }}">
                                 <div class="image-holder position-relative">
                                     <a href="{{ route('frontend.product', $product->slug) }}">
 
@@ -104,7 +104,7 @@
                                                 class="product-image img-fluid" style="height: 400px; width: 100%; object-fit: cover; border-radius: 8px;">
                                         @endif
                                     </a>
-                                    <a href="/" class="btn-icon btn-wishlist">
+                                    <a href="#" class="btn-icon btn-wishlist" onclick="toggleWishlist(event, '{{ $product->id }}')">
                                         <svg width="24" height="24" viewBox="0 0 24 24">
                                             <use xlink:href="#heart"></use>
                                         </svg>
@@ -229,7 +229,7 @@
                 <div class="swiper-wrapper d-flex">
                     @foreach ($bestSellers as $product)
                         <div class="swiper-slide">
-                            <div class="product-item image-zoom-effect link-effect">
+                            <div class="product-item image-zoom-effect link-effect" data-product-id="{{ $product->id }}">
                                 <div class="image-holder position-relative">
                                     <a href="{{ route('frontend.product', $product->slug) }}">
 
@@ -241,7 +241,7 @@
                                                 class="product-image img-fluid" style="height: 400px; width: 100%; object-fit: cover; border-radius: 8px;">
                                         @endif
                                     </a>
-                                    <a href="/" class="btn-icon btn-wishlist">
+                                    <a href="#" class="btn-icon btn-wishlist" onclick="toggleWishlist(event, '{{ $product->id }}')">
                                         <svg width="24" height="24" viewBox="0 0 24 24">
                                             <use xlink:href="#heart"></use>
                                         </svg>

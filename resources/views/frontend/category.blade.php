@@ -85,7 +85,7 @@
                     <div class="row row-cols-1 row-cols-md-3 g-4">
                         @forelse($products as $product)
                             <div class="col">
-                                <div class="product-item image-zoom-effect link-effect">
+                                <div class="product-item image-zoom-effect link-effect" data-product-id="{{ $product->id }}">
                                     <div class="image-holder position-relative">
                                         <a href="{{ route('frontend.product', $product->slug) }}">
                                             @if ($product->images->where('is_primary', true)->first())
@@ -98,9 +98,7 @@
                                                     style="height: 400px; width: 100%; object-fit: cover; border-radius: 8px;">
                                             @endif
                                         </a>
-                                        <a href="#" class="btn-icon btn-wishlist active"
-                                            data-product-id="{{ $product->id }}"
-                                            onclick="toggleWishlist(event, '{{ $product->id }}')">
+                                        <a href="javascript:void(0)" class="btn-icon btn-wishlist" onclick="toggleWishlist(event, '{{ $product->id }}')">
                                             <svg width="24" height="24" viewBox="0 0 24 24">
                                                 <use xlink:href="#heart"></use>
                                             </svg>

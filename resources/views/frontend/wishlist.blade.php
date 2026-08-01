@@ -30,7 +30,7 @@
                                 @foreach($wishlist as $item)
                                     @if($item->product)
                                     <div class="col-6 col-md-4 mb-4">
-                                        <div class="product-item position-relative rounded-4 overflow-hidden shadow-sm" style="transition: transform 0.2s ease, box-shadow 0.2s ease;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 20px rgba(0,0,0,0.08)';" onmouseout="this.style.transform='none'; this.style.boxShadow='0 0.125rem 0.25rem rgba(0, 0, 0, 0.075)';">
+                                        <div class="product-item position-relative rounded-4 overflow-hidden shadow-sm" data-product-id="{{ isset($item->product) ? $item->product->id : '' }}" style="transition: transform 0.2s ease, box-shadow 0.2s ease;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 20px rgba(0,0,0,0.08)';" onmouseout="this.style.transform='none'; this.style.boxShadow='0 0.125rem 0.25rem rgba(0, 0, 0, 0.075)';">
                                             <div class="image-holder position-relative" style="background-color: #f6f6f6; padding-top: 130%;">
                                                 <a href="{{ route('frontend.product', $item->product->slug) }}">
                                                 @if($item->product->images->where('is_primary', true)->first())

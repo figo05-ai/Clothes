@@ -175,12 +175,7 @@
                                     </div>
 
                                     <button type="button"
-                                        class="btn btn-dark btn-lg flex-grow-1 rounded-3 text-uppercase fw-semibold py-3 fs-6 d-flex align-items-center justify-content-center gap-2"
-                                        onclick="
-                    bootstrap.Modal.getInstance(document.getElementById('modalQuickView'))?.hide();
-                    showToast('Added ' + document.getElementById('qvTitle').textContent + ' to your shopping cart!');
-                    bootstrap.Offcanvas.getOrCreateInstance(document.getElementById('offcanvasCart')).show();
-                  ">
+                                        class="btn btn-dark btn-lg flex-grow-1 rounded-3 text-uppercase fw-semibold py-3 fs-6 d-flex align-items-center justify-content-center gap-2 add-to-cart-btn add-to-cart-btn-qv">
                                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
                                             stroke="currentColor" stroke-width="2">
                                             <circle cx="9" cy="21" r="1"></circle>
@@ -994,64 +989,6 @@
         </div>
     </div>
 
-    <!-- 3. Wishlist Modal -->
-    <div class="modal fade" id="modalWishlist" tabindex="-1" aria-labelledby="modalWishlistLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
-            <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
-                <div class="modal-header bg-dark text-white p-4">
-                    <h5 class="modal-title text-uppercase m-0 d-flex align-items-center gap-2"
-                        id="modalWishlistLabel">
-                        <svg width="22" height="22" viewBox="0 0 24 24">
-                            <use xlink:href="#heart"></use>
-                        </svg> My Saved Wishlist (3 Items)
-                    </h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
-                        aria-label="Close"></button>
-                </div>
-                <div class="modal-body p-4">
-                    <div class="row g-3">
-                        <div class="col-md-4">
-                            <div class="card h-100 border-0 shadow-sm">
-                                <img src="{{ asset('images/product-item-2.jpg') }}" class="card-img-top"
-                                    alt="item">
-                                <div class="card-body p-3">
-                                    <h6 class="card-title fw-bold m-0">Silk Pleated Dress</h6>
-                                    <p class="text-primary fw-bold my-1">$320.00</p>
-                                    <button class="btn btn-primary btn-sm w-100 mt-2"
-                                        onclick="alert('Added Silk Pleated Dress to Cart!');">Add to Cart</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card h-100 border-0 shadow-sm">
-                                <img src="{{ asset('images/product-item-3.jpg') }}" class="card-img-top"
-                                    alt="item">
-                                <div class="card-body p-3">
-                                    <h6 class="card-title fw-bold m-0">Genuine Leather Bag</h6>
-                                    <p class="text-primary fw-bold my-1">$480.00</p>
-                                    <button class="btn btn-primary btn-sm w-100 mt-2"
-                                        onclick="alert('Added Genuine Leather Bag to Cart!');">Add to Cart</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card h-100 border-0 shadow-sm">
-                                <img src="{{ asset('images/product-item-4.jpg') }}" class="card-img-top"
-                                    alt="item">
-                                <div class="card-body p-3">
-                                    <h6 class="card-title fw-bold m-0">Tailored Blazer</h6>
-                                    <p class="text-primary fw-bold my-1">$290.00</p>
-                                    <button class="btn btn-primary btn-sm w-100 mt-2"
-                                        onclick="alert('Added Tailored Blazer to Cart!');">Add to Cart</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- 4. Payment Modal -->
     <div class="modal fade" id="modalPayment" tabindex="-1" aria-labelledby="modalPaymentLabel"
@@ -1294,3 +1231,199 @@
             </div>
         </div>
     </div>
+
+    @auth
+    @php
+        $user = auth()->user();
+        $orders = \App\Models\Order::where('user_id', $user->id)->latest()->get();
+        $wishlistService = app(\App\Contracts\Wishlist\WishlistServiceInterface::class);
+        $wishlist = $wishlistService->getUserWishlist($user->id);
+        $policyPage = \App\Models\Page::where('slug', 'policy')->first();
+    @endphp
+
+    <!-- Modal: Orders -->
+    <div class="modal fade" id="modalOrders" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+            <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
+                <div class="modal-header bg-dark text-white p-4">
+                    <h5 class="modal-title text-uppercase m-0 d-flex align-items-center gap-2">
+                        <svg width="22" height="22" viewBox="0 0 24 24" class="text-white"><use xlink:href="#shopping-bag"></use></svg> Order History
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4 bg-light">
+                    @if($orders->isEmpty())
+                        <div class="text-center py-5">
+                            <i class="bi bi-bag-x text-muted mb-3 d-block" style="font-size: 3rem; opacity: 0.5;"></i>
+                            <h5 class="fw-bold">You have no orders yet</h5>
+                            <p class="text-muted">Looks like you haven't made any purchases with us yet.</p>
+                        </div>
+                    @else
+                        <div class="table-responsive bg-white rounded-4 border shadow-sm">
+                            <table class="table table-hover align-middle mb-0">
+                                <thead style="background-color: #fafafb;">
+                                    <tr>
+                                        <th class="px-4 py-3 text-uppercase text-muted fw-bold border-bottom" style="font-size: 0.7rem; letter-spacing: 1.5px;">Order ID</th>
+                                        <th class="px-4 py-3 text-uppercase text-muted fw-bold border-bottom" style="font-size: 0.7rem; letter-spacing: 1.5px;">Date</th>
+                                        <th class="px-4 py-3 text-uppercase text-muted fw-bold border-bottom" style="font-size: 0.7rem; letter-spacing: 1.5px;">Status</th>
+                                        <th class="px-4 py-3 text-uppercase text-muted fw-bold border-bottom text-end" style="font-size: 0.7rem; letter-spacing: 1.5px;">Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($orders as $order)
+                                    <tr>
+                                        <td class="px-4 py-4 fw-bold text-dark" style="font-size: 0.95rem;">#{{ substr($order->id, 0, 8) }}</td>
+                                        <td class="px-4 py-4 text-muted" style="font-size: 0.95rem;">{{ $order->created_at->format('M d, Y') }}</td>
+                                        <td class="px-4 py-4">
+                                            <span class="badge {{ $order->status === 'pending' ? 'bg-warning-subtle text-warning-emphasis' : ($order->status === 'completed' ? 'bg-success-subtle text-success-emphasis' : 'bg-secondary-subtle text-secondary-emphasis') }} px-3 py-2 rounded-pill fw-semibold" style="letter-spacing: 0.5px;">
+                                                {{ __(ucfirst($order->status)) }}
+                                            </span>
+                                        </td>
+                                        <td class="px-4 py-4 fw-bold text-dark text-end" style="font-size: 1rem;">${{ number_format($order->grand_total, 2) }}</td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    @endif
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Wishlist -->
+    <div class="modal fade" id="modalWishlist" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+            <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
+                <div class="modal-header bg-dark text-white p-4">
+                    <h5 class="modal-title text-uppercase m-0 d-flex align-items-center gap-2">
+                        <svg width="22" height="22" viewBox="0 0 24 24" class="text-white"><use xlink:href="#heart"></use></svg> 
+                        My Saved Wishlist (<span class="wishlist-count">{{ count($wishlist) }}</span> Items)
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4 bg-light">
+                    @if(count($wishlist) === 0)
+                        <div class="text-center py-5">
+                            <i class="bi bi-heart text-muted mb-3 d-block" style="font-size: 3rem; opacity: 0.5;"></i>
+                            <h5 class="fw-bold">Your wishlist is empty</h5>
+                            <p class="text-muted">Save your favorite items here.</p>
+                        </div>
+                    @else
+                        <div class="row g-4">
+                            @foreach($wishlist as $item)
+                                @if(isset($item->product))
+                                <div class="col-md-6 col-lg-4 wishlist-item-wrapper">
+                                    <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden position-relative">
+                                        @if($item->product->images && $item->product->images->isNotEmpty())
+                                            <img src="{{ $item->product->images->first()->image_path }}" class="card-img-top object-fit-cover" style="height: 200px;" alt="{{ $item->product->name }}">
+                                        @else
+                                            <img src="https://placehold.co/400x400?text=No+Image" class="card-img-top object-fit-cover" style="height: 200px;" alt="{{ $item->product->name }}">
+                                        @endif
+                                        <div class="card-body p-3">
+                                            <h6 class="fw-bold mb-1 text-truncate">{{ $item->product->name }}</h6>
+                                            <p class="text-primary fw-bold my-1">${{ number_format($item->product->base_price, 2) }}</p>
+                                            <button class="btn btn-primary btn-sm w-100 mt-2 add-to-cart-btn" data-product-id="{{ $item->product_id }}">Add to Cart</button>
+                                        </div>
+                                        <button class="btn btn-light btn-sm position-absolute top-0 end-0 m-2 rounded-circle shadow-sm d-flex align-items-center justify-content-center p-0" onclick="toggleWishlist(event, '{{ $item->product_id }}')" title="Remove from Wishlist" style="width: 32px; height: 32px;">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                                        </button>
+                                    </div>
+                                </div>
+                                @endif
+                            @endforeach
+                        </div>
+                    @endif
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Returns Portal -->
+    <div class="modal fade" id="modalReturns" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+            <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
+                <div class="modal-header bg-dark text-white p-4">
+                    <h5 class="modal-title text-uppercase m-0 d-flex align-items-center gap-2">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.92-10.26l5.08 5.08"></path></svg> Returns Portal
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4 bg-light">
+                    @if($orders->where('status', 'completed')->isEmpty())
+                        <div class="text-center py-5">
+                            <i class="bi bi-box text-muted mb-3 d-block" style="font-size: 3rem; opacity: 0.5;"></i>
+                            <h5 class="fw-bold">No eligible orders for return</h5>
+                            <p class="text-muted">You must have completed orders to initiate a return.</p>
+                        </div>
+                    @else
+                        <h6 class="fw-bold mb-4">Select an order to return</h6>
+                        <div class="list-group list-group-flush border rounded-4 overflow-hidden shadow-sm">
+                            @foreach($orders->where('status', 'completed') as $order)
+                            <a href="javascript:void(0)" onclick="alert('Return initiated for order #{{ substr($order->id, 0, 8) }}'); bootstrap.Modal.getInstance(this.closest('.modal'))?.hide();" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center p-3">
+                                <div>
+                                    <div class="fw-bold text-dark">Order #{{ substr($order->id, 0, 8) }}</div>
+                                    <small class="text-muted">{{ $order->created_at->format('M d, Y') }} • ${{ number_format($order->grand_total, 2) }}</small>
+                                </div>
+                                <span class="btn btn-sm btn-outline-dark rounded-pill px-3 fw-bold text-uppercase" style="font-size: 0.75rem;">Initiate Return</span>
+                            </a>
+                            @endforeach
+                        </div>
+                    @endif
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Contact Support -->
+    <div class="modal fade" id="modalContact" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+            <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
+                <div class="modal-header bg-dark text-white p-4">
+                    <h5 class="modal-title text-uppercase m-0 d-flex align-items-center gap-2">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg> Contact Support
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4 bg-light">
+                    <form onsubmit="event.preventDefault(); alert('Message sent successfully!'); bootstrap.Modal.getInstance(this.closest('.modal'))?.hide();">
+                        <div class="mb-3">
+                            <label class="form-label text-uppercase fs-7 text-muted fw-bold">Subject</label>
+                            <input type="text" class="form-control p-3 rounded-3" placeholder="How can we help?" required>
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label text-uppercase fs-7 text-muted fw-bold">Message</label>
+                            <textarea class="form-control p-3 rounded-3" rows="5" placeholder="Describe your issue..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-dark w-100 p-3 text-uppercase fw-bold rounded-3">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Policy -->
+    <div class="modal fade" id="modalPolicy" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+            <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
+                <div class="modal-header bg-dark text-white p-4">
+                    <h5 class="modal-title text-uppercase m-0 d-flex align-items-center gap-2">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg> Our Policy
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-5 bg-white text-dark">
+                    @if($policyPage)
+                        <div class="prose max-w-none">
+                            {!! $policyPage->content !!}
+                        </div>
+                    @else
+                        <h4 class="fw-bold mb-3">Store Policies</h4>
+                        <p class="mb-2">We offer a 30-day return policy for unworn items in their original packaging. Refunds are processed within 5-7 business days of receiving the returned item.</p>
+                        <p>For exchanges, please return your original item and place a new order online.</p>
+                    @endif
+                </div>
+            </div>
+        </div>
+    </div>
+    @endauth

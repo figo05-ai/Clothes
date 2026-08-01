@@ -12,8 +12,8 @@
     <meta name="author" content="TemplatesJungle">
     <meta name="keywords" content="ecommerce,fashion,store">
     <meta name="description" content="Bootstrap 5 Fashion Store HTML CSS Template">
-    
-    @if(app()->getLocale() == 'ar')
+
+    @if (app()->getLocale() == 'ar')
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css">
     @else
         <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
@@ -174,7 +174,7 @@
                     </svg></button>
             </form>
 
-            
+
             <div id="ajax-search-results" class="mt-4 row g-3">
                 <!-- AJAX results will be injected here -->
             </div>
@@ -222,7 +222,8 @@
                     </li>
                 </ul>
 
-                <button class="w-100 btn btn-primary btn-lg" type="button" onclick="window.location.href='/checkout'">{{ __('Continue to Checkout') }}</button>
+                <button class="w-100 btn btn-primary btn-lg" type="button"
+                    onclick="window.location.href='/checkout'">{{ __('Continue to Checkout') }}</button>
             </div>
         </div>
     </div>
@@ -241,7 +242,9 @@
             @guest
                 <div class="text-center py-5">
                     <h4 class="mb-3">{{ __('Welcome to Kaira') }}</h4>
-                    <p class="text-muted mb-4">{{ __('Log in or sign up to view your orders, track your shipments, and manage your account.') }}</p>
+                    <p class="text-muted mb-4">
+                        {{ __('Log in or sign up to view your orders, track your shipments, and manage your account.') }}
+                    </p>
                     <a href="/login" class="btn btn-primary w-100 mb-2">{{ __('Log In') }}</a>
                     <a href="/register" class="btn btn-outline-dark w-100">{{ __('Sign Up') }}</a>
                 </div>
@@ -254,8 +257,10 @@
                                 <img src="{{ asset('images/insta-item1.jpg') }}" alt="user avatar"
                                     class="user-avatar-img rounded-circle object-fit-cover"
                                     style="width: 60px; height: 60px; border: 2px solid var(--bs-primary, #8c907e);">
-                                <button type="button" class="avatar-camera-overlay position-absolute bottom-0 end-0 btn btn-sm btn-light rounded-circle p-1 shadow-sm"
-                                    title="{{ __('Change Photo') }}" style="width: 24px; height: 24px; display: flex; align-items: center; justify-content: center;">
+                                <button type="button"
+                                    class="avatar-camera-overlay position-absolute bottom-0 end-0 btn btn-sm btn-light rounded-circle p-1 shadow-sm"
+                                    title="{{ __('Change Photo') }}"
+                                    style="width: 24px; height: 24px; display: flex; align-items: center; justify-content: center;">
                                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none"
                                         stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
                                         stroke-linejoin="round">
@@ -312,42 +317,94 @@
                 </div>
 
                 <div class="account-menu-group mb-4">
-                    <h6 class="text-uppercase text-muted mb-2 px-2" style="font-size: 0.75rem; letter-spacing: 1px;">
+                    <h6 class="text-uppercase text-muted mb-3 px-2 fw-bold"
+                        style="font-size: 0.7rem; letter-spacing: 1.5px;">
                         {{ __('Shopping & Orders') }}</h6>
-                    <div class="list-group list-group-flush border rounded-3 overflow-hidden">
-                        <a href="{{ route('dashboard') }}" class="list-group-item list-group-item-action d-flex align-items-center justify-content-between p-3">
+                    <div class="list-group list-group-flush border rounded-4 overflow-hidden shadow-sm">
+                        <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#modalOrders"
+                            class="list-group-item list-group-item-action d-flex align-items-center justify-content-between p-3 text-muted"
+                            style="transition: all 0.2s;" onmouseover="this.classList.add('bg-light', 'text-dark');"
+                            onmouseout="this.classList.remove('bg-light', 'text-dark');">
                             <span class="d-flex align-items-center gap-3">
-                                <svg width="20" height="20" viewBox="0 0 24 24" class="text-primary"><use xlink:href="#user"></use></svg>
-                                <span>{{ __('Dashboard') }}</span>
-                            </span>
-                            <svg width="16" height="16" viewBox="0 0 24 24" class="text-muted">
-                                <use xlink:href="#arrow-right"></use>
-                            </svg>
-                        </a>
-                        <a href="{{ route('dashboard.orders') }}" class="list-group-item list-group-item-action d-flex align-items-center justify-content-between p-3">
-                            <span class="d-flex align-items-center gap-3">
-                                <svg width="20" height="20" viewBox="0 0 24 24" class="text-primary"><use xlink:href="#shopping-bag"></use></svg>
+                                <svg width="20" height="20" viewBox="0 0 24 24" class="text-secondary">
+                                    <use xlink:href="#shopping-bag"></use>
+                                </svg>
                                 <span>{{ __('Order History') }}</span>
                             </span>
-                            <svg width="16" height="16" viewBox="0 0 24 24" class="text-muted">
+                            <svg width="16" height="16" viewBox="0 0 24 24" class="text-light-subtle">
                                 <use xlink:href="#arrow-right"></use>
                             </svg>
                         </a>
-                        <a href="{{ route('wishlist') }}" class="list-group-item list-group-item-action d-flex align-items-center justify-content-between p-3">
+                        <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#modalWishlist"
+                            class="list-group-item list-group-item-action d-flex align-items-center justify-content-between p-3 text-muted"
+                            style="transition: all 0.2s;" onmouseover="this.classList.add('bg-light', 'text-dark');"
+                            onmouseout="this.classList.remove('bg-light', 'text-dark');">
                             <span class="d-flex align-items-center gap-3">
-                                <svg width="20" height="20" viewBox="0 0 24 24" class="text-primary"><use xlink:href="#heart"></use></svg>
+                                <svg width="20" height="20" viewBox="0 0 24 24" class="text-secondary">
+                                    <use xlink:href="#heart"></use>
+                                </svg>
                                 <span>{{ __('My Wishlist') }}</span>
                             </span>
-                            <svg width="16" height="16" viewBox="0 0 24 24" class="text-muted">
+                            <svg width="16" height="16" viewBox="0 0 24 24" class="text-light-subtle">
                                 <use xlink:href="#arrow-right"></use>
                             </svg>
                         </a>
-                        <a href="{{ route('returns') }}" class="list-group-item list-group-item-action d-flex align-items-center justify-content-between p-3">
+                        <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#modalReturns"
+                            class="list-group-item list-group-item-action d-flex align-items-center justify-content-between p-3 text-muted"
+                            style="transition: all 0.2s;" onmouseover="this.classList.add('bg-light', 'text-dark');"
+                            onmouseout="this.classList.remove('bg-light', 'text-dark');">
                             <span class="d-flex align-items-center gap-3">
-                                <svg width="20" height="20" viewBox="0 0 24 24" class="text-primary" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.92-10.26l5.08 5.08"></path></svg>
+                                <svg width="20" height="20" viewBox="0 0 24 24" class="text-secondary"
+                                    fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.92-10.26l5.08 5.08"></path>
+                                </svg>
                                 <span>{{ __('Returns Portal') }}</span>
                             </span>
-                            <svg width="16" height="16" viewBox="0 0 24 24" class="text-muted">
+                            <svg width="16" height="16" viewBox="0 0 24 24" class="text-light-subtle">
+                                <use xlink:href="#arrow-right"></use>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="account-menu-group mb-4">
+                    <h6 class="text-uppercase text-muted mb-3 px-2 fw-bold"
+                        style="font-size: 0.7rem; letter-spacing: 1.5px;">
+                        {{ __('Support & Policies') }}</h6>
+                    <div class="list-group list-group-flush border rounded-4 overflow-hidden shadow-sm">
+                        <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#modalContact"
+                            class="list-group-item list-group-item-action d-flex align-items-center justify-content-between p-3 text-muted"
+                            style="transition: all 0.2s;" onmouseover="this.classList.add('bg-light', 'text-dark');"
+                            onmouseout="this.classList.remove('bg-light', 'text-dark');">
+                            <span class="d-flex align-items-center gap-3">
+                                <svg width="20" height="20" viewBox="0 0 24 24" class="text-secondary"
+                                    fill="none" stroke="currentColor" stroke-width="2">
+                                    <path
+                                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                                    </path>
+                                </svg>
+                                <span>{{ __('Contact Support') }}</span>
+                            </span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" class="text-light-subtle">
+                                <use xlink:href="#arrow-right"></use>
+                            </svg>
+                        </a>
+                        <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#modalPolicy"
+                            class="list-group-item list-group-item-action d-flex align-items-center justify-content-between p-3 text-muted"
+                            style="transition: all 0.2s;" onmouseover="this.classList.add('bg-light', 'text-dark');"
+                            onmouseout="this.classList.remove('bg-light', 'text-dark');">
+                            <span class="d-flex align-items-center gap-3">
+                                <svg width="20" height="20" viewBox="0 0 24 24" class="text-secondary"
+                                    fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                    <polyline points="14 2 14 8 20 8"></polyline>
+                                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                                    <polyline points="10 9 9 9 8 9"></polyline>
+                                </svg>
+                                <span>{{ __('Our Policy') }}</span>
+                            </span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" class="text-light-subtle">
                                 <use xlink:href="#arrow-right"></use>
                             </svg>
                         </a>
@@ -355,12 +412,18 @@
                 </div>
 
                 <div class="account-menu-group mb-4 mt-auto">
-                    <div class="list-group list-group-flush border rounded-3 overflow-hidden">
+                    <div class="list-group list-group-flush border rounded-4 overflow-hidden shadow-sm">
                         <form method="POST" action="{{ route('logout') }}" id="offcanvas-logout-form" class="m-0">
                             @csrf
-                            <button type="submit" class="list-group-item list-group-item-action d-flex align-items-center justify-content-between p-3 text-danger fw-medium w-100 text-start border-0">
+                            <button type="submit"
+                                class="list-group-item list-group-item-action d-flex align-items-center justify-content-between p-3 text-danger fw-medium w-100 text-start border-0"
+                                style="transition: all 0.2s; background-color: #fff;"
+                                onmouseover="this.style.backgroundColor='#fff5f5'"
+                                onmouseout="this.style.backgroundColor='#fff'">
                                 <span class="d-flex align-items-center gap-3">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" class="text-danger"><use xlink:href="#close"></use></svg>
+                                    <svg width="20" height="20" viewBox="0 0 24 24" class="text-danger">
+                                        <use xlink:href="#close"></use>
+                                    </svg>
                                     <span>{{ __('Log Out') }}</span>
                                 </span>
                             </button>
@@ -408,41 +471,79 @@
                         </div>
 
                         <div class="offcanvas-body">
-                            <ul class="navbar-nav justify-content-end flex-grow-1 gap-1 gap-md-5 pe-3">
+                            <ul class="navbar-nav justify-content-center flex-grow-1 gap-2 gap-md-4 pe-3"
+                                style="font-family: 'Jost', sans-serif; font-size: 0.9rem; letter-spacing: 1px;">
                                 <li class="nav-item">
-                                    <a class="nav-link active" href="/">{{ __('Dashboard') }}</a>
+                                    <a class="nav-link text-uppercase fw-medium text-dark px-3"
+                                        href="/">{{ __('Home') }}</a>
                                 </li>
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="dropdownShop"
-                                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ __('Shop') }}</a>
-                                    <ul class="dropdown-menu list-unstyled shadow-sm border-0"
+                                    <a class="nav-link dropdown-toggle text-uppercase fw-medium text-dark px-3"
+                                        href="#" id="dropdownShop" data-bs-toggle="dropdown"
+                                        aria-haspopup="true" aria-expanded="false">{{ __('Shop') }}</a>
+                                    <ul class="dropdown-menu list-unstyled shadow-sm border-0 py-2"
                                         aria-labelledby="dropdownShop">
                                         @foreach ($categories as $category)
                                             <li>
                                                 <a href="#new-arrival"
-                                                    class="dropdown-item item-anchor">{{ __($category->name) }}</a>
+                                                    class="dropdown-item item-anchor text-uppercase"
+                                                    style="font-size: 0.85rem;">{{ __($category->name) }}</a>
                                             </li>
                                         @endforeach
                                     </ul>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#blog">{{ __('Blog') }}</a>
+                                    <a class="nav-link text-uppercase fw-medium text-dark px-3"
+                                        href="#blog">{{ __('Blog') }}</a>
                                 </li>
                                 <li class="nav-item">
-                                  <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#modalContact">{{ __('Contact') }}</a>
+                                    <a class="nav-link text-uppercase fw-medium text-dark px-3" href="#"
+                                        data-bs-toggle="modal" data-bs-target="#modalContact">{{ __('Contact') }}</a>
                                 </li>
                                 @guest
-                                    <li class="nav-item"><a class="nav-link" href="/login">{{ __('Log In') }}</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="/register">{{ __('Sign Up') }}</a></li>
+                                    <li class="nav-item d-flex align-items-center">
+                                        <a class="nav-link text-uppercase fw-medium text-dark px-3 d-flex align-items-center gap-1"
+                                            href="/login">
+                                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round">
+                                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                                <circle cx="12" cy="7" r="4"></circle>
+                                            </svg>
+                                            {{ __('Log In') }}
+                                        </a>
+                                    </li>
+                                    <li class="nav-item d-flex align-items-center ms-lg-2 mt-2 mt-lg-0">
+                                        <a class="btn btn-dark text-uppercase fw-medium px-4 rounded-0 shadow-sm"
+                                            style="font-size: 0.85rem; letter-spacing: 1px; padding-top: 0.6rem; padding-bottom: 0.6rem;"
+                                            href="/register">
+                                            {{ __('Sign Up') }}
+                                        </a>
+                                    </li>
                                 @endguest
                                 @auth
-                                    @if(auth()->user()->roles->contains('name', 'admin'))
-                                        <li class="nav-item"><a class="nav-link fw-bold" href="/admin" style="color: #c5a975 !important;">{{ __('Admin Dashboard') }}</a></li>
+                                    @if (auth()->user()->roles->contains('name', 'admin'))
+                                        <li class="nav-item"><a class="nav-link text-uppercase fw-bold px-3"
+                                                href="/admin"
+                                                style="color: #c5a975 !important;">{{ __('Admin Dashboard') }}</a></li>
                                     @endif
                                     <li class="nav-item">
-                                        <form method="POST" action="{{ route('logout') }}" class="d-inline" id="logout-form">
+                                        <form method="POST" action="{{ route('logout') }}" class="d-inline"
+                                            id="logout-form">
                                             @csrf
-                                            <a class="nav-link" href="javascript:void(0)" onclick="document.getElementById('logout-form').submit();">{{ __('Log Out') }}</a>
+                                            <a class="nav-link text-uppercase fw-bold text-danger px-3 d-flex align-items-center gap-1"
+                                                href="javascript:void(0)"
+                                                onclick="document.getElementById('logout-form').submit();">
+                                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                    stroke-linejoin="round">
+                                                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                                                    <polyline points="16 17 21 12 16 7"></polyline>
+                                                    <line x1="21" y1="12" x2="9" y2="12">
+                                                    </line>
+                                                </svg>
+                                                {{ __('Log Out') }}
+                                            </a>
                                         </form>
                                     </li>
                                 @endauth
@@ -454,29 +555,39 @@
                 <div class="col-auto">
                     <ul class="list-unstyled d-flex m-0 align-items-center">
                         <li class="mx-2">
-                            @if(app()->getLocale() == 'ar')
-                                <a href="{{ route('lang.switch', 'en') }}" class="btn btn-outline-dark btn-sm rounded-pill fw-bold px-3 py-1" style="font-size: 0.75rem; letter-spacing: 1px;">EN</a>
+                            @if (app()->getLocale() == 'ar')
+                                <a href="{{ route('lang.switch', 'en') }}"
+                                    class="btn btn-outline-dark btn-sm rounded-pill fw-bold px-3 py-1"
+                                    style="font-size: 0.75rem; letter-spacing: 1px;">EN</a>
                             @else
-                                <a href="{{ route('lang.switch', 'ar') }}" class="btn btn-outline-dark btn-sm rounded-pill fw-bold px-3 py-1" style="font-size: 0.75rem; letter-spacing: 1px;">عربي</a>
+                                <a href="{{ route('lang.switch', 'ar') }}"
+                                    class="btn btn-outline-dark btn-sm rounded-pill fw-bold px-3 py-1"
+                                    style="font-size: 0.75rem; letter-spacing: 1px;">عربي</a>
                             @endif
                         </li>
                         <li class="mx-2">
-                            <a href="#new-arrival" class="mx-2 d-flex align-items-center" title="{{ __('Wishlist') }}">
+                            <a href="#new-arrival" class="mx-2 d-flex align-items-center"
+                                title="{{ __('Wishlist') }}">
                                 <svg width="24" height="24" viewBox="0 0 24 24">
                                     <use xlink:href="#heart"></use>
                                 </svg>
                             </a>
                         </li>
                         <li class="mx-2">
-                            <a href="#" class="mx-2 d-flex align-items-center" data-bs-toggle="offcanvas"
-                                data-bs-target="#offcanvasCart" aria-controls="offcanvasCart" title="{{ __('Cart') }}">
+                            <a href="#" class="mx-2 d-flex align-items-center position-relative"
+                                data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart"
+                                aria-controls="offcanvasCart" title="{{ __('Cart') }}">
                                 <svg width="24" height="24" viewBox="0 0 24 24">
                                     <use xlink:href="#cart"></use>
                                 </svg>
+                                <span
+                                    class="cart-count position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                                    style="font-size: 0.6rem;">0</span>
                             </a>
                         </li>
                         <li class="search-box mx-2">
-                            <a href="#search" class="search-button d-flex align-items-center" title="{{ __('Search') }}">
+                            <a href="#search" class="search-button d-flex align-items-center"
+                                title="{{ __('Search') }}">
                                 <svg width="24" height="24" viewBox="0 0 24 24">
                                     <use xlink:href="#search"></use>
                                 </svg>
@@ -490,7 +601,7 @@
         </div>
     </nav>
 
-    @yield("content")
+    @yield('content')
     <footer id="footer" class="mt-5">
         <!-- Footer Top Trust Badges Section -->
         <div class="footer-trust-section py-4 bg-white border-bottom">
@@ -506,9 +617,11 @@
                                 <circle cx="5.5" cy="18.5" r="2.5"></circle>
                                 <circle cx="18.5" cy="18.5" r="2.5"></circle>
                             </svg>
-                            <h6 class="m-0 fw-bold text-dark" style="font-size: 0.88rem;">{{ __('Express Global Shipping') }}
+                            <h6 class="m-0 fw-bold text-dark" style="font-size: 0.88rem;">
+                                {{ __('Express Global Shipping') }}
                             </h6>
-                            <small class="text-muted mt-1" style="font-size: 0.75rem;">{{ __('Free delivery on orders over $150') }}</small>
+                            <small class="text-muted mt-1"
+                                style="font-size: 0.75rem;">{{ __('Free delivery on orders over $150') }}</small>
                         </div>
                     </div>
                     <div class="col-6 col-md-3">
@@ -519,9 +632,11 @@
                                 <polyline points="23 4 23 10 17 10"></polyline>
                                 <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
                             </svg>
-                            <h6 class="m-0 fw-bold text-dark" style="font-size: 0.88rem;">{{ __('30-Day Effortless Returns') }}
+                            <h6 class="m-0 fw-bold text-dark" style="font-size: 0.88rem;">
+                                {{ __('30-Day Effortless Returns') }}
                             </h6>
-                            <small class="text-muted mt-1" style="font-size: 0.75rem;">{{ __('Hassle-free exchanges worldwide') }}</small>
+                            <small class="text-muted mt-1"
+                                style="font-size: 0.75rem;">{{ __('Hassle-free exchanges worldwide') }}</small>
                         </div>
                     </div>
                     <div class="col-6 col-md-3">
@@ -533,8 +648,10 @@
                                 </rect>
                                 <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
                             </svg>
-                            <h6 class="m-0 fw-bold text-dark" style="font-size: 0.88rem;">{{ __('100% Secure Payments') }}</h6>
-                            <small class="text-muted mt-1" style="font-size: 0.75rem;">{{ __('256-bit SSL encrypted checkout') }}</small>
+                            <h6 class="m-0 fw-bold text-dark" style="font-size: 0.88rem;">
+                                {{ __('100% Secure Payments') }}</h6>
+                            <small class="text-muted mt-1"
+                                style="font-size: 0.75rem;">{{ __('256-bit SSL encrypted checkout') }}</small>
                         </div>
                     </div>
                     <div class="col-6 col-md-3">
@@ -544,8 +661,10 @@
                                 stroke="currentColor" stroke-width="1.8" class="text-primary mb-2">
                                 <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
                             </svg>
-                            <h6 class="m-0 fw-bold text-dark" style="font-size: 0.88rem;">{{ __('24/7 VIP Concierge') }}</h6>
-                            <small class="text-muted mt-1" style="font-size: 0.75rem;">{{ __('Dedicated fashion advisors') }}</small>
+                            <h6 class="m-0 fw-bold text-dark" style="font-size: 0.88rem;">
+                                {{ __('24/7 VIP Concierge') }}</h6>
+                            <small class="text-muted mt-1"
+                                style="font-size: 0.75rem;">{{ __('Dedicated fashion advisors') }}</small>
                         </div>
                     </div>
                 </div>
@@ -609,7 +728,8 @@
                         <li><a href="#best-sellers">{{ __('Best Sellers') }}</a></li>
                         <li><a href="#related-products">{{ __('Trending Collection') }}</a></li>
                         <li><a href="#blog">{{ __('Editorial Journal') }}</a></li>
-                        <li><a href="#" data-bs-toggle="modal" data-bs-target="#modalSizing">{{ __('Sizing & Fit Guide') }}</a></li>
+                        <li><a href="#" data-bs-toggle="modal"
+                                data-bs-target="#modalSizing">{{ __('Sizing & Fit Guide') }}</a></li>
                     </ul>
                 </div>
 
@@ -618,7 +738,8 @@
                     <h6 class="text-uppercase fw-bold mb-4 text-dark"
                         style="letter-spacing: 1px; font-size: 0.88rem;">{{ __('Customer Service') }}</h6>
                     <ul class="list-unstyled footer-link-list">
-                        <li><a href="#" data-bs-toggle="modal" data-bs-target="#modalOrderTracking">{{ __('Track Order Status') }}</a></li>
+                        <li><a href="#" data-bs-toggle="modal"
+                                data-bs-target="#modalOrderTracking">{{ __('Track Order Status') }}</a></li>
                         <li><a href="/returns">{{ __('Returns & Exchanges') }}</a></li>
                         <li><a href="/contact">{{ __('Help Center & Contact Us') }}</a></li>
                         <li><a href="/page/privacy-policy">{{ __('Privacy Policy') }}</a></li>
@@ -683,16 +804,13 @@
                             <span class="text-muted small fw-medium">Shipped by:</span>
                             <img src="{{ asset('images/arct-icon.png') }}" alt="Arct Logistics"
                                 style="height: 18px;">
-                            <img src="{{ asset('images/dhl-logo.png') }}" alt="DHL Express"
-                                style="height: 18px;">
+                            <img src="{{ asset('images/dhl-logo.png') }}" alt="DHL Express" style="height: 18px;">
                         </div>
                         <div class="payment-option d-flex align-items-center gap-2">
                             <span class="text-muted small fw-medium">Secured by:</span>
                             <img src="{{ asset('images/visa-card.png') }}" alt="Visa" style="height: 18px;">
-                            <img src="{{ asset('images/paypal-card.png') }}" alt="PayPal"
-                                style="height: 18px;">
-                            <img src="{{ asset('images/master-card.png') }}" alt="Mastercard"
-                                style="height: 18px;">
+                            <img src="{{ asset('images/paypal-card.png') }}" alt="PayPal" style="height: 18px;">
+                            <img src="{{ asset('images/master-card.png') }}" alt="Mastercard" style="height: 18px;">
                         </div>
                     </div>
                     <div class="col-md-6 text-md-end text-muted small">
@@ -704,7 +822,8 @@
     </footer>
 
     <!-- Order Tracking Modal -->
-    <div class="modal fade" id="modalOrderTracking" tabindex="-1" aria-labelledby="modalOrderTrackingLabel" aria-hidden="true">
+    <div class="modal fade" id="modalOrderTracking" tabindex="-1" aria-labelledby="modalOrderTrackingLabel"
+        aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content border-0 shadow-lg">
                 <div class="modal-header border-bottom-0 pb-0">
@@ -712,18 +831,23 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body p-4">
-                    <p class="text-muted mb-4">Enter your tracking number below to see the current status of your shipment.</p>
+                    <p class="text-muted mb-4">Enter your tracking number below to see the current status of your
+                        shipment.</p>
                     <form id="tracking-form">
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control form-control-lg" id="tracking_number" placeholder="e.g. TRK-123456" required>
+                            <input type="text" class="form-control form-control-lg" id="tracking_number"
+                                placeholder="e.g. TRK-123456" required>
                             <button class="btn btn-dark px-4" type="submit">Track</button>
                         </div>
                     </form>
                     <div id="tracking-result" class="mt-4 d-none">
                         <div class="p-3 bg-light rounded border">
-                            <h6 class="fw-bold mb-2">Status: <span id="track-status" class="text-primary"></span></h6>
-                            <p class="mb-1 text-muted small">Carrier: <span id="track-carrier" class="text-dark fw-medium"></span></p>
-                            <p class="mb-0 text-muted small">Estimated Delivery: <span id="track-eta" class="text-dark fw-medium"></span></p>
+                            <h6 class="fw-bold mb-2">Status: <span id="track-status" class="text-primary"></span>
+                            </h6>
+                            <p class="mb-1 text-muted small">Carrier: <span id="track-carrier"
+                                    class="text-dark fw-medium"></span></p>
+                            <p class="mb-0 text-muted small">Estimated Delivery: <span id="track-eta"
+                                    class="text-dark fw-medium"></span></p>
                         </div>
                     </div>
                     <div id="tracking-error" class="mt-3 d-none alert alert-danger small py-2"></div>
@@ -749,36 +873,36 @@
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/plugins.js') }}"></script>
     <script src="{{ asset('js/SmoothScroll.js') }}"></script>
-    <script src="{{ asset('js/cart.js') }}"></script>
+    <script src="{{ asset('js/cart.js') }}?v={{ time() }}"></script>
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('js/swiper-bundle.min.js') }}"></script>
     <script src="{{ asset('js/script.min.js') }}"></script>
     <script src="{{ asset('js/profile.js') }}"></script>
 
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    const searchInput = document.getElementById('search-form');
-    const resultsContainer = document.getElementById('ajax-search-results');
-    let timeout = null;
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const searchInput = document.getElementById('search-form');
+            const resultsContainer = document.getElementById('ajax-search-results');
+            let timeout = null;
 
-    if(searchInput) {
-        searchInput.addEventListener('keyup', function(e) {
-            clearTimeout(timeout);
-            const query = e.target.value;
-            
-            if(query.length < 2) {
-                resultsContainer.innerHTML = '';
-                return;
-            }
+            if (searchInput) {
+                searchInput.addEventListener('keyup', function(e) {
+                    clearTimeout(timeout);
+                    const query = e.target.value;
 
-            timeout = setTimeout(() => {
-                fetch(`/api/search?q=${query}`)
-                    .then(res => res.json())
-                    .then(data => {
+                    if (query.length < 2) {
                         resultsContainer.innerHTML = '';
-                        if(data.data && data.data.length > 0) {
-                            data.data.slice(0, 4).forEach(product => {
-                                resultsContainer.innerHTML += `
+                        return;
+                    }
+
+                    timeout = setTimeout(() => {
+                        fetch(`/api/search?q=${query}`)
+                            .then(res => res.json())
+                            .then(data => {
+                                resultsContainer.innerHTML = '';
+                                if (data.data && data.data.length > 0) {
+                                    data.data.slice(0, 4).forEach(product => {
+                                        resultsContainer.innerHTML += `
                                     <div class="col-6 col-md-3">
                                         <div class="card border-0 shadow-sm h-100">
                                             <a href="/product/${product.slug}">
@@ -791,58 +915,64 @@ document.addEventListener("DOMContentLoaded", function() {
                                         </div>
                                     </div>
                                 `;
+                                    });
+                                    resultsContainer.innerHTML +=
+                                        `<div class="col-12 text-center mt-3"><a href="/search?q=${query}" class="btn btn-outline-dark btn-sm">View all results</a></div>`;
+                                } else {
+                                    resultsContainer.innerHTML =
+                                        '<div class="col-12"><p class="text-muted">No products found.</p></div>';
+                                }
                             });
-                            resultsContainer.innerHTML += `<div class="col-12 text-center mt-3"><a href="/search?q=${query}" class="btn btn-outline-dark btn-sm">View all results</a></div>`;
-                        } else {
-                            resultsContainer.innerHTML = '<div class="col-12"><p class="text-muted">No products found.</p></div>';
-                        }
-                    });
-            }, 300);
-        });
-    }
-
-    // Tracking Form logic
-    const trackingForm = document.getElementById('tracking-form');
-    if(trackingForm) {
-        trackingForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const trackingNumber = document.getElementById('tracking_number').value;
-            const btn = trackingForm.querySelector('button');
-            const resultBox = document.getElementById('tracking-result');
-            const errorBox = document.getElementById('tracking-error');
-            
-            btn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>';
-            btn.disabled = true;
-            resultBox.classList.add('d-none');
-            errorBox.classList.add('d-none');
-
-            fetch(`/api/shipping/track/${trackingNumber}`)
-                .then(res => res.json())
-                .then(data => {
-                    btn.innerHTML = 'Track';
-                    btn.disabled = false;
-                    
-                    if(data.data) {
-                        resultBox.classList.remove('d-none');
-                        document.getElementById('track-status').innerText = data.data.status || 'Unknown';
-                        document.getElementById('track-carrier').innerText = data.data.carrier || 'N/A';
-                        document.getElementById('track-eta').innerText = data.data.estimated_delivery || 'N/A';
-                    } else {
-                        errorBox.classList.remove('d-none');
-                        errorBox.innerText = data.message || 'Tracking number not found.';
-                    }
-                })
-                .catch(err => {
-                    btn.innerHTML = 'Track';
-                    btn.disabled = false;
-                    errorBox.classList.remove('d-none');
-                    errorBox.innerText = 'An error occurred. Please try again.';
+                    }, 300);
                 });
+            }
+
+            // Tracking Form logic
+            const trackingForm = document.getElementById('tracking-form');
+            if (trackingForm) {
+                trackingForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const trackingNumber = document.getElementById('tracking_number').value;
+                    const btn = trackingForm.querySelector('button');
+                    const resultBox = document.getElementById('tracking-result');
+                    const errorBox = document.getElementById('tracking-error');
+
+                    btn.innerHTML =
+                        '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>';
+                    btn.disabled = true;
+                    resultBox.classList.add('d-none');
+                    errorBox.classList.add('d-none');
+
+                    fetch(`/api/shipping/track/${trackingNumber}`)
+                        .then(res => res.json())
+                        .then(data => {
+                            btn.innerHTML = 'Track';
+                            btn.disabled = false;
+
+                            if (data.data) {
+                                resultBox.classList.remove('d-none');
+                                document.getElementById('track-status').innerText = data.data.status ||
+                                    'Unknown';
+                                document.getElementById('track-carrier').innerText = data.data
+                                    .carrier || 'N/A';
+                                document.getElementById('track-eta').innerText = data.data
+                                    .estimated_delivery || 'N/A';
+                            } else {
+                                errorBox.classList.remove('d-none');
+                                errorBox.innerText = data.message || 'Tracking number not found.';
+                            }
+                        })
+                        .catch(err => {
+                            btn.innerHTML = 'Track';
+                            btn.disabled = false;
+                            errorBox.classList.remove('d-none');
+                            errorBox.innerText = 'An error occurred. Please try again.';
+                        });
+                });
+            }
         });
-    }
-});
-</script>
-@include('partials.modals')
+    </script>
+    @include('partials.modals')
 </body>
 
 
