@@ -119,6 +119,26 @@
                         
                         <div id="coupon-message" class="mt-2 small"></div>
 
+                        @auth
+                        @if(isset($loyaltyPoints) && $loyaltyPoints >= 100)
+                        <!-- Loyalty Points Form -->
+                        <div class="card p-3 border-0 bg-light mt-3">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <strong>Loyalty Points</strong>
+                                <span class="badge bg-success">{{ number_format($loyaltyPoints) }} pts available</span>
+                            </div>
+                            <div class="small text-muted mb-2">100 points = $1.00 discount</div>
+                            <form id="loyalty-form">
+                                <div class="input-group">
+                                    <input type="number" class="form-control border-0" id="redeem_points" placeholder="Points to redeem" min="100" max="{{ $loyaltyPoints }}" step="100">
+                                    <button type="submit" class="btn btn-outline-dark px-3">Apply</button>
+                                </div>
+                            </form>
+                            <div id="loyalty-message" class="mt-2 small"></div>
+                        </div>
+                        @endif
+                        @endauth
+
                         <button class="w-100 btn btn-primary btn-lg mt-4 text-uppercase fw-bold shadow-sm" type="button" id="place-order-btn">Place Order</button>
                     </div>
                 </div>
@@ -165,6 +185,36 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    let appliedPoints = 0;
+    const loyaltyForm = document.getElementById('loyalty-form');
+    if(loyaltyForm) {
+        loyaltyForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const pointsInput = document.getElementById('redeem_points');
+            const points = parseInt(pointsInput.value) || 0;
+            const maxPoints = parseInt(pointsInput.getAttribute('max')) || 0;
+            const msgDiv = document.getElementById('loyalty-message');
+            
+            if (points < 100) {
+                msgDiv.innerHTML = `<span class="text-danger">Minimum 100 points required.</span>`;
+                return;
+            }
+            if (points > maxPoints) {
+                msgDiv.innerHTML = `<span class="text-danger">You only have ${maxPoints} points.</span>`;
+                return;
+            }
+            
+            appliedPoints = Math.floor(points / 100) * 100; // Round down to nearest 100
+            let pointsDiscount = appliedPoints / 100;
+            msgDiv.innerHTML = `<span class="text-success">$${pointsDiscount.toFixed(2)} discount applied!</span>`;
+            
+            // Update total in UI
+            let currentTotal = parseFloat("{{ $total }}");
+            let newTotal = currentTotal - pointsDiscount;
+            document.getElementById('final-total').innerText = '$' + Math.max(0, newTotal).toFixed(2);
+        });
+    }
+
     // Handle Place Order
     document.getElementById('place-order-btn').addEventListener('click', function(e) {
         e.preventDefault();
@@ -192,7 +242,8 @@ document.addEventListener('DOMContentLoaded', function() {
             shipping_address: fullAddress,
             billing_address: fullAddress,
             shipping_cost: 0,
-            tax_amount: 0
+            tax_amount: 0,
+            redeem_points: appliedPoints
         };
 
         fetch('/api/checkout', {

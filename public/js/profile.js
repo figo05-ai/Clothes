@@ -5,23 +5,32 @@
 (function () {
   'use strict';
 
-  const STORAGE_KEY = 'kaira_user_profile';
+  const authUser = window.authUser || {};
+  const STORAGE_KEY = 'kaira_user_profile_' + (authUser.id || 'guest');
+  let firstName = 'Elena';
+  let lastName = 'Rostova';
+  
+  if (authUser.name) {
+      const names = authUser.name.split(' ');
+      firstName = names[0];
+      lastName = names.slice(1).join(' ') || '';
+  }
 
   const DEFAULT_PROFILE = {
     avatar: 'images/insta-item1.jpg',
-    firstName: 'Elena',
-    lastName: 'Rostova',
-    displayName: 'Elena Rostova',
-    email: 'elena.rostova@example.com',
-    phone: '+43 720 11 52 78',
-    secondaryEmail: 'elena.backup@example.com',
+    firstName: firstName,
+    lastName: lastName,
+    displayName: authUser.name || 'Elena Rostova',
+    email: authUser.email || 'elena.rostova@example.com',
+    phone: authUser.phone || '+43 720 11 52 78',
+    secondaryEmail: '',
     gender: 'Female',
     dob: '1995-06-15',
-    bio: 'Fashion enthusiast & luxury lifestyle curator based in Vienna.',
-    address: 'Kärntner Straße 18',
-    city: 'Vienna',
-    postalCode: '1010',
-    country: 'Austria',
+    bio: '',
+    address: '',
+    city: '',
+    postalCode: '',
+    country: 'Egypt',
     currency: 'USD ($)',
     language: 'English',
     preferredStyle: 'Contemporary Luxury',
@@ -70,6 +79,8 @@
     });
 
     // 2. Update Header/Offcanvas User Info text
+    // (Disabled to let Laravel's auth()->user() render the real data)
+    /*
     const nameEls = document.querySelectorAll('.user-display-name');
     nameEls.forEach(el => {
       el.textContent = `${profile.firstName} ${profile.lastName}`.trim() || profile.displayName || 'Elena Rostova';
@@ -79,6 +90,7 @@
     emailEls.forEach(el => {
       el.textContent = profile.email || 'elena.rostova@example.com';
     });
+    */
 
     // 3. Update Form Inputs inside modalProfile if present
     const form = document.getElementById('formProfileDetails');

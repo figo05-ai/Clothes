@@ -24,7 +24,7 @@
                             <div class="d-flex justify-content-between align-items-start position-relative z-index-1">
                                 <div>
                                     <h6 class="text-uppercase fw-bold mb-3" style="font-size: 0.75rem; letter-spacing: 2px; color: rgba(255,255,255,0.7);">{{ __('Current Balance') }}</h6>
-                                    <h2 class="display-3 fw-bold mb-0">${{ number_format($balance, 2) }}</h2>
+                                    <h2 class="display-3 fw-bold mb-0 text-white">${{ number_format($balance, 2) }}</h2>
                                 </div>
                                 <div class="text-end">
                                     <form method="POST" action="{{ route('frontend.wallet.toggle') }}" class="mb-3">

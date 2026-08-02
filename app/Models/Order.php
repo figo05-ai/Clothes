@@ -21,4 +21,25 @@ class Order extends Model
     {
         return $this->hasMany(OrderItem::class);
     }
+
+    protected static function booted()
+    {
+        static::updated(function ($order) {
+            if ($order->isDirty('status') && $order->status === 'delivered') {
+                if ($order->user_id) {
+                    $notes = json_decode($order->notes, true) ?? [];
+                    if (!isset($notes['points_awarded'])) {
+                        $loyaltyService = app(\App\Contracts\Loyalty\LoyaltyServiceInterface::class);
+                        $loyaltyService->awardPoints($order->user_id, (float) $order->grand_total);
+                        
+                        $notes['points_awarded'] = true;
+                        // Avoid triggering updated event again
+                        static::withoutEvents(function () use ($order, $notes) {
+                            $order->update(['notes' => json_encode($notes)]);
+                        });
+                    }
+                }
+            }
+        });
+    }
 }

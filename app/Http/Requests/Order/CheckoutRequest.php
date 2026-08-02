@@ -19,6 +19,7 @@ class CheckoutRequest extends FormRequest
             'payment_method' => 'required|string|in:cash_on_delivery,credit_card,paypal,wallet',
             'shipping_cost' => 'nullable|numeric|min:0',
             'tax_amount' => 'nullable|numeric|min:0',
+            'redeem_points' => 'nullable|integer|min:0',
         ];
     }
 }

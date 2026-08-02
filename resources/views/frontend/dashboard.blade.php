@@ -23,13 +23,16 @@
                                 <div class="p-4 rounded-4 position-relative overflow-hidden h-100 d-flex flex-column shadow-sm transition-all" style="background: linear-gradient(135deg, #1f1f21 0%, #3a3a3d 100%); color: white;">
                                     <div class="position-absolute" style="top: -20px; right: -20px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%); border-radius: 50%;"></div>
                                     <h6 class="text-uppercase fw-bold mb-3" style="font-size: 0.75rem; letter-spacing: 2px; color: rgba(255,255,255,0.7);">{{ __('Wallet Balance') }}</h6>
-                                    <h2 class="display-5 fw-bold mb-0 mt-auto">${{ number_format($walletBalance, 2) }}</h2>
+                                    <h2 class="display-5 fw-bold mb-0 mt-auto text-white">${{ number_format($walletBalance, 2) }}</h2>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="p-4 rounded-4 border h-100 d-flex flex-column position-relative overflow-hidden shadow-sm" style="background-color: #fafafb;">
                                     <h6 class="text-uppercase fw-bold mb-3 text-muted" style="font-size: 0.75rem; letter-spacing: 2px;">{{ __('Loyalty Points') }}</h6>
-                                    <h2 class="display-5 fw-bold text-dark mb-0 mt-auto">{{ number_format($loyaltyPoints) }} <small class="fs-6 text-muted">{{ __('pts') }}</small></h2>
+                                    <div class="mt-auto">
+                                        <h2 class="display-5 fw-bold text-dark mb-0">{{ number_format($loyaltyPoints) }} <small class="fs-6 text-muted">{{ __('pts') }}</small></h2>
+                                        <p class="text-success fw-medium mt-1 mb-0" style="font-size: 0.9rem;"><i class="bi bi-gift-fill me-1"></i> {{ __('Value:') }} ${{ number_format($loyaltyPoints / 100, 2) }}</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>

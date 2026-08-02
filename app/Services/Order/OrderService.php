@@ -64,6 +64,14 @@ class OrderService implements OrderServiceInterface
             $shippingFee = $checkoutData['shipping_cost'] ?? 0;
             $taxAmount = $checkoutData['tax_amount'] ?? 0;
             $discountAmount = $checkoutData['discount_amount'] ?? 0;
+
+            // Redeem loyalty points if requested
+            if (!empty($checkoutData['redeem_points']) && $userId) {
+                $loyaltyService = app(\App\Contracts\Loyalty\LoyaltyServiceInterface::class);
+                $pointsDiscount = $loyaltyService->redeemPoints($userId, (int) $checkoutData['redeem_points']);
+                $discountAmount += $pointsDiscount;
+            }
+
             $grandTotal = max(0, $totalAmount + $shippingFee + $taxAmount - $discountAmount);
 
             // Check if paying with wallet

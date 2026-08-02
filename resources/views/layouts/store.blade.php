@@ -283,15 +283,27 @@
                         </div>
                     </div>
 
+                    @php
+                        $completion = 0;
+                        if(auth()->user()->name) $completion += 25;
+                        if(auth()->user()->email) $completion += 25;
+                        if(auth()->user()->phone) $completion += 25;
+                        if(auth()->user()->avatar) $completion += 25;
+                    @endphp
                     <div class="profile-progress-box bg-white p-2 rounded-2 border mb-3">
                         <div class="d-flex justify-content-between align-items-center mb-1" style="font-size: 0.75rem;">
                             <span class="text-muted fw-medium">{{ __('Profile Completion') }}</span>
-                            <span class="fw-bold text-primary">90%</span>
+                            <span class="fw-bold @if($completion < 100) text-warning @else text-success @endif">{{ $completion }}%</span>
                         </div>
                         <div class="progress" style="height: 6px;">
-                            <div class="progress-bar bg-primary" role="progressbar" style="width: 90%"
-                                aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar @if($completion < 100) bg-warning @else bg-success @endif" role="progressbar" style="width: {{ $completion }}%"
+                                aria-valuenow="{{ $completion }}" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
+                        @if($completion < 100)
+                            <div class="text-muted mt-2" style="font-size: 0.65rem;">
+                                <i class="bi bi-info-circle me-1"></i> {{ __('Complete your profile to unlock all features.') }}
+                            </div>
+                        @endif
                     </div>
 
                     <div class="d-flex gap-2">
@@ -888,6 +900,16 @@
         </div>
     </div>
 
+    @auth
+    <script>
+        window.authUser = {
+            id: "{{ auth()->id() }}",
+            name: "{{ auth()->user()->name }}",
+            email: "{{ auth()->user()->email }}",
+            phone: "{{ auth()->user()->phone }}"
+        };
+    </script>
+    @endauth
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/plugins.js') }}"></script>
     <script src="{{ asset('js/SmoothScroll.js') }}"></script>

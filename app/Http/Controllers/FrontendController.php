@@ -111,13 +111,16 @@ class FrontendController extends Controller
         
         $walletBalance = 0;
         $walletIsActive = false;
+        $loyaltyPoints = 0;
         if (auth()->check()) {
             $walletService = app(\App\Contracts\Wallet\WalletServiceInterface::class);
+            $loyaltyService = app(\App\Contracts\Loyalty\LoyaltyServiceInterface::class);
             $walletBalance = $walletService->getBalance(auth()->id());
             $walletIsActive = $walletService->isActive(auth()->id());
+            $loyaltyPoints = $loyaltyService->getBalance(auth()->id());
         }
 
-        return view('frontend.checkout', compact('cart', 'subtotal', 'total', 'discount', 'coupon', 'walletBalance', 'walletIsActive'));
+        return view('frontend.checkout', compact('cart', 'subtotal', 'total', 'discount', 'coupon', 'walletBalance', 'walletIsActive', 'loyaltyPoints'));
     }
 
     public function orderSuccess(\Illuminate\Http\Request $request)
