@@ -82,7 +82,7 @@
                             value="{{ request('sort', 'latest') }}">
                     </div>
 
-                    <div class="row row-cols-1 row-cols-md-3 g-4">
+                    <div class="row row-cols-2 row-cols-md-3 g-4">
                         @forelse($products as $product)
                             <div class="col">
                                 <div class="product-item image-zoom-effect link-effect" data-product-id="{{ $product->id }}">
@@ -91,11 +91,11 @@
                                             @if ($product->images->where('is_primary', true)->first())
                                                 <img src="{{ $product->images->where('is_primary', true)->first()->image_url }}"
                                                     class="product-image img-fluid" alt="{{ __($product->name) }}"
-                                                    style="height: 400px; width: 100%; object-fit: cover; border-radius: 8px;">
+                                                    style="aspect-ratio: 3/4; width: 100%; object-fit: cover; border-radius: 8px;">
                                             @else
                                                 <img src="https://via.placeholder.com/800x1200?text={{ urlencode($product->name) }}"
                                                     class="product-image img-fluid" alt="{{ __($product->name) }}"
-                                                    style="height: 400px; width: 100%; object-fit: cover; border-radius: 8px;">
+                                                    style="aspect-ratio: 3/4; width: 100%; object-fit: cover; border-radius: 8px;">
                                             @endif
                                         </a>
                                         <a href="javascript:void(0)" class="btn-icon btn-wishlist" data-product-id="{{ $product->id }}" onclick="toggleWishlist(event, '{{ $product->id }}')">

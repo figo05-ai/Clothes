@@ -60,7 +60,7 @@
                     <div class="category-card">
                         <a href="{{ route('frontend.category', $category->slug) }}" class="d-block text-decoration-none text-white">
                             <img src="{{ asset('images/products/categories/' . strtolower($category->name) . ' category.jpg') }}" alt="{{ __($category->name) }}"
-                                class="img-fluid w-100 category-card-img" style="height: 400px; object-fit: cover; width: 100%;">
+                                class="img-fluid w-100 category-card-img" style="aspect-ratio: 3/4; object-fit: cover; width: 100%;">
                             <span class="badge bg-white text-dark rounded-pill position-absolute top-0 end-0 m-3 px-3 py-2 fw-semibold shadow-sm" style="font-size: 0.75rem;">{{ __('SHOP') }}</span>
                             <div class="category-card-overlay position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-end p-4">
                                 <span class="text-uppercase text-white-50 small fw-medium mb-1" style="letter-spacing: 1.5px;">{{ __('Discover') }}</span>
@@ -98,10 +98,10 @@
 
                                         @if($product->images->where('is_primary', true)->first())
                                             <img src="{{ $product->images->where('is_primary', true)->first()->image_url }}" alt="{{ __($product->name) }}"
-                                                class="product-image img-fluid" style="height: 400px; width: 100%; object-fit: cover; border-radius: 8px;">
+                                                class="product-image img-fluid" style="aspect-ratio: 3/4; width: 100%; object-fit: cover; border-radius: 8px;">
                                         @else
                                             <img src="https://via.placeholder.com/800x1200?text={{ urlencode($product->name) }}" alt="{{ __($product->name) }}"
-                                                class="product-image img-fluid" style="height: 400px; width: 100%; object-fit: cover; border-radius: 8px;">
+                                                class="product-image img-fluid" style="aspect-ratio: 3/4; width: 100%; object-fit: cover; border-radius: 8px;">
                                         @endif
                                     </a>
                                     <a href="#" class="btn-icon btn-wishlist" data-product-id="{{ $product->id }}" onclick="toggleWishlist(event, '{{ $product->id }}')">
@@ -241,10 +241,10 @@
 
                                         @if($product->images->where('is_primary', true)->first())
                                             <img src="{{ $product->images->where('is_primary', true)->first()->image_url }}" alt="{{ __($product->name) }}"
-                                                class="product-image img-fluid" style="height: 400px; width: 100%; object-fit: cover; border-radius: 8px;">
+                                                class="product-image img-fluid" style="aspect-ratio: 3/4; width: 100%; object-fit: cover; border-radius: 8px;">
                                         @else
                                             <img src="https://via.placeholder.com/800x1200?text={{ urlencode($product->name) }}" alt="{{ __($product->name) }}"
-                                                class="product-image img-fluid" style="height: 400px; width: 100%; object-fit: cover; border-radius: 8px;">
+                                                class="product-image img-fluid" style="aspect-ratio: 3/4; width: 100%; object-fit: cover; border-radius: 8px;">
                                         @endif
                                     </a>
                                     <a href="#" class="btn-icon btn-wishlist" data-product-id="{{ $product->id }}" onclick="toggleWishlist(event, '{{ $product->id }}')">
