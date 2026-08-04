@@ -1,7 +1,7 @@
 # Clothes - Modern E-Commerce Platform
 
-![Laravel](https://img.shields.io/badge/Laravel-11.x-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)
-![PHP](https://img.shields.io/badge/PHP-8.3+-777BB4?style=for-the-badge&logo=php&logoColor=white)
+![Laravel](https://img.shields.io/badge/Laravel-13.x-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)
+![PHP](https://img.shields.io/badge/PHP-8.5+-777BB4?style=for-the-badge&logo=php&logoColor=white)
 ![Filament](https://img.shields.io/badge/Filament-3.x-F9A826?style=for-the-badge&logo=filament&logoColor=white)
 ![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
 
@@ -48,7 +48,7 @@
 ## 🚀 Getting Started
 
 ### Prerequisites
-*   PHP 8.3 or higher
+*   PHP 8.5 or higher
 *   Composer
 *   Node.js & NPM
 *   MySQL / PostgreSQL / SQLite
