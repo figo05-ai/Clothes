@@ -1,58 +1,122 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Clothes - Modern E-Commerce Platform
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+![Laravel](https://img.shields.io/badge/Laravel-11.x-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)
+![PHP](https://img.shields.io/badge/PHP-8.3+-777BB4?style=for-the-badge&logo=php&logoColor=white)
+![Filament](https://img.shields.io/badge/Filament-3.x-F9A826?style=for-the-badge&logo=filament&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
 
-## About Laravel
+**Clothes** is a fully-featured, scalable, and modern E-Commerce platform built with Laravel 11. It provides a robust backend architecture along with a comprehensive administration panel powered by Filament v3.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 🌟 Key Features
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### 🛍️ Core E-Commerce
+*   **Advanced Catalog Management:** Manage products, categories, subcategories, variants (colors, sizes), and multiple images per product.
+*   **Smart Cart & Checkout:** Seamless shopping cart experience with dynamic coupon validation and calculation.
+*   **Order Management:** Complete lifecycle management for orders and order items, with integrated shipment tracking.
 
-## Learning Laravel
+### 💳 Customer Engagement & Loyalty
+*   **Digital Wallet:** Users can top up their digital wallet and use it for purchases seamlessly (`/my-wallet`).
+*   **Loyalty Points System:** Reward customers with points for purchases, which can be redeemed for discounts.
+*   **Wishlist:** Customers can save their favorite products for later.
+*   **Product Reviews:** Allow verified buyers to leave reviews and ratings for products.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### 🔄 Support & Logistics
+*   **RMA (Returns Management):** Built-in system for handling customer return requests smoothly.
+*   **Support Tickets:** Integrated customer support ticketing system to handle inquiries directly within the platform.
+*   **Shipments Tracking:** Track shipping statuses and provide updates to customers.
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 👑 Powerful Administration
+*   **Filament V3 Dashboard:** A highly interactive, beautiful, and responsive admin dashboard.
+*   **Comprehensive Resources:** Dedicated interfaces to manage Users, Products, Orders, Returns, Tickets, and Wallet Transactions.
+*   **Analytics:** Built-in views for store performance and analytics.
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+---
 
-## Agentic Development
+## 🛠️ Tech Stack & Architecture
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+*   **Backend:** [Laravel 11.x](https://laravel.com/) (PHP 8.3+)
+*   **Admin Panel:** [Filament 3.x](https://filamentphp.com/) (TALL Stack)
+*   **Frontend:** Blade Templates, [Tailwind CSS](https://tailwindcss.com/), [Vite](https://vitejs.dev/)
+*   **Authentication:** Laravel Breeze
+*   **API Documentation:** L5-Swagger (`/api/documentation`)
+*   **Architecture Pattern:** Clean Service-Oriented MVC (Heavy lifting is done in dedicated `app/Services`).
 
-```bash
-composer require laravel/boost --dev
+---
 
-php artisan boost:install
-```
+## 🚀 Getting Started
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+### Prerequisites
+*   PHP 8.3 or higher
+*   Composer
+*   Node.js & NPM
+*   MySQL / PostgreSQL / SQLite
 
-## Contributing
+### Installation
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/your-username/Clothes.git
+   cd Clothes
+   ```
 
-## Code of Conduct
+2. **Install PHP dependencies:**
+   ```bash
+   composer install
+   ```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+3. **Install NPM dependencies:**
+   ```bash
+   npm install
+   ```
 
-## Security Vulnerabilities
+4. **Environment Setup:**
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
+   *Make sure to configure your database settings in the `.env` file.*
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+5. **Run Migrations & Seeders:**
+   ```bash
+   php artisan migrate --seed
+   ```
 
-## License
+6. **Build Frontend Assets:**
+   ```bash
+   npm run build
+   ```
+   *or for development:* `npm run dev`
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+7. **Start the Development Server:**
+   ```bash
+   php artisan serve
+   ```
+
+---
+
+## 📚 API Structure
+
+The application separates Web routes from API routes natively inside `routes/web.php` for flexible integrations.
+
+*   **Customer APIs:** Prefixed with `/api/...` (e.g., `/api/products`, `/api/cart`, `/api/wallet/balance`).
+*   **Admin APIs:** Prefixed with `/admin/api/...` (e.g., `/admin/api/orders`, `/admin/api/inventory/low-stock`).
+
+You can explore the full API documentation using Swagger by visiting `/api/documentation` after starting the server.
+
+---
+
+## 🤝 Contributing
+
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
